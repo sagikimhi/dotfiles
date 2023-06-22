@@ -31,8 +31,8 @@ vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 -- Jump to next/prev error and keep centered
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+vim.keymap.set("n", "<leader>K", "<cmd>lnext<CR>zz")
+vim.keymap.set("n", "<leader>J", "<cmd>lprev<CR>zz")
 
 -- Search and replace word under cursor
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
@@ -40,3 +40,5 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 -- Jump between left/right window with h and l
 vim.keymap.set('n', '<leader>h', ':wincmd h<CR>')
 vim.keymap.set('n', '<leader>l', ':wincmd l<CR>')
+vim.keymap.set('n', '<leader>j', ':wincmd j<CR>')
+vim.keymap.set('n', '<leader>k', ':wincmd k<CR>')
