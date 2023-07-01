@@ -17,6 +17,7 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<Up>'] = cmp.mapping.select_prev_item(cmp_select),
   ['<Down>'] = cmp.mapping.select_next_item(cmp_select),
   ['<Right>'] = cmp.mapping.confirm({ select = true }),
+  ['<Left>']    = cmp.mapping.abort(),
   ["<C-Space>"] = cmp.mapping.complete(),
 })
 
@@ -48,6 +49,7 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>gr", function() vim.lsp.buf.references() end, opts)
   vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
   vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+  vim.keymap.set("n", "<leader>vs", function() vim.lsp.buf.document_symbol() end, opts)
   vim.keymap.set("n", "<leader>ws", function() vim.lsp.buf.workspace_symbol() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
   vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, opts)
