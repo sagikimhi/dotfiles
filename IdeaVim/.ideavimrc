@@ -1,0 +1,116 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+syntax on
+
+" -----
+" Sets:
+" -----
+set quickscope
+set noerrorbells
+set tabstop=4 softtabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
+set smartcase
+set nowrap
+" line numbers and relative line numbers
+set nu
+set rnu
+" an undo directory - works awesome with the undotree plugin
+set undodir=~/.vim/undodir
+set undofile
+" additional personal preference sets, use :h <setting> to learn more about each set
+set updatetime=500
+set noswapfile
+set nobackup
+set noshowmode
+set nohlsearch
+set incsearch
+set path+=**
+set complete+=kspell
+set completeopt=menuone,longest
+set textwidth=0
+set mouse=a
+set showcmd
+set cursorline
+set scrolloff=10
+set colorcolumn=100
+
+" --------
+" Plugins:
+" --------
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+Plug 'easymotion/vim-easymotion'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-commentary'
+
+" ----------------
+" Let Expressions:
+" ----------------
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+let g:qs_primary_color = '#ff0000'
+let g:qs_secondary_color = '#ff00ff'
+
+" ------------
+" Maps/Remaps:
+" ------------
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+let mapleader = " "
+
+nnoremap <leader>pv :NERDTreeToggle<Enter> <bar> :vertical resize 25<CR>
+nnoremap <leader>pf :NERDTreeFind<Enter>
+
+nnoremap <leader>v <C-w>v<Enter>
+nnoremap <leader>h <C-w>h<Enter>
+nnoremap <leader>j <C-w>j<Enter>
+nnoremap <leader>k <C-w>k<Enter>
+nnoremap <leader>l <C-w>l<Enter>
+
+"Vertical resize mappings:
+nnoremap <leader>vr :vertical resize 30<CR>
+nnoremap <silent><leader>+ :vertical resize +5<CR>
+nnoremap <silent><leader>- :vertical resize -5<CR>
+"delete what is marked, without saving it to paste reg, and paste whats currently saved
+"to the paste register.
+nnoremap <leader>cw "_ciw
+nnoremap <leader>dw "_diw
+vnoremap <leader>p "_dP
+vnoremap <leader>c "_c
+vnoremap <leader>d "_d
+" Moving lines along the file - these are so amazing! try out the visual mode
+" setting! its a must i swear.
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+inoremap <C-j> <esc>:m .+1<CR>==
+inoremap <C-k> <esc>:m .-2<CR>==
+" Keeps the cursor centered while jumping between definitions, Ctrl+j/k keeps it
+" centered when navigating up/down through the file.
+nnoremap J mzJ`z
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap <C-d> <C-d>zzzv
+nnoremap <C-u> <C-u>zzzv
+nnoremap <C-j> jzz
+nnoremap <C-k> kzz
+" Documentation Remaps
+nmap <leader>- yypwv$r-
+nmap <leader>_ <leader>-yykP
+nnoremap <leader>i yyP\^ciw#<Esc>f(D
+nnoremap <leader>f o\"\"\"<Enter><Esc>O<Esc>
+nnoremap <leader>' ciw'<C-r>"'<Esc>
+nnoremap <leader>" ciw"<C-r>"'<Esc>
+nnoremap <leader><leader>' da'
+nnoremap <leader><leader>" da"
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
