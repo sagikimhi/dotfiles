@@ -1,163 +1,186 @@
 {
-    "editor.cursorBlinking": "smooth",
-    "editor.cursorSmoothCaretAnimation": "on",
-    "editor.tabCompletion": "on",
-    "editor.smoothScrolling": true,
-    "files.insertFinalNewline": true,
-    "[systemverilog]": {
-        "editor.quickSuggestions": {
-            "comments": "off",
-            "strings": "off",
-            "other": "off"
-        },
-        "editor.formatOnType": true
-    },
-    "[vhdl]": {
-        "editor.quickSuggestions": {
-            "comments": "off",
-            "strings": "off",
-            "other": "off"
-        },
-        "editor.formatOnType": true
-    },
-    "editor.wordWrap": "off",
-    "remote.SSH.remotePlatform": {
-        "mashina1.speedata.io": "linux"
-    },
-    "git.autofetch": true,
-    "[python]": {
-        "editor.formatOnType": true
-    },
+    "window.zoomLevel": 1,
 
-    // -------------
-    // Vim Settings:
-    // -------------
+    "files.insertFinalNewline": true,
+
+    "editor.wordWrap": "off",
+    "editor.lineNumbers": "relative",
+    "editor.tabCompletion": "off",
+    "editor.cursorBlinking": "smooth",
+    "editor.smoothScrolling": true,
+    "editor.minimap.enabled": false,
+    "editor.cursorSmoothCaretAnimation": "on",
+
+    "workbench.colorTheme": "Visual Studio Dark - C++",
+    "workbench.activityBar.location": "top",
+    "workbench.view.alwaysShowHeaderActions": true,
+
+    "vim.easymotion": true,
+    "vim.highlightedyank.enable": true,
+    "vim.smartRelativeLine": true,
+    "vim.sneak": true,
+    "vim.sneakReplacesF": true,
+    "vim.startofline": false,
+    "vim.visualstar": true,
+    "vim.camelCaseMotion.enable": true,
+    "vim.sneakUseIgnorecaseAndSmartcase": true,
     "vim.leader": "<space>",
-    "vim.matchpairs": "(:),{:},[:]",
     "vim.handleKeys": {
         "<C-s>": false,
         "<C-z>": false,
         "<C-y>": false,
         "<C-/>": false
     },
-
-    // Visual Mode Key Bindings
-    // ------------------------
     "vim.visualModeKeyBindings": [
+
         // Bind <leader>d to delete current visual selection without yanking it
         {
             "before"    : ["<leader>", "d"],
             "after"     : ["\"", "_", "d"]
         },
+
         // <leader>c - Same as <leader>d but enters insert mode right after
         {
             "before"    : ["<leader>", "c"],
             "after"     : ["\"", "_", "c"]
         },
+
         // Bind <leader>p to delete current visual selection without yanking it and paste what is currently in the yank register
         {
             "before"    : ["<leader>", "p"],
             "after"     : ["<leader>", "d", "P"]
         },
+
         // Bind <leader>P to do the same as <leader>p but with a small p paste at the end instead of capital P paste
         {
             "before"    : ["<leader>", "P"],
             "after"     : ["<leader>", "d", "p"]
         },
+
         // <leader>f - flip/reverse selected lines
         {
             "before"    : ["<leader>", "f"],
             "commands"     : ["flip.selection",]
         }
-    ],
 
-    // Normal Mode Key Bindings
-    // ------------------------
+    ],
     "vim.normalModeKeyBindings": [
+
         // Keep centered when scrolling up/down witn Ctrl-D/Ctrl-U
         {
             "before"    : ["C-d"],
             "after"     : ["C-d", "z", "z"],
         },
+
         {
             "before"    : ["C-u"],
             "after"     : ["C-u", "z", "z"],
         },
+
+        {
+            "before"    : ["{"],
+            "after"     : ["{", "z", "z"]
+        },
+
+        {
+            "before"    : ["}"],
+            "after"     : ["}", "z", "z"]
+        },
+
         // Keep centered when searching with n/N
         {
             "before"    : ["n"],
             "after"     : ["n", "z", "z"],
         },
+
         {
             "before"    : ["N"],
             "after"     : ["N", "z", "z"],
         },
+
         // <leader>] - go to next problem in file
         {
             "before": ["<leader>", "]"],
             "commands": ["editor.action.marker.next",],
         },
+
         // <leader>[ - go to previous problem in file
         {
             "before": ["<leader>", "["],
             "commands": ["editor.action.marker.prev",],
         },
+
         // <leader>pv - Open/Close File explorer
         {
             "before"    : ["<leader>", "p", "v"],
             "commands"  : ["workbench.action.toggleSidebarVisibility",]
         },
+
         // <leader>pf - Reveal file in file explorer
         {
             "before"    : ["<leader>", "p", "f"],
             "commands"  : ["revealInExplorer",]
         },
+
         // <leader>l - Jump to window on the left
         {
             "before"    : ["<leader>", "l"],
             "after"     : ["ctrl+w", "l"]
         },
+
         // <leader>l - Jump to window on the right
         {
             "before"    : ["<leader>", "h"],
             "after"     : ["ctrl+w", "h"]
         },
+
         // <leader>gd - Goto Declaration
         {
             "before"    :["<leader>", "g", "d"],
             "commands"   : ["editor.action.revealDeclaration",]
         },
+
         // Bind <leader>cw to delete entire word under cursor without copying it to the copy register and enter insert mode
         {
             "before"    : ["<leader>", "c", "w"],
             "after"     : ["\"", "_", "c", "i", "w"]
         },
+
         // Bind <leader>cc to delete entire line under cursor without copying it to the copy register and enter insert mode
         {
             "before"    : ["<leader>", "c", "c"],
             "after"     : ["\"", "_", "c", "c"]
         },
         // Bind <leader>dw to delete entire word under cursor without copying it to the copy register
+
         {
             "before"    : ["<leader>", "d", "w"],
             "after"     : ["\"", "_", "d", "i", "w"]
         },
+
         // Bind <leader>dd to delete entire line under cursor without copying it to the copy register
         {
             "before"    : ["<leader>", "d", "d"],
             "after"     : ["\"", "_", "d", "d"]
         },
+
         // Bind <leader>dp to delete line without copying it to the copy register
         // and paste what is currently set in the copy register instead
         {
             "before"    : ["<leader>", "d", "p"],
             "after"     : ["<leader>", "d", "d", "P"]
         },
+
         // Bind <leader>- to copy the current line and paste a comment below it with dashes covering the width of the entire line
         {
             "before"    : ["<leader>", "-"],
             "after"     : ["y", "y", "p", "w", "v", "$", "r", "-"]
         },
+        {
+            "before"    : ["<leader>", "_"],
+            "after"     : ["y", "y", "p", "w", "v", "$", "r", "-", "y", "y", "k", "P", "j"]
+        },
+
         // Bind <leader>ad to add an empty comment line under the line under cursor and then
         // another comment line under it with an Add Description todo task
         {
@@ -172,25 +195,35 @@
                 {"command": "vim.remap", "args": {"after": ["<Esc>"]}},
             ],
         },
+
         // Bind <leader>f to add a function decleration header when cursor is on a function decl line
         {
             "before"    : ["<leader>", "f"],
-            "after"     : ["^", "t", "(", "y", "i", "w", "O", " ", "<backspace>", "<Esc>", "p", "I"],
+            "after"     : [
+                "^", "t", "(", "B", "y", "t", "(", "O", " ", "<BS>",
+                "<Esc>", "p", "A", "(", ".", ".", ".", ")", "<Esc>", "I"
+            ],
             "commands"  : [
                 {"command": "type", "args": { "text": "Function: ", },},
                 {"command": "editor.action.addCommentLine",},
                 {"command": "vim.remap", "args": {"after": ["<Esc>", "<leader>", "a", "d"]}}
             ],
         },
+
         // Bind <leader>t to do the same as <leader>f but for task instead of function.
         {
             "before"    : ["<leader>", "t"],
             "after"     : [
-                "^", "t", "(", "y", "i", "w", "O", // Navigate cursor to task name
-                "/", "/", "<space>", "T", "a", "s", "k", ":", "<space>", "<Esc>", "p",
-                "<leader>", "a", "d"
+                "^", "t", "(", "B", "y", "t", "(", "O", " ", "<BS>",
+                "<Esc>", "p", "A", "(", ".", ".", ".", ")", "<Esc>", "I"
+            ],
+            "commands"  : [
+                {"command": "type", "args": { "text": "Task: ", },},
+                {"command": "editor.action.addCommentLine",},
+                {"command": "vim.remap", "args": {"after": ["<Esc>", "<leader>", "a", "d"]}}
             ]
         },
+
         // Bind <leader>c to do the same as <leader>f but for class instead of function.
         {
             "before"    : ["<leader>", "c"],
@@ -200,6 +233,7 @@
                 "<leader>", "a", "d"
             ]
         },
+
         // Bind <leader>v to do the same as <leader>f but for variable instead of function.
         {
             "before"    : ["<leader>", "v"],
@@ -209,6 +243,7 @@
                 "<leader>", "a", "d"
             ]
         },
+
         // Bind <leader>T to do the same as <leader>f but for Typedef instead of function.
         {
             "before"    : ["<leader>", "T"],
@@ -218,6 +253,7 @@
                 "<leader>", "a", "d"
             ]
         },
+
         // Bind <leader>i to add a function implementation header when cursor is on a function decl line
         {
             "before"    : ["<leader>", "i"],
@@ -230,24 +266,27 @@
                 {"command": "vim.remap", "args": {"after": ["<leader>", "-"]}},
             ]
         },
+
         // Bind <leader>uf to update the function name of the current function declaration header - cursor should be on the function decleration, not header.
         {
             "before"    : ["<leader>", "u", "f"],
             "after"     : [
-                "^", "t", "(", "y", "i", "w", "2", "(", 
-                "/", "F", "u", "n", "c", "t", "i", "o", "n", ":", "<CR>", "f", ":", "w",
-                "<leader>", "d", "w", "p"
+                "^", "t", "(", "2", "B", "y", "t", "(", "{",
+                "/", "F", "u", "n", "c", "t", "i", "o", "n", ":", "<CR>", "f", ":",
+                "f", " ", "w", "\"", "_", "D", "p", "A", "(", ".", ".", ".", ")", "<Esc>"
             ]
         },
+
         // Bind <leader>ut to do the same as <leader>uf but for task
         {
             "before"    : ["<leader>", "u", "t"],
             "after"     : [
-                "^", "t", "(", "y", "i", "w", "2", "(",
-                "/", "T", "a", "s", "k", ":", "<CR>", "f", ":", "w",
-                "<leader>", "d", "w", "p"
+                "^", "t", "(", "2", "B", "y", "t", "(", "{",
+                "/", "T", "a", "s", "k", ":", "<CR>", "f", ":",
+                "f", " ", "\"", "_", "D", "p", "A", "(", ".", ".", ".", ")", "<Esc>"
             ]
         },
+
         // Bind <leader>uc to do the same as <leader>uf but for class
         {
             "before"    : ["<leader>", "u", "c"],
@@ -257,6 +296,7 @@
                 "<leader>", "d", "w", "p"
             ]
         },
+
         // Bind <leader>uv to do the same as <leader>uf but for variable
         {
             "before"    : ["<leader>", "u", "v"],
@@ -266,6 +306,7 @@
                 "<leader>", "d", "w", "p"
             ]
         },
+
         // Bind <leader>uT to do the same as <leader>uf but for Type
         {
             "before"    : ["<leader>", "u", "T"],
@@ -275,35 +316,12 @@
                 "<leader>", "d", "w", "p"
             ]
         },
+
         // Bind <leader>ui to update the function name of the current function implementation header - cursor should be on the function decleration, not header.
         {
             "before"    : ["<leader>", "u", "i"],
             "after"     : [ "2", "k", "2", "<leader>", "d", "d", "<leader>", "i" ]
         }
-    ],
-    "C_Cpp.default.enableConfigurationSquiggles": false,
-    "C_Cpp.default.browse.limitSymbolsToIncludedHeaders": true,
-    "editor.minimap.enabled": false,
-    "DVT.contentFilters.enable": false,
-    "workbench.colorTheme": "Visual Studio Dark - C++",
-    "editor.lineNumbers": "relative",
-    "[buildconfig]": {
-        "editor.quickSuggestions": {
-            "comments": "off",
-            // "strings": "off",
-            // "other": "off"
-        },
-        "editor.formatOnType": true,
-    },
-    "workbench.view.alwaysShowHeaderActions": true,
-    "C_Cpp.commentContinuationPatterns": [
-        "//",
-        "/**"
-    ],
-    "DVT.textEditor.systemVerilog.formatting.indentation.else": "On a new line",
-    "DVT.textEditor.systemVerilog.formatting.verticalAlignment.verticalAlignPatterns": {
-        "Function Variable Declarations": true
-    },
-    "DVT.systemVerilog.refactoring.ignoreComments": false,
-    "cmake.showOptionsMovedNotification": false,
+    ]
+
 }

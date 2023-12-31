@@ -7,8 +7,8 @@ syntax on
 " -----
 " Sets:
 " -----
-set quickscope
 set noerrorbells
+set quickscope
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
@@ -29,8 +29,7 @@ set noshowmode
 set nohlsearch
 set incsearch
 set path+=**
-set complete+=kspell
-set completeopt=menuone,longest
+set completeopt=menuone
 set textwidth=0
 set mouse=a
 set showcmd
@@ -75,8 +74,10 @@ nnoremap <silent><leader>+ :vertical resize +5<CR>
 nnoremap <silent><leader>- :vertical resize -5<CR>
 "delete what is marked, without saving it to paste reg, and paste whats currently saved
 "to the paste register.
-nnoremap <leader>cw "_ciw
-nnoremap <leader>dw "_diw
+nnoremap <leader>cc "_cc
+nnoremap <leader>dd "_dd
+nnoremap <leader>ci "_ci
+nnoremap <leader>di "_di
 vnoremap <leader>p "_dP
 vnoremap <leader>c "_c
 vnoremap <leader>d "_d
@@ -84,8 +85,6 @@ vnoremap <leader>d "_d
 " setting! its a must i swear.
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-inoremap <C-j> <esc>:m .+1<CR>==
-inoremap <C-k> <esc>:m .-2<CR>==
 " Keeps the cursor centered while jumping between definitions, Ctrl+j/k keeps it
 " centered when navigating up/down through the file.
 nnoremap J mzJ`z
@@ -95,15 +94,24 @@ nnoremap <C-d> <C-d>zzzv
 nnoremap <C-u> <C-u>zzzv
 nnoremap <C-j> jzz
 nnoremap <C-k> kzz
+" Code Info Remaps
+nmap <C-k> <Action>(ShowHoverInfo)
+nmap <C-h> <Action>(ParameterInfo)
+imap <C-h> <Action>(ParameterInfo)
+imap <C-k> <Action>(ShowHoverInfo)
+nmap <leader>fs <Action>(GotoSymbol)
+
 " Documentation Remaps
 nmap <leader>- yypwv$r-
 nmap <leader>_ <leader>-yykP
 nnoremap <leader>i yyP\^ciw#<Esc>f(D
 nnoremap <leader>f o\"\"\"<Enter><Esc>O<Esc>
 nnoremap <leader>' ciw'<C-r>"'<Esc>
-nnoremap <leader>" ciw"<C-r>"'<Esc>
-nnoremap <leader><leader>' da'
-nnoremap <leader><leader>" da"
+nnoremap <leader><leader>' ciW"<C-r>"'<Esc>
+nnoremap <leader>" ciw"<C-r>""<Esc>
+nnoremap <leader><leader>" ciW"<C-r>""<Esc>
+nnoremap <leader>d' diw"_x"_xp
+nnoremap <leader>d" diw"_x"_xp
 
 "" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
 "" Map \r to the Reformat Code action
