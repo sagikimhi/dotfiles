@@ -1,49 +1,62 @@
-" .ideavimrc is a configuration file for IdeaVim plugin. It uses
-"   the same commands as the original .vimrc configuration.
-" You can find a list of commands here: https://jb.gg/h38q75
-" Find more examples here: https://jb.gg/share-ideavimrc
 syntax on
 
 " -----
 " Sets:
 " -----
-set noerrorbells
-set quickscope
-set tabstop=4 softtabstop=4
-set shiftwidth=4
-set expandtab
-set smartindent
-set smartcase
+
+" MUST
 set nowrap
+set noerrorbells
+
+" Tab and N Tab Spaces
+set expandtab
+set shiftwidth=4
+set tabstop=4 softtabstop=4
+set smartindent
+
+" Search pattern stuff
+set smartcase
+set ignorecase
+set incsearch
+set nohlsearch
+
 " line numbers and relative line numbers
 set nu
 set rnu
+
 " an undo directory - works awesome with the undotree plugin
 set undodir=~/.vim/undodir
 set undofile
+
 " additional personal preference sets, use :h <setting> to learn more about each set
-set updatetime=500
-set noswapfile
-set nobackup
-set noshowmode
-set nohlsearch
-set incsearch
 set path+=**
-set completeopt=menuone
-set textwidth=0
+set nobackup
+set noswapfile
+set noshowmode
+set updatetime=500
+
 set mouse=a
 set showcmd
 set cursorline
+set textwidth=0
 set scrolloff=10
 set colorcolumn=100
+set completeopt=menuone
 
-" --------
-" Plugins:
-" --------
+" Plugin sets
+" -----------
+
+set sneak
+set quickscope
+
 " --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
-Plug 'easymotion/vim-easymotion'
-Plug 'scrooloose/nerdtree'
+" Highlight copied text
+Plug 'preservim/nerdtree'
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+Plug 'easymotion/vim-easymotion'
+Plug 'dbakker/vim-paragraph-motion'
+Plug 'machakann/vim-highlightedyank'
 
 " ----------------
 " Let Expressions:
@@ -88,6 +101,8 @@ vnoremap K :m '<-2<CR>gv=gv
 " Keeps the cursor centered while jumping between definitions, Ctrl+j/k keeps it
 " centered when navigating up/down through the file.
 nnoremap J mzJ`z
+nnoremap j jzzzv
+nnoremap k kzzzv
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap <C-d> <C-d>zzzv
@@ -112,6 +127,18 @@ nnoremap <leader>" ciw"<C-r>""<Esc>
 nnoremap <leader><leader>" ciW"<C-r>""<Esc>
 nnoremap <leader>d' diw"_x"_xp
 nnoremap <leader>d" diw"_x"_xp
+
+
+
+
+"" Conversion Commands and Functions
+"function! ToStr() range
+"    let tmp = "" . a:firstline . "," . a:lastline . "s/\\v(\\s{2,}|, )(\\w+)/\\1'\\2'/g"
+"    exe tmp
+"endfunction
+"
+"command! ToStr      :'<,'>s/\v(\s{2,}|, )(\w+)/\1'\2'/g
+"command! FromStr    :'<,'>s/\v'(\w+)'/\1/g
 
 "" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
 "" Map \r to the Reformat Code action
