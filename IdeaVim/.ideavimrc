@@ -1,5 +1,14 @@
 syntax on
 
+" Highlight copied text
+Plug 'tpope/vim-surround'
+Plug 'preservim/nerdtree'
+Plug 'justinmk/vim-sneak'
+Plug 'tpope/vim-commentary'
+Plug 'easymotion/vim-easymotion'
+Plug 'dbakker/vim-paragraph-motion'
+Plug 'machakann/vim-highlightedyank'
+
 " -----
 " Sets:
 " -----
@@ -44,35 +53,32 @@ set colorcolumn=100
 set completeopt=menuone
 
 " Plugin sets
-" -----------
-
 set sneak
+set surround
 set quickscope
-
-" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
-" Highlight copied text
-Plug 'preservim/nerdtree'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-Plug 'easymotion/vim-easymotion'
-Plug 'dbakker/vim-paragraph-motion'
-Plug 'machakann/vim-highlightedyank'
 
 " ----------------
 " Let Expressions:
 " ----------------
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-let g:qs_primary_color = '#ff0000'
-let g:qs_secondary_color = '#ff00ff'
+
+let mapleader = " "
+let g:qs_highlight_on_keys  = ['f', 'F', 't', 'T']
+let g:qs_primary_color      = '#ff0000'
+let g:qs_secondary_color    = '#ff00ff'
+let g:qs_accepted_chars     = [
+    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
+]
 
 " ------------
 " Maps/Remaps:
 " ------------
+
 " Don't use Ex mode, use Q for formatting.
 map Q gq
-let mapleader = " "
 
-nnoremap <leader>pv :NERDTreeToggle<Enter> <bar> :vertical resize 25<CR>
+nnoremap <leader>pv :NERDTreeToggle<Enter>
 nnoremap <leader>pf :NERDTreeFind<Enter>
 
 nnoremap <leader>v <C-w>v<Enter>
@@ -81,12 +87,7 @@ nnoremap <leader>j <C-w>j<Enter>
 nnoremap <leader>k <C-w>k<Enter>
 nnoremap <leader>l <C-w>l<Enter>
 
-"Vertical resize mappings:
-nnoremap <leader>vr :vertical resize 30<CR>
-nnoremap <silent><leader>+ :vertical resize +5<CR>
-nnoremap <silent><leader>- :vertical resize -5<CR>
-"delete what is marked, without saving it to paste reg, and paste whats currently saved
-"to the paste register.
+"delete what is marked, without saving it to paste reg, and paste whats currently saved to the paste register.
 nnoremap <leader>cc "_cc
 nnoremap <leader>dd "_dd
 nnoremap <leader>ci "_ci
@@ -94,12 +95,13 @@ nnoremap <leader>di "_di
 vnoremap <leader>p "_dP
 vnoremap <leader>c "_c
 vnoremap <leader>d "_d
-" Moving lines along the file - these are so amazing! try out the visual mode
-" setting! its a must i swear.
+
+" Moving lines along the file - these are so amazing! try out the visual mode setting! its a must i swear.
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-" Keeps the cursor centered while jumping between definitions, Ctrl+j/k keeps it
-" centered when navigating up/down through the file.
+
+" Keeps the cursor centered while jumping between definitions,
+" Ctrl+j/k keeps it centered when navigating up/down through the file.
 nnoremap J mzJ`z
 nnoremap j jzzzv
 nnoremap k kzzzv
@@ -107,8 +109,7 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap <C-d> <C-d>zzzv
 nnoremap <C-u> <C-u>zzzv
-nnoremap <C-j> jzz
-nnoremap <C-k> kzz
+
 " Code Info Remaps
 nmap <C-k> <Action>(ShowHoverInfo)
 nmap <C-h> <Action>(ParameterInfo)
@@ -119,14 +120,8 @@ nmap <leader>fs <Action>(GotoSymbol)
 " Documentation Remaps
 nmap <leader>- yypwv$r-
 nmap <leader>_ <leader>-yykP
-nnoremap <leader>i yyP\^ciw#<Esc>f(D
+nmap <leader>i yyP\^ciw#<Esc><leader>-
 nnoremap <leader>f o\"\"\"<Enter><Esc>O<Esc>
-nnoremap <leader>' ciw'<C-r>"'<Esc>
-nnoremap <leader><leader>' ciW"<C-r>"'<Esc>
-nnoremap <leader>" ciw"<C-r>""<Esc>
-nnoremap <leader><leader>" ciW"<C-r>""<Esc>
-nnoremap <leader>d' diw"_x"_xp
-nnoremap <leader>d" diw"_x"_xp
 
 
 
