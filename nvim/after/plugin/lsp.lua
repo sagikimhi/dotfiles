@@ -16,14 +16,20 @@ local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<Up>'] = cmp.mapping.select_prev_item(cmp_select),
   ['<Down>'] = cmp.mapping.select_next_item(cmp_select),
-  ['<Right>'] = cmp.mapping.confirm({ select = true }),
+  ['<Right>'] = cmp.mapping.confirm({
+      behavior=cmp.ConfirmBehavior.Replace,
+      select = true
+  }),
+  ['<Enter>'] = cmp.mapping.confirm({
+      behavior=cmp.ConfirmBehavior.Insert,
+      select = true
+  }),
   ['<Left>']    = cmp.mapping.abort(),
   ["<C-Space>"] = cmp.mapping.complete(),
 })
 
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
-cmp_mappings['<CR>'] = nil
 
 lsp.setup_nvim_cmp({
   mapping = cmp_mappings
