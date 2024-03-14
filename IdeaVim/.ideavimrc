@@ -15,6 +15,7 @@ Plug 'machakann/vim-highlightedyank'
 
 " MUST
 set nowrap
+set novirtualbell
 set noerrorbells
 
 " Tab and N Tab Spaces
@@ -42,12 +43,13 @@ set path+=**
 set nobackup
 set noswapfile
 set noshowmode
-set updatetime=500
+set updatetime=100
 
 set mouse=a
 set showcmd
 set cursorline
-set textwidth=0
+set selection=inclusive
+set textwidth=80
 set scrolloff=10
 set colorcolumn=100
 set completeopt=menuone
@@ -56,12 +58,12 @@ set completeopt=menuone
 set sneak
 set surround
 set quickscope
+set multiple_cursors
+
 
 " ----------------
 " Let Expressions:
 " ----------------
-
-let mapleader = " "
 let g:qs_highlight_on_keys  = ['f', 'F', 't', 'T']
 let g:qs_primary_color      = '#ff0000'
 let g:qs_secondary_color    = '#ff00ff'
@@ -70,6 +72,7 @@ let g:qs_accepted_chars     = [
     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
     '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
 ]
+let mapleader = " "
 
 " ------------
 " Maps/Remaps:
@@ -78,8 +81,13 @@ let g:qs_accepted_chars     = [
 " Don't use Ex mode, use Q for formatting.
 map Q gq
 
+nmap <leader>pf <Action>(ShowNavBar)
+map <C-n> <Action>(SelectNextOccurrence)
+map <C-p> <Action>(UnselectPreviousOccurrence)<Action>(FindPrevious)
+map <C-a> <Action>(SelectAllOccurrences)
+map g<C-a> <Action>($SelectAll)
+map <C-x> <Action>(FindNext)
 nnoremap <leader>pv :NERDTreeToggle<Enter>
-nnoremap <leader>pf :NERDTreeFind<Enter>
 
 nnoremap <leader>v <C-w>v<Enter>
 nnoremap <leader>h <C-w>h<Enter>
@@ -95,6 +103,10 @@ nnoremap <leader>di "_di
 vnoremap <leader>p "_dP
 vnoremap <leader>c "_c
 vnoremap <leader>d "_d
+
+" Motion Maps
+nnoremap <leader>w f_
+nnoremap <leader>b F_
 
 " Moving lines along the file - these are so amazing! try out the visual mode setting! its a must i swear.
 vnoremap J :m '>+1<CR>gv=gv
@@ -120,6 +132,14 @@ nmap <leader>fs <Action>(GotoSymbol)
 " Documentation Remaps
 nmap <leader>- yypwv$r-
 nmap <leader>_ <leader>-yykP
+
+nmap <leader>=i i# ------------------------------------------------------------------------------<Esc>^
+nmap <leader>=I I# ------------------------------------------------------------------------------<Esc>^
+nmap <leader>=a a# ------------------------------------------------------------------------------<Esc>^
+nmap <leader>=A A# ------------------------------------------------------------------------------<Esc>^
+nmap <leader>=k O<Esc><leader>=A
+nmap <leader>=j o<Esc><leader>=A
+nmap <leader>== <leader>=kj<leader>=jk
 nmap <leader>i yyP\^ciw#<Esc><leader>-
 nnoremap <leader>f o\"\"\"<Enter><Esc>O<Esc>
 
