@@ -29,6 +29,7 @@
     dw = diff --word-diff-regex=. --color-words
     ds = diff --stat
     dc = diff --cached
+    dt = difftool -d
 
     # git status aliases
     s = status -s
