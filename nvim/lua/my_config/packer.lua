@@ -9,11 +9,14 @@ return require('packer').startup(function(use)
 
     use('mbbill/undotree')
     use("github/copilot.vim")
+    use('justinmk/vim-sneak')
     use('tpope/vim-fugitive')
+    use('tpope/vim-surround')
+    use('folke/zen-mode.nvim')
     use('tpope/vim-commentary')
     use('ThePrimeagen/harpoon')
-    use("eandrju/cellular-automaton.nvim")
     use("christoomey/vim-tmux-navigator")
+    use("eandrju/cellular-automaton.nvim")
 
     use({'rose-pine/neovim',
         as = 'rose-pine',
