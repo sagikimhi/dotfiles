@@ -8,7 +8,6 @@ return require('packer').startup(function(use)
     use('wbthomason/packer.nvim')
 
     use('mbbill/undotree')
-    use("github/copilot.vim")
     use('justinmk/vim-sneak')
     use('tpope/vim-fugitive')
     use('tpope/vim-surround')

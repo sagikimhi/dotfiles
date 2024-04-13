@@ -2,11 +2,11 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 
-vim.keymap.set("n", "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" )
-vim.keymap.set("n", "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" )
-vim.keymap.set("n", "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" )
-vim.keymap.set("n", "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" )
-vim.keymap.set("n", "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" )
+vim.keymap.set("n", "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>")
+vim.keymap.set("n", "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>")
+vim.keymap.set("n", "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>")
+vim.keymap.set("n", "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>")
+vim.keymap.set("n", "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>")
 
 -- move lines up/down and align
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -23,25 +23,18 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- Copy to clipboard
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- Delete without yanking
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
-vim.keymap.set({"n", "v"}, "<leader>c", [["_c]])
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
+vim.keymap.set({ "n", "v" }, "<leader>c", [["_c]])
 
 -- Allows Ctrl + C in addition to Esc
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 -- Format current buffer with lsp
 vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
-
--- Jump to next/prev error and keep centered
-vim.keymap.set("n", "<C-]>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-[>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>]", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>[", "<cmd>lprev<CR>zz")
 
 -- Search and replace word under cursor
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
@@ -57,8 +50,9 @@ vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>");
 -- Coding Headers Generation Shortcuts
 vim.cmd('nmap <leader>- yyp^gccv$r-^gcc')
 vim.cmd('nmap <leader>_ <leader>-yykP')
-vim.keymap.set('n', '<leader>==', 'yypwC===============================================================================<Esc>yykPj')
-vim.keymap.set('n', '<leader>=j', 'yypwC===============================================================================<Esc>k')
-vim.keymap.set('n', '<leader>=k', 'yypwC===============================================================================<Esc>j')
-
-
+vim.keymap.set('n', '<leader>==',
+    'yypwC===============================================================================<Esc>yykPj')
+vim.keymap.set('n', '<leader>=j',
+    'yypwC===============================================================================<Esc>k')
+vim.keymap.set('n', '<leader>=k',
+    'yypwC===============================================================================<Esc>j')
