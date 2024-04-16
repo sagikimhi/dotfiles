@@ -13,13 +13,6 @@
     ba = branch -a
     bl = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
 
-    # branch delete: This checks out your local master branch and deletes all local branches that have already been merged to master
-    brd = !sh -c \"git checkout main && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d\"
-
-    # branch delete here: Deletes all local branches that have already been merged to the branch
-    #                     that you're currently on
-    brdhere = !sh -c \"git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d\"
-
     # git checkout aliases
     co = checkout
     cob = checkout -b
@@ -43,3 +36,9 @@
 
     # list aliases
     la = "!git config -l | grep alias | cut -c 7-"
+
+    # branch delete: This checks out your local master branch and deletes all local branches that have already been merged to master
+    brd = !sh -c \"git checkout main && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d\"
+    # branch delete here: Deletes all local branches that have already been merged to the branch that you're currently on
+    brdhere = !sh -c \"git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d\"
+
