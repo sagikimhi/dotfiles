@@ -25,8 +25,7 @@ lsp.ensure_installed({
     -- "gopls",
 
     -- Python
-    "ruff",
-    "ruff_lsp",
+    "pylsp",
 
     -- Emmet
     "emmet_ls",

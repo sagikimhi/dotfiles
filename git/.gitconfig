@@ -32,7 +32,10 @@
     dt = difftool -d -t meld
 
     # git status aliases
-    s = status -s
+    s = status -s -b --verbose
+    si = status -s -b --show-stash --ignored --verbose
+    sl = status --long -b --show-stash --verbose
+    sli = status --long -b --show-stash --ignored --verbose
 
     # list aliases
     la = "!git config -l | grep alias | cut -c 7-"
