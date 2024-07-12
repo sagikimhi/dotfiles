@@ -15,7 +15,7 @@
 
     # git checkout aliases
     co = checkout
-    cob = checkout -b
+    cob = checkout origin/main -b
 
     # git commit aliases
     c = commit --verbose
@@ -33,9 +33,11 @@
 
     # git status aliases
     s = status -s -b --verbose
-    si = status -s -b --show-stash --ignored --verbose
-    sl = status --long -b --show-stash --verbose
-    sli = status --long -b --show-stash --ignored --verbose
+    si = status -s -b --show-stash --ignored
+    sl = status --long -b --show-stash
+    sv = status --long -b --show-stash --verbose
+    sli = status --long -b --show-stash --ignored
+    siv = status --long -b --show-stash --ignored --verbose
 
     # list aliases
     la = "!git config -l | grep alias | cut -c 7-"
@@ -44,4 +46,5 @@
     brd = !sh -c \"git checkout main && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d\"
     # branch delete here: Deletes all local branches that have already been merged to the branch that you're currently on
     brdhere = !sh -c \"git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d\"
+
 
