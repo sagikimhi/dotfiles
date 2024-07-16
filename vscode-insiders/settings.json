@@ -1,19 +1,47 @@
 {
-    "editor.fontFamily": "JetBrains Mono",
-    "editor.fontSize": 16,
-    "editor.fontLigatures": true,
-    "editor.cursorBlinking": "smooth",
-    "editor.cursorSmoothCaretAnimation": "on",
-    "editor.tabCompletion": "on",
+    // ---------------------------------------------------------------------------
+    // Workbench and Editor Settings
+    // ---------------------------------------------------------------------------
+    "editor.wordWrap": "off",
+    "editor.fontSize": 14,
+    "editor.lineHeight": 1.2,
+    "editor.letterSpacing": 0.0,
+    "editor.fontWeight": "normal",
+    "editor.fontLigatures": false,
     "editor.smoothScrolling": true,
     "files.insertFinalNewline": true,
-    "[systemverilog]": {
-        "editor.quickSuggestions": {
-            "comments": "off",
-            "strings": "off",
-            "other": "off"
-        },
-        "editor.formatOnType": true
+    "editor.lineNumbers": "relative",
+    "editor.cursorBlinking": "smooth",
+    "editor.cursorSurroundingLines": 5,
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.fontFamily": "'0xProto Nerd Font', 'JetBrains Mono', 'Courier New', monospace",
+    "editor.codeLensFontFamily": "'0xProto Nerd Font', 'JetBrains Mono', 'Courier New', monospace",
+    "editor.minimap.enabled": false,
+    "scm.inputFontFamily": "default",
+    "workbench.tree.indent": 4,
+    "workbench.view.alwaysShowHeaderActions": true,
+    "workbench.editor.enablePreviewFromQuickOpen": true,
+    "workbench.settings.applyToAllProfiles": [
+        "editor.fontFamily"
+    ],
+    "terminal.integrated.lineHeight": 1.2,
+    // ---------------------------------------------------------------------------
+    // Extension Settings
+    // ---------------------------------------------------------------------------
+    "extensions.autoUpdate": "onlySelectedExtensions",
+    "extensions.autoCheckUpdates": false,
+    "git.autofetch": true,
+    "git.openRepositoryInParentFolders": "never",
+    // ---------------------------------------------------------------------------
+    // LSP Settings
+    // ---------------------------------------------------------------------------
+    "[cpp]": {
+        "editor.wordBasedSuggestions": "off",
+        "editor.suggest.insertMode": "replace",
+        "editor.semanticHighlighting.enabled": true
+    },
+    "[python]": {
+        "editor.formatOnType": false
     },
     "[vhdl]": {
         "editor.quickSuggestions": {
@@ -21,34 +49,90 @@
             "strings": "off",
             "other": "off"
         },
-        "editor.formatOnType": true
+        "editor.formatOnType": false
     },
-    "editor.wordWrap": "off",
-    "remote.SSH.remotePlatform": {
-        "mashina1.speedata.io": "linux",
-        "mashina1-container": "linux",
-        "mashina1": "linux"
+    "[systemverilog]": {
+        "editor.quickSuggestions": {
+            "comments": "off",
+            "strings": "off",
+            "other": "off"
+        },
+        "editor.formatOnType": false,
+        "editor.semanticHighlighting.enabled": true
     },
-    "git.autofetch": true,
-    "[python]": {
-        "editor.formatOnType": true
+    "[buildconfig]": {
+        "editor.quickSuggestions": {
+            "comments": "off",
+            "strings": "off",
+            "other": "off"
+        },
+        "editor.formatOnType": false
     },
-    // -------------
+    "cmake.pinnedCommands": [
+        "workbench.action.tasks.configureTaskRunner",
+        "workbench.action.tasks.runTask"
+    ],
+    "workbench.editor.wrapTabs": true,
+    "explorer.fileNesting.expand": false,
+    "workbench.editor.mouseBackForwardToNavigate": false,
+    // ---------------------------------------------------------------------------
+    //
+    // ---------------------------------------------------------------------------
+    "editor.tabSize": 4,
+    "workbench.iconTheme": "rose-pine-icons",
+    "editor.renderWhitespace": "selection",
+    "editor.renderLineHighlight": "all",
+    "workbench.layoutControl.type": "menu",
+    "editor.mouseWheelZoom": true,
+    "workbench.editor.limit.value": 1,
+    "workbench.editor.limit.enabled": true,
+    "workbench.editor.limit.perEditorGroup": true,
+    "workbench.editor.showTabs": "single",
+    "files.autoSave": "onWindowChange",
+    "explorer.openEditors.visible": 1,
+    "workbench.colorTheme": "Rosé Pine",
+    "workbench.statusBar.visible": true,
+    "editor.renderControlCharacters": false,
+    "editor.scrollbar.vertical": "hidden",
+    "editor.scrollbar.horizontal": "hidden",
+    "workbench.layoutControl.enabled": false,
+    "workbench.activityBar.location": "hidden",
+    "editor.scrollbar.verticalScrollbarSize": 2,
+    "editor.scrollbar.horizontalScrollbarSize": 2,
+    "editor.guides.bracketPairs": true,
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+    "window.systemColorTheme": "auto",
+    // ---------------------------------------------------------------------------
     // Vim Settings:
-    // -------------
+    // ---------------------------------------------------------------------------
+    // Neovim Backend
     "vim.enableNeovim": true,
-    "vim.neovimPath": "\\\\wsl.localhost\\kali-linux\\home\\yomompancake\\.config\\nvim\\init.lua",
     "vim.neovimUseConfigFile": true,
-    "vim.neovimConfigPath": "\\\\wsl.localhost\\kali-linux\\usr\\local\\bin\\nvim",
+    // Plugins
+    "vim.sneak": true,
+    "vim.surround": true,
+    "vim.commentary": true,
+    "vim.easymotion": true,
+    "vim.replaceWithRegister": true,
+    "vim.camelCaseMotion.enable": true,
+    // Plugin Configurations
+    "vim.sneakReplacesF": true,
+    "vim.sneakUseIgnorecaseAndSmartcase": true,
+    // Global Behavior
+    "vim.visualstar": true,
+    "vim.startofline": false,
+    "vim.smartRelativeLine": true,
+    "vim.highlightedyank.enable": true,
+    // Remaps
     "vim.leader": "<space>",
     "vim.handleKeys": {
-        "<C-s>": false,
+        "<C-e>": false,
         "<C-z>": false,
         "<C-y>": false,
-        "<C-/>": false
+        "<C-t>": false,
+        "<C-/>": false,
+        "<C-s>": true,
     },
-    // Visual Mode Key Bindings
-    // ------------------------
     "vim.visualModeKeyBindings": [
         // Bind <leader>d to delete current visual selection without yanking it
         {
@@ -109,12 +193,7 @@
             ]
         }
     ],
-    // Normal Mode Key Bindings
-    // ------------------------
     "vim.normalModeKeyBindings": [
-        // ---------------------------------
-        // <leader>c / <leader>d Operations:
-        // ---------------------------------
         {
             // Bind <leader>cw to delete entire word under cursor without copying it to the copy register and enter insert mode
             "before": [
@@ -189,10 +268,6 @@
                 "P"
             ]
         },
-        // ---------------------
-        // Documentation Remaps:
-        // ---------------------
-        // <leader>= Operations
         {
             "before": [
                 "<leader>",
@@ -451,7 +526,6 @@
                 "j"
             ]
         },
-        // Other Documentation Remaps //
         {
             // Bind <leader>ad to add an empty comment line under the line under cursor and then
             // another comment line under it with an Add Description todo task
@@ -524,7 +598,7 @@
                 {
                     "command": "type",
                     "args": {
-                        "text": "Function: ",
+                        "text": "Function: "
                     },
                 },
                 {
@@ -573,7 +647,7 @@
                 {
                     "command": "type",
                     "args": {
-                        "text": "Task: ",
+                        "text": "Task: "
                     },
                 },
                 {
@@ -605,7 +679,7 @@
                 "y",
                 "i",
                 "w",
-                "O", // Navigate cursor to class name
+                "O",
                 "/",
                 "/",
                 "<space>",
@@ -622,6 +696,55 @@
                 "a",
                 "d"
             ]
+        },
+        {
+            // Bind <leader>C to print a constaint header
+            "before": [
+                "<leader>",
+                "C"
+            ],
+            "after": [
+                "^",
+                "m",
+                "*",
+                "s",
+                "c",
+                "o",
+                "W",
+                "y",
+                "i",
+                "w",
+                "`",
+                "*",
+                "O",
+                " ",
+                "<BS>",
+                "<Esc>",
+                "p",
+                "I"
+            ],
+            "commands": [
+                {
+                    "command": "type",
+                    "args": {
+                        "text": "Constraint: ",
+                    },
+                },
+                {
+                    "command": "vim.remap",
+                    "args": {
+                        "after": [
+                            "<Esc>",
+                            "V",
+                            "g",
+                            "c",
+                            "<leader>",
+                            "a",
+                            "d"
+                        ]
+                    }
+                }
+            ],
         },
         {
             // Bind <leader>v to do the same as <leader>f but for variable
@@ -702,7 +825,7 @@
                 {
                     "command": "type",
                     "args": {
-                        "text": "Type: ",
+                        "text": "Type: "
                     },
                 },
                 {
@@ -792,7 +915,7 @@
                 {
                     "command": "type",
                     "args": {
-                        "text": "Function: ",
+                        "text": "Function: "
                     },
                 },
             ]
@@ -833,7 +956,7 @@
                 {
                     "command": "type",
                     "args": {
-                        "text": "Task: ",
+                        "text": "Task: "
                     },
                 },
             ]
@@ -852,7 +975,7 @@
                 "i",
                 "w",
                 "g",
-                "g", // Navigate cursor to class name
+                "g",
                 "/",
                 "C",
                 "l",
@@ -906,7 +1029,7 @@
                 {
                     "command": "type",
                     "args": {
-                        "text": "Variable: ",
+                        "text": "Variable: "
                     },
                 },
             ]
@@ -947,7 +1070,7 @@
                 {
                     "command": "type",
                     "args": {
-                        "text": "Type: ",
+                        "text": "Type: "
                     },
                 },
             ]
@@ -977,9 +1100,6 @@
                 "i"
             ]
         },
-        // -------------------------
-        // Centered Movement Remaps:
-        // -------------------------
         {
             // Keep centered when scrolling up/down witn Ctrl-D/Ctrl-U
             "before": [
@@ -1054,9 +1174,64 @@
                 "v"
             ]
         },
-        // ------------------
-        // Navigation Remaps:
-        // ------------------
+        {
+            "before": [
+                "K"
+            ],
+            "commands": [
+                {
+                    "command": "editor.action.showHover",
+                    "when": "editorTextFocus"
+                },
+            ],
+        },
+        {
+            "before": [
+                "g",
+                "s"
+            ],
+            "commands": [
+                {
+                    "command": "workbench.action.toggleAuxiliaryBar"
+                }
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "r"
+            ],
+            "commands": [
+                {
+                    "command": "editor.action.goToReferences",
+                    "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+                },
+            ],
+        },
+        {
+            "before": [
+                "g",
+                "i"
+            ],
+            "commands": [
+                {
+                    "command": "editor.action.peekImplementation",
+                    "when": "editorHasImplementationProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+                },
+            ],
+        },
+        {
+            "before": [
+                "<leader>",
+                "F"
+            ],
+            "commands": [
+                {
+                    "command": "editor.action.formatDocument",
+                    "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+                },
+            ],
+        },
         {
             // <leader>] - go to next problem in file
             "before": [
@@ -1076,6 +1251,24 @@
             "commands": [
                 "editor.action.marker.prev",
             ],
+        },
+        {
+            "before": [
+                "<leader>",
+                "z"
+            ],
+            "commands": [
+                "workbench.action.toggleZenMode",
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "Z"
+            ],
+            "commands": [
+                "workbench.action.toggleMaximizeEditorGroup"
+            ]
         },
         {
             // <leader>pv - Open/Close File explorer
@@ -1111,7 +1304,7 @@
             ]
         },
         {
-            // <leader>l - Jump to window on the right
+            // <leader>h - Jump to window on the right
             "before": [
                 "<leader>",
                 "h"
@@ -1119,6 +1312,28 @@
             "after": [
                 "ctrl+w",
                 "h"
+            ]
+        },
+        {
+            // <leader>k - Jump to window on the right
+            "before": [
+                "<leader>",
+                "k"
+            ],
+            "after": [
+                "ctrl+w",
+                "k"
+            ]
+        },
+        {
+            // <leader>j - Jump to window on the right
+            "before": [
+                "<leader>",
+                "j"
+            ],
+            "after": [
+                "ctrl+w",
+                "j"
             ]
         },
         {
@@ -1133,62 +1348,252 @@
             ]
         },
     ],
-    "C_Cpp.default.enableConfigurationSquiggles": false,
-    "C_Cpp.default.browse.limitSymbolsToIncludedHeaders": true,
-    "editor.minimap.enabled": false,
-    "DVT.contentFilters.enable": false,
-    "editor.lineNumbers": "relative",
-    "[buildconfig]": {
-        "editor.quickSuggestions": {
-            "comments": "off",
-            // "strings": "off",
-            // "other": "off"
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "C-h"
+            ],
+            "commands": [
+                {
+                    "command": "editor.action.triggerParameterHints",
+                    "when": "editorHasSignatureHelpProvider && editorTextFocus"
+                },
+            ],
         },
-        "editor.formatOnType": true,
-    },
-    "workbench.view.alwaysShowHeaderActions": true,
-    "C_Cpp.commentContinuationPatterns": [
-        "//",
-        "/**"
     ],
-    "DVT.textEditor.systemVerilog.formatting.indentation.else": "On a new line",
-    "DVT.textEditor.systemVerilog.formatting.verticalAlignment.verticalAlignPatterns": {
-        "By Name Port Connections": true,
-        "Class Declarations": true,
-        "Class Variable Declarations": true,
-        "Function Declarations": true,
-        "Function Variable Declarations": true
+    "workbench.preferredDarkColorTheme": "Rosé Pine",
+    "zenMode.showTabs": "single",
+    "zenMode.hideLineNumbers": false,
+    "zenMode.hideStatusBar": false,
+    "window.autoDetectHighContrast": false,
+    "terminal.integrated.minimumContrastRatio": 1,
+    "workbench.preferredLightColorTheme": "Rosé Pine",
+    "workbench.preferredHighContrastLightColorTheme": "Rosé Pine",
+    "workbench.preferredHighContrastColorTheme": "Rosé Pine",
+    "files.autoSaveWorkspaceFilesOnly": true,
+    "workbench.commandPalette.experimental.suggestCommands": true,
+    "workbench.list.fastScrollSensitivity": 10,
+    "workbench.list.smoothScrolling": true,
+    "workbench.localHistory.maxFileEntries": 200,
+    "workbench.panel.opensMaximized": "never",
+    "workbench.reduceMotion": "on",
+    "workbench.startupEditor": "none",
+    "explorer.autoReveal": false,
+    "remote.downloadExtensionsLocally": true,
+    "editor.snippetSuggestions": "bottom",
+    "files.trimTrailingWhitespace": true,
+    "files.simpleDialog.enable": true,
+    "workbench.colorCustomizations": {
+        "[Rosé Pine]": {
+            "sideBar.background": "#181926",
+            "editor.background": "#24273a",
+            "editorGutter.background": "#1e2030"
+        }
     },
-    "DVT.systemVerilog.refactoring.ignoreComments": false,
-    "cmake.showOptionsMovedNotification": false,
-    "workbench.activityBar.location": "top",
-    "C_Cpp.default.compilerPath": "c:\\cygwin64\\bin\\gcc.exe",
-    "vim.easymotion": true,
-    "vim.highlightedyank.enable": true,
-    "vim.smartRelativeLine": true,
-    "vim.sneak": true,
-    "vim.sneakReplacesF": true,
-    "vim.startofline": false,
-    "vim.visualstar": true,
-    "vim.camelCaseMotion.enable": true,
-    "vim.sneakUseIgnorecaseAndSmartcase": true,
-    "DVT.codeLens.showConstraints": false,
-    "DVT.codeLens.expandCollapseMacros": false,
-    "DVT.textEditor.systemVerilog.formatting.verticalAlignment.independentPreprocessingScopes": true,
-    "DVT.textEditor.systemVerilog.formatting.verticalAlignment.onlyConsecutiveLines": true,
-    "DVT.textEditor.systemVerilog.formatting.verticalAlignment.enableVerticalAlignment": true,
-    "DVT.textEditor.systemVerilog.formatting.verticalAlignment.verticalAlignTokens": [
-        ":=",
-        "<=",
-        "=",
-        ":"
-    ],
-    "DVT.textEditor.systemVerilog.formatting.verticalAlignment.verticalAlignToOpenCurly": true,
-    "security.workspace.trust.enabled": false,
-    "DVT.automaticallyOpenConnectionWebview.enable": false,
-    "remote.SSH.path": "C:\\Users\\Public\\Libraries\\ssh-wrapper.bat",
-    "DVT.systemVerilog.refactoring.updateFileName": false,
-    "workbench.editor.enablePreview": false,
-    "remote.SSH.localServerDownload": "off",
-    "remote.SSH.lockfilesInTmp": true
+    "editor.tokenColorCustomizations": {
+        "[Rosé Pine]": {
+            "textMateRules": [
+                {
+                    "name": "super&this",
+                    "scope": "variable.language",
+                    "settings": {
+                        "foreground": "#ed8796",
+                        "fontStyle": "italic"
+                    }
+                },
+                {
+                    "name": "uvm-macro",
+                    "scope": "support.function.uvm.macro.systemverilog",
+                    "settings": {
+                        "foreground": "#ca9ee6",
+                        "fontStyle": "italic"
+                    }
+                },
+                {
+                    "name": "uvm-macro-user-defined",
+                    "scope": "support.function.uvm-user-defined-macro.systemverilog",
+                    "settings": {
+                        "foreground": "#ca9ee6",
+                        "fontStyle": "italic"
+                    }
+                },
+                {
+                    "name": "method-or-member-method",
+                    "scope": "support.function",
+                    "settings": {
+                        "foreground": "#eebebe",
+                        "fontStyle": "italic"
+                    }
+                },
+                {
+                    "name": "static member",
+                    "scope": "variable.other.enummember",
+                    "settings": {
+                        "foreground": "#c6a0f6",
+                        "fontStyle": ""
+                    },
+                },
+                {
+                    "name": "member-fields",
+                    "scope": "variable.other.property",
+                    "settings": {
+                        "foreground": "#e0def4",
+                        "fontStyle": "italic"
+                    }
+                },
+                {
+                    "name": "argument",
+                    "scope": "variable.parameter",
+                    "settings": {
+                        "foreground": "#e0def4",
+                        "fontStyle": ""
+                    },
+                },
+                {
+                    "name": "function-variable",
+                    "scope": "variable.other.readwrite",
+                    "settings": {
+                        "foreground": "#e0def4",
+                        "fontStyle": ""
+                    },
+                },
+                {
+                    "name": "argument-property",
+                    "scope": "meta.function.systemverilog",
+                    "settings": {
+                        "foreground": "#e0def4",
+                        "fontStyle": "italic"
+                    },
+                },
+                {
+                    "name": "comment",
+                    "scope": "comment",
+                    "settings": {
+                        "foreground": "#939ab7",
+                        "fontStyle": "italic"
+                    },
+                },
+                {
+                    "name": "any-punctuation",
+                    "scope": "punctuation.*",
+                    "settings": {
+                        "foreground": "#939ab7",
+                        "fontStyle": "italic"
+                    },
+                },
+                {
+                    "name": "arithmetic-operator",
+                    "scope": "keyword.operator.arithmetic.systemverilog",
+                    "settings": {
+                        "foreground": "#939ab7",
+                        "fontStyle": "italic"
+                    },
+                },
+                {
+                    "name": "logical-operator",
+                    "scope": "keyword.operator.logical.systemverilog",
+                    "settings": {
+                        "foreground": "#939ab7",
+                        "fontStyle": "italic"
+                    },
+                },
+                {
+                    "name": "assignment-operator",
+                    "scope": "keyword.operator.assignment.systemverilog",
+                    "settings": {
+                        "foreground": "#939ab7",
+                        "fontStyle": "italic"
+                    },
+                },
+                {
+                    "name": "event",
+                    "scope": "variable.other.event",
+                    "settings": {
+                        "foreground": "#8aadf4",
+                        "fontStyle": "italic"
+                    },
+                },
+                {
+                    "name": "namespace",
+                    "scope": "entity.name.namespaces.systemverilog",
+                    "settings": {
+                        "foreground": "#85c1dc",
+                        "fontStyle": ""
+                    },
+                },
+                {
+                    "name": "constraint",
+                    "scope": "entity.name.constraint.systemverilog",
+                    "settings": {
+                        "foreground": "#eebebe",
+                        "fontStyle": "italic"
+                    },
+                },
+                {
+                    "name": "static-member",
+                    "scope": "entity.name.namespace",
+                    "settings": {
+                        "foreground": "#f6c177",
+                        "fontStyle": ""
+                    },
+                },
+                {
+                    "name": "built-in-liteal",
+                    "scope": "constant.numeric.general.systemverilog",
+                    "settings": {
+                        "foreground": "#f6c177",
+                        "fontStyle": "italic"
+                    },
+                },
+                {
+                    "name": "enum-member",
+                    "scope": "entity.name.function.preprocessor",
+                    "settings": {
+                        "foreground": "#f6c177",
+                        "fontStyle": "italic"
+                    },
+                },
+                {
+                    "name": "builtin-type-void",
+                    "scope": "constant.language",
+                    "settings": {
+                        "foreground": "#31748F",
+                        "fontStyle": ""
+                    },
+                },
+                {
+                    "name": "builtin-types",
+                    "scope": "storage.type.variable.systemverilog",
+                    "settings": {
+                        "foreground": "#31748F",
+                        "fontStyle": ""
+                    },
+                },
+                {
+                    "name": "keyword-function",
+                    "scope": "storage.type.function.systemverilog",
+                    "settings": {
+                        "foreground": "#31748F",
+                        "fontStyle": ""
+                    },
+                },
+                {
+                    "name": "control-flow-keywords",
+                    "scope": "keyword.control.conditional.systemverilog",
+                    "settings": {
+                        "foreground": "#31748F",
+                        "fontStyle": ""
+                    }
+                },
+                {
+                    "name": "control-flow-block-keywords",
+                    "scope": "keyword.control.systemverilog",
+                    "settings": {
+                        "foreground": "#31748F",
+                        "fontStyle": ""
+                    }
+                },
+            ],
+        }
+    },
 }
