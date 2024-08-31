@@ -1,3 +1,15 @@
+[core]
+	editor = vim
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = true
+
+[push]
+	followTags = true
+
 [alias]
     # git log aliases
 	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=relative --branches
@@ -18,18 +30,17 @@
     cob = checkout origin/main -b
 
     # git commit aliases
-    c = commit --verbose
+    c = commit -s --verbose
     m = commit --amend --verbose
-    ca = commit -a --verbose
-    cm = commit -m
-    cam = commit -a -m
+    ca = commit -sa --verbose
+    cm = commit -sm
+    cam = commit -sam
 
     # git diff aliases
-    d = diff
+    d = diff --color-words
     dw = diff --word-diff-regex=. --color-words
-    ds = diff --stat
-    dc = diff --cached
-    dt = difftool -d -t meld
+    ds = diff --stat --color-words --word-diff-regex=.
+    dc = diff --cached --color-words --word-diff-regex=.
 
     # git status aliases
     s = status -s -b --verbose
@@ -39,12 +50,11 @@
     sli = status --long -b --show-stash --ignored
     siv = status --long -b --show-stash --ignored --verbose
 
-    # list aliases
-    la = "!git config -l | grep alias | cut -c 7-"
-
     # branch delete: This checks out your local master branch and deletes all local branches that have already been merged to master
     brd = !sh -c \"git checkout main && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d\"
     # branch delete here: Deletes all local branches that have already been merged to the branch that you're currently on
     brdhere = !sh -c \"git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d\"
 
+    # list aliases
+    la = "!git config -l | grep alias | cut -c 7-"
 
