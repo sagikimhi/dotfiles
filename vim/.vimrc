@@ -2,6 +2,9 @@ syntax on
 set nocompatible
 filetype plugin on
 
+set re=1
+set noerrorbells
+
 " Tab width, auto indentation, and search and replace case sens and highlighting
 set foldcolumn=3
 set tabstop=4 softtabstop=4
@@ -21,8 +24,9 @@ set rnu
 set undodir=~/.vim/undodir
 set undofile
 
-set re=1
-set noerrorbells
+" additional personal preference sets, use :h <setting> to learn more about
+" each set
+"set foldmethod=syntax
 set noswapfile
 set nobackup
 set complete=.,w,b,t,u
@@ -39,41 +43,18 @@ set updatetime=50
 
 " Plugins
 call plug#begin('~/.vim/bundle')
-
 Plug 'mbbill/undotree'
-
 Plug 'vim-utils/vim-man'
-
 Plug 'justinmk/vim-sneak'
-
 Plug 'tpope/vim-surround'
-
 Plug 'scrooloose/nerdtree'
-
+Plug 'will133/vim-dirdiff'
 Plug 'joshdick/onedark.vim'
-
 Plug 'tpope/vim-commentary'
-
 Plug 'vim-scripts/AutoComplPop'
-
-" for SystemVerilog users, uncomment the following:
-" Plug 'vhda/verilog_systemverilog.vim'
-" -------------------------------------------------
-
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'vhda/verilog_systemverilog.vim'
 call plug#end()
-
-" for SystemVerilog users, uncomment the following:
-
-"let g:verilog_disable_indent_lst = "eos"
-"let g:verilog_efm_level = ""
-"let g:verilog_efm_uvm_lst = ""
-
-" You can add/modify the keywords in this list:
-"let g:verilog_syntax_fold_lst = "class,function,task,interface,clocking,covergroup,property,block,block_named,instance,define"
-
-" Optional:
-"set foldmethod=syntax 
-" -------------------------------------------------
 
 " Autocmds to reduce vim slowness when using a fold method other than manual
 autocm InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
@@ -102,7 +83,6 @@ colorscheme onedark
 highlight Comment term=NONE cterm=NONE ctermbg=NONE ctermfg=DarkGray
 highlight Normal ctermfg=White
 highlight IncSearch ctermbg=Cyan
-
 
 "----------------------- key remaps -----------------------"
 
@@ -169,6 +149,11 @@ nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 " Documentation remaps
 nmap <leader>- yyp^gccv$r-^gcc
 nmap <leader>_ <leader>-yykP
-nnoremap <leader>== yypwC===============================================================================<Esc>yykPj
-nnoremap <leader>=j yypwC===============================================================================<Esc>k
-nnoremap <leader>=k yypwC===============================================================================<Esc>j
+nnoremap <leader>== yypwC-----------------------------------------------------------------------------<Esc>yykPj
+nnoremap <leader>=j yypwC-----------------------------------------------------------------------------<Esc>k
+nnoremap <leader>=k yypwC-----------------------------------------------------------------------------<Esc>j
+
+let g:verilog_syntax_fold_lst = 'class,function,task,interface,clocking,covergroup,property,block,block_named,instance,define'
+let g:verilog_disable_indent_lst = "eos"
+let g:verilog_efm_level = ""
+let g:verilog_efm_uvm_lst = ""
