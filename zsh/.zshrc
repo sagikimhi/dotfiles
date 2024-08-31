@@ -1,29 +1,35 @@
-export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="robbyrussell"
+export ZSH=$HOME/.oh-my-zsh
 
-export XDG_CONFIG_HOME="$HOME/.config"
-export HADOOP_HOME=$HOME/Downloads/hadoop-3.4.0
+export JAVA_HOME=/usr/lib/jvm/java-24-openjdk-amd64
 export HIVE_HOME=$HOME/Downloads/apache-hive-4.0.0-bin
-export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+export HADOOP_HOME=$HOME/Downloads/hadoop-3.4.0
 
-export PATH=$HOME/bin:$PATH
+export XDG_CONFIG_HOME=$HOME/.config
+
 export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/go/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$JAVA_HOME/bin:$PATH
 export PATH=$HIVE_HOME/bin:$PATH
 export PATH=$HADOOP_HOME/bin:$PATH
-export PATH=/usr/local/go/bin:$PATH
-export PATH=/project/local/bin:$PATH
 
-export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6
-
-ZSH_THEME="robbyrussell"
+export LANG=en_US.UTF-8
+export ARCHFLAGS="-arch x86_64"
+export MANPATH="/usr/local/man:$MANPATH"
 
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-export MANPATH="/usr/local/man:$MANPATH"
-export LANG=en_US.UTF-8
-export ARCHFLAGS="-arch x86_64"
+if [[ ! $(cat  /proc/1/cgroup | grep docker) ]]; then
+	echo initiating DISPLAY
+	export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
+	echo DISPLAY set to $DISPLAY
+fi
+
+export LIBGL_ALWAYS_INDIRECT=1
 
 # ----
 # Sets
@@ -37,27 +43,53 @@ else
     EDITOR="nano"
 fi
 
+# Search Paths (lib/bin/etc.)
+# ---------------------------
+
+bin=$HOME/.local/bin
+lib=$HOME/.local/lib
+jars=$HOME/.local/lib/jars
+include=$HOME/.local/include
+
+# Directories
+# -----------
+
+gitdir=${HOME}/.project/git-repos
+confdir=${XDG_CONFIG_HOME}
+
+
+mkdir -p $bin
+mkdir -p $lib
+mkdir -p $jars
+mkdir -p $gitdir
+mkdir -p $include
+mkdir -p $confdir
+
+# Configs
+# -------
+
+sshrc=${HOME}/.ssh
 zshrc=${HOME}/.zshrc
+gitrc=${HOME}/.gitconfig
 vimrc=${HOME}/.config/vim
 nvimrc=${HOME}/.config/nvim
 tmuxrc=${HOME}/.config/tmux/tmux.conf
-
-gitdir=${HOME}/Project/git-repos
-confdir=${XDG_CONFIG_HOME}
-projdir=${HOME}/Project
-mygitdir=${gitdir}/${USER}
+weztermrc=${HOME}/.wezterm.lua
 
 # -------
 # Aliases
 # -------
 
+# Editors Shortcuts
+# -----------------
+
 alias v="${EDITOR}"
+alias edit="${EDITOR}"
+
+# Command Shortcuts
+# -----------------
 
 alias so="source"
-
-alias update="sudo apt-get update"
-alias upgrade="sudo apt upgrade"
-alias full-upgrade="sudo apt full-upgrade"
 
 alias ls="ls --color=tty"
 alias l="ls -lh --group-directories-first"
@@ -65,13 +97,29 @@ alias la="ls -lAh --group-directories-first"
 alias ll="ls -lah --group-directories-first"
 alias lsa="ls -lah"
 
+alias update="sudo apt-get update"
+alias upgrade="sudo apt upgrade"
+alias full-upgrade="sudo apt full-upgrade"
 alias which-command='whence'
+
+# Edit config aliases
+# -------------------
 
 alias zshrc="v ${zshrc}"
 alias gitrc="v ${gitrc}"
 alias vimrc="v ${vimrc}"
 alias nvimrc="v ${nvimrc}"
 alias tmuxrc="v ${tmuxrc}"
+alias sshrc="v ${sshrc}"
+alias weztermrc="v ${weztermrc}"
+
+# Tool Shortcuts
+# --------------
+
+if `where docker &> /dev/null`; then
+    alias plantuml-start="docker run -d -p 8080:8080 --name umlserver plantuml/plantuml-server:jetty"
+    alias plantuml-stop="sudo docker stop umlserver && sudo docker rm umlserver"
+fi
 
 if `where python &> /dev/null`; then
     alias py="python"
@@ -93,10 +141,24 @@ if `where krita &> /dev/null`; then
     alias paint="krita"
 fi
 
+if `where clang-format &> /dev/null`; then
+    alias clangf-dump="clang-format --style='{BasedOnStyle: gnu, IndentWidth: 4, TabWidth: 4, UseTab: Never, BreakBeforeBraces: Linux, ColumnLimit: 80, PointerAlignment: Right}' --dump-config > .clang-format"
+fi
+
 if [[ -e ${gitdir}/gf/gf2 ]]; then
     alias gf2='${gitdir}/gf/gf2'
 fi
 
-if `where clang-format &> /dev/null`; then
-    alias clangf-dump="clang-format --style='{BasedOnStyle: gnu, IndentWidth: 4, TabWidth: 4, BreakBeforeBraces: Linux}' --dump-config > .clang-format"
-fi
+function search() {
+    if [ -n "$1" ] && [ -n "$2" ]
+    then
+        ll $1 | grep "$2"
+    elif [ -n "$1" ]
+    then
+        ll . | grep "$1"
+    else
+        echo "Usage: $0 [search-path] <search-expr>."
+    fi
+}
+
+~/fix-wsl-runtime-dir.sh
