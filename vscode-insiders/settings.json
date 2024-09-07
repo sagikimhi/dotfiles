@@ -1,129 +1,138 @@
 {
+    "security.workspace.trust.enabled": false,
+
     // ---------------------------------------------------------------------------
     // Workbench and Editor Settings
     // ---------------------------------------------------------------------------
+
+    "remote.downloadExtensionsLocally": true,
+
+    "window.autoDetectHighContrast": false,
+
+    "zenMode.showTabs": "single",
+    "zenMode.hideLineNumbers": false,
+    "zenMode.hideStatusBar": false,
+
+    "explorer.autoReveal": false,
+    "explorer.openEditors.visible": 1,
+    "explorer.fileNesting.expand": false,
+
+    "files.autoSave": "onWindowChange",
+    "files.insertFinalNewline": true,
+    "files.simpleDialog.enable": true,
+    "files.trimTrailingWhitespace": true,
+    "files.autoSaveWorkspaceFilesOnly": true,
+
+    "editor.tabSize": 4,
     "editor.wordWrap": "off",
-    "editor.fontSize": 14,
+    "editor.fontSize": 15.9,
     "editor.lineHeight": 1.2,
     "editor.letterSpacing": 0.0,
     "editor.fontWeight": "normal",
-    "editor.fontLigatures": false,
+    "editor.fontLigatures": true,
+    "editor.mouseWheelZoom": true,
     "editor.smoothScrolling": true,
-    "files.insertFinalNewline": true,
     "editor.lineNumbers": "relative",
     "editor.cursorBlinking": "smooth",
+    "editor.guides.bracketPairs": true,
     "editor.cursorSurroundingLines": 5,
+    "editor.renderLineHighlight": "all",
+    "editor.snippetSuggestions": "bottom",
+    "editor.scrollbar.vertical": "hidden",
+    "editor.renderWhitespace": "selection",
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.renderControlCharacters": false,
     "editor.cursorSmoothCaretAnimation": "on",
+    "editor.scrollbar.verticalScrollbarSize": 2,
+    "editor.scrollbar.horizontalScrollbarSize": 2,
+    "editor.bracketPairColorization.enabled": false,
     "editor.fontFamily": "'0xProto Nerd Font', 'JetBrains Mono', 'Courier New', monospace",
     "editor.codeLensFontFamily": "'0xProto Nerd Font', 'JetBrains Mono', 'Courier New', monospace",
     "editor.minimap.enabled": false,
-    "scm.inputFontFamily": "default",
+
+    "workbench.layoutControl.type": "menu",
+    "workbench.iconTheme": "rose-pine-icons",
+    "workbench.editor.limit.value": 1,
+    "workbench.editor.limit.enabled": true,
+    "workbench.editor.limit.perEditorGroup": true,
+    "workbench.editor.showTabs": "single",
+    "workbench.colorTheme": "Rosé Pine",
+    "workbench.statusBar.visible": true,
+    "workbench.layoutControl.enabled": false,
+    "workbench.activityBar.location": "hidden",
     "workbench.tree.indent": 4,
     "workbench.view.alwaysShowHeaderActions": true,
     "workbench.editor.enablePreviewFromQuickOpen": true,
     "workbench.settings.applyToAllProfiles": [
         "editor.fontFamily"
     ],
+    "workbench.editor.wrapTabs": true,
+    "workbench.editor.mouseBackForwardToNavigate": false,
+    "workbench.preferredDarkColorTheme": "Rosé Pine",
+    "workbench.preferredLightColorTheme": "Rosé Pine",
+    "workbench.preferredHighContrastLightColorTheme": "Rosé Pine",
+    "workbench.preferredHighContrastColorTheme": "Rosé Pine",
+    "workbench.commandPalette.experimental.suggestCommands": true,
+    "workbench.list.fastScrollSensitivity": 10,
+    "workbench.list.smoothScrolling": true,
+    "workbench.localHistory.maxFileEntries": 200,
+    "workbench.panel.opensMaximized": "never",
+    "workbench.reduceMotion": "on",
+    "workbench.startupEditor": "none",
+
     "terminal.integrated.lineHeight": 1.2,
+    "terminal.integrated.minimumContrastRatio": 1,
+
+    "scm.inputFontFamily": "default",
+
     // ---------------------------------------------------------------------------
     // Extension Settings
     // ---------------------------------------------------------------------------
-    "extensions.autoUpdate": "onlySelectedExtensions",
-    "extensions.autoCheckUpdates": false,
+
     "git.autofetch": true,
     "git.openRepositoryInParentFolders": "never",
-    // ---------------------------------------------------------------------------
-    // LSP Settings
-    // ---------------------------------------------------------------------------
-    "[cpp]": {
-        "editor.wordBasedSuggestions": "off",
-        "editor.suggest.insertMode": "replace",
-        "editor.semanticHighlighting.enabled": true
-    },
-    "[python]": {
-        "editor.formatOnType": false
-    },
-    "[vhdl]": {
-        "editor.quickSuggestions": {
-            "comments": "off",
-            "strings": "off",
-            "other": "off"
-        },
-        "editor.formatOnType": false
-    },
-    "[systemverilog]": {
-        "editor.quickSuggestions": {
-            "comments": "off",
-            "strings": "off",
-            "other": "off"
-        },
-        "editor.formatOnType": false,
-        "editor.semanticHighlighting.enabled": true
-    },
-    "[buildconfig]": {
-        "editor.quickSuggestions": {
-            "comments": "off",
-            "strings": "off",
-            "other": "off"
-        },
-        "editor.formatOnType": false
-    },
-    "cmake.pinnedCommands": [
-        "workbench.action.tasks.configureTaskRunner",
-        "workbench.action.tasks.runTask"
-    ],
-    "workbench.editor.wrapTabs": true,
-    "explorer.fileNesting.expand": false,
-    "workbench.editor.mouseBackForwardToNavigate": false,
-    // ---------------------------------------------------------------------------
-    //
-    // ---------------------------------------------------------------------------
-    "editor.tabSize": 4,
-    "workbench.iconTheme": "rose-pine-icons",
-    "editor.renderWhitespace": "selection",
-    "editor.renderLineHighlight": "all",
-    "workbench.layoutControl.type": "menu",
-    "editor.mouseWheelZoom": true,
-    "workbench.editor.limit.value": 1,
-    "workbench.editor.limit.enabled": true,
-    "workbench.editor.limit.perEditorGroup": true,
-    "workbench.editor.showTabs": "single",
-    "files.autoSave": "onWindowChange",
-    "explorer.openEditors.visible": 1,
-    "workbench.colorTheme": "Rosé Pine",
-    "workbench.statusBar.visible": true,
-    "editor.renderControlCharacters": false,
-    "editor.scrollbar.vertical": "hidden",
-    "editor.scrollbar.horizontal": "hidden",
-    "workbench.layoutControl.enabled": false,
-    "workbench.activityBar.location": "hidden",
-    "editor.scrollbar.verticalScrollbarSize": 2,
-    "editor.scrollbar.horizontalScrollbarSize": 2,
-    "editor.guides.bracketPairs": true,
-    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
-    "window.systemColorTheme": "auto",
+    "extensions.autoUpdate": "onlySelectedExtensions",
+    "extensions.autoCheckUpdates": false,
+    //"DVT.contentFilters.enable": false,
+    //"DVT.codeLens.showConstraints": false,
+    //"DVT.codeLens.expandCollapseMacros": false,
+    //"DVT.systemVerilog.refactoring.ignoreComments": false,
+    //"DVT.systemVerilog.refactoring.updateFileName": false,
+    //"DVT.automaticallyOpenConnectionWebview.enable": false,
+    //"DVT.textEditor.systemVerilog.formatting.indentation.else": "On a new line",
+    //"DVT.incrementalProfiling.displayReportIssueNotification": false,
+
     // ---------------------------------------------------------------------------
     // Vim Settings:
     // ---------------------------------------------------------------------------
+
     // Neovim Backend
     "vim.enableNeovim": true,
     "vim.neovimUseConfigFile": true,
+
     // Plugins
+
     "vim.sneak": true,
     "vim.surround": true,
     "vim.commentary": true,
     "vim.easymotion": true,
     "vim.replaceWithRegister": true,
     "vim.camelCaseMotion.enable": true,
+
     // Plugin Configurations
+
     "vim.sneakReplacesF": true,
     "vim.sneakUseIgnorecaseAndSmartcase": true,
+
     // Global Behavior
+
     "vim.visualstar": true,
     "vim.startofline": false,
     "vim.smartRelativeLine": true,
     "vim.highlightedyank.enable": true,
+
     // Remaps
+
     "vim.leader": "<space>",
     "vim.handleKeys": {
         "<C-e>": false,
@@ -136,151 +145,65 @@
     "vim.visualModeKeyBindings": [
         // Bind <leader>d to delete current visual selection without yanking it
         {
-            "before": [
-                "<leader>",
-                "d"
-            ],
-            "after": [
-                "\"",
-                "_",
-                "d"
-            ]
+            "before": [ "<leader>", "d" ],
+            "after": [ "\"", "_", "d" ]
         },
         // <leader>c - Same as <leader>d but enters insert mode right after
         {
-            "before": [
-                "<leader>",
-                "c"
-            ],
-            "after": [
-                "\"",
-                "_",
-                "c"
-            ]
+            "before": [ "<leader>", "c" ],
+            "after": [ "\"", "_", "c" ]
         },
         // Bind <leader>p to delete current visual selection without yanking it and paste what is currently in the yank register
         {
-            "before": [
-                "<leader>",
-                "p"
-            ],
-            "after": [
-                "<leader>",
-                "d",
-                "P"
-            ]
+            "before": [ "<leader>", "p" ],
+            "after": [ "<leader>", "d", "P" ]
         },
         // Bind <leader>P to do the same as <leader>p but with a small p paste at the end instead of capital P paste
         {
-            "before": [
-                "<leader>",
-                "P"
-            ],
-            "after": [
-                "<leader>",
-                "d",
-                "p"
-            ]
+            "before": [ "<leader>", "P" ],
+            "after": [ "<leader>", "d", "p" ]
         },
         // <leader>f - flip/reverse selected lines
         {
-            "before": [
-                "<leader>",
-                "f"
-            ],
-            "commands": [
-                "flip.selection",
-            ]
+            "before": [ "<leader>", "f" ],
+            "commands": [ "flip.selection", ]
         }
     ],
     "vim.normalModeKeyBindings": [
         {
             // Bind <leader>cw to delete entire word under cursor without copying it to the copy register and enter insert mode
-            "before": [
-                "<leader>",
-                "c",
-                "w"
-            ],
-            "after": [
-                "\"",
-                "_",
-                "c",
-                "i",
-                "w"
-            ]
+            "before": [ "<leader>", "c", "w" ],
+            "after": [ "\"", "_", "c", "i", "w" ]
         },
         {
             // Bind <leader>cc to delete entire line under cursor without copying it to the copy register and enter insert mode
-            "before": [
-                "<leader>",
-                "c",
-                "c"
-            ],
-            "after": [
-                "\"",
-                "_",
-                "c",
-                "c"
-            ]
+            "before": [ "<leader>", "c", "c" ],
+            "after": [ "\"", "_", "c", "c" ]
         },
         {
             // Bind <leader>dw to delete entire word under cursor without copying it to the copy register
-            "before": [
-                "<leader>",
-                "d",
-                "w"
-            ],
-            "after": [
-                "\"",
-                "_",
-                "d",
-                "i",
-                "w"
-            ]
+            "before": [ "<leader>", "d", "w" ],
+            "after": [ "\"", "_", "d", "i", "w" ]
         },
         {
             // Bind <leader>dd to delete entire line under cursor without copying it to the copy register
-            "before": [
-                "<leader>",
-                "d",
-                "d"
-            ],
-            "after": [
-                "\"",
-                "_",
-                "d",
-                "d"
-            ]
+            "before": [ "<leader>", "d", "d" ],
+            "after": [ "\"", "_", "d", "d" ]
         },
         {
             // Bind <leader>dp to delete line without copying it to the copy
             // register and paste what is currently set in the copy register
             // instead
-            "before": [
-                "<leader>",
-                "d",
-                "p"
-            ],
-            "after": [
-                "<leader>",
-                "d",
-                "d",
-                "P"
-            ]
+            "before": [ "<leader>", "d", "p" ],
+            "after": [ "<leader>", "d", "d", "P" ]
         },
         {
-            "before": [
-                "<leader>",
-                "=",
-                "A"
-            ],
+            "before": [ "<leader>", "=", "A" ],
             "commands": [
                 {
                     "command": "vim.remap",
                     "args": {
-                        "after": [
-                            "A"
-                        ]
+                        "after": [ "A" ]
                     }
                 },
                 {
@@ -292,11 +215,7 @@
             ]
         },
         {
-            "before": [
-                "<leader>",
-                "=",
-                "a"
-            ],
+            "before": [ "<leader>", "=", "a" ],
             "commands": [
                 {
                     "command": "vim.remap",
@@ -315,11 +234,7 @@
             ]
         },
         {
-            "before": [
-                "<leader>",
-                "=",
-                "i"
-            ],
+            "before": [ "<leader>", "=", "i" ],
             "commands": [
                 {
                     "command": "vim.remap",
@@ -392,22 +307,13 @@
                 {
                     "command": "vim.remap",
                     "args": {
-                        "after": [
-                            "g",
-                            "c",
-                            "c",
-                            "j"
-                        ]
+                        "after": [ "g", "c", "c", "j" ]
                     }
                 },
             ]
         },
         {
-            "before": [
-                "<leader>",
-                "=",
-                "j"
-            ],
+            "before": [ "<leader>", "=", "j" ],
             "commands": [
                 {
                     "command": "vim.remap",
@@ -434,22 +340,13 @@
                 {
                     "command": "vim.remap",
                     "args": {
-                        "after": [
-                            "g",
-                            "c",
-                            "c",
-                            "k"
-                        ]
+                        "after": [ "g", "c", "c", "k" ]
                     }
                 },
             ]
         },
         {
-            "before": [
-                "<leader>",
-                "=",
-                "="
-            ],
+            "before": [ "<leader>", "=", "=" ],
             "commands": [
                 {
                     "command": "vim.remap",
@@ -489,65 +386,19 @@
         {
             // Bind <leader>- to copy the current line and paste a comment below
             // it with dashes covering the width of the entire line
-            "before": [
-                "<leader>",
-                "-"
-            ],
-            "after": [
-                "y",
-                "y",
-                "p",
-                "w",
-                "v",
-                "$",
-                "r",
-                "-"
-            ]
+            "before": [ "<leader>", "-" ],
+            "after": [ "y", "y", "p", "w", "v", "$", "r", "-" ]
         },
         {
             // Same as remap above but wraps from above as well
-            "before": [
-                "<leader>",
-                "_"
-            ],
-            "after": [
-                "y",
-                "y",
-                "p",
-                "w",
-                "v",
-                "$",
-                "r",
-                "-",
-                "y",
-                "y",
-                "k",
-                "P",
-                "j"
-            ]
+            "before": [ "<leader>", "_" ],
+            "after": [ "y", "y", "p", "w", "v", "$", "r", "-", "y", "y", "k", "P", "j" ]
         },
         {
             // Bind <leader>ad to add an empty comment line under the line under cursor and then
             // another comment line under it with an Add Description todo task
-            "before": [
-                "<leader>",
-                "a",
-                "d"
-            ],
-            "after": [
-                "3",
-                "o",
-                " ",
-                "<BS>",
-                "<Esc>",
-                "V",
-                "2",
-                "j",
-                "g",
-                "c",
-                "j",
-                "A"
-            ],
+            "before": [ "<leader>", "a", "d" ],
+            "after": [ "3", "o", " ", "<BS>", "<Esc>", "V", "2", "j", "g", "c", "j", "A" ],
             "commands": [
                 {
                     "command": "type",
@@ -571,28 +422,9 @@
         {
             // Bind <leader>f to add a function decleration header when cursor
             // is on a function decl line
-            "before": [
-                "<leader>",
-                "f"
-            ],
-            "after": [
-                "^",
-                "m",
-                "*",
-                "f",
-                "(",
-                "B",
-                "y",
-                "t",
-                "(",
-                "`",
-                "*",
-                "O",
-                " ",
-                "<BS>",
-                "<Esc>",
-                "p",
-                "I"
+            "before": [ "<leader>", "f" ],
+            "after": [ "^", "m", "*", "f", "(", "B", "y", "t", "(", "`", "*",
+                "O", " ", "<BS>", "<Esc>", "p", "I" 
             ],
             "commands": [
                 {
@@ -620,28 +452,9 @@
         {
             // Bind <leader>t to do the same as <leader>f but for task instead
             // of function.
-            "before": [
-                "<leader>",
-                "t"
-            ],
-            "after": [
-                "^",
-                "m",
-                "*",
-                "f",
-                "(",
-                "B",
-                "y",
-                "t",
-                "(",
-                "`",
-                "*",
-                "O",
-                " ",
-                "<BS>",
-                "<Esc>",
-                "p",
-                "I"
+            "before": [ "<leader>", "t" ],
+            "after": [ "^", "m", "*", "f", "(", "B", "y", "t", "(", "`", "*",
+                "O", " ", "<BS>", "<Esc>", "p", "I"
             ],
             "commands": [
                 {
@@ -669,59 +482,17 @@
         {
             // Bind <leader>c to do the same as <leader>f but for class instead
             // of function.
-            "before": [
-                "<leader>",
-                "c"
-            ],
-            "after": [
-                "^",
-                "w",
-                "y",
-                "i",
-                "w",
-                "O",
-                "/",
-                "/",
-                "<space>",
-                "C",
-                "l",
-                "a",
-                "s",
-                "s",
-                ":",
-                "<space>",
-                "<Esc>",
-                "p",
-                "<leader>",
-                "a",
-                "d"
+            "before": [ "<leader>", "c" ],
+            "after": [ "^", "w", "y", "i", "w", "O", "/", "/", "<space>", "C",
+                "l", "a", "s", "s", ":", "<space>", "<Esc>", "p", "<leader>",
+                "a", "d"
             ]
         },
         {
             // Bind <leader>C to print a constaint header
-            "before": [
-                "<leader>",
-                "C"
-            ],
-            "after": [
-                "^",
-                "m",
-                "*",
-                "s",
-                "c",
-                "o",
-                "W",
-                "y",
-                "i",
-                "w",
-                "`",
-                "*",
-                "O",
-                " ",
-                "<BS>",
-                "<Esc>",
-                "p",
-                "I"
+            "before": [ "<leader>", "C" ],
+            "after": [ "^", "m", "*", "s", "c", "o", "W", "y", "i", "w", "`",
+                "*", "O", " ", "<BS>", "<Esc>", "p", "I"
             ],
             "commands": [
                 {
@@ -749,28 +520,9 @@
         {
             // Bind <leader>v to do the same as <leader>f but for variable
             // instead of function.
-            "before": [
-                "<leader>",
-                "v"
-            ],
-            "after": [
-                "^",
-                "m",
-                "*",
-                "f",
-                ";",
-                "B",
-                "y",
-                "i",
-                "w",
-                "`",
-                "*",
-                "O",
-                " ",
-                "<BS>",
-                "<Esc>",
-                "p",
-                "I"
+            "before": [ "<leader>", "v" ],
+            "after": [ "^", "m", "*", "f", ";", "B", "y", "i", "w", "`", "*",
+                "O", " ", "<BS>", "<Esc>", "p", "I"
             ],
             "commands": [
                 {
@@ -782,15 +534,7 @@
                 {
                     "command": "vim.remap",
                     "args": {
-                        "after": [
-                            "<Esc>",
-                            "V",
-                            "g",
-                            "c",
-                            "<leader>",
-                            "a",
-                            "d"
-                        ]
+                        "after": [ "<Esc>", "V", "g", "c", "<leader>", "a", "d" ]
                     }
                 }
             ]
@@ -798,28 +542,9 @@
         {
             // Bind <leader>T to do the same as <leader>f but for Typedef
             // instead of function.
-            "before": [
-                "<leader>",
-                "T"
-            ],
-            "after": [
-                "^",
-                "m",
-                "*",
-                "f",
-                ";",
-                "B",
-                "y",
-                "i",
-                "w",
-                "`",
-                "*",
-                "O",
-                " ",
-                "<BS>",
-                "<Esc>",
-                "p",
-                "I"
+            "before": [ "<leader>", "T" ],
+            "after": [ "^", "m", "*", "f", ";", "B", "y", "i", "w", "`", "*",
+                "O", " ", "<BS>", "<Esc>", "p", "I"
             ],
             "commands": [
                 {
@@ -831,15 +556,7 @@
                 {
                     "command": "vim.remap",
                     "args": {
-                        "after": [
-                            "<Esc>",
-                            "V",
-                            "g",
-                            "c",
-                            "<leader>",
-                            "a",
-                            "d"
-                        ]
+                        "after": [ "<Esc>", "V", "g", "c", "<leader>", "a", "d" ]
                     }
                 }
             ]
@@ -847,33 +564,10 @@
         {
             // Bind <leader>i to add a function implementation header when
             // cursor is on a function decl line
-            "before": [
-                "<leader>",
-                "i"
-            ],
-            "after": [
-                "<Esc>",
-                "^",
-                "m",
-                "*",
-                "f",
-                "(",
-                "b",
-                "y",
-                "t",
-                "(",
-                "`",
-                "*",
-                "2",
-                "O",
-                "<Esc>",
-                "k",
-                "p",
-                "g",
-                "c",
-                "c",
-                "<leader>",
-                "-"
+            "before": [ "<leader>", "i" ],
+            "after": [ "<Esc>", "^", "m", "*", "f", "(", "b", "y", "t", "(",
+                "`", "*", "2", "O", "<Esc>", "k", "p", "g", "c", "c",
+                "<leader>", "-" 
             ]
         },
         // <leader>u Operations //
@@ -881,35 +575,9 @@
             // Bind <leader>uf to update the function name of the current
             // function declaration header - cursor should be on the function
             // decleration, not header.
-            "before": [
-                "<leader>",
-                "u",
-                "f"
-            ],
-            "after": [
-                "^",
-                "m",
-                "*",
-                "f",
-                "(",
-                "B",
-                "y",
-                "t",
-                "(",
-                "`",
-                "*",
-                "F",
-                ";",
-                "f",
-                ":",
-                "B",
-                "\"",
-                "_",
-                "C",
-                "<Esc>",
-                "p",
-                "B",
-                "i"
+            "before": [ "<leader>", "u", "f" ],
+            "after": [ "^", "m", "*", "f", "(", "B", "y", "t", "(", "`", "*",
+                "F", ";", "f", ":", "B", "\"", "_", "C", "<Esc>", "p", "B", "i"
             ],
             "commands": [
                 {
@@ -922,35 +590,9 @@
         },
         {
             // Bind <leader>ut to do the same as <leader>uf but for task
-            "before": [
-                "<leader>",
-                "u",
-                "t"
-            ],
-            "after": [
-                "^",
-                "m",
-                "*",
-                "f",
-                "(",
-                "B",
-                "y",
-                "t",
-                "(",
-                "`",
-                "*",
-                "F",
-                ";",
-                "f",
-                ":",
-                "B",
-                "\"",
-                "_",
-                "C",
-                "<Esc>",
-                "p",
-                "B",
-                "i"
+            "before": [ "<leader>", "u", "t" ],
+            "after": [ "^", "m", "*", "f", "(", "B", "y", "t", "(", "`", "*",
+                "F", ";", "f", ":", "B", "\"", "_", "C", "<Esc>", "p", "B", "i"
             ],
             "commands": [
                 {
@@ -963,67 +605,16 @@
         },
         {
             // Bind <leader>uc to do the same as <leader>uf but for class
-            "before": [
-                "<leader>",
-                "u",
-                "c"
-            ],
-            "after": [
-                "^",
-                "w",
-                "y",
-                "i",
-                "w",
-                "g",
-                "g",
-                "/",
-                "C",
-                "l",
-                "a",
-                "s",
-                "s",
-                ":",
-                "<CR>",
-                "f",
-                ":",
-                "w",
-                "<leader>",
-                "d",
-                "w",
-                "p"
+            "before": [ "<leader>", "u", "c" ],
+            "after": [ "^", "w", "y", "i", "w", "g", "g", "/", "C", "l", "a",
+                "s", "s", ":", "<CR>", "f", ":", "w", "<leader>", "d", "w", "p"
             ]
         },
         {
             // Bind <leader>uv to do the same as <leader>uf but for variable
-            "before": [
-                "<leader>",
-                "u",
-                "v"
-            ],
-            "after": [
-                "^",
-                "m",
-                "*",
-                "f",
-                ";",
-                "B",
-                "y",
-                "i",
-                "w",
-                "`",
-                "*",
-                "F",
-                ";",
-                "f",
-                ":",
-                "B",
-                "\"",
-                "_",
-                "C",
-                "<Esc>",
-                "p",
-                "B",
-                "i"
+            "before": [ "<leader>", "u", "v" ],
+            "after": [ "^", "m", "*", "f", ";", "B", "y", "i", "w", "`", "*",
+                "F", ";", "f", ":", "B", "\"", "_", "C", "<Esc>", "p", "B", "i"
             ],
             "commands": [
                 {
@@ -1036,35 +627,9 @@
         },
         {
             // Bind <leader>uT to do the same as <leader>uf but for Type
-            "before": [
-                "<leader>",
-                "u",
-                "T"
-            ],
-            "after": [
-                "^",
-                "m",
-                "*",
-                "f",
-                ";",
-                "B",
-                "y",
-                "i",
-                "w",
-                "`",
-                "*",
-                "F",
-                ";",
-                "f",
-                ":",
-                "B",
-                "\"",
-                "_",
-                "C",
-                "<Esc>",
-                "p",
-                "B",
-                "i"
+            "before": [ "<leader>", "u", "T" ],
+            "after": [ "^", "m", "*", "f", ";", "B", "y", "i", "w", "`", "*",
+                "F", ";", "f", ":", "B", "\"", "_", "C", "<Esc>", "p", "B", "i"
             ],
             "commands": [
                 {
@@ -1221,16 +786,8 @@
             ],
         },
         {
-            "before": [
-                "<leader>",
-                "F"
-            ],
-            "commands": [
-                {
-                    "command": "editor.action.formatDocument",
-                    "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
-                },
-            ],
+            "before": ["<leader>", "s"],
+            "after": [":", "%", "s", "/", "\\", "<", "<C-r>", "<C-w>", "\\", ">", "/", "<C-r>", "<C-w>", "/", "g", "I", "<Left>", "<Left>", "<Left>"]
         },
         {
             // <leader>] - go to next problem in file
@@ -1361,28 +918,7 @@
             ],
         },
     ],
-    "workbench.preferredDarkColorTheme": "Rosé Pine",
-    "zenMode.showTabs": "single",
-    "zenMode.hideLineNumbers": false,
-    "zenMode.hideStatusBar": false,
-    "window.autoDetectHighContrast": false,
-    "terminal.integrated.minimumContrastRatio": 1,
-    "workbench.preferredLightColorTheme": "Rosé Pine",
-    "workbench.preferredHighContrastLightColorTheme": "Rosé Pine",
-    "workbench.preferredHighContrastColorTheme": "Rosé Pine",
-    "files.autoSaveWorkspaceFilesOnly": true,
-    "workbench.commandPalette.experimental.suggestCommands": true,
-    "workbench.list.fastScrollSensitivity": 10,
-    "workbench.list.smoothScrolling": true,
-    "workbench.localHistory.maxFileEntries": 200,
-    "workbench.panel.opensMaximized": "never",
-    "workbench.reduceMotion": "on",
-    "workbench.startupEditor": "none",
-    "explorer.autoReveal": false,
-    "remote.downloadExtensionsLocally": true,
-    "editor.snippetSuggestions": "bottom",
-    "files.trimTrailingWhitespace": true,
-    "files.simpleDialog.enable": true,
+
     "workbench.colorCustomizations": {
         "[Rosé Pine]": {
             "sideBar.background": "#181926",
@@ -1596,4 +1132,5 @@
             ],
         }
     },
+    "workbench.editor.enablePreview": false,
 }

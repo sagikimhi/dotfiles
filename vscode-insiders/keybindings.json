@@ -46,7 +46,12 @@
 	{
 		"key": "ctrl+alt+n",
 		"command": "workbench.files.action.createFolderFromExplorer"
-	}
+	},
+    {
+        "key": "-",
+		"command": "workbench.files.action.collapseExplorerFolders",
+        "when": "filesExplorerFocus && !inputFocus",
+    }
 // - workbench.files.action.createFileFromExplorer
 // - workbench.files.action.createFolderFromExplorer
 ]

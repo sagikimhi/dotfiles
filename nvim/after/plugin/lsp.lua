@@ -3,8 +3,11 @@ local lsp = require("lsp-zero")
 lsp.preset("recommended")
 
 lsp.ensure_installed({
-    -- Bash
-    "bashls",
+    -- Docker
+    "dockerls",
+
+    -- Docker Compose
+    "docker_compose_language_service",
 
     -- C
     "clangd",
@@ -12,115 +15,17 @@ lsp.ensure_installed({
     -- Cmake
     "cmake",
 
-    -- Docker
-    "dockerls",
-
-    -- Docker Compose
-    "docker_compose_language_service",
-
-    -- Rust
-    'rust_analyzer',
-
-    -- Go
-    -- "gopls",
-
-    -- Python
-    "pylsp",
-
-    -- Emmet
-    "emmet_ls",
-
-    -- Markdown
-    -- "marksman",
-    "remark_ls",
-
-    -- HTML
-    "html",
-
-    -- CSS
-    "cssls",
-
-    -- Tailwind CSS
-    "tailwindcss",
-
-    -- Typescript/Javascript
-    'tsserver',
-
-    -- Json
-    "jsonls",
-
-    -- TOML
-    "taplo",
-
-    -- Yaml
-    "yamlls",
-
     -- Lua
     "lua_ls",
 
     -- Vim
     "vimls",
 
-    -- Arduino
-    -- "arduino_language_server",
+    -- Rust
+    "rust_analyzer",
 
-    -- Assembly
-    -- "asm_lsp",
-
-    -- Autoconf/Automake
-    -- "autotools_ls",
-
-    -- Buf
-    -- "bufls",
-
-    -- Java
-    -- "jdtls",
-
-    -- Kotlin
-    -- "kotlin-language_server",
-
-    -- Latex
-    -- "ltex",
-    -- "texlab",
-
-    -- Ocaml
-    -- "ocamllsp",
-
-    -- Perl
-    -- "perlnavigator",
-
-    -- Powershell
-    -- "powershell_es",
-
-    -- R
-    -- "r_language_server",
-
-    -- Ruby
-    -- "ruby_ls",
-
-    -- SQL
-    -- "sqls",
-    -- "sqlls",
-
-    -- Jinja
-    -- "jinja_lsp",
-
-    -- LuaU
-    -- "luau_lsp",
-
-    -- Thrift
-    -- "thriftls",
-
-    -- Sphinx (Python Doc)
-    -- "esbonio",
-
-    -- SystemVerilog
-    -- "svls",
-    -- "verible",
-    -- "svlangserver",
-
-    -- Zig
-    -- "zls",
+    -- Python
+    "pylsp",
 })
 
 -- Fix Undefined global 'vim'

@@ -1,6 +1,4 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-
 
 vim.keymap.set("n", "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>")
 vim.keymap.set("n", "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>")
@@ -53,11 +51,11 @@ vim.cmd('nmap <leader>i ^f(ByiwO<Esc>^"_Dpgcc<leader>-o')
 vim.cmd('nmap <leader>- yyp^gccv$r-^gcc')
 vim.cmd('nmap <leader>_ <leader>-yykP')
 vim.keymap.set('n', '<leader>==',
-    'yypwC-------------------------------------------------------------------------------<Esc>yykPj')
+    'yypwC-----------------------------------------------------------------------------<Esc>yykPj')
 vim.keymap.set('n', '<leader>=j',
-    'yypwC-------------------------------------------------------------------------------<Esc>k')
+    'yypwC-----------------------------------------------------------------------------<Esc>k')
 vim.keymap.set('n', '<leader>=k',
-    'yypwC-------------------------------------------------------------------------------<Esc>j')
+    'yypwC-----------------------------------------------------------------------------<Esc>j')
 vim.keymap.set(
     'n',
     '<leader>gl',

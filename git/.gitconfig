@@ -1,8 +1,9 @@
-[core]
-	editor = vim
+# Uncomment after setting ur editor
+# [core]
+#	editor = nvim
 
-[init]
-	defaultBranch = main
+# [init]
+# 	defaultBranch = main
 
 [pull]
 	rebase = true
@@ -11,50 +12,96 @@
 	followTags = true
 
 [alias]
-    # git log aliases
+    # List all aliases
+    #
+    la = "!git config -l | grep alias | cut -c 7-"
+
+    # -----------------------------------------------------------------------------
+    # Branch deletion aliases - optional
+    # -----------------------------------------------------------------------------
+
+    # Alias: brd
+    #
+    # Branch Delete.
+    #
+    # This checks out your local master branch and deletes all
+    # local branches that have already been merged to master.
+    #
+    # brd = !sh -c \"git checkout main && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d\"
+    # -----------------------------------------------------------------------------------------------------
+    
+    # Alias: brdhere
+    #
+    # branch Delete Here. 
+    #
+    # Deletes all local branches that have already been merged to the branch
+    # that you're currently on.
+    #
+
+    # brdhere = !sh -c \"git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d\"
+    # ------------------------------------------------------------------------------------
+    
+    # -----------------------------------------------------------------------------
+    # git log
+    # -----------------------------------------------------------------------------
+    
 	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=relative --branches
 	ll = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset%n' --abbrev-commit --branches
     ls = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short --numstat
 
-    # git add aliases
+    # -----------------------------------------------------------------------------
+    # git add
+    # -----------------------------------------------------------------------------
+
     a = add
     ap = add -p
 
-    # git branch aliases
+    # -----------------------------------------------------------------------------
+    # git branch
+    # -----------------------------------------------------------------------------
+
     b = branch
     ba = branch -a
+    # pretty listing of branches
     bl = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
 
-    # git checkout aliases
+    # -----------------------------------------------------------------------------
+    # git checkout
+    # -----------------------------------------------------------------------------
+
     co = checkout
     cob = checkout origin/main -b
 
-    # git commit aliases
+    # -----------------------------------------------------------------------------
+    # git commit
+    # -----------------------------------------------------------------------------
+
     c = commit -s --verbose
     m = commit --amend --verbose
-    ca = commit -sa --verbose
-    cm = commit -sm
-    cam = commit -sam
+    ca = commit -s -a --verbose
+    cm = commit -s -m
+    cam = commit -s -a -m
 
-    # git diff aliases
+    # -----------------------------------------------------------------------------
+    # git diff
+    # -----------------------------------------------------------------------------
+    #
     d = diff --color-words
     dw = diff --word-diff-regex=. --color-words
     ds = diff --stat --color-words --word-diff-regex=.
     dc = diff --cached --color-words --word-diff-regex=.
 
-    # git status aliases
+
+    # -----------------------------------------------------------------------------
+    # git status
+    # -----------------------------------------------------------------------------
+
     s = status -s -b --verbose
+    sr = status -s -b --no-renames --verbose
     si = status -s -b --show-stash --ignored
-    sl = status --long -b --show-stash
+    sl = status -b --long --show-stash
     sv = status --long -b --show-stash --verbose
+    slr = status -b --long --no-renames --verbose
     sli = status --long -b --show-stash --ignored
     siv = status --long -b --show-stash --ignored --verbose
-
-    # branch delete: This checks out your local master branch and deletes all local branches that have already been merged to master
-    brd = !sh -c \"git checkout main && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d\"
-    # branch delete here: Deletes all local branches that have already been merged to the branch that you're currently on
-    brdhere = !sh -c \"git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d\"
-
-    # list aliases
-    la = "!git config -l | grep alias | cut -c 7-"
 

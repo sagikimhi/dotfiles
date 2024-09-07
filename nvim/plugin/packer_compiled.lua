@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/skimhi/.cache/nvim/packer_hererocks/2.1.1692716794/share/lua/5.1/?.lua;/home/skimhi/.cache/nvim/packer_hererocks/2.1.1692716794/share/lua/5.1/?/init.lua;/home/skimhi/.cache/nvim/packer_hererocks/2.1.1692716794/lib/luarocks/rocks-5.1/?.lua;/home/skimhi/.cache/nvim/packer_hererocks/2.1.1692716794/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/skimhi/.cache/nvim/packer_hererocks/2.1.1692716794/lib/lua/5.1/?.so"
+local package_path_str = "/home/skimhi/.cache/nvim/packer_hererocks/2.1.1713484068/share/lua/5.1/?.lua;/home/skimhi/.cache/nvim/packer_hererocks/2.1.1713484068/share/lua/5.1/?/init.lua;/home/skimhi/.cache/nvim/packer_hererocks/2.1.1713484068/lib/luarocks/rocks-5.1/?.lua;/home/skimhi/.cache/nvim/packer_hererocks/2.1.1713484068/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/skimhi/.cache/nvim/packer_hererocks/2.1.1713484068/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -134,6 +134,11 @@ _G.packer_plugins = {
     path = "/home/skimhi/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  nerdtree = {
+    loaded = true,
+    path = "/home/skimhi/.local/share/nvim/site/pack/packer/start/nerdtree",
+    url = "https://github.com/preservim/nerdtree"
+  },
   ["nui.nvim"] = {
     loaded = true,
     path = "/home/skimhi/.local/share/nvim/site/pack/packer/start/nui.nvim",
@@ -164,6 +169,11 @@ _G.packer_plugins = {
     path = "/home/skimhi/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
+  ["plantuml-syntax"] = {
+    loaded = true,
+    path = "/home/skimhi/.local/share/nvim/site/pack/packer/start/plantuml-syntax",
+    url = "https://github.com/aklt/plantuml-syntax"
+  },
   playground = {
     loaded = true,
     path = "/home/skimhi/.local/share/nvim/site/pack/packer/start/playground",
@@ -175,7 +185,7 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["remote-nvim.nvim"] = {
-    config = { "\27LJ\2\nU\0\3\v\0\4\0\t6\3\0\0'\5\1\0\18\6\0\0'\a\2\0\18\b\1\0'\t\3\0\18\n\2\0B\3\a\1K\0\1\0\16Event type:\21exited with code\vClient\nprintä\2\1\2\n\0\14\0\30'\2\0\0\18\4\2\0009\2\1\2\18\5\0\0'\6\2\0\18\b\6\0009\6\1\0069\t\3\1B\6\3\0A\2\2\0026\3\4\0009\3\5\0039\3\6\3\a\3\a\0X\3\6€'\3\b\0\18\5\3\0009\3\1\3\18\6\0\0B\3\3\2\18\2\3\0006\3\4\0009\3\t\0039\3\n\3\18\5\2\0005\6\v\0003\a\f\0=\a\r\6B\3\3\1K\0\1\0\fon_exit\0\1\0\1\vdetach\2\rjobstart\afn4kitty -e nvim --server localhost:%s --remote-ui\16xterm-kitty\tTERM\benv\bvim\thost\17'Remote: %s'\vformatgwezterm cli set-tab-title --pane-id $(wezterm cli spawn nvim --server localhost:%s --remote-ui) %s…\1\1\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0003\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\17offline_mode\1\0\2\fenabled\2\14no_github\1\20client_callback\1\0\0\0\nsetup\16remote-nvim\frequire\0" },
+    config = { "\27LJ\2\nU\0\3\v\0\4\0\t6\3\0\0'\5\1\0\18\6\0\0'\a\2\0\18\b\1\0'\t\3\0\18\n\2\0B\3\a\1K\0\1\0\16Event type:\21exited with code\vClient\nprintí\2\1\2\n\0\14\0\30'\2\0\0\18\4\2\0009\2\1\2\18\5\0\0'\6\2\0\18\b\6\0009\6\1\0069\t\3\1B\6\3\0A\2\2\0026\3\4\0009\3\5\0039\3\6\3\a\3\a\0X\3\6€'\3\b\0\18\5\3\0009\3\1\3\18\6\0\0B\3\3\2\18\2\3\0006\3\4\0009\3\t\0039\3\n\3\18\5\2\0005\6\v\0003\a\f\0=\a\r\6B\3\3\1K\0\1\0\fon_exit\0\1\0\2\vdetach\2\fon_exit\0\rjobstart\afn4kitty -e nvim --server localhost:%s --remote-ui\16xterm-kitty\tTERM\benv\bvim\thost\17'Remote: %s'\vformatgwezterm cli set-tab-title --pane-id $(wezterm cli spawn nvim --server localhost:%s --remote-ui) %s¤\1\1\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0003\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\17offline_mode\1\0\2\14no_github\1\fenabled\2\20client_callback\1\0\2\17offline_mode\0\20client_callback\0\0\nsetup\16remote-nvim\frequire\0" },
     loaded = true,
     path = "/home/skimhi/.local/share/nvim/site/pack/packer/start/remote-nvim.nvim",
     url = "https://github.com/amitds1997/remote-nvim.nvim"
@@ -202,10 +212,20 @@ _G.packer_plugins = {
     path = "/home/skimhi/.local/share/nvim/site/pack/packer/start/undotree",
     url = "https://github.com/mbbill/undotree"
   },
+  ["vim-be-good"] = {
+    loaded = true,
+    path = "/home/skimhi/.local/share/nvim/site/pack/packer/start/vim-be-good",
+    url = "https://github.com/ThePrimeagen/vim-be-good"
+  },
   ["vim-commentary"] = {
     loaded = true,
     path = "/home/skimhi/.local/share/nvim/site/pack/packer/start/vim-commentary",
     url = "https://github.com/tpope/vim-commentary"
+  },
+  ["vim-easymotion"] = {
+    loaded = true,
+    path = "/home/skimhi/.local/share/nvim/site/pack/packer/start/vim-easymotion",
+    url = "https://github.com/easymotion/vim-easymotion"
   },
   ["vim-fugitive"] = {
     loaded = true,
@@ -245,7 +265,7 @@ try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\
 time([[Config for rose-pine]], false)
 -- Config for: remote-nvim.nvim
 time([[Config for remote-nvim.nvim]], true)
-try_loadstring("\27LJ\2\nU\0\3\v\0\4\0\t6\3\0\0'\5\1\0\18\6\0\0'\a\2\0\18\b\1\0'\t\3\0\18\n\2\0B\3\a\1K\0\1\0\16Event type:\21exited with code\vClient\nprintä\2\1\2\n\0\14\0\30'\2\0\0\18\4\2\0009\2\1\2\18\5\0\0'\6\2\0\18\b\6\0009\6\1\0069\t\3\1B\6\3\0A\2\2\0026\3\4\0009\3\5\0039\3\6\3\a\3\a\0X\3\6€'\3\b\0\18\5\3\0009\3\1\3\18\6\0\0B\3\3\2\18\2\3\0006\3\4\0009\3\t\0039\3\n\3\18\5\2\0005\6\v\0003\a\f\0=\a\r\6B\3\3\1K\0\1\0\fon_exit\0\1\0\1\vdetach\2\rjobstart\afn4kitty -e nvim --server localhost:%s --remote-ui\16xterm-kitty\tTERM\benv\bvim\thost\17'Remote: %s'\vformatgwezterm cli set-tab-title --pane-id $(wezterm cli spawn nvim --server localhost:%s --remote-ui) %s…\1\1\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0003\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\17offline_mode\1\0\2\fenabled\2\14no_github\1\20client_callback\1\0\0\0\nsetup\16remote-nvim\frequire\0", "config", "remote-nvim.nvim")
+try_loadstring("\27LJ\2\nU\0\3\v\0\4\0\t6\3\0\0'\5\1\0\18\6\0\0'\a\2\0\18\b\1\0'\t\3\0\18\n\2\0B\3\a\1K\0\1\0\16Event type:\21exited with code\vClient\nprintí\2\1\2\n\0\14\0\30'\2\0\0\18\4\2\0009\2\1\2\18\5\0\0'\6\2\0\18\b\6\0009\6\1\0069\t\3\1B\6\3\0A\2\2\0026\3\4\0009\3\5\0039\3\6\3\a\3\a\0X\3\6€'\3\b\0\18\5\3\0009\3\1\3\18\6\0\0B\3\3\2\18\2\3\0006\3\4\0009\3\t\0039\3\n\3\18\5\2\0005\6\v\0003\a\f\0=\a\r\6B\3\3\1K\0\1\0\fon_exit\0\1\0\2\vdetach\2\fon_exit\0\rjobstart\afn4kitty -e nvim --server localhost:%s --remote-ui\16xterm-kitty\tTERM\benv\bvim\thost\17'Remote: %s'\vformatgwezterm cli set-tab-title --pane-id $(wezterm cli spawn nvim --server localhost:%s --remote-ui) %s¤\1\1\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0003\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\17offline_mode\1\0\2\14no_github\1\fenabled\2\20client_callback\1\0\2\17offline_mode\0\20client_callback\0\0\nsetup\16remote-nvim\frequire\0", "config", "remote-nvim.nvim")
 time([[Config for remote-nvim.nvim]], false)
 
 _G._packer.inside_compile = false

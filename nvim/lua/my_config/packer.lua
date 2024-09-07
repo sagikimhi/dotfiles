@@ -4,19 +4,25 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-    -- Packer can manage itself
+    -- Packer Autoupdate
     use('wbthomason/packer.nvim')
 
+    -- Plugins
     use('mbbill/undotree')
+    use('preservim/nerdtree')
     use('justinmk/vim-sneak')
     use('tpope/vim-fugitive')
     use('tpope/vim-surround')
     use('folke/zen-mode.nvim')
     use('tpope/vim-commentary')
     use('ThePrimeagen/harpoon')
+    use('aklt/plantuml-syntax')
+    use('ThePrimeagen/vim-be-good')
+    use('easymotion/vim-easymotion')
     use("christoomey/vim-tmux-navigator")
     use("eandrju/cellular-automaton.nvim")
 
+    -- Color Scheme
     use({
         'rose-pine/neovim',
         as = 'rose-pine',
@@ -24,6 +30,57 @@ return require('packer').startup(function(use)
             vim.cmd('colorscheme rose-pine')
         end
     })
+
+    -- Telescope
+    use({
+        'nvim-telescope/telescope.nvim',
+        branch = '0.1.x',
+        requires = { { 'nvim-lua/plenary.nvim' } }
+    })
+
+    -- Trouble
+    use({"folke/trouble.nvim", config = function()
+            require("trouble").setup({ icons = false, })
+        end
+    })
+
+    -- Tree-Sitter
+    use('nvim-treesitter/playground')
+    use("nvim-treesitter/nvim-treesitter-context")
+    use({'nvim-treesitter/nvim-treesitter', run = function()
+            local ts_update = ({
+                require('nvim-treesitter.install')
+                    .update({ with_sync = true })
+            })
+
+            ts_update()
+        end
+    })
+
+    -- LSP + Mason
+    use({'VonHeikemen/lsp-zero.nvim',
+        branch = 'v1.x',
+        requires = {
+            -- LSP Support
+            { 'neovim/nvim-lspconfig' },
+            { 'williamboman/mason.nvim' },
+            { 'williamboman/mason-lspconfig.nvim' },
+
+            -- Autocompletion
+            { 'hrsh7th/nvim-cmp' },
+            { 'hrsh7th/cmp-path' },
+            { 'hrsh7th/cmp-buffer' },
+            { 'hrsh7th/cmp-nvim-lua' },
+            { 'hrsh7th/cmp-nvim-lsp' },
+            { 'saadparwaiz1/cmp_luasnip' },
+
+            -- Snippets
+            { 'L3MON4D3/LuaSnip' },
+            { 'rafamadriz/friendly-snippets' },
+        }
+    })
+
+    -- Neovim Remote
     use({
         "amitds1997/remote-nvim.nvim",
         version = "*",                       -- Pin to GitHub releases
@@ -59,58 +116,4 @@ return require('packer').startup(function(use)
         end
     })
 
-    use({
-        'nvim-telescope/telescope.nvim',
-        branch = '0.1.x',
-        requires = { { 'nvim-lua/plenary.nvim' } }
-    })
-
-    use({
-        "folke/trouble.nvim",
-        config = function()
-            require("trouble").setup({
-                icons = false,
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                -- refer to the configuration section below
-            })
-        end
-    })
-
-    use({
-        'nvim-treesitter/nvim-treesitter',
-        run = function()
-            local ts_update = ({
-                require('nvim-treesitter.install').update(
-                    { with_sync = true }
-                )
-            })
-            ts_update()
-        end
-    })
-    use('nvim-treesitter/playground')
-    use("nvim-treesitter/nvim-treesitter-context")
-
-    use({
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v1.x',
-        requires = {
-            -- LSP Support
-            { 'neovim/nvim-lspconfig' },
-            { 'williamboman/mason.nvim' },
-            { 'williamboman/mason-lspconfig.nvim' },
-
-            -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },
-            { 'hrsh7th/cmp-path' },
-            { 'hrsh7th/cmp-buffer' },
-            { 'hrsh7th/cmp-nvim-lua' },
-            { 'hrsh7th/cmp-nvim-lsp' },
-            { 'saadparwaiz1/cmp_luasnip' },
-
-            -- Snippets
-            { 'L3MON4D3/LuaSnip' },
-            { 'rafamadriz/friendly-snippets' },
-        }
-    })
 end)
