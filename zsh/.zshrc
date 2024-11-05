@@ -2,23 +2,31 @@
 # Env Variables
 # -----------------------------------------------------------------------------
 
-# ZSH Stuff
-# ---------
-
-export ZSH=$HOME/.oh-my-zsh
 export LANG=en_US.UTF-8
 export MANPATH="/usr/local/man:$MANPATH"
 export ARCHFLAGS="-arch x86_64"
 
-# Homes?
-# ------
+# XDG Env Variables
+# -----------------
 
 export XDG_CONFIG_HOME=$HOME/.config
-export HADOOP_HOME=$HOME/.local/hadoop-3.4.0
-export HIVE_HOME=$HOME/.local/apache-hive-4.0.0
+
+# HOME Env Variables 
+# -------------------
+
 export JAVA_17_HOME=/usr/lib/jvm/java-17-openjdk-amd64
-export JAVA_24_HOME=/usr/lib/jvm/java-24-openjdk-amd64
-export JAVA_HOME=$JAVA_24_HOME
+export JAVA_21_HOME=/usr/lib/jvm/java-21-openjdk-amd64
+export JAVA_23_HOME=/usr/lib/jvm/java-23-openjdk-amd64
+export APACHE_HOME=$HOME/.local/apache
+export JAVA_HOME=$JAVA_23_HOME
+export QT_HOME=$HOME/.local/Qt/6.7.3/gcc_64
+export ZIG_HOME=$HOME/.local/zig
+export ANT_HOME=$APACHE_HOME/ant
+export TEX_HOME=$HOME/.local/texlive
+export MARS_HOME=$HOME/.project/git/tools/mars
+export CARGO_HOME=$HOME/.local/cargo
+export THRIFT_HOME=$APACHE_HOME/thrift
+export DOXYGEN_HOME=$HOME/.local/doxygen
 
 # PATH
 # ----
@@ -26,22 +34,38 @@ export JAVA_HOME=$JAVA_24_HOME
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/go/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
-export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$QT_HOME/bin:$PATH
+export PATH=$ZIG_HOME/bin:$PATH
+export PATH=$ANT_HOME/bin:$PATH
 export PATH=$JAVA_HOME/bin:$PATH
-export PATH=$HIVE_HOME/bin:$PATH
-export PATH=$HADOOP_HOME/bin:$PATH
+export PATH=$CARGO_HOME/bin:$PATH
+export PATH=$THRIFT_HOME/bin:$PATH
+export PATH=$DOXYGEN_HOME/bin:$PATH
+export PATH=$TEX_HOME/bin/x86_64-linux:$PATH
 
-# WSL Stuff
-# ---------
+# Linker Stuff
+# ------------
 
-export LIBGL_ALWAYS_INDIRECT=1
+export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$QT_HOME/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$ZIG_HOME/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$THRIFT_HOME/lib:$LD_LIBRARY_PATH
+
+# Qt Stuff
+# --------
+
+export QT_DEBUG_PLUGINS=1
+export QT_QPA_PLATFORM=xcb
+export QT_PLUGIN_PATH=${QT_HOME}/plugins
+export QT_QPA_PLATFORM_PLUGIN_PATH=${QT_HOME}/plugins
 
 # -----------------------------------------------------------------------------
 # Init oh-my-zsh
 # -----------------------------------------------------------------------------
 
-plugins=(git)
+ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
+plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # -----------------------------------------------------------------------------
@@ -50,25 +74,24 @@ source $ZSH/oh-my-zsh.sh
 
 if [[ ! $(cat  /proc/1/cgroup | grep docker) ]]; then
 	echo initiating DISPLAY
-	export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
-	echo DISPLAY set to $DISPLAY
+    export DISPLAY=$(/bin/ip route | awk '/default/ { print $3 }'):0
+    echo DISPLAY set to $DISPLAY
 fi
 
 # -----------------------------------------------------------------------------
-# Functions
+# NVM (Node Version Manager) Stuff
 # -----------------------------------------------------------------------------
 
-function search() {
-    if [ -n "$1" ] && [ -n "$2" ]
-    then
-        ll "$2" | grep "$1"
-    elif [ -n "$1" ]
-    then
-        ll . | grep "$1"
-    else
-        echo "Usage: $0 <search-expr> [search-path]"
-    fi
-}
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# -----------------------------------------------------------------------------
+# Juliaup Stuff
+# -----------------------------------------------------------------------------
+
+path=('/home/skimhi/.juliaup/bin' $path)
+export PATH
 
 # -----------------------------------------------------------------------------
 # Variables
@@ -91,19 +114,48 @@ fi
 loc=${HOME}/.local
 lib=${HOME}/.local/lib
 bin=${HOME}/.local/bin
-jars=/usr/local/lib/jars
-config=${XDG_CONFIG_HOME}
+git=${HOME}/.project/git
+jars=${HOME}/.local/lib/jars
+config=${HOME}/.config
+project=${HOME}/.project
+pyenvs=${HOME}/.local/python-venv
+playground=${project}/playground
 
-# Configs
-# -------
+# Configuration Files and Directories
+# -----------------------------------
 
+vimrc=${HOME}/.vimrc
 sshrc=${HOME}/.ssh
 zshrc=${HOME}/.zshrc
-gitrc=${HOME}/.gitconfig
-vimrc=${XDG_CONFIG_HOME}/vim
-nvimrc=${XDG_CONFIG_HOME}/nvim
-tmuxrc=${XDG_CONFIG_HOME}/tmux/tmux.conf
-weztermrc=${HOME}/.wezterm.lua
+nvimrc=${config}/nvim
+gitrc=${config}/git/config
+wezrc=${HOME}/.wezterm.lua
+tmuxrc=${config}/tmux/tmux.conf
+
+# Git Directories
+# ---------------
+
+mom=${git}/mom
+uni=${git}/university
+dot=${git}/SagiKimhi/dotfiles
+xv6=${git}/tools/xv6-public
+mygit=${git}/SagiKimhi
+
+# -----------------------------------------------------------------------------
+# Functions
+# -----------------------------------------------------------------------------
+
+function search() {
+    if [ -n "$1" ] && [ -n "$2" ]
+    then
+        ll "$2" | grep "$1"
+    elif [ -n "$1" ]
+    then
+        ll . | grep "$1"
+    else
+        echo "Usage: $0 <search-expr> [search-path]"
+    fi
+}
 
 # -----------------------------------------------------------------------------
 # Aliases
@@ -137,9 +189,10 @@ alias aptinstall="sudo apt-get install"
 alias aptupstall="sudo apt-get update && sudo apt-get install"
 alias aptupgrade="sudo apt-get update && sudo apt upgrade"
 
-# Edit config aliases
-# -------------------
+# cd
+alias uni="cd $uni"
 
+# configs
 alias sshrc="v ${sshrc}"
 alias zshrc="v ${zshrc}"
 alias gitrc="v ${gitrc}"
@@ -148,18 +201,25 @@ alias nvimrc="v ${nvimrc}"
 alias tmuxrc="v ${tmuxrc}"
 alias weztermrc="v ${weztermrc}"
 
-# Docker aliases
-# --------------
-
+# docker containers
 alias plantuml-start="docker run -d -p 8080:8080 --name umlserver plantuml/plantuml-server:jetty"
-alias plantuml-stop="sudo docker stop umlserver && sudo docker rm umlserver"
+alias plantuml-stop="docker stop umlserver && docker rm umlserver"
 
-# Tool Aliases
-# --------------
+alias run-xv6="docker run -it --name xv6"
+alias stop-xv6="docker stop xv6"
 
+alias run-xv6-cs="docker run -it --name xv6-cs"
+alias stop-xv6-cs="docker stop xv6-cs"
+
+# tools
 if `where krita &> /dev/null`;
 then
     alias paint="krita"
+fi
+
+if [ -e ${jars}/bfg.jar ]; 
+then
+    alias bfg="java -jar ${jars}/bfg.jar"
 fi
 
 if [ -e ${git}/gf/gf2 ]; 
@@ -193,5 +253,8 @@ then
     alias py="python3"
     alias py3="python3"
 fi
+alias pipupgrade="python -m pip --disable-pip-version-check list --outdated --format=json | python -c 'import json, sys; print(\"\\n\".join([x['name'] for x in json.load(sys.stdin)]))' | xargs -n1 pip install -U"
 
-~/fix-wsl-runtime-dir.sh
+alias cosign="$(go env $loc/go)/bin/cosign"
+
+alias naturaldocs="/mnt/c/Program\ Files\ \(x86\)/Natural\ Docs/NaturalDocs.exe"
