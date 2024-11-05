@@ -1,1136 +1,1067 @@
 {
-    "security.workspace.trust.enabled": false,
+  "security.workspace.trust.enabled": false,
 
-    // ---------------------------------------------------------------------------
-    // Workbench and Editor Settings
-    // ---------------------------------------------------------------------------
+  "remote.downloadExtensionsLocally": true,
+  "remote.SSH.remotePlatform": {
+    "spd-xn121": "linux",
+    "spd-xn122": "linux"
+  },
 
-    "remote.downloadExtensionsLocally": true,
+  // ---------------------------------------------------------------------------
+  // Workbench and Editor Settings
+  // ---------------------------------------------------------------------------
 
-    "window.autoDetectHighContrast": false,
+  "terminal.integrated.hideOnStartup": "always",
 
-    "zenMode.showTabs": "single",
-    "zenMode.hideLineNumbers": false,
-    "zenMode.hideStatusBar": false,
+  "window.autoDetectHighContrast": true,
 
-    "explorer.autoReveal": false,
-    "explorer.openEditors.visible": 1,
-    "explorer.fileNesting.expand": false,
+  "search.followSymlinks": false,
 
-    "files.autoSave": "onWindowChange",
-    "files.insertFinalNewline": true,
-    "files.simpleDialog.enable": true,
-    "files.trimTrailingWhitespace": true,
-    "files.autoSaveWorkspaceFilesOnly": true,
+  "zenMode.showTabs": "single",
+  "zenMode.hideLineNumbers": false,
+  "zenMode.hideStatusBar": false,
 
-    "editor.tabSize": 4,
-    "editor.wordWrap": "off",
-    "editor.fontSize": 15.9,
-    "editor.lineHeight": 1.2,
-    "editor.letterSpacing": 0.0,
-    "editor.fontWeight": "normal",
-    "editor.fontLigatures": true,
-    "editor.mouseWheelZoom": true,
-    "editor.smoothScrolling": true,
-    "editor.lineNumbers": "relative",
-    "editor.cursorBlinking": "smooth",
-    "editor.guides.bracketPairs": true,
-    "editor.cursorSurroundingLines": 5,
-    "editor.renderLineHighlight": "all",
-    "editor.snippetSuggestions": "bottom",
-    "editor.scrollbar.vertical": "hidden",
-    "editor.renderWhitespace": "selection",
-    "editor.scrollbar.horizontal": "hidden",
-    "editor.renderControlCharacters": false,
-    "editor.cursorSmoothCaretAnimation": "on",
-    "editor.scrollbar.verticalScrollbarSize": 2,
-    "editor.scrollbar.horizontalScrollbarSize": 2,
-    "editor.bracketPairColorization.enabled": false,
-    "editor.fontFamily": "'0xProto Nerd Font', 'JetBrains Mono', 'Courier New', monospace",
-    "editor.codeLensFontFamily": "'0xProto Nerd Font', 'JetBrains Mono', 'Courier New', monospace",
-    "editor.minimap.enabled": false,
+  "explorer.autoReveal": false,
+  "explorer.openEditors.visible": 1,
 
-    "workbench.layoutControl.type": "menu",
-    "workbench.iconTheme": "rose-pine-icons",
-    "workbench.editor.limit.value": 1,
-    "workbench.editor.limit.enabled": true,
-    "workbench.editor.limit.perEditorGroup": true,
-    "workbench.editor.showTabs": "single",
-    "workbench.colorTheme": "Rosé Pine",
-    "workbench.statusBar.visible": true,
-    "workbench.layoutControl.enabled": false,
-    "workbench.activityBar.location": "hidden",
-    "workbench.tree.indent": 4,
-    "workbench.view.alwaysShowHeaderActions": true,
-    "workbench.editor.enablePreviewFromQuickOpen": true,
-    "workbench.settings.applyToAllProfiles": [
-        "editor.fontFamily"
-    ],
-    "workbench.editor.wrapTabs": true,
-    "workbench.editor.mouseBackForwardToNavigate": false,
-    "workbench.preferredDarkColorTheme": "Rosé Pine",
-    "workbench.preferredLightColorTheme": "Rosé Pine",
-    "workbench.preferredHighContrastLightColorTheme": "Rosé Pine",
-    "workbench.preferredHighContrastColorTheme": "Rosé Pine",
-    "workbench.commandPalette.experimental.suggestCommands": true,
-    "workbench.list.fastScrollSensitivity": 10,
-    "workbench.list.smoothScrolling": true,
-    "workbench.localHistory.maxFileEntries": 200,
-    "workbench.panel.opensMaximized": "never",
-    "workbench.reduceMotion": "on",
-    "workbench.startupEditor": "none",
+  "files.autoSave": "onWindowChange",
+  "files.insertFinalNewline": true,
+  "files.simpleDialog.enable": true,
+  "files.trimTrailingWhitespace": true,
+  "files.autoSaveWorkspaceFilesOnly": true,
 
-    "terminal.integrated.lineHeight": 1.2,
-    "terminal.integrated.minimumContrastRatio": 1,
+  "editor.tabSize": 4,
+  "editor.wordWrap": "off",
+  "editor.fontFamily": "'0xProto Nerd Font', 'JetBrainsMonoNL NFP Regular'",
+  "editor.codeLensFontFamily": "'0xProto Nerd Font', 'JetBrainsMonoNL NFP Regular'",
+  "editor.fontSize": 17.7,
+  "editor.lineHeight": 1.0,
+  "editor.letterSpacing": 0.0,
+  "editor.fontWeight": "500",
+  "editor.fontLigatures": false,
+  "editor.mouseWheelZoom": false,
+  "editor.smoothScrolling": true,
+  "editor.lineNumbers": "relative",
+  "editor.cursorBlinking": "smooth",
+  "editor.guides.bracketPairs": true,
+  "editor.cursorSurroundingLines": 10,
+  "editor.renderLineHighlight": "all",
+  "editor.snippetSuggestions": "bottom",
+  "editor.scrollbar.vertical": "hidden",
+  "editor.renderWhitespace": "selection",
+  "editor.scrollbar.horizontal": "hidden",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.scrollbar.verticalScrollbarSize": 2,
+  "editor.scrollbar.horizontalScrollbarSize": 2,
+  "editor.bracketPairColorization.enabled": false,
+  "editor.minimap.enabled": false,
 
-    "scm.inputFontFamily": "default",
+  "workbench.editor.enablePreview": false,
+  "workbench.welcomePage.walkthroughs.openOnInstall": false,
+  "workbench.layoutControl.type": "menu",
+  "workbench.iconTheme": "rose-pine-icons",
+  "workbench.editor.limit.value": 1,
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.perEditorGroup": true,
+  "workbench.editor.showTabs": "single",
+  "workbench.tree.indent": 16,
+  "workbench.view.alwaysShowHeaderActions": true,
+  "workbench.editor.enablePreviewFromQuickOpen": true,
+  "workbench.settings.applyToAllProfiles": ["editor.fontFamily"],
+  "workbench.editor.wrapTabs": true,
+  "workbench.colorTheme": "Rosé Pine",
+  "workbench.preferredDarkColorTheme": "Rosé Pine",
+  "workbench.preferredLightColorTheme": "Rosé Pine",
+  "workbench.preferredHighContrastLightColorTheme": "Rosé Pine",
+  "workbench.preferredHighContrastColorTheme": "Rosé Pine",
+  "workbench.editor.mouseBackForwardToNavigate": false,
+  "workbench.commandPalette.experimental.suggestCommands": true,
+  "workbench.list.fastScrollSensitivity": 10,
+  "workbench.list.smoothScrolling": true,
+  "workbench.localHistory.maxFileEntries": 200,
+  "workbench.panel.opensMaximized": "never",
+  "workbench.reduceMotion": "off",
+  "workbench.startupEditor": "none",
 
-    // ---------------------------------------------------------------------------
-    // Extension Settings
-    // ---------------------------------------------------------------------------
+  "terminal.integrated.lineHeight": 1.2,
+  "terminal.integrated.minimumContrastRatio": 1,
 
-    "git.autofetch": true,
-    "git.openRepositoryInParentFolders": "never",
-    "extensions.autoUpdate": "onlySelectedExtensions",
-    "extensions.autoCheckUpdates": false,
-    //"DVT.contentFilters.enable": false,
-    //"DVT.codeLens.showConstraints": false,
-    //"DVT.codeLens.expandCollapseMacros": false,
-    //"DVT.systemVerilog.refactoring.ignoreComments": false,
-    //"DVT.systemVerilog.refactoring.updateFileName": false,
-    //"DVT.automaticallyOpenConnectionWebview.enable": false,
-    //"DVT.textEditor.systemVerilog.formatting.indentation.else": "On a new line",
-    //"DVT.incrementalProfiling.displayReportIssueNotification": false,
+  "scm.inputFontFamily": "default",
 
-    // ---------------------------------------------------------------------------
-    // Vim Settings:
-    // ---------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
+  // Extension Settings
+  // ---------------------------------------------------------------------------
 
-    // Neovim Backend
-    "vim.enableNeovim": true,
-    "vim.neovimUseConfigFile": true,
+  "extensions.autoUpdate": false,
+  "extensions.autoCheckUpdates": false,
 
-    // Plugins
+  "git.autofetch": true,
+  "gitlens.showWelcomeOnInstall": false,
+  "git.openRepositoryInParentFolders": "never",
+  "gitlens.blame.compact": true,
 
-    "vim.sneak": true,
-    "vim.surround": true,
-    "vim.commentary": true,
-    "vim.easymotion": true,
-    "vim.replaceWithRegister": true,
-    "vim.camelCaseMotion.enable": true,
+  "DVT.contentFilters.enable": true,
+  "DVT.codeLens.showConstraints": false,
+  "DVT.codeLens.expandCollapseMacros": false,
+  "DVT.systemVerilog.refactoring.ignoreComments": false,
+  "DVT.systemVerilog.refactoring.updateFileName": false,
+  "DVT.textEditor.systemVerilog.formatting.indentation.else": "On a new line",
+  "DVT.incrementalProfiling.displayReportIssueNotification": false,
 
-    // Plugin Configurations
+  // ---------------------------------------------------------------------------
+  // Vim Settings:
+  // ---------------------------------------------------------------------------
 
-    "vim.sneakReplacesF": true,
-    "vim.sneakUseIgnorecaseAndSmartcase": true,
+  // Neovim Backend
+  "vim.enableNeovim": true,
+  "vim.neovimUseConfigFile": true,
 
-    // Global Behavior
+  // Plugins
 
-    "vim.visualstar": true,
-    "vim.startofline": false,
-    "vim.smartRelativeLine": true,
-    "vim.highlightedyank.enable": true,
+  "vim.sneak": true,
+  "vim.surround": true,
+  "vim.easymotion": true,
+  "vim.replaceWithRegister": true,
+  "vim.camelCaseMotion.enable": true,
 
-    // Remaps
+  // Plugin Configurations
 
-    "vim.leader": "<space>",
-    "vim.handleKeys": {
-        "<C-e>": false,
-        "<C-z>": false,
-        "<C-y>": false,
-        "<C-t>": false,
-        "<C-/>": false,
-        "<C-s>": true,
+  "vim.sneakReplacesF": true,
+  "vim.sneakUseIgnorecaseAndSmartcase": true,
+
+  // Global Behavior
+
+  "vim.showcmd": true,
+  "vim.visualstar": true,
+  "vim.startofline": false,
+  "vim.smartRelativeLine": true,
+  "vim.highlightedyank.enable": true,
+
+  // Remaps
+
+  "vim.leader": "<space>",
+  "vim.handleKeys": {
+    "<C-e>": false,
+    "<C-z>": false,
+    "<C-y>": false,
+    "<C-t>": false,
+    "<C-/>": false,
+    "<C-s>": true
+  },
+  "vim.visualModeKeyBindings": [
+    // Bind <leader>d to delete current visual selection without yanking it
+    {
+      "before": ["<leader>", "d"],
+      "after": ["\"", "_", "d"]
     },
-    "vim.visualModeKeyBindings": [
-        // Bind <leader>d to delete current visual selection without yanking it
-        {
-            "before": [ "<leader>", "d" ],
-            "after": [ "\"", "_", "d" ]
-        },
-        // <leader>c - Same as <leader>d but enters insert mode right after
-        {
-            "before": [ "<leader>", "c" ],
-            "after": [ "\"", "_", "c" ]
-        },
-        // Bind <leader>p to delete current visual selection without yanking it and paste what is currently in the yank register
-        {
-            "before": [ "<leader>", "p" ],
-            "after": [ "<leader>", "d", "P" ]
-        },
-        // Bind <leader>P to do the same as <leader>p but with a small p paste at the end instead of capital P paste
-        {
-            "before": [ "<leader>", "P" ],
-            "after": [ "<leader>", "d", "p" ]
-        },
-        // <leader>f - flip/reverse selected lines
-        {
-            "before": [ "<leader>", "f" ],
-            "commands": [ "flip.selection", ]
-        }
-    ],
-    "vim.normalModeKeyBindings": [
-        {
-            // Bind <leader>cw to delete entire word under cursor without copying it to the copy register and enter insert mode
-            "before": [ "<leader>", "c", "w" ],
-            "after": [ "\"", "_", "c", "i", "w" ]
-        },
-        {
-            // Bind <leader>cc to delete entire line under cursor without copying it to the copy register and enter insert mode
-            "before": [ "<leader>", "c", "c" ],
-            "after": [ "\"", "_", "c", "c" ]
-        },
-        {
-            // Bind <leader>dw to delete entire word under cursor without copying it to the copy register
-            "before": [ "<leader>", "d", "w" ],
-            "after": [ "\"", "_", "d", "i", "w" ]
-        },
-        {
-            // Bind <leader>dd to delete entire line under cursor without copying it to the copy register
-            "before": [ "<leader>", "d", "d" ],
-            "after": [ "\"", "_", "d", "d" ]
-        },
-        {
-            // Bind <leader>dp to delete line without copying it to the copy
-            // register and paste what is currently set in the copy register
-            // instead
-            "before": [ "<leader>", "d", "p" ],
-            "after": [ "<leader>", "d", "d", "P" ]
-        },
-        {
-            "before": [ "<leader>", "=", "A" ],
-            "commands": [
-                {
-                    "command": "vim.remap",
-                    "args": {
-                        "after": [ "A" ]
-                    }
-                },
-                {
-                    "command": "type",
-                    "args": {
-                        "text": "---------------------------------------------------------------------------"
-                    }
-                },
-            ]
-        },
-        {
-            "before": [ "<leader>", "=", "a" ],
-            "commands": [
-                {
-                    "command": "vim.remap",
-                    "args": {
-                        "after": [
-                            "a"
-                        ]
-                    }
-                },
-                {
-                    "command": "type",
-                    "args": {
-                        "text": "---------------------------------------------------------------------------"
-                    }
-                },
-            ]
-        },
-        {
-            "before": [ "<leader>", "=", "i" ],
-            "commands": [
-                {
-                    "command": "vim.remap",
-                    "args": {
-                        "after": [
-                            "i"
-                        ]
-                    }
-                },
-                {
-                    "command": "type",
-                    "args": {
-                        "text": "---------------------------------------------------------------------------"
-                    }
-                },
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "=",
-                "I"
-            ],
-            "commands": [
-                {
-                    "command": "vim.remap",
-                    "args": {
-                        "after": [
-                            "I"
-                        ]
-                    }
-                },
-                {
-                    "command": "type",
-                    "args": {
-                        "text": "---------------------------------------------------------------------------"
-                    }
-                },
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "=",
-                "k"
-            ],
-            "commands": [
-                {
-                    "command": "vim.remap",
-                    "args": {
-                        "after": [
-                            "O"
-                        ]
-                    }
-                },
-                {
-                    "command": "type",
-                    "args": {
-                        "text": "---------------------------------------------------------------------------"
-                    }
-                },
-                {
-                    "command": "vim.remap",
-                    "args": {
-                        "after": [
-                            "<Esc>"
-                        ]
-                    }
-                },
-                {
-                    "command": "vim.remap",
-                    "args": {
-                        "after": [ "g", "c", "c", "j" ]
-                    }
-                },
-            ]
-        },
-        {
-            "before": [ "<leader>", "=", "j" ],
-            "commands": [
-                {
-                    "command": "vim.remap",
-                    "args": {
-                        "after": [
-                            "o"
-                        ]
-                    }
-                },
-                {
-                    "command": "type",
-                    "args": {
-                        "text": "---------------------------------------------------------------------------"
-                    }
-                },
-                {
-                    "command": "vim.remap",
-                    "args": {
-                        "after": [
-                            "<Esc>"
-                        ]
-                    }
-                },
-                {
-                    "command": "vim.remap",
-                    "args": {
-                        "after": [ "g", "c", "c", "k" ]
-                    }
-                },
-            ]
-        },
-        {
-            "before": [ "<leader>", "=", "=" ],
-            "commands": [
-                {
-                    "command": "vim.remap",
-                    "args": {
-                        "after": [
-                            "<leader>",
-                            "=",
-                            "k"
-                        ]
-                    }
-                },
-                {
-                    "command": "vim.remap",
-                    "args": {
-                        "after": []
-                    }
-                },
-                {
-                    "command": "vim.remap",
-                    "args": {
-                        "after": [
-                            "<leader>",
-                            "=",
-                            "j"
-                        ]
-                    }
-                },
-                {
-                    "command": "vim.remap",
-                    "args": {
-                        "after": []
-                    }
-                },
-            ],
-        },
-        // <leader>- Operations //
-        {
-            // Bind <leader>- to copy the current line and paste a comment below
-            // it with dashes covering the width of the entire line
-            "before": [ "<leader>", "-" ],
-            "after": [ "y", "y", "p", "w", "v", "$", "r", "-" ]
-        },
-        {
-            // Same as remap above but wraps from above as well
-            "before": [ "<leader>", "_" ],
-            "after": [ "y", "y", "p", "w", "v", "$", "r", "-", "y", "y", "k", "P", "j" ]
-        },
-        {
-            // Bind <leader>ad to add an empty comment line under the line under cursor and then
-            // another comment line under it with an Add Description todo task
-            "before": [ "<leader>", "a", "d" ],
-            "after": [ "3", "o", " ", "<BS>", "<Esc>", "V", "2", "j", "g", "c", "j", "A" ],
-            "commands": [
-                {
-                    "command": "type",
-                    "args": {
-                        "text": "Description-TBD."
-                    }
-                },
-                {
-                    "command": "vim.remap",
-                    "args": {
-                        "after": [
-                            "<Esc>",
-                            "2",
-                            "k",
-                            "^"
-                        ]
-                    }
-                },
-            ],
-        },
-        {
-            // Bind <leader>f to add a function decleration header when cursor
-            // is on a function decl line
-            "before": [ "<leader>", "f" ],
-            "after": [ "^", "m", "*", "f", "(", "B", "y", "t", "(", "`", "*",
-                "O", " ", "<BS>", "<Esc>", "p", "I" 
-            ],
-            "commands": [
-                {
-                    "command": "type",
-                    "args": {
-                        "text": "Function: "
-                    },
-                },
-                {
-                    "command": "vim.remap",
-                    "args": {
-                        "after": [
-                            "<Esc>",
-                            "V",
-                            "g",
-                            "c",
-                            "<leader>",
-                            "a",
-                            "d"
-                        ]
-                    }
-                }
-            ],
-        },
-        {
-            // Bind <leader>t to do the same as <leader>f but for task instead
-            // of function.
-            "before": [ "<leader>", "t" ],
-            "after": [ "^", "m", "*", "f", "(", "B", "y", "t", "(", "`", "*",
-                "O", " ", "<BS>", "<Esc>", "p", "I"
-            ],
-            "commands": [
-                {
-                    "command": "type",
-                    "args": {
-                        "text": "Task: "
-                    },
-                },
-                {
-                    "command": "vim.remap",
-                    "args": {
-                        "after": [
-                            "<Esc>",
-                            "V",
-                            "g",
-                            "c",
-                            "<leader>",
-                            "a",
-                            "d"
-                        ]
-                    }
-                }
-            ],
-        },
-        {
-            // Bind <leader>c to do the same as <leader>f but for class instead
-            // of function.
-            "before": [ "<leader>", "c" ],
-            "after": [ "^", "w", "y", "i", "w", "O", "/", "/", "<space>", "C",
-                "l", "a", "s", "s", ":", "<space>", "<Esc>", "p", "<leader>",
-                "a", "d"
-            ]
-        },
-        {
-            // Bind <leader>C to print a constaint header
-            "before": [ "<leader>", "C" ],
-            "after": [ "^", "m", "*", "s", "c", "o", "W", "y", "i", "w", "`",
-                "*", "O", " ", "<BS>", "<Esc>", "p", "I"
-            ],
-            "commands": [
-                {
-                    "command": "type",
-                    "args": {
-                        "text": "Constraint: ",
-                    },
-                },
-                {
-                    "command": "vim.remap",
-                    "args": {
-                        "after": [
-                            "<Esc>",
-                            "V",
-                            "g",
-                            "c",
-                            "<leader>",
-                            "a",
-                            "d"
-                        ]
-                    }
-                }
-            ],
-        },
-        {
-            // Bind <leader>v to do the same as <leader>f but for variable
-            // instead of function.
-            "before": [ "<leader>", "v" ],
-            "after": [ "^", "m", "*", "f", ";", "B", "y", "i", "w", "`", "*",
-                "O", " ", "<BS>", "<Esc>", "p", "I"
-            ],
-            "commands": [
-                {
-                    "command": "type",
-                    "args": {
-                        "text": "Variable: ",
-                    },
-                },
-                {
-                    "command": "vim.remap",
-                    "args": {
-                        "after": [ "<Esc>", "V", "g", "c", "<leader>", "a", "d" ]
-                    }
-                }
-            ]
-        },
-        {
-            // Bind <leader>T to do the same as <leader>f but for Typedef
-            // instead of function.
-            "before": [ "<leader>", "T" ],
-            "after": [ "^", "m", "*", "f", ";", "B", "y", "i", "w", "`", "*",
-                "O", " ", "<BS>", "<Esc>", "p", "I"
-            ],
-            "commands": [
-                {
-                    "command": "type",
-                    "args": {
-                        "text": "Type: "
-                    },
-                },
-                {
-                    "command": "vim.remap",
-                    "args": {
-                        "after": [ "<Esc>", "V", "g", "c", "<leader>", "a", "d" ]
-                    }
-                }
-            ]
-        },
-        {
-            // Bind <leader>i to add a function implementation header when
-            // cursor is on a function decl line
-            "before": [ "<leader>", "i" ],
-            "after": [ "<Esc>", "^", "m", "*", "f", "(", "b", "y", "t", "(",
-                "`", "*", "2", "O", "<Esc>", "k", "p", "g", "c", "c",
-                "<leader>", "-" 
-            ]
-        },
-        // <leader>u Operations //
-        {
-            // Bind <leader>uf to update the function name of the current
-            // function declaration header - cursor should be on the function
-            // decleration, not header.
-            "before": [ "<leader>", "u", "f" ],
-            "after": [ "^", "m", "*", "f", "(", "B", "y", "t", "(", "`", "*",
-                "F", ";", "f", ":", "B", "\"", "_", "C", "<Esc>", "p", "B", "i"
-            ],
-            "commands": [
-                {
-                    "command": "type",
-                    "args": {
-                        "text": "Function: "
-                    },
-                },
-            ]
-        },
-        {
-            // Bind <leader>ut to do the same as <leader>uf but for task
-            "before": [ "<leader>", "u", "t" ],
-            "after": [ "^", "m", "*", "f", "(", "B", "y", "t", "(", "`", "*",
-                "F", ";", "f", ":", "B", "\"", "_", "C", "<Esc>", "p", "B", "i"
-            ],
-            "commands": [
-                {
-                    "command": "type",
-                    "args": {
-                        "text": "Task: "
-                    },
-                },
-            ]
-        },
-        {
-            // Bind <leader>uc to do the same as <leader>uf but for class
-            "before": [ "<leader>", "u", "c" ],
-            "after": [ "^", "w", "y", "i", "w", "g", "g", "/", "C", "l", "a",
-                "s", "s", ":", "<CR>", "f", ":", "w", "<leader>", "d", "w", "p"
-            ]
-        },
-        {
-            // Bind <leader>uv to do the same as <leader>uf but for variable
-            "before": [ "<leader>", "u", "v" ],
-            "after": [ "^", "m", "*", "f", ";", "B", "y", "i", "w", "`", "*",
-                "F", ";", "f", ":", "B", "\"", "_", "C", "<Esc>", "p", "B", "i"
-            ],
-            "commands": [
-                {
-                    "command": "type",
-                    "args": {
-                        "text": "Variable: "
-                    },
-                },
-            ]
-        },
-        {
-            // Bind <leader>uT to do the same as <leader>uf but for Type
-            "before": [ "<leader>", "u", "T" ],
-            "after": [ "^", "m", "*", "f", ";", "B", "y", "i", "w", "`", "*",
-                "F", ";", "f", ":", "B", "\"", "_", "C", "<Esc>", "p", "B", "i"
-            ],
-            "commands": [
-                {
-                    "command": "type",
-                    "args": {
-                        "text": "Type: "
-                    },
-                },
-            ]
-        },
-        {
-            // Bind <leader>ui to update the function name of the current function implementation header - cursor should be on the function decleration, not header.
-            "before": [
-                "<leader>",
-                "u",
-                "i"
-            ],
-            "after": [
-                "^",
-                "m",
-                "*",
-                "S",
-                "-",
-                "-",
-                "S",
-                "/",
-                "/",
-                "\"",
-                "_",
-                "d",
-                "k",
-                "<leader>",
-                "i"
-            ]
-        },
-        {
-            // Keep centered when scrolling up/down witn Ctrl-D/Ctrl-U
-            "before": [
-                "C-d"
-            ],
-            "after": [
-                "C-d",
-                "z",
-                "z",
-                "z",
-                "v"
-            ],
-        },
-        {
-            "before": [
-                "C-u"
-            ],
-            "after": [
-                "C-u",
-                "z",
-                "z",
-                "z",
-                "v"
-            ],
-        },
-        {
-            "before": [
-                "{"
-            ],
-            "after": [
-                "{",
-                "z",
-                "z",
-                "z",
-                "v"
-            ]
-        },
-        {
-            "before": [
-                "}"
-            ],
-            "after": [
-                "}",
-                "z",
-                "z",
-                "z",
-                "v"
-            ]
-        },
-        {
-            // Keep centered when searching with n/N
-            "before": [
-                "n"
-            ],
-            "after": [
-                "n",
-                "z",
-                "z",
-                "z",
-                "v"
-            ]
-        },
-        {
-            "before": [
-                "N"
-            ],
-            "after": [
-                "N",
-                "z",
-                "z",
-                "z",
-                "v"
-            ]
-        },
-        {
-            "before": [
-                "K"
-            ],
-            "commands": [
-                {
-                    "command": "editor.action.showHover",
-                    "when": "editorTextFocus"
-                },
-            ],
-        },
-        {
-            "before": [
-                "g",
-                "s"
-            ],
-            "commands": [
-                {
-                    "command": "workbench.action.toggleAuxiliaryBar"
-                }
-            ]
-        },
-        {
-            "before": [
-                "g",
-                "r"
-            ],
-            "commands": [
-                {
-                    "command": "editor.action.goToReferences",
-                    "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
-                },
-            ],
-        },
-        {
-            "before": [
-                "g",
-                "i"
-            ],
-            "commands": [
-                {
-                    "command": "editor.action.peekImplementation",
-                    "when": "editorHasImplementationProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
-                },
-            ],
-        },
-        {
-            "before": ["<leader>", "s"],
-            "after": [":", "%", "s", "/", "\\", "<", "<C-r>", "<C-w>", "\\", ">", "/", "<C-r>", "<C-w>", "/", "g", "I", "<Left>", "<Left>", "<Left>"]
-        },
-        {
-            // <leader>] - go to next problem in file
-            "before": [
-                "<leader>",
-                "]"
-            ],
-            "commands": [
-                "editor.action.marker.next",
-            ],
-        },
-        {
-            // <leader>[ - go to previous problem in file
-            "before": [
-                "<leader>",
-                "["
-            ],
-            "commands": [
-                "editor.action.marker.prev",
-            ],
-        },
-        {
-            "before": [
-                "<leader>",
-                "z"
-            ],
-            "commands": [
-                "workbench.action.toggleZenMode",
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "Z"
-            ],
-            "commands": [
-                "workbench.action.toggleMaximizeEditorGroup"
-            ]
-        },
-        {
-            // <leader>pv - Open/Close File explorer
-            "before": [
-                "<leader>",
-                "p",
-                "v"
-            ],
-            "commands": [
-                "workbench.action.toggleSidebarVisibility",
-            ]
-        },
-        {
-            // <leader>pf - Reveal file in file explorer
-            "before": [
-                "<leader>",
-                "p",
-                "f"
-            ],
-            "commands": [
-                "revealInExplorer",
-            ]
-        },
-        {
-            // <leader>l - Jump to window on the left
-            "before": [
-                "<leader>",
-                "l"
-            ],
-            "after": [
-                "ctrl+w",
-                "l"
-            ]
-        },
-        {
-            // <leader>h - Jump to window on the right
-            "before": [
-                "<leader>",
-                "h"
-            ],
-            "after": [
-                "ctrl+w",
-                "h"
-            ]
-        },
-        {
-            // <leader>k - Jump to window on the right
-            "before": [
-                "<leader>",
-                "k"
-            ],
-            "after": [
-                "ctrl+w",
-                "k"
-            ]
-        },
-        {
-            // <leader>j - Jump to window on the right
-            "before": [
-                "<leader>",
-                "j"
-            ],
-            "after": [
-                "ctrl+w",
-                "j"
-            ]
-        },
-        {
-            // <leader>gd - Goto Declaration
-            "before": [
-                "<leader>",
-                "g",
-                "d"
-            ],
-            "commands": [
-                "editor.action.revealDeclaration",
-            ]
-        },
-    ],
-    "vim.insertModeKeyBindings": [
-        {
-            "before": [
-                "C-h"
-            ],
-            "commands": [
-                {
-                    "command": "editor.action.triggerParameterHints",
-                    "when": "editorHasSignatureHelpProvider && editorTextFocus"
-                },
-            ],
-        },
-    ],
+    // <leader>c - Same as <leader>d but enters insert mode right after
+    {
+      "before": ["<leader>", "c"],
+      "after": ["\"", "_", "c"]
+    },
+    // Bind <leader>p to delete current visual selection without yanking it and paste what is currently in the yank register
+    {
+      "before": ["<leader>", "p"],
+      "after": ["<leader>", "d", "P"]
+    },
+    // Bind <leader>P to do the same as <leader>p but with a small p paste at the end instead of capital P paste
+    {
+      "before": ["<leader>", "P"],
+      "after": ["<leader>", "d", "p"]
+    },
+    // <leader>f - flip/reverse selected lines
+    {
+      "before": ["<leader>", "f"],
+      "commands": ["flip.selection"]
+    }
+  ],
 
-    "workbench.colorCustomizations": {
-        "[Rosé Pine]": {
-            "sideBar.background": "#181926",
-            "editor.background": "#24273a",
-            "editorGutter.background": "#1e2030"
-        }
+  "vim.normalModeKeyBindings": [
+    {
+      // Bind <leader>cw to delete entire word under cursor without copying it to the copy register and enter insert mode
+      "before": ["<leader>", "c", "w"],
+      "after": ["\"", "_", "c", "i", "w"]
     },
-    "editor.tokenColorCustomizations": {
-        "[Rosé Pine]": {
-            "textMateRules": [
-                {
-                    "name": "super&this",
-                    "scope": "variable.language",
-                    "settings": {
-                        "foreground": "#ed8796",
-                        "fontStyle": "italic"
-                    }
-                },
-                {
-                    "name": "uvm-macro",
-                    "scope": "support.function.uvm.macro.systemverilog",
-                    "settings": {
-                        "foreground": "#ca9ee6",
-                        "fontStyle": "italic"
-                    }
-                },
-                {
-                    "name": "uvm-macro-user-defined",
-                    "scope": "support.function.uvm-user-defined-macro.systemverilog",
-                    "settings": {
-                        "foreground": "#ca9ee6",
-                        "fontStyle": "italic"
-                    }
-                },
-                {
-                    "name": "method-or-member-method",
-                    "scope": "support.function",
-                    "settings": {
-                        "foreground": "#eebebe",
-                        "fontStyle": "italic"
-                    }
-                },
-                {
-                    "name": "static member",
-                    "scope": "variable.other.enummember",
-                    "settings": {
-                        "foreground": "#c6a0f6",
-                        "fontStyle": ""
-                    },
-                },
-                {
-                    "name": "member-fields",
-                    "scope": "variable.other.property",
-                    "settings": {
-                        "foreground": "#e0def4",
-                        "fontStyle": "italic"
-                    }
-                },
-                {
-                    "name": "argument",
-                    "scope": "variable.parameter",
-                    "settings": {
-                        "foreground": "#e0def4",
-                        "fontStyle": ""
-                    },
-                },
-                {
-                    "name": "function-variable",
-                    "scope": "variable.other.readwrite",
-                    "settings": {
-                        "foreground": "#e0def4",
-                        "fontStyle": ""
-                    },
-                },
-                {
-                    "name": "argument-property",
-                    "scope": "meta.function.systemverilog",
-                    "settings": {
-                        "foreground": "#e0def4",
-                        "fontStyle": "italic"
-                    },
-                },
-                {
-                    "name": "comment",
-                    "scope": "comment",
-                    "settings": {
-                        "foreground": "#939ab7",
-                        "fontStyle": "italic"
-                    },
-                },
-                {
-                    "name": "any-punctuation",
-                    "scope": "punctuation.*",
-                    "settings": {
-                        "foreground": "#939ab7",
-                        "fontStyle": "italic"
-                    },
-                },
-                {
-                    "name": "arithmetic-operator",
-                    "scope": "keyword.operator.arithmetic.systemverilog",
-                    "settings": {
-                        "foreground": "#939ab7",
-                        "fontStyle": "italic"
-                    },
-                },
-                {
-                    "name": "logical-operator",
-                    "scope": "keyword.operator.logical.systemverilog",
-                    "settings": {
-                        "foreground": "#939ab7",
-                        "fontStyle": "italic"
-                    },
-                },
-                {
-                    "name": "assignment-operator",
-                    "scope": "keyword.operator.assignment.systemverilog",
-                    "settings": {
-                        "foreground": "#939ab7",
-                        "fontStyle": "italic"
-                    },
-                },
-                {
-                    "name": "event",
-                    "scope": "variable.other.event",
-                    "settings": {
-                        "foreground": "#8aadf4",
-                        "fontStyle": "italic"
-                    },
-                },
-                {
-                    "name": "namespace",
-                    "scope": "entity.name.namespaces.systemverilog",
-                    "settings": {
-                        "foreground": "#85c1dc",
-                        "fontStyle": ""
-                    },
-                },
-                {
-                    "name": "constraint",
-                    "scope": "entity.name.constraint.systemverilog",
-                    "settings": {
-                        "foreground": "#eebebe",
-                        "fontStyle": "italic"
-                    },
-                },
-                {
-                    "name": "static-member",
-                    "scope": "entity.name.namespace",
-                    "settings": {
-                        "foreground": "#f6c177",
-                        "fontStyle": ""
-                    },
-                },
-                {
-                    "name": "built-in-liteal",
-                    "scope": "constant.numeric.general.systemverilog",
-                    "settings": {
-                        "foreground": "#f6c177",
-                        "fontStyle": "italic"
-                    },
-                },
-                {
-                    "name": "enum-member",
-                    "scope": "entity.name.function.preprocessor",
-                    "settings": {
-                        "foreground": "#f6c177",
-                        "fontStyle": "italic"
-                    },
-                },
-                {
-                    "name": "builtin-type-void",
-                    "scope": "constant.language",
-                    "settings": {
-                        "foreground": "#31748F",
-                        "fontStyle": ""
-                    },
-                },
-                {
-                    "name": "builtin-types",
-                    "scope": "storage.type.variable.systemverilog",
-                    "settings": {
-                        "foreground": "#31748F",
-                        "fontStyle": ""
-                    },
-                },
-                {
-                    "name": "keyword-function",
-                    "scope": "storage.type.function.systemverilog",
-                    "settings": {
-                        "foreground": "#31748F",
-                        "fontStyle": ""
-                    },
-                },
-                {
-                    "name": "control-flow-keywords",
-                    "scope": "keyword.control.conditional.systemverilog",
-                    "settings": {
-                        "foreground": "#31748F",
-                        "fontStyle": ""
-                    }
-                },
-                {
-                    "name": "control-flow-block-keywords",
-                    "scope": "keyword.control.systemverilog",
-                    "settings": {
-                        "foreground": "#31748F",
-                        "fontStyle": ""
-                    }
-                },
-            ],
-        }
+    {
+      // Bind <leader>cc to delete entire line under cursor without copying it to the copy register and enter insert mode
+      "before": ["<leader>", "c", "c"],
+      "after": ["\"", "_", "c", "c"]
     },
-    "workbench.editor.enablePreview": false,
+    {
+      // Bind <leader>dw to delete entire word under cursor without copying it to the copy register
+      "before": ["<leader>", "d", "w"],
+      "after": ["\"", "_", "d", "i", "w"]
+    },
+    {
+      // Bind <leader>dd to delete entire line under cursor without copying it to the copy register
+      "before": ["<leader>", "d", "d"],
+      "after": ["\"", "_", "d", "d"]
+    },
+    {
+      // Bind <leader>dp to delete line without copying it to the copy
+      // register and paste what is currently set in the copy register
+      // instead
+      "before": ["<leader>", "d", "p"],
+      "after": ["<leader>", "d", "d", "P"]
+    },
+    {
+      "before": ["<leader>", "=", "A"],
+      "commands": [
+        {
+          "command": "vim.remap",
+          "args": {
+            "after": ["A"]
+          }
+        },
+        {
+          "command": "type",
+          "args": {
+            "text": "---------------------------------------------------------------------------"
+          }
+        }
+      ]
+    },
+    {
+      "before": ["<leader>", "=", "a"],
+      "commands": [
+        {
+          "command": "vim.remap",
+          "args": {
+            "after": ["a"]
+          }
+        },
+        {
+          "command": "type",
+          "args": {
+            "text": "---------------------------------------------------------------------------"
+          }
+        }
+      ]
+    },
+    {
+      "before": ["<leader>", "=", "i"],
+      "commands": [
+        {
+          "command": "vim.remap",
+          "args": {
+            "after": ["i"]
+          }
+        },
+        {
+          "command": "type",
+          "args": {
+            "text": "---------------------------------------------------------------------------"
+          }
+        }
+      ]
+    },
+    {
+      "before": ["<leader>", "=", "I"],
+      "commands": [
+        {
+          "command": "vim.remap",
+          "args": {
+            "after": ["I"]
+          }
+        },
+        {
+          "command": "type",
+          "args": {
+            "text": "---------------------------------------------------------------------------"
+          }
+        }
+      ]
+    },
+    {
+      "before": ["<leader>", "=", "k"],
+      "commands": [
+        {
+          "command": "vim.remap",
+          "args": {
+            "after": ["O"]
+          }
+        },
+        {
+          "command": "type",
+          "args": {
+            "text": "---------------------------------------------------------------------------"
+          }
+        },
+        {
+          "command": "vim.remap",
+          "args": {
+            "after": ["<Esc>"]
+          }
+        },
+        {
+          "command": "vim.remap",
+          "args": {
+            "after": ["g", "c", "c", "j"]
+          }
+        }
+      ]
+    },
+    {
+      "before": ["<leader>", "=", "j"],
+      "commands": [
+        {
+          "command": "vim.remap",
+          "args": {
+            "after": ["o"]
+          }
+        },
+        {
+          "command": "type",
+          "args": {
+            "text": "---------------------------------------------------------------------------"
+          }
+        },
+        {
+          "command": "vim.remap",
+          "args": {
+            "after": ["<Esc>"]
+          }
+        },
+        {
+          "command": "vim.remap",
+          "args": {
+            "after": ["g", "c", "c", "k"]
+          }
+        }
+      ]
+    },
+    {
+      "before": ["<leader>", "=", "="],
+      "commands": [
+        {
+          "command": "vim.remap",
+          "args": {
+            "after": ["<leader>", "=", "k"]
+          }
+        },
+        {
+          "command": "vim.remap",
+          "args": {
+            "after": []
+          }
+        },
+        {
+          "command": "vim.remap",
+          "args": {
+            "after": ["<leader>", "=", "j"]
+          }
+        },
+        {
+          "command": "vim.remap",
+          "args": {
+            "after": []
+          }
+        }
+      ]
+    },
+    // <leader>- Operations //
+    {
+      // Bind <leader>- to copy the current line and paste a comment below
+      // it with dashes covering the width of the entire line
+      "before": ["<leader>", "-"],
+      "after": ["y", "y", "p", "w", "v", "$", "r", "-"]
+    },
+    {
+      // Same as remap above but wraps from above as well
+      "before": ["<leader>", "_"],
+      "after": ["y", "y", "p", "w", "v", "$", "r", "-", "y", "y", "k", "P", "j"]
+    },
+    {
+      // Bind <leader>ad to add an empty comment line under the line under cursor and then
+      // another comment line under it with an Add Description todo task
+      "before": ["<leader>", "a", "d"],
+      "after": [
+        "3", "o", " ", "<BS>", "<Esc>", "V", "2", "j", "g", "c", "j", "A"
+      ],
+      "commands": [
+        {
+          "command": "type",
+          "args": {
+            "text": "Description-TBD."
+          }
+        },
+        {
+          "command": "vim.remap",
+          "args": {
+            "after": ["<Esc>", "2", "k", "^"]
+          }
+        }
+      ]
+    },
+    {
+      "before": ["<leader>", "m"],
+      "after": [
+        "m", "m", "^", "s", "`", "d", "W", "y", "i", "w", "`", "m", "O", ":", " ",
+        "<Esc>", "p", "I"
+      ],
+      "commands": [
+        {
+          "command": "type",
+          "args": {
+            "text": "Macro"
+          }
+        },
+        {
+          "command": "vim.remap",
+          "args": {
+            "after": ["<Esc>", "V", "g", "c", "<leader>", "a", "d"]
+          }
+        }
+      ]
+    },
+    {
+      // Bind <leader>f to add a function decleration header when cursor
+      // is on a function decl line
+      "before": ["<leader>", "f"],
+      "after": [
+        "^", "m", "*", "f", "(", "B", "y", "t", "(", "`", "*", "O", " ", "<BS>",
+        "<Esc>", "p", "I"
+      ],
+      "commands": [
+        {
+          "command": "type",
+          "args": {
+            "text": "Function: "
+          }
+        },
+        {
+          "command": "vim.remap",
+          "args": {
+            "after": ["<Esc>", "V", "g", "c", "<leader>", "a", "d"]
+          }
+        }
+      ]
+    },
+    {
+      // Bind <leader>t to do the same as <leader>f but for task instead
+      // of function.
+      "before": ["<leader>", "t"],
+      "after": [
+        "^", "m", "*", "f", "(", "B", "y", "t", "(", "`", "*", "O", " ", "<BS>",
+        "<Esc>", "p", "I"
+      ],
+      "commands": [
+        {
+          "command": "type",
+          "args": {
+            "text": "Task: "
+          }
+        },
+        {
+          "command": "vim.remap",
+          "args": {
+            "after": ["<Esc>", "V", "g", "c", "<leader>", "a", "d"]
+          }
+        }
+      ]
+    },
+    {
+      // Bind <leader>c to do the same as <leader>f but for class instead
+      // of function.
+      "before": ["<leader>", "c"],
+      "after": [
+        "^", "w", "y", "i", "w", "O", "/", "/", "<space>", "C", "l", "a", "s",
+        "s", ":", "<space>", "<Esc>", "p", "<leader>", "a", "d"
+      ]
+    },
+    {
+      // Bind <leader>C to print a constaint header
+      "before": ["<leader>", "C"],
+      "after": [
+        "^", "m", "*", "s", "c", "o", "W", "y", "i", "w", "`", "*", "O", " ",
+        "<BS>", "<Esc>", "p", "I"
+      ],
+      "commands": [
+        {
+          "command": "type",
+          "args": {
+            "text": "Constraint: "
+          }
+        },
+        {
+          "command": "vim.remap",
+          "args": {
+            "after": ["<Esc>", "V", "g", "c", "<leader>", "a", "d"]
+          }
+        }
+      ]
+    },
+    {
+      // Bind <leader>v to do the same as <leader>f but for variable
+      // instead of function.
+      "before": ["<leader>", "v"],
+      "after": [
+        "^", "m", "*", "f", ";", "B", "y", "i", "w", "`", "*", "O", " ", "<BS>",
+        "<Esc>", "p", "I"
+      ],
+      "commands": [
+        {
+          "command": "type",
+          "args": {
+            "text": "Variable: "
+          }
+        },
+        {
+          "command": "vim.remap",
+          "args": {
+            "after": ["<Esc>", "V", "g", "c", "<leader>", "a", "d"]
+          }
+        }
+      ]
+    },
+    {
+      // Bind <leader>T to do the same as <leader>f but for Typedef
+      // instead of function.
+      "before": ["<leader>", "T"],
+      "after": [
+        "^", "m", "*", "f", ";", "B", "y", "i", "w", "`", "*", "O", " ", "<BS>",
+        "<Esc>", "p", "I"
+      ],
+      "commands": [
+        {
+          "command": "type",
+          "args": {
+            "text": "Type: "
+          }
+        },
+        {
+          "command": "vim.remap",
+          "args": {
+            "after": ["<Esc>", "V", "g", "c", "<leader>", "a", "d"]
+          }
+        }
+      ]
+    },
+    {
+      // Bind <leader>i to add a function implementation header when
+      // cursor is on a function decl line
+      "before": ["<leader>", "i"],
+      "after": [
+        "<Esc>", "^", "m", "*", "f", "(", "b", "y", "t", "(", "`", "*", "2",
+        "O", "<Esc>", "k", "p", "g", "c", "c", "<leader>", "-"
+      ]
+    },
+    {
+      // Bind <leader>i to add a function implementation header when
+      // cursor is on a function decl line
+      "before": ["<leader>", "C", "i"],
+      "after": [
+        "<Esc>", "^", "m", "m", "f", "{", "b", "y", "t", "{", "`", "m", "2",
+        "O", "<Esc>", "k", "p", "g", "c", "c", "<leader>", "-"
+      ]
+    },
+    // <leader>u Operations //
+    {
+      // Bind <leader>uf to update the function name of the current
+      // function declaration header - cursor should be on the function
+      // decleration, not header.
+      "before": ["<leader>", "u", "f"],
+      "after": [
+        "^", "m", "*", "f", "(", "B", "y", "t", "(", "`", "*", "F", ";", "f",
+        ":", "B", "\"", "_", "C", "<Esc>", "p", "B", "i"
+      ],
+      "commands": [
+        {
+          "command": "type",
+          "args": {
+            "text": "Function: "
+          }
+        }
+      ]
+    },
+    {
+      // Bind <leader>ut to do the same as <leader>uf but for task
+      "before": ["<leader>", "u", "t"],
+      "after": [
+        "^", "m", "*", "f", "(", "B", "y", "t", "(", "`", "*", "F", ";", "f",
+        ":", "B", "\"", "_", "C", "<Esc>", "p", "B", "i"
+      ],
+      "commands": [
+        {
+          "command": "type",
+          "args": {
+            "text": "Task: "
+          }
+        }
+      ]
+    },
+    {
+      // Bind <leader>uc to do the same as <leader>uf but for class
+      "before": ["<leader>", "u", "c"],
+      "after": [
+        "^", "w", "y", "i", "w", "g", "g", "/", "C", "l", "a", "s", "s", ":",
+        "<CR>", "f", ":", "w", "<leader>", "d", "w", "p"
+      ]
+    },
+    {
+      // Bind <leader>uv to do the same as <leader>uf but for variable
+      "before": ["<leader>", "u", "v"],
+      "after": [
+        "^", "m", "*", "f", ";", "B", "y", "i", "w", "`", "*", "F", ";", "f",
+        ":", "B", "\"", "_", "C", "<Esc>", "p", "B", "i"
+      ],
+      "commands": [
+        {
+          "command": "type",
+          "args": {
+            "text": "Variable: "
+          }
+        }
+      ]
+    },
+    {
+      // Bind <leader>uT to do the same as <leader>uf but for Type
+      "before": ["<leader>", "u", "T"],
+      "after": [
+        "^", "m", "*", "f", ";", "B", "y", "i", "w", "`", "*", "F", ";", "f",
+        ":", "B", "\"", "_", "C", "<Esc>", "p", "B", "i"
+      ],
+      "commands": [
+        {
+          "command": "type",
+          "args": {
+            "text": "Type: "
+          }
+        }
+      ]
+    },
+    {
+      // Bind <leader>ui to update the function name of the current function implementation header - cursor should be on the function decleration, not header.
+      "before": ["<leader>", "u", "i"],
+      "after": [
+        "^", "m", "*", "S", "-", "-", "S", "/", "/", "\"", "_", "d", "k",
+        "<leader>", "i"
+      ]
+    },
+    {
+      // Keep centered when scrolling up/down witn Ctrl-D/Ctrl-U
+      "before": ["C-d"],
+      "after": ["C-d", "z", "z", "z", "v"]
+    },
+    {
+      "before": ["C-u"],
+      "after": ["C-u", "z", "z", "z", "v"]
+    },
+    {
+      "before": ["{"],
+      "after": ["{", "z", "z", "z", "v"]
+    },
+    {
+      "before": ["}"],
+      "after": ["}", "z", "z", "z", "v"]
+    },
+    {
+      // Keep centered when searching with n/N
+      "before": ["n"],
+      "after": ["n", "z", "z", "z", "v"]
+    },
+    {
+      "before": ["N"],
+      "after": ["N", "z", "z", "z", "v"]
+    },
+    {
+      "before": ["K"],
+      "commands": [
+        {
+          "command": "editor.action.showHover",
+          "when": "editorTextFocus"
+        }
+      ]
+    },
+    {
+      "before": ["g", "s"],
+      "commands": [
+        {
+          "command": "workbench.action.toggleAuxiliaryBar"
+        }
+      ]
+    },
+    {
+      "before": ["g", "r"],
+      "commands": [
+        {
+          "command": "editor.action.goToReferences",
+          "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+        }
+      ]
+    },
+    {
+      "before": ["g", "i"],
+      "commands": [
+        {
+          "command": "editor.action.peekImplementation",
+          "when": "editorHasImplementationProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+        }
+      ]
+    },
+    {
+      "before": ["<leader>", "s"],
+      "after": [
+        ":", "%", "s", "/", "\\", "<", "<C-r>", "<C-w>", "\\", ">", "/",
+        "<C-r>", "<C-w>", "/", "g", "I", "<Left>", "<Left>", "<Left>" ]
+    },
+    {
+      // <leader>] - go to next problem in file
+      "before": ["d", "]"],
+      "commands": ["editor.action.marker.next"]
+    },
+    {
+      // <leader>[ - go to previous problem in file
+      "before": ["d", "["],
+      "commands": ["editor.action.marker.prev"]
+    },
+    {
+      // <leader>] - go to next problem in file
+      "before": ["<leader>", "]"],
+      "commands": ["editor.action.marker.next"]
+    },
+    {
+      // <leader>[ - go to previous problem in file
+      "before": ["<leader>", "["],
+      "commands": ["editor.action.marker.prev"]
+    },
+    {
+      "before": ["<leader>", "z"],
+      "commands": ["workbench.action.toggleZenMode"]
+    },
+    {
+      "before": ["<leader>", "Z"],
+      "commands": ["workbench.action.toggleMaximizeEditorGroup"]
+    },
+    {
+      // <leader>pv - Open/Close File explorer
+      "before": ["<leader>", "p", "v"],
+      "commands": ["workbench.action.toggleSidebarVisibility"]
+    },
+    {
+      // <leader>pf - Reveal file in file explorer
+      "before": ["<leader>", "p", "f"],
+      "commands": ["revealInExplorer"]
+    },
+    {
+      // <leader>l - Jump to window on the left
+      "before": ["<leader>", "l"],
+      "after": ["ctrl+w", "l"]
+    },
+    {
+      // <leader>h - Jump to window on the right
+      "before": ["<leader>", "h"],
+      "after": ["ctrl+w", "h"]
+    },
+    {
+      // <leader>k - Jump to window on the right
+      "before": ["<leader>", "k"],
+      "after": ["ctrl+w", "k"]
+    },
+    {
+      // <leader>j - Jump to window on the right
+      "before": ["<leader>", "j"],
+      "after": ["ctrl+w", "j"]
+    },
+    {
+      // <leader>gd - Goto Declaration
+      "before": ["<leader>", "g", "d"],
+      "commands": ["editor.action.revealDeclaration"]
+    }
+  ],
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["C-h"],
+      "commands": [
+        {
+          "command": "editor.action.triggerParameterHints",
+          "when": "editorHasSignatureHelpProvider && editorTextFocus"
+        }
+      ]
+    }
+  ],
+
+  // ---------------------------------------------------------------------------
+  // Color Settings
+  // ---------------------------------------------------------------------------
+
+  "workbench.colorCustomizations": {
+    "[Rosé Pine]": {
+      "sideBar.background": "#181926",
+      "editor.background": "#24273a",
+      "editorGutter.background": "#1e2030"
+    }
+  },
+  "editor.tokenColorCustomizations": {
+    "[Rosé Pine]": {
+      "textMateRules": [
+        {
+          "name": "super&this",
+          "scope": "variable.language",
+          "settings": {
+            "foreground": "#ed8796",
+            "fontStyle": ""
+          }
+        },
+        {
+          "name": "uvm-macro",
+          "scope": "support.function.uvm.macro.systemverilog",
+          "settings": {
+            "foreground": "#ca9ee6",
+            "fontStyle": ""
+          }
+        },
+        {
+          "name": "uvm-macro-user-defined",
+          "scope": "support.function.uvm-user-defined-macro.systemverilog",
+          "settings": {
+            "foreground": "#ca9ee6",
+            "fontStyle": ""
+          }
+        },
+        {
+          "name": "method-or-member-method",
+          "scope": "support.function",
+          "settings": {
+            "foreground": "#eebebe",
+            "fontStyle": ""
+          }
+        },
+        {
+          "name": "static member",
+          "scope": "variable.other.enummember",
+          "settings": {
+            "foreground": "#c6a0f6",
+            "fontStyle": ""
+          }
+        },
+        {
+          "name": "member-fields",
+          "scope": "variable.other.property",
+          "settings": {
+            "foreground": "#e0def4",
+            "fontStyle": ""
+          }
+        },
+        {
+          "name": "argument",
+          "scope": "variable.parameter",
+          "settings": {
+            "foreground": "#e0def4",
+            "fontStyle": ""
+          }
+        },
+        {
+          "name": "function-variable",
+          "scope": "variable.other.readwrite",
+          "settings": {
+            "foreground": "#e0def4",
+            "fontStyle": ""
+          }
+        },
+        {
+          "name": "argument-property",
+          "scope": "meta.function.systemverilog",
+          "settings": {
+            "foreground": "#e0def4",
+            "fontStyle": ""
+          }
+        },
+        {
+          "name": "comment",
+          "scope": "comment",
+          "settings": {
+            "foreground": "#939ab7",
+            "fontStyle": ""
+          }
+        },
+        {
+          "name": "any-punctuation",
+          "scope": "punctuation.*",
+          "settings": {
+            "foreground": "#939ab7",
+            "fontStyle": ""
+          }
+        },
+        {
+          "name": "arithmetic-operator",
+          "scope": "keyword.operator.arithmetic.systemverilog",
+          "settings": {
+            "foreground": "#939ab7",
+            "fontStyle": ""
+          }
+        },
+        {
+          "name": "logical-operator",
+          "scope": "keyword.operator.logical.systemverilog",
+          "settings": {
+            "foreground": "#939ab7",
+            "fontStyle": ""
+          }
+        },
+        {
+          "name": "assignment-operator",
+          "scope": "keyword.operator.assignment.systemverilog",
+          "settings": {
+            "foreground": "#939ab7",
+            "fontStyle": ""
+          }
+        },
+        {
+          "name": "event",
+          "scope": "variable.other.event",
+          "settings": {
+            "foreground": "#8aadf4",
+            "fontStyle": ""
+          }
+        },
+        {
+          "name": "namespace",
+          "scope": "entity.name.namespaces.systemverilog",
+          "settings": {
+            "foreground": "#85c1dc",
+            "fontStyle": ""
+          }
+        },
+        {
+          "name": "constraint",
+          "scope": "entity.name.constraint.systemverilog",
+          "settings": {
+            "foreground": "#eebebe",
+            "fontStyle": ""
+          }
+        },
+        {
+          "name": "static-member",
+          "scope": "entity.name.namespace",
+          "settings": {
+            "foreground": "#f6c177",
+            "fontStyle": ""
+          }
+        },
+        {
+          "name": "built-in-liteal",
+          "scope": "constant.numeric.general.systemverilog",
+          "settings": {
+            "foreground": "#f6c177",
+            "fontStyle": ""
+          }
+        },
+        {
+          "name": "enum-member",
+          "scope": "entity.name.function.preprocessor",
+          "settings": {
+            "foreground": "#f6c177",
+            "fontStyle": ""
+          }
+        },
+        {
+          "name": "builtin-type-void",
+          "scope": "constant.language",
+          "settings": {
+            "foreground": "#31748F",
+            "fontStyle": ""
+          }
+        },
+        {
+          "name": "builtin-types",
+          "scope": "storage.type.variable.systemverilog",
+          "settings": {
+            "foreground": "#31748F",
+            "fontStyle": ""
+          }
+        },
+        {
+          "name": "keyword-function",
+          "scope": "storage.type.function.systemverilog",
+          "settings": {
+            "foreground": "#31748F",
+            "fontStyle": ""
+          }
+        },
+        {
+          "name": "control-flow-keywords",
+          "scope": "keyword.control.conditional.systemverilog",
+          "settings": {
+            "foreground": "#31748F",
+            "fontStyle": ""
+          }
+        },
+        {
+          "name": "control-flow-block-keywords",
+          "scope": "keyword.control.systemverilog",
+          "settings": {
+            "foreground": "#31748F",
+            "fontStyle": ""
+          }
+        }
+      ]
+    }
+  },
+
+  "editor.semanticTokenColorCustomizations": {
+    "[Rosé Pine]": {
+      "enabled": true
+    }
+  },
+
+    // ---------------------------------------------------------------------------
+    // Language Specific Settings
+    // ---------------------------------------------------------------------------
+
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[systemverilog]": {
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    },
+    "editor.formatOnType": false
+  },
+  "[vhdl]": {
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    },
+    "editor.formatOnType": false
+  },
+  "[buildconfig]": {
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    },
+    "editor.formatOnType": false
+  },
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "DVT.automaticallyOpenConnectionWebview.enable": false,
+  "gitlens.graph.minimap.additionalTypes": [
+    "localBranches",
+    "remoteBranches",
+    "pullRequests",
+    "stashes",
+    "tags"
+  ],
+  "gitlens.graph.scrollMarkers.additionalTypes": [
+    "localBranches",
+    "stashes",
+    "remoteBranches"
+  ],
+  "gitlens.graph.dimMergeCommits": true,
+  "gitlens.views.commitDetails.files.layout": "tree",
+  "workbench.activityBar.location": "top",
+  "vscode-neovim.useWSL": true,
+  "vscode-neovim.neovimExecutablePaths.linux": "~/.local/bin/nvim",
+  "vscode-neovim.wslDistribution": "kali-linux",
+  "vscode-neovim.neovimInitVimPaths.linux": "~/.config/nvim/init.lua",
+  "gitlens.currentLine.enabled": false,
+  "gitlens.codeLens.authors.command": false,
+
 }
