@@ -1,3 +1,6 @@
-vim.keymap.set("n", "<leader>qf", "<cmd>TroubleToggle quickfix<cr>",
-  {silent = true, noremap = true}
-)
+vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics<cr>", {desc = "Diagnostics (Trouble)"} )
+vim.keymap.set("n", "<leader>xX", "<cmd>Trouble diagnostics<cr>", {desc = "Buffer Diagnostics (Trouble)"})
+vim.keymap.set("n", "<leader>cs", "<cmd>Trouble symbols<cr>", {desc = "Symbols (Trouble)"})
+vim.keymap.set("n", "<leader>cS", "<cmd>Trouble lsp<cr>", {desc = "LSP Definitions / references / ... (Trouble)"})
+vim.keymap.set("n", "<leader>qf", "<cmd>Trouble loclist<cr>", {desc = "Location List (Trouble)"} )
+vim.keymap.set("n", "<leader>qF", "<cmd>Trouble qflist<cr>", {desc = "Quickfix List (Trouble)"})

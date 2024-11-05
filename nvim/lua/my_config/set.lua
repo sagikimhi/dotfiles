@@ -25,7 +25,26 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 vim.opt.textwidth = 80
 
+vim.g.name = "value"
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_node_provider = 0
 
+vim.keymap.set(
+	{ "n", "o", "x" },
+	"<leader>w",
+	"<cmd>lua require('spider').motion('w')<CR>",
+	{ desc = "Spider-w" }
+)
+vim.keymap.set(
+	{ "n", "o", "x" },
+	"<leader>e",
+	"<cmd>lua require('spider').motion('e')<CR>",
+	{ desc = "Spider-e" }
+)
+vim.keymap.set(
+	{ "n", "o", "x" },
+	"<leader>b",
+	"<cmd>lua require('spider').motion('b')<CR>",
+	{ desc = "Spider-b" }
+)

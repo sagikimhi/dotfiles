@@ -18,7 +18,6 @@ return require('packer').startup(function(use)
     use('ThePrimeagen/harpoon')
     use('aklt/plantuml-syntax')
     use('ThePrimeagen/vim-be-good')
-    use('easymotion/vim-easymotion')
     use("christoomey/vim-tmux-navigator")
     use("eandrju/cellular-automaton.nvim")
 
@@ -31,6 +30,20 @@ return require('packer').startup(function(use)
         end
     })
 
+    -- CamelCaseMotion
+    use({
+        'chrisgrieser/nvim-spider',
+        config = function()
+            require("spider").setup({
+            skipInsignificantPunctuation = true,
+            consistentOperatorPending = false, -- see "Consistent Operator-pending Mode" in the README
+            subwordMovement = true,
+            customPatterns = {}, -- check "Custom Movement Patterns" in the README for details
+        })
+        end
+    })
+
+
     -- Telescope
     use({
         'nvim-telescope/telescope.nvim',
@@ -40,7 +53,7 @@ return require('packer').startup(function(use)
 
     -- Trouble
     use({"folke/trouble.nvim", config = function()
-            require("trouble").setup({ icons = false, })
+            require("trouble").setup({ icons = true, })
         end
     })
 

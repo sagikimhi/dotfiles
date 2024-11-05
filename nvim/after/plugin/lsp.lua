@@ -112,7 +112,7 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format() end, opts)
     vim.keymap.set('n', '<leader>gd', function() vim.lsp.buf.declaration() end, opts)
     vim.keymap.set("n", "<leader>vs", "<cmd> Telescope lsp_document_symbols<CR>", opts)
-    vim.keymap.set("n", "<leader>ws", "<cmd> Telescope lsp_workspace_symbols<CR>", opts)
+    vim.keymap.set('n', '<leader>ws', "<cmd> Telescope lsp_workspace_symbols query=*<CR>", opts)
 end)
 
 lsp.setup()
