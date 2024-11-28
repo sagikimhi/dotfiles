@@ -1,0 +1,81 @@
+# CD
+# --
+
+alias uni="cd $uni"
+
+# Configs
+# -------
+
+alias weztermrc="v ${weztermrc}"
+
+# Docker
+# ------
+
+alias run-xv6="docker run -it --name xv6"
+alias stop-xv6="docker stop xv6"
+
+alias run-xv6-cs="docker run -it --name xv6-cs"
+alias stop-xv6-cs="docker stop xv6-cs"
+
+alias plantuml-start="docker run -d -p 8080:8080 --name umlserver plantuml/plantuml-server:jetty"
+alias plantuml-stop="docker stop umlserver && docker rm umlserver"
+
+# Cosign
+# ------
+
+alias cosign="$(go env $loc/go)/bin/cosign"
+
+# Natural Docs
+# ------------
+
+alias naturaldocs="/mnt/c/Program\ Files\ \(x86\)/Natural\ Docs/NaturalDocs.exe"
+
+# Other Tools
+# -----------
+
+if `where krita &> /dev/null`;
+then
+    alias paint="krita"
+fi
+
+if [ -e ${jars}/bfg.jar ]; 
+then
+    alias bfg="java -jar ${jars}/bfg.jar"
+fi
+
+if [ -e ${git}/gf/gf2 ]; 
+then
+    alias gf2="${git}/gf/gf2"
+fi
+
+if `where clang-format &> /dev/null`;
+then
+    alias clangf-dump="clang-format --style='{BasedOnStyle: gnu, IndentWidth: 4, TabWidth: 4, UseTab: Never, BreakBeforeBraces: Linux, ColumnLimit: 80, PointerAlignment: Right}' --dump-config > .clang-format"
+fi
+
+if `where python &> /dev/null`;
+then
+    alias py="python"
+    alias py3="python"
+    alias pipupgrade="python -m pip --disable-pip-version-check list --outdated --format=json | python -c 'import json, sys; print(\"\\n\".join([x['name'] for x in json.load(sys.stdin)]))' | xargs -n1 pip install -U"
+elif `where python3 &> /dev/null`;
+then
+    alias py="python3"
+    alias py3="python3"
+    alias pipupgrade="python3 -m pip --disable-pip-version-check list --outdated --format=json | python3 -c 'import json, sys; print(\"\\n\".join([x['name'] for x in json.load(sys.stdin)]))' | xargs -n1 pip install -U"
+fi
+
+if `where python3.11 &> /dev/null`;
+then
+    alias py311="python3.11"
+fi
+
+if `where python3.12 &> /dev/null`;
+then
+    alias py312="python3.12"
+fi
+
+if `where python3-venv &> /dev/null`;
+then
+    alias pyenv="python3 -m venv"
+fi
