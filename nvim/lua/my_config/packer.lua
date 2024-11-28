@@ -30,16 +30,16 @@ return require('packer').startup(function(use)
         end
     })
 
-    -- CamelCaseMotion
+    -- CamelCase and snake_case motion
     use({
         'chrisgrieser/nvim-spider',
         config = function()
             require("spider").setup({
-            skipInsignificantPunctuation = true,
-            consistentOperatorPending = false, -- see "Consistent Operator-pending Mode" in the README
-            subwordMovement = true,
-            customPatterns = {}, -- check "Custom Movement Patterns" in the README for details
-        })
+                skipInsignificantPunctuation = false,
+                consistentOperatorPending = false, -- see "Consistent Operator-pending Mode" in the README
+                subwordMovement = true,
+                customPatterns = {},           -- check "Custom Movement Patterns" in the README for details
+            })
         end
     })
 
@@ -52,7 +52,9 @@ return require('packer').startup(function(use)
     })
 
     -- Trouble
-    use({"folke/trouble.nvim", config = function()
+    use({
+        "folke/trouble.nvim",
+        config = function()
             require("trouble").setup({ icons = true, })
         end
     })
@@ -60,7 +62,9 @@ return require('packer').startup(function(use)
     -- Tree-Sitter
     use('nvim-treesitter/playground')
     use("nvim-treesitter/nvim-treesitter-context")
-    use({'nvim-treesitter/nvim-treesitter', run = function()
+    use({
+        'nvim-treesitter/nvim-treesitter',
+        run = function()
             local ts_update = ({
                 require('nvim-treesitter.install')
                     .update({ with_sync = true })
@@ -71,7 +75,8 @@ return require('packer').startup(function(use)
     })
 
     -- LSP + Mason
-    use({'VonHeikemen/lsp-zero.nvim',
+    use({
+        'VonHeikemen/lsp-zero.nvim',
         branch = 'v1.x',
         requires = {
             -- LSP Support
@@ -106,10 +111,10 @@ return require('packer').startup(function(use)
             require('remote-nvim').setup({
                 client_callback = function(port, workspace_config)
                     local cmd = ("wezterm cli set-tab-title --pane-id $(wezterm cli spawn nvim --server localhost:%s --remote-ui) %s")
-                    :format(
-                        port,
-                        ("'Remote: %s'"):format(workspace_config.host)
-                    )
+                        :format(
+                            port,
+                            ("'Remote: %s'"):format(workspace_config.host)
+                        )
                     if vim.env.TERM == "xterm-kitty" then
                         cmd = ("kitty -e nvim --server localhost:%s --remote-ui"):format(port)
                     end
@@ -128,5 +133,4 @@ return require('packer').startup(function(use)
             })
         end
     })
-
 end)
