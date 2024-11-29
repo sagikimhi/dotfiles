@@ -1,12 +1,4 @@
 {
-  "security.workspace.trust.enabled": false,
-
-  "remote.downloadExtensionsLocally": true,
-  "remote.SSH.remotePlatform": {
-    "spd-xn121": "linux",
-    "spd-xn122": "linux"
-  },
-
   // ---------------------------------------------------------------------------
   // Workbench and Editor Settings
   // ---------------------------------------------------------------------------
@@ -32,11 +24,11 @@
 
   "editor.tabSize": 4,
   "editor.wordWrap": "off",
-  "editor.fontFamily": "'0xProto Nerd Font', 'JetBrainsMonoNL NFP Regular'",
-  "editor.codeLensFontFamily": "'0xProto Nerd Font', 'JetBrainsMonoNL NFP Regular'",
-  "editor.fontSize": 17.7,
-  "editor.lineHeight": 1.0,
-  "editor.letterSpacing": 0.0,
+  "editor.fontFamily": "JetBrainsMonoNL NFP Regular",
+  "editor.codeLensFontFamily": "JetBrainsMonoNL NFP Regular",
+  "editor.fontSize": 18,
+  "editor.lineHeight": 1.1,
+  "editor.letterSpacing": -0.3,
   "editor.fontWeight": "500",
   "editor.fontLigatures": false,
   "editor.mouseWheelZoom": false,
@@ -1063,5 +1055,15 @@
   "vscode-neovim.neovimInitVimPaths.linux": "~/.config/nvim/init.lua",
   "gitlens.currentLine.enabled": false,
   "gitlens.codeLens.authors.command": false,
-
+  "remote.SSH.enableX11Forwarding": false,
+  "remote.SSH.useFlock": false,
+  "remote.SSH.useLocalServer": false,
+  "remote.SSH.showLoginTerminal": true,
+  "remote.SSH.enableDynamicForwarding": false,
+  "remote.autoForwardPorts": false,
+  "remote.localPortHost": "allInterfaces",
+  "remote.restoreForwardedPorts": false,
+  "remote.SSH.remotePlatform": {
+    "spd-xn121": "linux"
+  },
 }
