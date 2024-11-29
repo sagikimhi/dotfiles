@@ -1,0 +1,34 @@
+# Exclude All
+
+*
+
+# Unexclude common dirs
+
+!/*/
+!/src/**/
+!/docs/**/
+!/tests/**/
+!/.github/**/
+
+# Unexclude common files
+
+!/.github/workflows/**/*.yml
+!/**/.gitignore
+!/LICENSE
+!/README.md
+
+# Assets
+
+!/assets/**/*
+
+# Source files
+
+!/src/**/*
+
+# Tests
+
+!/tests/**/*
+
+# Docs
+
+# !/docs/**/*

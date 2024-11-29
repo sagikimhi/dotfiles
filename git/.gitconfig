@@ -13,6 +13,9 @@ followTags = true
 [includeIf "gitdir:~/.project/git/"]
 path = .gitconfig-default
 
+# [includeIf "gitdir:~/.project/git/user/"]
+# path = .gitconfig-user
+
 [alias]
 # List all aliases
 la = "!git config -l | grep alias | cut -c 7-"
