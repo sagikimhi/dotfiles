@@ -15,8 +15,6 @@
 
   "explorer.autoReveal": false,
   "explorer.openEditors.visible": 1,
-
-  "files.autoSave": "onWindowChange",
   "files.insertFinalNewline": true,
   "files.simpleDialog.enable": true,
   "files.trimTrailingWhitespace": true,
@@ -25,10 +23,9 @@
   "editor.tabSize": 4,
   "editor.wordWrap": "off",
   "editor.fontFamily": "JetBrainsMonoNL NFP Regular",
-  "editor.codeLensFontFamily": "JetBrainsMonoNL NFP Regular",
-  "editor.fontSize": 18,
+  "editor.codeLensFontFamily": "JetBrainsMonoNL NFP Medium",
+  "editor.fontSize": 19,
   "editor.lineHeight": 1.1,
-  "editor.letterSpacing": -0.3,
   "editor.fontWeight": "500",
   "editor.fontLigatures": false,
   "editor.mouseWheelZoom": false,
@@ -36,19 +33,16 @@
   "editor.lineNumbers": "relative",
   "editor.cursorBlinking": "smooth",
   "editor.guides.bracketPairs": true,
+  "editor.bracketPairColorization.enabled": false,
   "editor.cursorSurroundingLines": 10,
   "editor.renderLineHighlight": "all",
   "editor.snippetSuggestions": "bottom",
   "editor.scrollbar.vertical": "hidden",
   "editor.renderWhitespace": "selection",
-  "editor.scrollbar.horizontal": "hidden",
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.scrollbar.verticalScrollbarSize": 2,
   "editor.scrollbar.horizontalScrollbarSize": 2,
-  "editor.bracketPairColorization.enabled": false,
   "editor.minimap.enabled": false,
-
-  "workbench.editor.enablePreview": false,
   "workbench.welcomePage.walkthroughs.openOnInstall": false,
   "workbench.layoutControl.type": "menu",
   "workbench.iconTheme": "rose-pine-icons",
@@ -107,6 +101,7 @@
   // Neovim Backend
   "vim.enableNeovim": true,
   "vim.neovimUseConfigFile": true,
+  "prettier.printWidth": 80,
 
   // Plugins
 
@@ -165,7 +160,16 @@
     {
       "before": ["<leader>", "f"],
       "commands": ["flip.selection"]
-    }
+    },
+    {
+      "before": ["z", "f"],
+      "commands": [
+        {
+          "command": "editor.createFoldingRangeFromSelection",
+          "when": "editorTextFocus && foldingEnabled",
+        }
+      ]
+    },
   ],
 
   "vim.normalModeKeyBindings": [
@@ -1046,16 +1050,14 @@
     "stashes",
     "remoteBranches"
   ],
-  "gitlens.graph.dimMergeCommits": true,
   "gitlens.views.commitDetails.files.layout": "tree",
   "workbench.activityBar.location": "top",
   "vscode-neovim.useWSL": true,
   "vscode-neovim.neovimExecutablePaths.linux": "~/.local/bin/nvim",
   "vscode-neovim.wslDistribution": "kali-linux",
   "vscode-neovim.neovimInitVimPaths.linux": "~/.config/nvim/init.lua",
-  "gitlens.currentLine.enabled": false,
   "gitlens.codeLens.authors.command": false,
-  "remote.SSH.enableX11Forwarding": false,
+  "remote.SSH.enableX11Forwarding": true,
   "remote.SSH.useFlock": false,
   "remote.SSH.useLocalServer": false,
   "remote.SSH.showLoginTerminal": true,
@@ -1063,7 +1065,98 @@
   "remote.autoForwardPorts": false,
   "remote.localPortHost": "allInterfaces",
   "remote.restoreForwardedPorts": false,
-  "remote.SSH.remotePlatform": {
-    "spd-xn121": "linux"
+  "vim.cursorStylePerMode.insert": "line",
+  "vim.cursorStylePerMode.normal": "block",
+  "vim.cursorStylePerMode.replace": "underline",
+  "vim.cursorStylePerMode.visual": "block",
+  "vim.cursorStylePerMode.visualblock": "block",
+  "vim.cursorStylePerMode.visualline": "block",
+  "editor.cursorStyle": "block",
+  "editor.minimap.maxColumn": 0,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.experimental.treeSitterTelemetry": true,
+  "editor.fastScrollSensitivity": 10,
+  "editor.inlineSuggest.showToolbar": "always",
+  "editor.inlineSuggest.syntaxHighlightingEnabled": true,
+  "editor.suggestSelection": "recentlyUsedByPrefix",
+  "workbench.experimental.cloudChanges.autoStore": "onShutdown",
+  "chat.editing.experimental.enableRestoreFile": true,
+  "catppuccin.extraBordersEnabled": true,
+  "css.format.spaceAroundSelectorSeparator": true,
+  "DVT.callHierarchy.hideOverrides": false,
+  "DVT.typeHierarchy.prependPackageName": true,
+  "DVT.textEditor.systemVerilog.contentAssist.insertOrderedArgumentsAsMultiline": false,
+  "DVT.environment.precedence": "Native environment variables",
+  "DVT.diagrams.design.showDetailsOfProcessLogic": true,
+  "DVT.diagrams.uML.associations": "All",
+  "DVT.diagrams.uML.children": "All",
+  "DVT.diagrams.uML.graphDirection": "Top-Bottom",
+  "DVT.diagrams.uML.parents": "All",
+  "DVT.diagrams.uML.showMembers": "All",
+  "DVT.diagrams.uML.showPackageInformation": true,
+  "DVT.textEditor.systemVerilog.contentAssist.camelCase": false,
+  "DVT.trace.server": "messages",
+  "DVT.contentFilters.predefined": {
+    "Precompiled Databases": true
+  },
+  "plantuml.diagramsRoot": "./uml/src",
+  "plantuml.exportFormat": "svg",
+  "plantuml.exportMapFile": true,
+  "plantuml.exportOutDir": "./uml/out",
+  "editor.showFoldingControls": "always",
+  "redhat.telemetry.enabled": true,
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.codeLens.scopes": [
+    "containers",
+    "document",
+    "blocks"
+  ],
+  "gitlens.blame.heatmap.location": "left",
+  "gitlens.heatmap.locations": [
+    "gutter",
+    "overview",
+    "line"
+  ],
+  "gitlens.graph.layout": "editor",
+  "gitlens.graph.showRemoteNames": true,
+  "gitlens.views.repositories.includeWorkingTree": true,
+  "gitlens.mode.statusBar.alignment": "left",
+  "gitlens.views.contributors.showAllBranches": true,
+  "gitlens.views.tags.files.icon": "status",
+  "gitlens.graph.dimMergeCommits": true,
+  "gitlens.graph.dateStyle": "relative",
+  "database-client.showUser": true,
+  "gitlens.codeLens.enabled": false,
+  "database-client.variableIndicator": [
+    ":",
+    "$"
+  ],
+  "database-client.reloadAfterDML": true,
+  "database-client.enableEditorCodeLens": false,
+  "database-client.autoSync": true,
+  "database-client.queryWithSchema": true,
+  "database-client.saveConnectionExpandedState": true,
+  "database-client.showTrigger": true,
+  "sqltools.disableChordKeybindings": true,
+  "sqltools.completionLanguages": [
+    "sql",
+    "plpgsql"
+  ],
+  "sqltools.connectionExplorer.groupConnected": true,
+  "sqltools.formatLanguages": [
+    "sql",
+    "plpgsql"
+  ],
+  "sqltools.highlightQuery": false,
+  "sqltools.queryParams.enableReplace": true,
+  "sqltools.sessionFilesFolder": ".session",
+  "sqltools.sortColumns": "ordinalnumber",
+  "[oraclesql]": {
+    "editor.suggest.showSnippets": true,
+    "editor.quickSuggestions": {
+      "comments": "on",
+      "strings": "on",
+      "other": "on"
+    }
   },
 }
