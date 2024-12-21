@@ -7,19 +7,6 @@ return require('packer').startup(function(use)
     -- Packer Autoupdate
     use('wbthomason/packer.nvim')
 
-    -- Plugins
-    use('mbbill/undotree')
-    use('preservim/nerdtree')
-    use('justinmk/vim-sneak')
-    use('tpope/vim-fugitive')
-    use('tpope/vim-surround')
-    use('folke/zen-mode.nvim')
-    use('tpope/vim-commentary')
-    use('ThePrimeagen/harpoon')
-    use('aklt/plantuml-syntax')
-    use('ThePrimeagen/vim-be-good')
-    use("christoomey/vim-tmux-navigator")
-    use("eandrju/cellular-automaton.nvim")
 
     -- Color Scheme
     use({
@@ -30,38 +17,42 @@ return require('packer').startup(function(use)
         end
     })
 
-    -- CamelCase and snake_case motion
-    use({
-        'chrisgrieser/nvim-spider',
-        config = function()
-            require("spider").setup({
-                skipInsignificantPunctuation = false,
-                consistentOperatorPending = false, -- see "Consistent Operator-pending Mode" in the README
-                subwordMovement = true,
-                customPatterns = {},           -- check "Custom Movement Patterns" in the README for details
-            })
-        end
-    })
-
-
+    -- Plugins
+    use('sharkdp/fd')
+    use('mbbill/undotree')
+    use('tpope/vim-dadbod')
+    use('preservim/nerdtree')
+    use('justinmk/vim-sneak')
+    use('tpope/vim-fugitive')
+    use('tpope/vim-surround')
+    use('javiorfo/nvim-soil')
+    use('folke/zen-mode.nvim')
+    use('tpope/vim-commentary')
+    use('ThePrimeagen/harpoon')
+    use('aklt/plantuml-syntax')
+    use('mfussenegger/nvim-lint')
+    use('ThePrimeagen/vim-be-good')
+    use('mhartington/formatter.nvim')
+    use('nvim-tree/nvim-web-devicons')
+    use('christoomey/vim-tmux-navigator')
+    use('eandrju/cellular-automaton.nvim')
     -- Telescope
     use({
         'nvim-telescope/telescope.nvim',
-        branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
     })
 
     -- Trouble
     use({
-        "folke/trouble.nvim",
+        'folke/trouble.nvim',
         config = function()
-            require("trouble").setup({ icons = true, })
+            require('trouble').setup({})
         end
     })
 
     -- Tree-Sitter
     use('nvim-treesitter/playground')
-    use("nvim-treesitter/nvim-treesitter-context")
+    use('nvim-treesitter/nvim-treesitter-context')
     use({
         'nvim-treesitter/nvim-treesitter',
         run = function()
@@ -74,10 +65,9 @@ return require('packer').startup(function(use)
         end
     })
 
-    -- LSP + Mason
     use({
         'VonHeikemen/lsp-zero.nvim',
-        branch = 'v1.x',
+        branch = 'v4.x',
         requires = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
@@ -90,22 +80,28 @@ return require('packer').startup(function(use)
             { 'hrsh7th/cmp-buffer' },
             { 'hrsh7th/cmp-nvim-lua' },
             { 'hrsh7th/cmp-nvim-lsp' },
-            { 'saadparwaiz1/cmp_luasnip' },
 
             -- Snippets
             { 'L3MON4D3/LuaSnip' },
+            { 'saadparwaiz1/cmp_luasnip' },
             { 'rafamadriz/friendly-snippets' },
+
+            -- Folding
+            {
+                'kevinhwang91/nvim-ufo',
+                requires = { 'kevinhwang91/promise-async' }
+            }
         }
     })
 
     -- Neovim Remote
     use({
-        "amitds1997/remote-nvim.nvim",
-        version = "*",                       -- Pin to GitHub releases
+        'amitds1997/remote-nvim.nvim',
+        version = '*',                       -- Pin to GitHub releases
         requires = {
-            "nvim-lua/plenary.nvim",         -- For standard functions
-            "MunifTanjim/nui.nvim",          -- To build the plugin UI
-            "nvim-telescope/telescope.nvim", -- For picking b/w different remote methods
+            'nvim-lua/plenary.nvim',         -- For standard functions
+            'MunifTanjim/nui.nvim',          -- To build the plugin UI
+            'nvim-telescope/telescope.nvim', -- For picking b/w different remote methods
         },
         config = function()
             require('remote-nvim').setup({
@@ -133,4 +129,26 @@ return require('packer').startup(function(use)
             })
         end
     })
+
+    -- CamelCase and snake_case motion
+    use({
+        'chrisgrieser/nvim-spider',
+        config = function()
+            require("spider").setup({
+                skipInsignificantPunctuation = true,
+                consistentOperatorPending = true, -- see "Consistent Operator-pending Mode" in the README
+                subwordMovement = true,
+            })
+        end
+    })
+
+
+    -- Format via CLI tool instead of neovim
+    -- Disabled till i need it, for now neovim's fine.
+    -- use({
+    --     "stevearc/conform.nvim",
+    --     config = function()
+    --         require("conform").setup()
+    --     end,
+    -- })
 end)

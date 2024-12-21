@@ -48,17 +48,16 @@ vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>");
 
 -- Coding Headers Generation Shortcuts
 
-vim.cmd('nmap <leader>i ^f(ByiwO<Esc>^"_Dpgcc<leader>-o')
-vim.cmd('nmap <leader>- yyp^gccv$r-^gcc')
-vim.cmd('nmap <leader>_ <leader>-yykP')
-vim.keymap.set('n', '<leader>==',
-    'yypwC-----------------------------------------------------------------------------<Esc>yykPj')
+vim.keymap.set('n', '<leader>i', '^f(ByiwO<Esc>^"_Dpgcc<leader>-o')
+vim.keymap.set('n', '<leader>-', 'yyp^gccv$r-^gcc')
+vim.keymap.set('n', '<leader>_', '<leader>-yykP')
 vim.keymap.set('n', '<leader>=j',
-    'yypwC-----------------------------------------------------------------------------<Esc>k')
+    'o-----------------------------------------------------------------------------<Esc>k')
 vim.keymap.set('n', '<leader>=k',
-    'yypwC-----------------------------------------------------------------------------<Esc>j')
-vim.keymap.set( 'n', '<leader>gl', [[ggO
-# ==============================================================================
+    'O-----------------------------------------------------------------------------<Esc>j')
+vim.cmd.nmap('<leader>== <leader>=j<leader>=k')
+vim.keymap.set('n', '<leader>gl',
+[[mzggO# ==============================================================================
 #              GLWTS(Good Luck With That Shit) Public License
 #            Copyright (c) Every-fucking-one, except the Author
 # 
@@ -85,17 +84,16 @@ vim.keymap.set( 'n', '<leader>gl', [[ggO
 # 
 # Good luck and Godspeed.
 # ==============================================================================
-
-<Esc>]]
+<Esc>kV26k<Plug>Commentary^W<C-v>26jlx'z]]
 )
 
 -- Functions
-  vim.keymap.set('n', '<leader>q', function()
-    for _, ui in pairs(vim.api.nvim_list_uis()) do
-      if ui.chan and not ui.stdout_tty then
-        vim.fn.chanclose(ui.chan)
-      end
-    end
-  end, 
-  { noremap = true }
+vim.keymap.set('n', '<leader>q', function()
+        for _, ui in pairs(vim.api.nvim_list_uis()) do
+            if ui.chan and not ui.stdout_tty then
+                vim.fn.chanclose(ui.chan)
+            end
+        end
+    end,
+    { noremap = true }
 )
