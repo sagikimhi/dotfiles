@@ -1,0 +1,58 @@
+@startuml order
+
+!include styles.puml
+$styles_begin()
+$style_it(arrow)
+$style_it(note)
+$style_it(partition)
+$style_it(diamond)
+$styles_end()
+<style>
+activityDiagram {
+  FontColor #cdd6f4
+  LineColor #b4b3fe
+  BorderColor #b4b3fe
+  BorderThickness 1.5
+  BackgroundColor #11111b
+  AttributeFontColor #cdd6f4
+}
+</style>
+
+
+start
+    while (simulation.iterations() < NUM_ITERATIONS) is (yes)
+        : Client;
+        : Application;
+
+        group Receive\nOrder {
+            split
+                : app.branch_policy.select_by_address(client.address); <<task>>
+                : branch; <<output>>
+            split again
+                : app.submit_order(name, address, items); <<task>>
+                : order; <<output>>
+            end split
+            : branch.place_order(order); <<procedure>>
+        }
+
+        group Prepare\nOrder {
+            repeat\
+                : branch.get_next_order(); <<load>>
+                : Order; <<output>>
+                : Prepare Order; <<task>>
+                : branch.schedule_delivery(order); <<procedure>>
+            repeat while (branch.hasPendingOrders() ?) is (yes)
+        }
+
+        group Deliver\nOrder {
+            repeat
+                : branch.get_next_delivery(); <<load>>
+                : Order; <<output>>
+                : Deliver Order ; <<task>>
+                : branch.order_done(order); <<procedure>>
+            repeat while (branch.hasPendingDeliveries() ?) is (yes)
+        }
+
+    endwhile
+end
+@enduml

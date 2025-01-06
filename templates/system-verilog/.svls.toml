@@ -1,0 +1,6 @@
+[verilog]
+include_paths = ["src", "vendor/uvm_pkg/src"]
+
+
+[option]
+linter = true

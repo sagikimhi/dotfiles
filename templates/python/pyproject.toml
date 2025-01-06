@@ -1,0 +1,45 @@
+[project.scripts]
+pizza-pizza
+
+[project]
+version = "0.0.1"
+name = "pizza_pizza"
+readme = "README.md"
+authors = []
+maintainers = []
+description = """Pizza Simulation"""
+dependencies = ["simpy", "numpy", "pandas", "plotly", "matplotlib"]
+requires-python = ">=3.12"
+classifiers = ["Programming Language :: Python "]
+
+[project.optional-dependencies]
+dev = ["mypy", "isort", "black", "pytest", "pytest-cov"]
+
+[tool.black]
+line-length = 79
+include = 'python/src'
+target-version = ["py312"]
+extend-exclude = '''(
+    tests
+    | .*/__pycache__/.*
+    | .venv
+    | .idea
+    | src/pizza_pizza.egg-info
+)'''
+
+[tool.mypy]
+pretty = true
+strict = true
+color_output = true
+show_error_codes = true
+warn_unreachable = true
+python_version = ["3.12"]
+files = ["python/src"]
+
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.distutils.bdist_wheel]
+universal = true
+
