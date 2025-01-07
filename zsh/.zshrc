@@ -8,8 +8,6 @@ export PATH=${HOME}/.local/bin:/usr/local/bin:${PATH}
 
 export MANPATH="/usr/local/man:${MANPATH}"
 
-export ARCHFLAGS="-arch x86_64"
-
 export XDG_CONFIG_HOME=${HOME}/.config
 
 # -----------------------------------------------------------------------------
@@ -59,7 +57,7 @@ config=${XDG_CONFIG_HOME}
 # -------
 
 zshrc=${HOME}/.zshrc
-ushrc=${HOME}/.zshrc.user
+ushrc=${HOME}/.zshrc.${USER}
 aliasrc=${HOME}/.zshrc.aliases
 sshrc=${HOME}/.ssh
 vimrc=${HOME}/.vimrc
@@ -130,6 +128,6 @@ function search() {
 # Source User Configs
 # -----------------------------------------------------------------------------
 
-source $HOME/.zshrc.skimhi
+source $HOME/.zshrc.$USER
 source $HOME/.zshrc.aliases
 
