@@ -21,23 +21,9 @@ require('mason-lspconfig').setup({
         -- handler defined explicitly.
 
         function(server_name)
-            require('lspconfig')[server_name].setup({})
+            require('lspconfig')[server_name].setup({
+            })
         end,
-        --
-        -- postgres_lsp = function()
-        --     -- local util = require('lspconfig.util')
-        --     -- local lspconfig = require('lspconfig')
-        --     require('lspconfig').postgres_lsp = {
-        --         default_config = {
-        --             name = 'postgres_lsp',
-        --             cmd = { 'postgres_lsp' },
-        --             filetypes = { 'sql' },
-        --             single_file_support = true,
-        --             root_dir = require('lspconfig.util').root_pattern('root-file.txt'),
-        --         },
-        --     }
-        --     -- lspconfig.postgres_lsp.setup { force_setup = true }
-        -- end,
 
         lua_ls = function()
             require('lspconfig').lua_ls.setup({
@@ -56,6 +42,56 @@ require('mason-lspconfig').setup({
                 },
             })
         end,
+
+        -- sqls = function()
+        --     local util = require('lspconfig.util')
+        --     require('lspconfig').sqls.setup({
+        --         on_attach = function(client, bufnr)
+        --             require('sqls').on_attach(client, bufnr)
+        --         end,
+        --         filetypes = { 'sql' },
+        --         cmd = { "sqls", "--config", "/home/skimhi/.config/sqls/config.yml" },
+        --         root_dir = function(fname)
+        --             return require('lspconfig.util').find_git_ancestor(fname)
+        --         end,
+        --         settings = {
+        --             sqls = {
+        --                 connections = {
+        --                     {
+        --                         driver = 'postgresql',
+        --                         dataSourceName = ''
+        --                             .. 'host=127.0.0.1'
+        --                             .. ' port=' .. os.getenv("PGPORT")
+        --                             .. ' user=' .. os.getenv("USER")
+        --                             .. ' dbname=' .. os.getenv("USER")
+        --                             .. ' password=' .. '' or os.getenv("PGPASSWORD"),
+        --                     },
+        --                 },
+        --             },
+        --         },
+        --         -- filetypes = { 'sql', 'plpgsql' },
+        --         -- single_file_support = true,
+        --         -- root_dir = function()
+        --         --     require("lspconfig.util").root_pattern('.sqls.yml')
+        --         -- end,
+        --     })
+        -- end,
+        --
+        -- postgres_lsp = function()
+        --     -- local util = require('lspconfig.util')
+        --     -- local lspconfig = require('lspconfig')
+        --     require('lspconfig').postgres_lsp = {
+        --         default_config = {
+        --             name = 'postgres_lsp',
+        --             cmd = { 'postgres_lsp' },
+        --             filetypes = { 'sql' },
+        --             single_file_support = true,
+        --             root_dir = require('lspconfig.util').root_pattern('root-file.txt'),
+        --         },
+        --     }
+        --     -- lspconfig.postgres_lsp.setup { force_setup = true }
+        -- end,
+
     }
 })
 
@@ -77,31 +113,24 @@ local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 cmp.setup({
     mapping = cmp.mapping.preset.insert({
-        ['<Esc>']     = cmp.mapping.close(),
         ['<Up>']      = cmp.mapping.select_prev_item(cmp_select),
         ['<Down>']    = cmp.mapping.select_next_item(cmp_select),
+        ['<Del>']     = cmp.mapping.abort(),
         ['<Left>']    = cmp.mapping.abort(),
+        ['<CR>']      = cmp.mapping.confirm({
+            select = true,
+            behavior = cmp.ConfirmBehavior.Replace,
+        }),
+        ['<S-NL>']    = cmp.mapping.confirm({
+            select = false,
+            behavior = cmp.ConfirmBehavior.Insert,
+        }),
         ['<Right>']   = cmp.mapping.confirm({
             select = false,
             behavior = cmp.ConfirmBehavior.Replace,
         }),
-        ['<Enter>']   = cmp.mapping.confirm({
-            select = true,
-            behavior = cmp.ConfirmBehavior.Replace,
-        }),
-        ['<C-Enter>'] = cmp.mapping.confirm({
-            select = true,
-            behavior = cmp.ConfirmBehavior.Insert,
-        }),
-        ['<C-Space>'] = cmp.mapping(function(_)
-            if not cmp.visible() then
-                cmp.mapping.complete()
-            elseif not cmp.visible_docs() then
-                cmp.mapping.open_docs()
-            else
-                cmp.mapping.close_docs()
-            end
-        end, { 'i', 'c' }),
+        ['<C-Space>'] = cmp.mapping.complete(),
+
         -- navigate to the next snippet placeholder
         ['<C-w>']     = cmp.mapping(function(fallback)
             local snip = require('luasnip')
@@ -202,7 +231,7 @@ vim.o.foldcolumn = '1'
 vim.o.foldlevelstart = 99
 
 require('ufo').setup({})
-require('luasnip.loaders.from_vscode').lazy_load()
+-- require('luasnip.loaders.from_vscode').lazy_load()
 
 vim.keymap.set('n', 'zR', function() require('ufo').openAllFolds() end)
 vim.keymap.set('n', 'zM', function() require('ufo').closeAllFolds() end)
@@ -226,8 +255,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<F3>', function() vim.lsp.buf.code_action() end, opts)
         vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
 
-        vim.keymap.set('n', '<leader>mk', function() vim.lsp.buf.add_workspace_folder() end, opts)
-        vim.keymap.set('n', '<leader>rm', function() vim.lsp.buf.remove_workspace_folder() end, opts)
+        vim.keymap.set('n', '<leader>ma', function() vim.lsp.buf.add_workspace_folder() end, opts)
+        vim.keymap.set('n', '<leader>md', function() vim.lsp.buf.remove_workspace_folder() end, opts)
         vim.keymap.set('n', '<leader>ls', function() vim.lsp.buf.list_workspace_folders() end, opts)
 
         vim.keymap.set({ 'n', 'x' }, '<leader>f', function() vim.lsp.buf.format() end,
