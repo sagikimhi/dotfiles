@@ -1,0 +1,15 @@
+@startuml styleit
+
+!include global_styles.puml
+
+!procedure $style_it($what)
+skinparam $what {
+    FontColor #cdd6f4
+    BorderColor #b4b3fe
+    BorderThickness 1.5
+    BackgroundColor #11111b
+    AttributeFontColor #cdd6f4
+}
+!endprocedure
+
+@enduml

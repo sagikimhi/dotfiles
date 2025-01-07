@@ -1,0 +1,11 @@
+@startuml globalstyles
+!procedure $global_styles()
+skinparam {
+    roundCorner 15
+    TitleFontSize 22
+    ArrowColor #b4b3fe
+    TitleFontColor #cdd6f4
+    BackgroundColor #1e1e2e
+}
+!endprocedure
+@enduml

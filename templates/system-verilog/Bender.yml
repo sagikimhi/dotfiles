@@ -1,0 +1,32 @@
+package:
+  name: nice_pkg
+  authors: ["Sagi Kimhi <sagi.kim5@gmail.com>"]
+
+plugins:
+  make_nice_docs: scripts/docker_make_docs.sh
+
+sources:
+  - files:
+      - vendor/uvm_pkg/src/uvm_pkg.sv
+      - src/sv/nice_pkg/nice_pkg.sv
+      - src/sv/nice_top/nice_top.sv
+    include_dirs:
+      - src/sv/nice_pkg
+      - src/sv/nice_top
+      - vendor/uvm_pkg/src
+      - vendor/uvm_pkg/compat
+    targets:
+      - test
+      - simulation
+      - any(verilator, vcs, synopsys, riviera, genus, vivado, vsim)
+
+vendor_package:
+  - name: uvm_pkg
+    patch_dir: "vendor/patches"
+    target_dir: "vendor/uvm_pkg"
+    upstream: {
+      git: "git@github.com:accellera-official/uvm-core.git",
+      rev: "78c06547a2a0a29b3dc9dcafae62b75b2ff61544"
+    }
+
+

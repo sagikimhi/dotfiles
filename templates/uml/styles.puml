@@ -1,0 +1,41 @@
+@startuml styles
+
+!include style_it.puml
+
+!procedure $mix()
+allowmixing
+!endprocedure
+
+!procedure $styles_end()
+skinparam NoteBackgroundColor #2e2e3f
+!endprocedure
+
+!procedure $styles_begin()
+$global_styles()
+$style_it("arrow")
+!endprocedure
+
+!procedure $mixed_styles_begin()
+$mix()
+$styles_begin()
+!endprocedure
+'
+'skinparam linetype ortho
+'skinparam linetype polyline
+'skinparam groupInheritance 2
+'
+'title ""
+'
+'
+'top to bottom direction
+'left to right direction
+'
+'scale max 1920 width
+'scale max 1080 height
+'
+'set separator ::
+'set separator none
+'
+
+@enduml
+

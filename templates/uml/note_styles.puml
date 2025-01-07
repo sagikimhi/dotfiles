@@ -1,0 +1,31 @@
+@startuml note_styles
+
+!include styles.puml
+
+!procedure $note_styles()
+skinparam {
+    DefaultFontSize 13
+    BackgroundColor transparent
+}
+!endprocedure
+
+!procedure $styled_note_begin()
+$styles_begin()
+$note_styles()
+!endprocedure
+
+!endprocedure
+!procedure $styled_note_end()
+$styles_end()
+!endprocedure
+
+!procedure $styled_note_obj(obj)
+$styled_note_begin()
+$style_it(obj)
+$styled_note_end()
+!endprocedure
+
+!procedure $styled_note_mixed(obj)
+$mix()
+$styled_note_obj(obj)
+@enduml
