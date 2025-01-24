@@ -1,20 +1,71 @@
+# [includeIf "gitdir:~/.project/git/"]
+    # path = default.gitconfig
+
+# [includeIf "gitdir:~/.project/git/work/"]
+    # path = work.gitconfig
+
 [core]
-editor = nvim
+    editor = nvim
+    safecrlf = true
+
+[user]
+    useConfigOnly = true
 
 [init]
-defaultBranch = main
+    defaultBranch = main
+
+[fetch]
+    all = true
+    prune = true
+    pruneTags = true
 
 [pull]
-rebase = true
+    rebase = true
+    fastForward = only
 
 [push]
-followTags = true
+    followTags = true
 
-[includeIf "gitdir:~/.project/git/"]
-path = .gitconfig-default
+[branch]
+    autoSetupRebase = always
 
-# [includeIf "gitdir:~/.project/git/user/"]
-# path = .gitconfig-user
+[rebase]
+    stat = true
+
+[diff]
+    renames = true
+    wordRegex = .
+    algorithm = histogram
+    submodule = diff
+    srcPrefix = src/
+    dstPrefix = dst/
+    mnemonicPrefix = true
+
+[color]
+    ui = always
+    grep = always
+    diff = always
+    status = always
+    branch = true
+    showBranch = true
+
+[status]
+    branch = true
+    renames = true
+    aheadBehind = true
+
+[rerere]
+    enabled = true
+    autoUpdate = true
+
+[man]
+    viewer = nvim
+
+[man.nvim]
+    cmd = nvim
+
+[log]
+    decorate = full
 
 [alias]
 # List all aliases
