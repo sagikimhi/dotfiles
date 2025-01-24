@@ -7,7 +7,6 @@ return require('packer').startup(function(use)
     -- Packer Autoupdate
     use('wbthomason/packer.nvim')
 
-
     -- Color Scheme
     use({
         'rose-pine/neovim',
@@ -20,7 +19,6 @@ return require('packer').startup(function(use)
     -- Plugins
     use('sharkdp/fd')
     use('mbbill/undotree')
-    use('yuratomo/w3m.vim')
     use('tpope/vim-dadbod')
     use('tpope/vim-abolish')
     use('preservim/nerdtree')
@@ -32,6 +30,7 @@ return require('packer').startup(function(use)
     use('tpope/vim-commentary')
     use('ThePrimeagen/harpoon')
     use('aklt/plantuml-syntax')
+    use('jacquesg/p5-Neovim-Ext')
     use('mfussenegger/nvim-lint')
     use('ThePrimeagen/vim-be-good')
     use('mhartington/formatter.nvim')
@@ -67,90 +66,50 @@ return require('packer').startup(function(use)
         end
     })
 
-    use({
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v4.x',
-        requires = {
-            -- LSP Support
-            { 'neovim/nvim-lspconfig' },
-            { 'williamboman/mason.nvim' },
-            { 'williamboman/mason-lspconfig.nvim' },
+        use({ 'neovim/nvim-lspconfig' })
+        use({ 'williamboman/mason.nvim' })
+        use({ 'williamboman/mason-lspconfig.nvim' })
 
-            -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },
-            { 'hrsh7th/cmp-path' },
-            { 'hrsh7th/cmp-buffer' },
-            { 'hrsh7th/cmp-nvim-lua' },
-            { 'hrsh7th/cmp-nvim-lsp' },
+        -- Autocompletion
+        use({ 'hrsh7th/cmp-nvim-lsp' })
+        use({ 'hrsh7th/cmp-buffer' })
+        use({ 'hrsh7th/cmp-path' })
+        use({ 'hrsh7th/cmp-cmdline' })
+        use({ 'hrsh7th/cmp-nvim-lua' })
+        use({ 'hrsh7th/nvim-cmp' })
 
-            -- Snippets
-            { 'L3MON4D3/LuaSnip' },
-            { 'saadparwaiz1/cmp_luasnip' },
-            { 'rafamadriz/friendly-snippets' },
+        -- Snippets
+        use({ 'L3MON4D3/LuaSnip'})
+        use({ 'rafamadriz/friendly-snippets' })
+        use({ 'saadparwaiz1/cmp_luasnip' })
 
-            -- Folding
-            {
-                'kevinhwang91/nvim-ufo',
-                requires = { 'kevinhwang91/promise-async' }
-            }
-        }
-    })
-
-    -- Neovim Remote
-    use({
-        'amitds1997/remote-nvim.nvim',
-        version = '*',                       -- Pin to GitHub releases
-        requires = {
-            'nvim-lua/plenary.nvim',         -- For standard functions
-            'MunifTanjim/nui.nvim',          -- To build the plugin UI
-            'nvim-telescope/telescope.nvim', -- For picking b/w different remote methods
-        },
-        config = function()
-            require('remote-nvim').setup({
-                client_callback = function(port, workspace_config)
-                    local cmd = ("wezterm cli set-tab-title --pane-id $(wezterm cli spawn nvim --server localhost:%s --remote-ui) %s")
-                        :format(
-                            port,
-                            ("'Remote: %s'"):format(workspace_config.host)
-                        )
-                    if vim.env.TERM == "xterm-kitty" then
-                        cmd = ("kitty -e nvim --server localhost:%s --remote-ui"):format(port)
-                    end
-                    vim.fn.jobstart(cmd, {
-                        detach = true,
-                        on_exit = function(job_id, exit_code, event_type)
-                            -- This function will be called when the job exits
-                            print("Client", job_id, "exited with code", exit_code, "Event type:", event_type)
-                        end,
-                    })
-                end,
-                offline_mode = {
-                    enabled = true,
-                    no_github = false,
-                },
-            })
-        end
-    })
+        -- Folding
+        use({ 
+            'kevinhwang91/nvim-ufo', 
+            requires = {'kevinhwang91/promise-async'}
+        })
+    use({ 'VonHeikemen/lsp-zero.nvim', branch = 'v4.x' })
 
     -- CamelCase and snake_case motion
     use({
         'chrisgrieser/nvim-spider',
         config = function()
             require("spider").setup({
-                skipInsignificantPunctuation = true,
-                consistentOperatorPending = true, -- see "Consistent Operator-pending Mode" in the README
                 subwordMovement = true,
+                consistentOperatorPending = true, -- see "Consistent Operator-pending Mode" in the README
+                skipInsignificantPunctuation = true,
             })
         end
     })
 
-
     -- Format via CLI tool instead of neovim
     -- Disabled till i need it, for now neovim's fine.
-    -- use({
-    --     "stevearc/conform.nvim",
-    --     config = function()
-    --         require("conform").setup()
-    --     end,
-    -- })
+    use({
+        "stevearc/conform.nvim",
+        config = function()
+            require("conform").setup({
+
+            })
+        end,
+    })
 end)

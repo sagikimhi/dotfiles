@@ -241,33 +241,34 @@ vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(event)
         local opts = { buffer = event.buf }
 
+        vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
+        vim.keymap.set({ 'n', 'x' }, '<leader>f', function() vim.lsp.buf.format() end, opts)
+
         vim.keymap.set('n', 'd]', function() vim.diagnostic.goto_next() end, opts)
         vim.keymap.set('n', 'd[', function() vim.diagnostic.goto_prev() end, opts)
-
-        vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
-        vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
-        vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, opts)
-        vim.keymap.set('n', 'gs', function() vim.lsp.buf.signature_help() end, opts)
-        vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation() end, opts)
-        vim.keymap.set('n', 'gt', function() vim.lsp.buf.type_definition() end, opts)
-
         vim.keymap.set('n', '<F2>', function() vim.lsp.buf.rename() end, opts)
         vim.keymap.set('n', '<F3>', function() vim.lsp.buf.code_action() end, opts)
-        vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
+        vim.keymap.set('n', '<leader>ca', function() vim.lsp.buf.code_action() end, opts)
+
+        vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
+        vim.keymap.set('n', 'H', function() vim.lsp.buf.signature_help() end, opts)
+        vim.keymap.set('n', 'gd', ':Telescope lsp_definitions<cr>', opts)
 
         vim.keymap.set('n', '<leader>ma', function() vim.lsp.buf.add_workspace_folder() end, opts)
         vim.keymap.set('n', '<leader>md', function() vim.lsp.buf.remove_workspace_folder() end, opts)
         vim.keymap.set('n', '<leader>ls', function() vim.lsp.buf.list_workspace_folders() end, opts)
 
-        vim.keymap.set({ 'n', 'x' }, '<leader>f', function() vim.lsp.buf.format() end,
-            opts)
+        vim.keymap.set('n', 'gT', function() vim.lsp.buf.typehierarchy("supertypes") end, opts)
+        vim.keymap.set('n', '<leader>gT', function() vim.lsp.buf.typehierarchy("subtypes") end, opts)
 
+        vim.keymap.set('n', 'gci', '<cmd>Telescope lsp_incoming_calls<cr>', opts)
+        vim.keymap.set('n', 'gco', '<cmd>Telescope lsp_outgoing_calls<cr>', opts)
+        vim.keymap.set("n", "<leader>vd", "<cmd>Telescope diagnostics<cr>", opts)
         vim.keymap.set('n', '<leader>gr', '<cmd>Telescope lsp_references<cr>', opts)
         vim.keymap.set('n', '<leader>gd', '<cmd>Telescope lsp_definitions<cr>', opts)
         vim.keymap.set('n', '<leader>gt', '<cmd>Telescope lsp_type_definitions<cr>', opts)
-        vim.keymap.set("n", "<leader>vd", "<cmd> Telescope diagnostics<cr>", opts)
-        vim.keymap.set("n", "<leader>vs", "<cmd> Telescope lsp_document_symbols<cr>", opts)
-        vim.keymap.set('n', '<leader>ws', "<cmd> Telescope lsp_workspace_symbols query=*<cr>", opts)
-        vim.keymap.set('n', '<leader>wd', "<cmd> Telescope lsp_dynamic_workspace_symbols<cr>", opts)
+        vim.keymap.set("n", "<leader>vs", "<cmd>Telescope lsp_document_symbols<cr>", opts)
+        vim.keymap.set('n', '<leader>ws', '<cmd>Telescope lsp_workspace_symbols<cr>', opts)
+        vim.keymap.set('n', '<leader>wd', "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", opts)
     end,
 })
