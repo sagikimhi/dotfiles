@@ -13,10 +13,10 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- centered navigation remaps
 vim.keymap.set("n", "J", "mzJ`z")
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("n", "<C-d>", "<C-d>zzzv")
+vim.keymap.set("n", "<C-u>", "<C-u>zzzv")
 
 -- Paste without yanking
 vim.keymap.set("x", "<leader>p", [["_dP]])
@@ -33,7 +33,7 @@ vim.keymap.set({ "n", "v" }, "<leader>c", [["_c]])
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 -- Format current buffer with lsp
-vim.keymap.set("n", "Q", "<nop>")
+vim.keymap.set("n", "Q", ":%g/\\/\\/ -\\{1,80\\}/s/\\%81c.*//<cr>")
 
 -- Search and replace word under cursor
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
@@ -44,20 +44,21 @@ vim.keymap.set('n', '<leader>l', ':wincmd l<CR>')
 vim.keymap.set('n', '<leader>j', ':wincmd j<CR>')
 vim.keymap.set('n', '<leader>k', ':wincmd k<CR>')
 
+-- This is simply awesome
 vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>");
 
 -- Coding Headers Generation Shortcuts
+vim.keymap.set({'n', 'x'}, '<leader>-', 'mzyyp^<cmd>Commentary<cr>v$r-<cmd>Commentary<cr>`z', {remap=true})
+vim.keymap.set({'n', 'x'}, '<leader>_', '<leader>-<leader>-ddp', {remap=true})
+vim.keymap.set({'n', 'x'}, '<leader>i', '^f(ByiwO<Esc>^"_Dp<Plug>Commentary<leader>-jo<esc><cmd>s/.*//<cr>', {remap=true})
 
-vim.keymap.set('n', '<leader>i', '^f(ByiwO<Esc>^"_Dpgcc<leader>-o')
-vim.keymap.set('n', '<leader>-', 'yyp^gccv$r-^gcc')
-vim.keymap.set('n', '<leader>_', '<leader>-yykP')
-vim.keymap.set('n', '<leader>=j',
-    'o-----------------------------------------------------------------------------<Esc>k')
-vim.keymap.set('n', '<leader>=k',
-    'O-----------------------------------------------------------------------------<Esc>j')
-vim.cmd.nmap('<leader>== <leader>=j<leader>=k')
-vim.keymap.set('n', '<leader>gl',
-[[mzggO# ==============================================================================
+vim.keymap.set({'n', 'x'}, '<leader>=j', [[mzo<Esc>80i-<Esc>V<Plug>Commentary<Esc>V:s/\%81c.*//<cr>`z]], {remap=true})
+vim.keymap.set({'n', 'x'}, '<leader>=k', [[mzO<Esc>80i-<Esc>V<Plug>Commentary<Esc>V:s/\%81c.*//<cr>`z]], {remap=true})
+vim.keymap.set({'n', 'x'}, '<leader>==', '<leader>=j<leader>=k', {remap=true})
+
+vim.keymap.set( {'n', 'x'}, '<leader>gl', [[mzggO
+# ==============================================================================
+#
 #              GLWTS(Good Luck With That Shit) Public License
 #            Copyright (c) Every-fucking-one, except the Author
 # 
@@ -83,8 +84,9 @@ vim.keymap.set('n', '<leader>gl',
 # DEALINGS IN THE SOFTWARE.
 # 
 # Good luck and Godspeed.
+#
 # ==============================================================================
-<Esc>kV26k<Plug>Commentary^W<C-v>26jlx'z]]
+<Esc>kV28k<Plug>Commentary<Esc>^W<C-v>28jlxggdd<cmd>1,29s/\%81c.*//<cr>'z]]
 )
 
 -- Functions
