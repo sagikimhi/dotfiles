@@ -5,7 +5,6 @@ vim.opt.rnu = true
 vim.opt.wrap = false
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
-vim.opt.showmatch = true
 vim.opt.signcolumn = "yes"
 vim.opt.cursorline = true
 vim.opt.smoothscroll = true
@@ -33,4 +32,4 @@ vim.opt.updatetime = 50
 vim.opt.sidescrolloff = 45
 vim.opt.colorcolumn = "80"
 vim.opt.isfname:append("@-@")
-vim.opt.diffopt = "diffopt=internal,filler,closeoff,algorithm:histogram,linematch:80,iblank"
+vim.opt.diffopt = "internal,filler,closeoff,algorithm:histogram,linematch:80,iblank"
