@@ -2,6 +2,22 @@
 -- Mason LSP Config - Must come before lspconfig
 -- -----------------------------------------------------------------------------
 
+local defaults = require('lspconfig').util.default_config
+
+defaults.capabilities = vim.tbl_deep_extend(
+    'force',
+    defaults.capabilities,
+    require('cmp_nvim_lsp').default_capabilities(),
+    {
+        textDocument = {
+            foldingRange = {
+                lineFoldingOnly = true,
+                dynamicRegistration = true,
+            },
+        }
+    }
+)
+
 require('mason').setup({
     ui = {
         icons = {
@@ -11,6 +27,7 @@ require('mason').setup({
         }
     }
 })
+
 require('mason-lspconfig').setup({
     -- Replace the language servers listed here
     -- with the ones you want to install
@@ -22,11 +39,33 @@ require('mason-lspconfig').setup({
 
         function(server_name)
             require('lspconfig')[server_name].setup({
+                capabilities = defaults.capabilities,
+            })
+        end,
+
+        ruff = function()
+            require('lspconfig').ruff.setup({
+                capabilities = defaults.capabilities,
+                init_options = {
+                    settings = {
+                        fixAll = true,
+                        showSyntaxErrors = true,
+                        organizeImports = true,
+                        lineLength = 80,
+                        codeAction = {
+                            fixViolation = {
+                                enable = true,
+                            },
+                        },
+                        configurationPreference = "filesystemFirst",
+                    },
+                },
             })
         end,
 
         lua_ls = function()
             require('lspconfig').lua_ls.setup({
+                capabilities = defaults.capabilities,
                 settings = {
                     Lua = {
                         runtime = {
@@ -95,16 +134,6 @@ require('mason-lspconfig').setup({
     }
 })
 
-vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
-    vim.lsp.handlers.hover,
-    { border = 'rounded' }
-)
-
-vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
-    vim.lsp.handlers.signature_help,
-    { border = 'rounded' }
-)
-
 -- -----------------------------------------------------------------------------
 -- Cmp Mappings
 -- -----------------------------------------------------------------------------
@@ -121,13 +150,9 @@ cmp.setup({
             select = true,
             behavior = cmp.ConfirmBehavior.Replace,
         }),
-        ['<S-NL>']    = cmp.mapping.confirm({
-            select = false,
-            behavior = cmp.ConfirmBehavior.Insert,
-        }),
         ['<Right>']   = cmp.mapping.confirm({
-            select = false,
-            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+            behavior = cmp.ConfirmBehavior.Insert,
         }),
         ['<C-Space>'] = cmp.mapping.complete(),
 
@@ -185,56 +210,71 @@ cmp.setup({
     },
 })
 
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+    vim.lsp.handlers.hover, {
+        border = 'rounded',
+        style = "minimal",
+        title = "signature_help",
+        wrap = true,
+        wrap_at = 80,
+    }
+)
+
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+    vim.lsp.handlers.signature_help, {
+        wrap = true,
+        wrap_at = 79,
+        border = 'rounded',
+        style = "minimal",
+        title = "signature",
+    }
+)
+
+vim.lsp.handlers["textDocument/references"] = vim.lsp.with(
+    vim.lsp.handlers.references, {
+        -- Use location list instead of quickfix list
+        title='references',
+        loclist = true,
+        float = {
+            style = 'minimal',
+            border = 'rounded',
+            header = '',
+            prefix = '',
+        },
+    }
+)
+
 vim.diagnostic.config({
-    virtual_text = false,
     severity_sort = true,
+    update_in_insert = false,
+    underline = {
+        severity = vim.diagnostic.severity.ERROR
+    },
+    virtual_text = {
+        severity = vim.diagnostic.severity.ERROR,
+        source = "if_many",
+
+    },
     float = {
         style = 'minimal',
+        source = 'if_many',
+        severity_sort = true,
         border = 'rounded',
         header = '',
         prefix = '',
     },
     signs = {
         text = {
-            [vim.diagnostic.severity.ERROR] = '✘',
-            [vim.diagnostic.severity.WARN] = '▲',
-            [vim.diagnostic.severity.HINT] = '⚑',
             [vim.diagnostic.severity.INFO] = '»',
+            [vim.diagnostic.severity.HINT] = '⚑',
+            [vim.diagnostic.severity.WARN] = '▲',
+            [vim.diagnostic.severity.ERROR] = '✘',
         },
     },
 })
-
 -- -----------------------------------------------------------------------------
 -- Keymap Config
 -- -----------------------------------------------------------------------------
-
-local defaults = require('lspconfig').util.default_config
-
-defaults.capabilities = vim.tbl_deep_extend(
-    'force',
-    defaults.capabilities,
-    require('cmp_nvim_lsp').default_capabilities(),
-    {
-        textDocument = {
-            foldingRange = {
-                dynamicRegistration = false,
-                lineFoldingOnly = true
-            },
-        }
-    }
-)
-
-vim.o.signcolumn = 'yes'
-vim.o.foldenable = true
-vim.o.foldcolumn = '1'
--- vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
-
-require('ufo').setup({})
--- require('luasnip.loaders.from_vscode').lazy_load()
-
-vim.keymap.set('n', 'zR', function() require('ufo').openAllFolds() end)
-vim.keymap.set('n', 'zM', function() require('ufo').closeAllFolds() end)
 
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP actions',
