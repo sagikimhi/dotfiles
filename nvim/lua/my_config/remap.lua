@@ -35,13 +35,12 @@ vim.keymap.set({ "n", "v" }, "<leader>D", [["_D]])
 vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("n", "<C-e>", "<cmd>Ex<cr>")
 
--- Format current buffer with lsp
+-- Remove trailing whitespace and comment headers past column 80
 vim.keymap.set(
     "n",
     "Q",
-    "<cmd>silent! %g/\\/\\/ -\\{1,80\\}/%s/\\%77c.*//<cr>"
-    ..
-    "<cmd>silent! %s/\\s\\+$//<cr>"
+    [[<cmd>silent! %g/-\{3,80\}/s/\%80c.*//<cr>]]
+    .. [[<cmd>silent! %s/\s\+$//<cr>]]
 )
 -- Search and replace word under cursor
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
@@ -61,8 +60,8 @@ vim.keymap.set({ 'n', 'x' }, '<leader>_', '<leader>-<leader>-ddp', { remap = tru
 vim.keymap.set({ 'n', 'x' }, '<leader>i', '^f(ByiwO<Esc>^"_Dp<Plug>Commentary<leader>-jo<esc><cmd>s/.*//<cr>',
     { remap = true })
 
-vim.keymap.set({ 'n', 'x' }, '<leader>=j', [[mzo<Esc>80i-<Esc>V<Plug>Commentary<Esc>V:s/\%81c.*//<cr>`z]], { remap = true })
-vim.keymap.set({ 'n', 'x' }, '<leader>=k', [[mzO<Esc>80i-<Esc>V<Plug>Commentary<Esc>V:s/\%81c.*//<cr>`z]], { remap = true })
+vim.keymap.set({ 'n', 'x' }, '<leader>=j', [[mzo<Esc>80i-<Esc>V<Plug>Commentary<Esc>V<cmd>s/\%80c.*//<cr>`z]], { remap = true })
+vim.keymap.set({ 'n', 'x' }, '<leader>=k', [[mzO<Esc>80i-<Esc>V<Plug>Commentary<Esc>V<cmd>s/\%80c.*//<cr>`z]], { remap = true })
 vim.keymap.set({ 'n', 'x' }, '<leader>==', '<leader>=j<leader>=k', { remap = true })
 
 vim.keymap.set({ 'n', 'x' }, '<leader>gl', [[mzggO
