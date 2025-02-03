@@ -144,7 +144,6 @@ cmp.setup({
     mapping = cmp.mapping.preset.insert({
         ['<Up>']      = cmp.mapping.select_prev_item(cmp_select),
         ['<Down>']    = cmp.mapping.select_next_item(cmp_select),
-        ['<Del>']     = cmp.mapping.abort(),
         ['<Left>']    = cmp.mapping.abort(),
         ['<CR>']      = cmp.mapping.confirm({
             select = true,
@@ -165,6 +164,7 @@ cmp.setup({
                 fallback()
             end
         end, { 'i', 's' }),
+
         -- navigate to the previous snippet placeholder
         ['<C-b>']     = cmp.mapping(function(fallback)
             local snip = require('luasnip')
@@ -174,34 +174,44 @@ cmp.setup({
                 fallback()
             end
         end, { 'i', 's' }),
+
     }),
+
     experimental = {
-        ghost_text = true
+        ghost_text = false
     },
+
     view = {
         docs = {
             auto_open = true,
         }
     },
+
     window = {
+        completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
     },
+
     sources = {
         { name = 'nvim_lsp', group_index = 1 },
-        { name = 'buffer',   group_index = 2 },
-        { name = 'luasnip',  group_index = 3 },
+        { name = 'luasnip',  group_index = 2 },
+        { name = 'buffer',   group_index = 3 },
     },
+
     snippet = {
         expand = function(args)
             vim.snippet.expand(args.body)
         end,
     },
+
     formatting = {
         fields = { 'abbr', 'menu', 'kind' },
         format = function(entry, item)
             local n = entry.source.name
-            if n == 'nvim_lsp' then
-                item.menu = '[LSP]'
+            if n == 'cmp_nvim_lsp' then
+                item.menu = '[CMP_LSP]'
+            elseif n == 'nvim_lsp' then
+                item.menu = '[NVIM_LSP]'
             else
                 item.menu = string.format('[%s]', n)
             end
@@ -212,11 +222,11 @@ cmp.setup({
 
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
     vim.lsp.handlers.hover, {
-        border = 'rounded',
-        style = "minimal",
-        title = "signature_help",
         wrap = true,
-        wrap_at = 80,
+        wrap_at = 79,
+        title = "hover",
+        style = "minimal",
+        border = 'rounded',
     }
 )
 
@@ -224,23 +234,21 @@ vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
     vim.lsp.handlers.signature_help, {
         wrap = true,
         wrap_at = 79,
-        border = 'rounded',
-        style = "minimal",
         title = "signature",
+        style = "minimal",
+        border = 'rounded',
     }
 )
 
 vim.lsp.handlers["textDocument/references"] = vim.lsp.with(
     vim.lsp.handlers.references, {
         -- Use location list instead of quickfix list
-        title='references',
+        wrap = true,
+        wrap_at = 79,
         loclist = true,
-        float = {
-            style = 'minimal',
-            border = 'rounded',
-            header = '',
-            prefix = '',
-        },
+        title = "hover",
+        style = "minimal",
+        border = 'rounded',
     }
 )
 
@@ -253,13 +261,12 @@ vim.diagnostic.config({
     virtual_text = {
         severity = vim.diagnostic.severity.ERROR,
         source = "if_many",
-
     },
     float = {
         style = 'minimal',
         source = 'if_many',
-        severity_sort = true,
         border = 'rounded',
+        severity_sort = true,
         header = '',
         prefix = '',
     },
@@ -272,6 +279,11 @@ vim.diagnostic.config({
         },
     },
 })
+
+require("luasnip.loaders.from_vscode").lazy_load({
+    paths = "~/.config/nvim"
+})
+
 -- -----------------------------------------------------------------------------
 -- Keymap Config
 -- -----------------------------------------------------------------------------
@@ -281,8 +293,22 @@ vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(event)
         local opts = { buffer = event.buf }
 
+        if vim.bo.ft == "verilog" or vim.bo.ft == "systemverilog" then
+            vim.opt.commentstring = "/*%s*/://%s"
+            vim.opt.tabstop = 3
+            vim.opt.shiftwidth = 3
+            vim.opt.softtabstop = 3
+            vim.opt.expandtab = true
+            vim.opt.smartindent = true
+        end
+
         vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
-        vim.keymap.set({ 'n', 'x' }, '<leader>f', function() vim.lsp.buf.format() end, opts)
+        vim.keymap.set({ 'n', 'x' }, '<leader>f', function() 
+            local tmp = vim.opt.fo
+            vim.opt.fo=""
+            vim.lsp.buf.format() 
+            vim.opt.fo=tmp
+        end, opts)
 
         vim.keymap.set('n', 'd]', function() vim.diagnostic.goto_next() end, opts)
         vim.keymap.set('n', 'd[', function() vim.diagnostic.goto_prev() end, opts)
