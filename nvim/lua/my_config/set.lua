@@ -5,9 +5,8 @@ vim.opt.rnu = true
 vim.opt.wrap = false
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
-vim.opt.signcolumn = "yes"
+vim.opt.signcolumn = "yes:1"
 vim.opt.cursorline = true
-vim.opt.smoothscroll = true
 vim.opt.termguicolors = true
 
 vim.opt.backup = true
@@ -27,9 +26,15 @@ vim.opt.foldcolumn = '1'
 vim.opt.foldenable = true
 vim.opt.foldlevelstart = 99
 
+vim.opt.fo="croqwjp"
+vim.opt.tw=72
+vim.opt.sel="old"
+vim.opt.splitright=true
+
+vim.opt.mouse='a'
 vim.opt.scrolloff = 10
 vim.opt.updatetime = 50
-vim.opt.sidescrolloff = 45
+vim.opt.sidescrolloff = 25
 vim.opt.colorcolumn = "80"
 vim.opt.isfname:append("@-@")
-vim.opt.diffopt = "internal,filler,closeoff,algorithm:histogram,linematch:80,iblank"
+vim.opt.diffopt = "internal,filler,closeoff,algorithm:histogram,linematch:60,iblank"

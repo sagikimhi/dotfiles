@@ -1,0 +1,185 @@
+{
+    "Implementation Doc": {
+        "prefix": "impl:",
+        "body": [
+            "// -----------------------------------------------------------------------------",
+            "// Implementation",
+            "// -----------------------------------------------------------------------------",
+            ""
+        ]
+    },
+
+    "Internal Doc": {
+        "prefix": "_int:",
+        "body": [
+            "// -----------------------------------------------------------------------------",
+            "// Internal",
+            "// -----------------------------------------------------------------------------",
+            ""
+        ]
+    },
+
+    "Class Doc": {
+        "prefix": "cls:",
+        "body": [
+            "// -----------------------------------------------------------------------------",
+            "// Class: ${1: classname}",
+            "// -----------------------------------------------------------------------------",
+            "// ",
+            "// Description.",
+            "// "
+        ]
+    },
+
+    "Group Doc": {
+        "prefix": "grp:",
+        "body": [
+            "// ---------------------------------------------------------------------------",
+            "// Group: ${1: groupname}",
+            "// ---------------------------------------------------------------------------",
+            ""
+        ]
+    },
+
+    "Event Doc": {
+        "prefix": "event:",
+        "body": [
+            "// Event: ${1: eventname}",
+            "// ",
+            "// Description.",
+            "// "
+        ]
+    },
+
+    "Function Doc": {
+        "prefix": "func:",
+        "body": [
+            "// Function: ${1: funcname}",
+            "// ",
+            "// Description.",
+            "// "
+        ]
+    },
+
+    "Variable Doc": {
+        "prefix": "var:",
+        "body": [
+            "// Variable: ${1: variablename}",
+            "// ",
+            "// Description.",
+            "// "
+        ]
+    },
+
+    "Random Variable Doc": {
+        "prefix": "rvar:",
+        "body": [
+            "// Random Variable: ${1: variablename}",
+            "// ",
+            "// Description.",
+            "// "
+        ]
+    },
+
+    "Constant Doc": {
+        "prefix": "const:",
+        "body": [
+            "// Constant: ${1: constantname}",
+            "// ",
+            "// Description.",
+            "// "
+        ]
+    },
+
+    "Parameter Doc": {
+        "prefix": "param:",
+        "body": [
+            "// Parameter: ${1: parametername}",
+            "// ",
+            "// Description.",
+            "// "
+        ]
+    },
+
+    "Port Doc": {
+        "prefix": "port:",
+        "body": [
+            "// Port: ${1: portname}",
+            "// ",
+            "// Description.",
+            "// "
+        ]
+    },
+
+    "Export Doc": {
+        "prefix": "exp:",
+        "body": [
+            "// Export: ${1: exportname}",
+            "// ",
+            "// Description.",
+            "// "
+        ]
+    },
+
+    "Import Doc": {
+        "prefix": "imp:",
+        "body": [
+            "// Import: ${1: importname}",
+            "// ",
+            "// Description.",
+            "// "
+        ]
+    },
+
+    "Enum Doc": {
+        "prefix": "enum:",
+        "body": [
+            "// Enum: ${1: name}",
+            "// ",
+            "// Description.",
+            "// "
+        ]
+    },
+
+    "Constraint Doc": {
+        "prefix": "cnstr:",
+        "body": [
+            "// Constraint: ${1: constraintname}",
+            "// ",
+            "// Description.",
+            "// "
+        ]
+    },
+
+    "Package Doc": {
+        "prefix": "pkg:",
+        "body": [
+            "// Package: ${1: packagename}",
+            "// ",
+            "// Description.",
+            "// "
+        ]
+    },
+
+    "Task Doc": {
+        "prefix": "task:",
+        "body": [
+            "// Task: ${1: taskname}",
+            "// ",
+            "// Description.",
+            "// "
+        ]
+    },
+
+    "Type Doc": {
+        "prefix": "type:",
+        "body": [
+            "// Type: ${1: typename}",
+            "// ",
+            "// Description.",
+            "// "
+        ]
+    }
+
+
+}
