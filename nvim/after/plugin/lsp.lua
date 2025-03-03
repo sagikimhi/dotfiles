@@ -82,55 +82,22 @@ require('mason-lspconfig').setup({
             })
         end,
 
-        -- sqls = function()
-        --     local util = require('lspconfig.util')
-        --     require('lspconfig').sqls.setup({
-        --         on_attach = function(client, bufnr)
-        --             require('sqls').on_attach(client, bufnr)
-        --         end,
-        --         filetypes = { 'sql' },
-        --         cmd = { "sqls", "--config", "/home/skimhi/.config/sqls/config.yml" },
-        --         root_dir = function(fname)
-        --             return require('lspconfig.util').find_git_ancestor(fname)
-        --         end,
-        --         settings = {
-        --             sqls = {
-        --                 connections = {
-        --                     {
-        --                         driver = 'postgresql',
-        --                         dataSourceName = ''
-        --                             .. 'host=127.0.0.1'
-        --                             .. ' port=' .. os.getenv("PGPORT")
-        --                             .. ' user=' .. os.getenv("USER")
-        --                             .. ' dbname=' .. os.getenv("USER")
-        --                             .. ' password=' .. '' or os.getenv("PGPASSWORD"),
-        --                     },
-        --                 },
-        --             },
-        --         },
-        --         -- filetypes = { 'sql', 'plpgsql' },
-        --         -- single_file_support = true,
-        --         -- root_dir = function()
-        --         --     require("lspconfig.util").root_pattern('.sqls.yml')
-        --         -- end,
-        --     })
-        -- end,
-        --
-        -- postgres_lsp = function()
-        --     -- local util = require('lspconfig.util')
-        --     -- local lspconfig = require('lspconfig')
-        --     require('lspconfig').postgres_lsp = {
-        --         default_config = {
-        --             name = 'postgres_lsp',
-        --             cmd = { 'postgres_lsp' },
-        --             filetypes = { 'sql' },
-        --             single_file_support = true,
-        --             root_dir = require('lspconfig.util').root_pattern('root-file.txt'),
-        --         },
-        --     }
-        --     -- lspconfig.postgres_lsp.setup { force_setup = true }
-        -- end,
-
+        veridian = function()
+            local util = require('lspconfig.util')
+            require('lspconfig').veridian.setup({
+                cmd = { 'veridian' },
+                root_dir = function(fname)
+                    local filename = (
+                        (util.path.is_absolute(fname) and fname)
+                        or util.path.join(vim.loop.cwd(), fname)
+                    )
+                    return (
+                        util.root_pattern(filename) 
+                        or util.path.dirname(filename)
+                    )
+                end
+            })
+        end,
     }
 })
 
@@ -141,22 +108,33 @@ require('mason-lspconfig').setup({
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 cmp.setup({
+    performance = {
+        max_view_entries = 999,
+    },
+    matching = {
+        disallow_symbol_nonprefix_matching = false,
+    },
     mapping = cmp.mapping.preset.insert({
-        ['<Up>']      = cmp.mapping.select_prev_item(cmp_select),
-        ['<Down>']    = cmp.mapping.select_next_item(cmp_select),
         ['<Left>']    = cmp.mapping.abort(),
         ['<CR>']      = cmp.mapping.confirm({
-            select = true,
+            select = cmp_select,
             behavior = cmp.ConfirmBehavior.Replace,
         }),
         ['<Right>']   = cmp.mapping.confirm({
-            select = true,
+            select = cmp_select,
             behavior = cmp.ConfirmBehavior.Insert,
         }),
-        ['<C-Space>'] = cmp.mapping.complete(),
-
-        -- navigate to the next snippet placeholder
-        ['<C-w>']     = cmp.mapping(function(fallback)
+        ['<C-Space>'] = cmp.mapping.complete({
+            config = {
+                sources = {
+                    { name = 'nvim_lsp' },
+                    { name = 'luasnip' },
+                }
+            }
+        }),
+        ['<Up>']      = cmp.mapping.select_prev_item(cmp_select),
+        ['<Down>']    = cmp.mapping.select_next_item(cmp_select),
+        ['<C-Right>'] = cmp.mapping(function(fallback)
             local snip = require('luasnip')
             if snip.jumpable(1) then
                 snip.jump(1)
@@ -164,9 +142,7 @@ cmp.setup({
                 fallback()
             end
         end, { 'i', 's' }),
-
-        -- navigate to the previous snippet placeholder
-        ['<C-b>']     = cmp.mapping(function(fallback)
+        ['<C-Left>']  = cmp.mapping(function(fallback)
             local snip = require('luasnip')
             if snip.jumpable(-1) then
                 snip.jump(-1)
@@ -174,6 +150,12 @@ cmp.setup({
                 fallback()
             end
         end, { 'i', 's' }),
+        ['<C-l>']     = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                return cmp.complete_common_string()
+            end
+            fallback()
+        end, { 'i', 'c' }),
 
     }),
 
@@ -184,23 +166,41 @@ cmp.setup({
     view = {
         docs = {
             auto_open = true,
+        },
+        entries = {
+            follow_cursor = true,
         }
     },
 
     window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
+        completion = {
+            border = "rounded",
+            winblend = 10,
+            scrollbar = true,
+            col_offset = 3,
+            side_padding = 1,
+        },
+        documentation = {
+            border = "rounded",
+            winblend = 10,
+            scrollbar = true,
+            max_width = 80,
+            max_height = 20,
+            side_padding = 1,
+            -- cmp.config.window.bordered(),
+        },
     },
 
     sources = {
         { name = 'nvim_lsp', group_index = 1 },
         { name = 'luasnip',  group_index = 2 },
         { name = 'buffer',   group_index = 3 },
+        { name = "filepath", group_index = 4 },
     },
 
     snippet = {
         expand = function(args)
-            vim.snippet.expand(args.body)
+            require('luasnip').lsp_expand(args.body)
         end,
     },
 
@@ -208,10 +208,10 @@ cmp.setup({
         fields = { 'abbr', 'menu', 'kind' },
         format = function(entry, item)
             local n = entry.source.name
-            if n == 'cmp_nvim_lsp' then
-                item.menu = '[CMP_LSP]'
+            if n == 'luasnip' then
+                item.menu = '[luasnip]'
             elseif n == 'nvim_lsp' then
-                item.menu = '[NVIM_LSP]'
+                item.menu = '[nvim_lsp]'
             else
                 item.menu = string.format('[%s]', n)
             end
@@ -254,14 +254,15 @@ vim.lsp.handlers["textDocument/references"] = vim.lsp.with(
 
 vim.diagnostic.config({
     severity_sort = true,
-    update_in_insert = false,
+    update_in_insert = true,
     underline = {
         severity = vim.diagnostic.severity.ERROR
     },
-    virtual_text = {
-        severity = vim.diagnostic.severity.ERROR,
-        source = "if_many",
-    },
+    virtual_text = false,
+    -- virtual_text = {
+    --     severity = vim.diagnostic.severity.ERROR,
+    --     source = "if_many",
+    -- },
     float = {
         style = 'minimal',
         source = 'if_many',
@@ -303,11 +304,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
         end
 
         vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
-        vim.keymap.set({ 'n', 'x' }, '<leader>f', function() 
+        vim.keymap.set({ 'n', 'x' }, '<leader>f', function()
             local tmp = vim.opt.fo
-            vim.opt.fo=""
-            vim.lsp.buf.format() 
-            vim.opt.fo=tmp
+            vim.opt.fo = ""
+            vim.lsp.buf.format()
+            vim.opt.fo = tmp
         end, opts)
 
         vim.keymap.set('n', 'd]', function() vim.diagnostic.goto_next() end, opts)
