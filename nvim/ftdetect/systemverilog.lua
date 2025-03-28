@@ -1,2 +1,2 @@
-vim.cmd[[autocmd BufRead,BufNewFile *.v,*.sv,*.svh,*.def set filetype=systemverilog]]
+vim.cmd[[autocmd BufRead,BufNewFile *.v,*vh,*.sv,*.svh,*.def set filetype=systemverilog]]
 

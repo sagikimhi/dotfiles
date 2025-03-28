@@ -1,3 +1,3 @@
 require("cfg")
-require("usercmd")
+require("cmd")
 

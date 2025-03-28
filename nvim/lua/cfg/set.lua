@@ -1,4 +1,6 @@
 vim.g.name = "value"
+vim.g.clipboard = get_clipboard()
+vim.g.loaded_perl_provider = 0
 
 vim.opt.nu = true
 vim.opt.rnu = true
@@ -26,12 +28,12 @@ vim.opt.foldcolumn = '1'
 vim.opt.foldenable = true
 vim.opt.foldlevelstart = 99
 
-vim.opt.fo="croqwjp"
-vim.opt.tw=72
-vim.opt.sel="old"
-vim.opt.splitright=true
+vim.opt.fo = "croqwjp"
+vim.opt.tw = 72
+vim.opt.sel = "old"
+vim.opt.splitright = true
 
-vim.opt.mouse='a'
+vim.opt.mouse = 'a'
 vim.opt.scrolloff = 10
 vim.opt.updatetime = 50
 vim.opt.sidescrolloff = 25
