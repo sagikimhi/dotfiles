@@ -1,53 +1,70 @@
-# ------------------------------------------------------------------------------
-# Build System Configurations
-# ------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
+# Build System
+# -----------------------------------------------------------------------------
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
-# ------------------------------------------------------------------------------
-# Project Configurations
-# ------------------------------------------------------------------------------
+[tool.hatch.build.targets.wheel]
+packages = ["src/mypackage"]
+
+# -----------------------------------------------------------------------------
+# Project
+# -----------------------------------------------------------------------------
 
 [project]
-name = "package"
+name = "mypackage"
 version = "0.1.0"
 readme = "README.md"
-license = "Apache 2.0"
-authors = [{name = "Sagi Kimhi", email = "sagi.kim5@gmail.com"}]
-maintainers = [{name = "Sagi Kimhi", email = "sagi.kim5@gmail.com"}]
+license = "Apache-2.0 OR MIT"
+authors = [ { name = "Sagi Kimhi", email = "sagi.kim5@gmail.com" } ]
+maintainers = [ { name = "Sagi Kimhi", email = "sagi.kim5@gmail.com" } ]
 description = ""
 dependencies = []
 license-files = ["LICENSE"]
 requires-python = ">=3.12"
 
+[project.urls]
+Homepage = "https://github.com/myuser/mypackage"
+Issues = "https://github.com/myuser/mypackage/issues"
+
 [project.scripts]
+mypackage='mypackage.__main__:main'
 
-[project.gui-scripts]
+[project.entry-points."uvx.run"]
+mypackage = "mypackage.__main__:main"
 
-[project.optional-dependencies]
+[project.entry-points."pipx.run"]
+mypackage = "mypackage.__main__:main"
+
+# -----------------------------------------------------------------------------
+# Dependency Groups
+# -----------------------------------------------------------------------------
+
+[dependency-groups]
 dev = [
     "mypy",
     "ruff",
+    "twine",
+    "build",
+    "hatch",
     "pytest",
+    "hatchling",
+    "pytest-cov",
+    "pre-commit",
     "pyupgrade",
     "pydocstyle",
     "pycodestyle",
     "flake8-bugbear",
     "flake8-simplify",
+    "importlib-metadata",
 ]
 
-# ------------------------------------------------------------------------------
-# Developer Configurations
-# ------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
+# Tools
+# -----------------------------------------------------------------------------
 
-[tool.mypy]
-files = ["src"]
-pretty = true
-strict = true
-color_output = true
-show_error_codes = true
-warn_unreachable = true
-python_version = "3.12"
+[tool.uv]
+package = true
 
