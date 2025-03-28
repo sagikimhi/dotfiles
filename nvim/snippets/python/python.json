@@ -25,7 +25,7 @@
         "description": "Snippet to reference the self property in an object"
     },
     "__magic__": {
-        "prefix": "__",
+        "prefix": "def_",
         "body": "__${1:init}__$0",
         "description": "Create magic method"
     },
@@ -146,6 +146,25 @@
             "    def __init__(self, ${4:arg}):",
             "        ${5:super($1, self).__init__()}",
             "        self.$4 = $4$0"
+        ],
+        "description": "Class definition template"
+    },
+    "init": {
+        "prefix": "ini",
+        "body": [
+            "    def __init__(self, ${2:arg}):",
+            "        \"\"\"${1:docstring for init.}\"\"\"",
+            "        self.$2 = $2$0"
+        ],
+        "description": "Class definition template"
+    },
+    "init": {
+        "prefix": "sini",
+        "body": [
+            "def __init__(self, ${2:arg},*args, **kwargs):",
+            "    \"\"\"${1:docstring for init.}\"\"\"",
+            "    super().__init__(*args, **kwargs)",
+            "    self.$2 = $2$0"
         ],
         "description": "Class definition template"
     },

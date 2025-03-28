@@ -6,6 +6,9 @@
 !.gitignore
 !.svls.toml
 !.svlint.toml
+!veridian.yaml
+!veridian.yaml.template
+!Makefile
 
 !LICENSE
 !README.md

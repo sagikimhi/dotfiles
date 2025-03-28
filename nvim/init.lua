@@ -1,2 +1,3 @@
-require("my_config")
+require("cfg")
+require("usercmd")
 

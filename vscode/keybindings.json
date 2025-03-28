@@ -52,6 +52,4 @@
 		"command": "workbench.files.action.collapseExplorerFolders",
         "when": "filesExplorerFocus && !inputFocus",
     }
-// - workbench.files.action.createFileFromExplorer
-// - workbench.files.action.createFolderFromExplorer
 ]
