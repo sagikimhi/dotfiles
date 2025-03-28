@@ -112,7 +112,10 @@ cmp.setup({
         max_view_entries = 999,
     },
     matching = {
-        disallow_symbol_nonprefix_matching = false,
+        disallow_fuzzy_matching = false,
+        disallow_prefix_matching = false,
+        disallow_nonprefix_matching = false,
+        disallow_partial_fuzzy_matching = false,
     },
     mapping = cmp.mapping.preset.insert({
         ['<Left>']    = cmp.mapping.abort(),
