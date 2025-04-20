@@ -1,9 +1,3 @@
-# [includeIf "gitdir:~/.project/git/"]
-    # path = default.gitconfig
-
-# [includeIf "gitdir:~/.project/git/work/"]
-    # path = work.gitconfig
-
 [core]
     editor = nvim
     safecrlf = true
@@ -26,20 +20,20 @@
 [push]
     followTags = true
 
-[branch]
-    autoSetupRebase = always
-
 [rebase]
     stat = true
 
 [diff]
     renames = true
-    wordRegex = .
-    algorithm = histogram
+    whitespace = false
     submodule = diff
     srcPrefix = src/
     dstPrefix = dst/
+    algorithm = histogram
     mnemonicPrefix = true
+
+[commit]
+    status = true
 
 [color]
     ui = always
@@ -48,6 +42,9 @@
     status = always
     branch = true
     showBranch = true
+
+[apply]
+    whitespace = fix
 
 [status]
     branch = true
@@ -58,14 +55,14 @@
     enabled = true
     autoUpdate = true
 
-[man]
-    viewer = nvim
-
-[man.nvim]
-    cmd = nvim
-
 [log]
     decorate = full
+
+[includeIf "gitdir:/project/pixie/users/sagikimhi/"]
+path = .gitconfig-wiliot
+
+[includeIf "gitdir:~/.local/git/"]
+path = .gitconfig-default
 
 [alias]
 # List all aliases
@@ -75,8 +72,9 @@ la = "!git config -l | grep alias | cut -c 7-"
 # git add aliases
 # -----------------------------------------------------------------------------
 
-a = add
-ap = add -p
+    a = add
+    ap = add -p
+    aa = !sh -c 'git diff -U0 -w --no-color --src-prefix=a/ --dst-prefix=b/ "$@" | git apply --cached --ignore-whitespace --unidiff-zero -'
 
 # -----------------------------------------------------------------------------
 # git show aliases
@@ -89,14 +87,14 @@ sshow=show -s --date=short --pretty='format:%C(red)%h %C(reset)(%s, %ad)'
 # -----------------------------------------------------------------------------
 
 co = checkout
-cob = checkout origin/main -b
+cob = checkout origin/develop -b
 
 # -----------------------------------------------------------------------------
 # git commit aliases
 # -----------------------------------------------------------------------------
 
 c = commit -s --verbose
-m = commit --amend --verbose
+m = commit --amend --verbose --reset-author
 ca = commit -s -a --verbose
 cm = commit --verbose -s -m
 cam = commit --verbose -s -a -m
@@ -105,10 +103,10 @@ cam = commit --verbose -s -a -m
 # git diff aliases
 # -----------------------------------------------------------------------------
 
-d = diff --color-words
+d = diff
+dw = diff
 ds = diff --stat
-dw = diff --word-diff-regex=. --color-words
-dc = diff --word-diff-regex=. --color-words --cached
+dc = diff --cached
 dt = difftool --tool=nvimdiff --no-symlinks --dir-diff --ignore-submodules 
 
 # -----------------------------------------------------------------------------
