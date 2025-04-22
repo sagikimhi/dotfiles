@@ -50,7 +50,7 @@
         "description": "Import individual objects directly into the caller’s symbol table"
     },
     "from ... import ...": {
-        "prefix": "fromim",
+        "prefix": ["fromim", "from", "imp", "fromimp"],
         "body": "from ${1:pathlib} import ${2:Path}",
         "description": "Import individual objects directly into the caller’s symbol table"
     },
@@ -152,19 +152,17 @@
     "init": {
         "prefix": "ini",
         "body": [
-            "    def __init__(self, ${2:arg}):",
-            "        \"\"\"${1:docstring for init.}\"\"\"",
-            "        self.$2 = $2$0"
+            "    def __init__(self) -> None:",
+            "        \"\"\"${1:docstring for init.}\"\"\""
         ],
         "description": "Class definition template"
     },
-    "init": {
+    "super init": {
         "prefix": "sini",
         "body": [
-            "def __init__(self, ${2:arg},*args, **kwargs):",
+            "def __init__(self ,*args: Any, **kwargs: Any) -> None:",
             "    \"\"\"${1:docstring for init.}\"\"\"",
-            "    super().__init__(*args, **kwargs)",
-            "    self.$2 = $2$0"
+            "    super().__init__(*args, **kwargs)"
         ],
         "description": "Class definition template"
     },
@@ -183,16 +181,16 @@
         "description": "Class method definition"
     },
     "property template": {
-        "prefix": ["prop", "property"],
+        "prefix": ["ppt", "prop", "property"],
         "body": [
             "@property",
-            "def ${1:pname}(self):",
-            "    \"\"\"${2:The $1 property.}\"\"\"",
-            "    ${3:return self._$1}",
+            "def ${1:pname}(self) -> ${2: ptype}",
+            "    \"\"\"${3:Get $1 property.}\"\"\"",
+            "    ${4:return self._$1}",
             "",
-            "@${4:$1}.setter",
-            "def ${5:$1}(self, value):",
-            "    ${6:self._$1} = value"
+            "@$1.setter",
+            "def $1(self, value: $2) -> None:",
+            "    ${7:self._$1} = value"
         ],
         "description": "New property: get and set via decorator"
     },

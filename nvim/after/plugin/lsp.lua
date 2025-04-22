@@ -1,28 +1,39 @@
 -- -----------------------------------------------------------------------------
+-- n = {type = split, position=left}
 -- Mason LSP Config - Must come before lspconfig
 -- -----------------------------------------------------------------------------
 
+
+local trouble = {}
+local meths = require('vim.lsp.protocol').Methods
 local defaults = require('lspconfig').util.default_config
 
 defaults.capabilities = vim.tbl_deep_extend(
     'force',
     defaults.capabilities,
-    require('cmp_nvim_lsp').default_capabilities(),
     {
+        general = {
+            positionEncodings = { "utf-16" },
+        },
         textDocument = {
             foldingRange = {
                 lineFoldingOnly = true,
                 dynamicRegistration = true,
             },
-        }
+        },
     }
+)
+defaults.capabilities = vim.tbl_deep_extend(
+    'force',
+    defaults.capabilities,
+    require('cmp_nvim_lsp').default_capabilities()
 )
 
 require('mason').setup({
     ui = {
         icons = {
-            package_installed = "✓",
             package_pending = "➜",
+            package_installed = "✓",
             package_uninstalled = "✗"
         }
     }
@@ -39,33 +50,12 @@ require('mason-lspconfig').setup({
 
         function(server_name)
             require('lspconfig')[server_name].setup({
-                capabilities = defaults.capabilities,
-            })
-        end,
-
-        ruff = function()
-            require('lspconfig').ruff.setup({
-                capabilities = defaults.capabilities,
-                init_options = {
-                    settings = {
-                        fixAll = true,
-                        showSyntaxErrors = true,
-                        organizeImports = true,
-                        lineLength = 80,
-                        codeAction = {
-                            fixViolation = {
-                                enable = true,
-                            },
-                        },
-                        configurationPreference = "filesystemFirst",
-                    },
-                },
+                -- capabilities = defaults.capabilities,
             })
         end,
 
         lua_ls = function()
             require('lspconfig').lua_ls.setup({
-                capabilities = defaults.capabilities,
                 settings = {
                     Lua = {
                         runtime = {
@@ -81,23 +71,6 @@ require('mason-lspconfig').setup({
                 },
             })
         end,
-
-        -- veridian = function()
-        --     local util = require('lspconfig.util')
-        --     require('lspconfig').veridian.setup({
-        --         cmd = { 'veridian' },
-        --         root_dir = function(fname)
-        --             local filename = (
-        --                 (util.path.is_absolute(fname) and fname)
-        --                 or util.path.join(vim.loop.cwd(), fname)
-        --             )
-        --             return (
-        --                 util.root_pattern(filename) 
-        --                 or util.path.dirname(filename)
-        --             )
-        --         end
-        --     })
-        -- end,
     }
 })
 
@@ -108,14 +81,15 @@ require('mason-lspconfig').setup({
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 cmp.setup({
-    performance = {
-        max_view_entries = 999,
-    },
+    enabled = true,
     matching = {
         disallow_fuzzy_matching = false,
         disallow_prefix_matching = false,
+        disallow_prefix_unmatching = false,
+        disallow_fullfuzzy_matching = true,
         disallow_nonprefix_matching = false,
         disallow_partial_fuzzy_matching = false,
+        disallow_symbol_nonprefix_matching = false,
     },
     mapping = cmp.mapping.preset.insert({
         ['<Left>']    = cmp.mapping.abort(),
@@ -130,8 +104,9 @@ cmp.setup({
         ['<C-Space>'] = cmp.mapping.complete({
             config = {
                 sources = {
-                    { name = 'nvim_lsp' },
-                    { name = 'luasnip' },
+                    { name = 'nvim_lsp', group_index = 1 },
+                    { name = 'luasnip',  group_index = 2 },
+                    { name = 'filepath', group_index = 3 },
                 }
             }
         }),
@@ -170,9 +145,6 @@ cmp.setup({
         docs = {
             auto_open = true,
         },
-        entries = {
-            follow_cursor = true,
-        }
     },
 
     window = {
@@ -181,6 +153,7 @@ cmp.setup({
             winblend = 10,
             scrollbar = true,
             col_offset = 3,
+            max_height = 50,
             side_padding = 1,
         },
         documentation = {
@@ -188,7 +161,7 @@ cmp.setup({
             winblend = 10,
             scrollbar = true,
             max_width = 80,
-            max_height = 20,
+            max_height = 50,
             side_padding = 1,
             -- cmp.config.window.bordered(),
         },
@@ -208,6 +181,7 @@ cmp.setup({
     },
 
     formatting = {
+        expandable_indicator = true,
         fields = { 'abbr', 'menu', 'kind' },
         format = function(entry, item)
             local n = entry.source.name
@@ -223,37 +197,7 @@ cmp.setup({
     },
 })
 
-vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
-    vim.lsp.handlers.hover, {
-        wrap = true,
-        wrap_at = 79,
-        title = "hover",
-        style = "minimal",
-        border = 'rounded',
-    }
-)
-
-vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
-    vim.lsp.handlers.signature_help, {
-        wrap = true,
-        wrap_at = 79,
-        title = "signature",
-        style = "minimal",
-        border = 'rounded',
-    }
-)
-
-vim.lsp.handlers["textDocument/references"] = vim.lsp.with(
-    vim.lsp.handlers.references, {
-        -- Use location list instead of quickfix list
-        wrap = true,
-        wrap_at = 79,
-        loclist = true,
-        title = "hover",
-        style = "minimal",
-        border = 'rounded',
-    }
-)
+vim.lsp.config('*', { root_markers = { ".git" } })
 
 vim.diagnostic.config({
     severity_sort = true,
@@ -261,7 +205,10 @@ vim.diagnostic.config({
     underline = {
         severity = vim.diagnostic.severity.ERROR
     },
-    virtual_text = false,
+    virtual_text = {
+        severity = vim.diagnostic.severity.ERROR,
+        source = true
+    },
     -- virtual_text = {
     --     severity = vim.diagnostic.severity.ERROR,
     --     source = "if_many",
@@ -271,8 +218,6 @@ vim.diagnostic.config({
         source = 'if_many',
         border = 'rounded',
         severity_sort = true,
-        header = '',
-        prefix = '',
     },
     signs = {
         text = {
@@ -284,6 +229,34 @@ vim.diagnostic.config({
     },
 })
 
+vim.lsp.handlers[meths.textDocument_hover] = vim.lsp.with(
+    vim.lsp.handlers.hover, {
+        scrollbar = true,
+        wrap = true,
+        winblend = 10,
+        title = "Signature",
+        border = "rounded",
+        wrap_at = 79,
+        max_width = 80,
+        max_height = 50,
+        side_padding = 1,
+    }
+)
+
+vim.lsp.handlers[meths.textDocument_signatureHelp] = vim.lsp.with(
+    vim.lsp.handlers.signature_help, {
+        scrollbar = true,
+        wrap = true,
+        winblend = 10,
+        title = "Signature",
+        border = "rounded",
+        wrap_at = 79,
+        max_width = 80,
+        max_height = 50,
+        side_padding = 1,
+    }
+)
+
 require("luasnip.loaders.from_vscode").lazy_load({
     paths = "~/.config/nvim"
 })
@@ -291,6 +264,15 @@ require("luasnip.loaders.from_vscode").lazy_load({
 -- -----------------------------------------------------------------------------
 -- Keymap Config
 -- -----------------------------------------------------------------------------
+
+
+function trouble.sidebar_cmd(command, opts)
+    local panel = " toggle win.position=left"
+    local resize = "vertical resize 50"
+    command = "Trouble " ..  command .. panel
+    vim.api.nvim_command(command)
+    vim.api.nvim_command(resize)
+end
 
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP actions',
@@ -314,31 +296,112 @@ vim.api.nvim_create_autocmd('LspAttach', {
             vim.opt.fo = tmp
         end, opts)
 
+        vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
+        vim.keymap.set('n', 'H', function() vim.lsp.buf.signature_help() end, opts)
+
         vim.keymap.set('n', 'd]', function() vim.diagnostic.goto_next() end, opts)
         vim.keymap.set('n', 'd[', function() vim.diagnostic.goto_prev() end, opts)
         vim.keymap.set('n', '<F2>', function() vim.lsp.buf.rename() end, opts)
         vim.keymap.set('n', '<F3>', function() vim.lsp.buf.code_action() end, opts)
         vim.keymap.set('n', '<leader>ca', function() vim.lsp.buf.code_action() end, opts)
 
-        vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
-        vim.keymap.set('n', 'H', function() vim.lsp.buf.signature_help() end, opts)
-        vim.keymap.set('n', 'gd', ':Telescope lsp_definitions<cr>', opts)
-
-        vim.keymap.set('n', '<leader>ma', function() vim.lsp.buf.add_workspace_folder() end, opts)
-        vim.keymap.set('n', '<leader>md', function() vim.lsp.buf.remove_workspace_folder() end, opts)
+        vim.keymap.set('n', '<leader>%', function() vim.lsp.buf.add_workspace_folder() end, opts)
+        vim.keymap.set('n', '<leader>rm', function() vim.lsp.buf.remove_workspace_folder() end, opts)
         vim.keymap.set('n', '<leader>ls', function() vim.lsp.buf.list_workspace_folders() end, opts)
 
-        vim.keymap.set('n', 'gT', function() vim.lsp.buf.typehierarchy("supertypes") end, opts)
-        vim.keymap.set('n', '<leader>gT', function() vim.lsp.buf.typehierarchy("subtypes") end, opts)
+        vim.keymap.set('n', '<leader>gt', function() vim.lsp.buf.typehierarchy("subtypes") end, opts)
+        vim.keymap.set('n', '<leader>gT', function() vim.lsp.buf.typehierarchy("supertypes") end, opts)
 
-        vim.keymap.set('n', 'gci', '<cmd>Telescope lsp_incoming_calls<cr>', opts)
-        vim.keymap.set('n', 'gco', '<cmd>Telescope lsp_outgoing_calls<cr>', opts)
-        vim.keymap.set("n", "<leader>vd", "<cmd>Telescope diagnostics<cr>", opts)
-        vim.keymap.set('n', '<leader>gr', '<cmd>Telescope lsp_references<cr>', opts)
+        vim.keymap.set('n', 'gd', function(opts) trouble.sidebar_cmd('lsp_definitions', opts) end, opts)
+        vim.keymap.set('n', 'gD', '<cmd>Telescope lsp_definitions<cr>', opts)
+        vim.keymap.set('n', 'gr', function(opts) trouble.sidebar_cmd('lsp_references', opts) end, opts)
+        vim.keymap.set('n', 'gR', '<cmd>Telescope lsp_references<cr>', opts)
+        vim.keymap.set("n", "<leader>vD", "<cmd>Telescope diagnostics<cr>", opts)
+        vim.keymap.set('n', 'gr', function(opts) trouble.sidebar_cmd('lsp_references', opts) end, opts)
+        vim.keymap.set("n", "<leader>vd", function(opts) trouble.sidebar_cmd('diagnostics', opts) end, opts)
+        vim.keymap.set('n', '<leader>t', '<cmd>Telescope lsp_type_definitions<cr>', opts)
         vim.keymap.set('n', '<leader>gd', '<cmd>Telescope lsp_definitions<cr>', opts)
-        vim.keymap.set('n', '<leader>gt', '<cmd>Telescope lsp_type_definitions<cr>', opts)
+        vim.keymap.set('n', '<leader>gr', '<cmd>Telescope lsp_references<cr>', opts)
         vim.keymap.set("n", "<leader>vs", "<cmd>Telescope lsp_document_symbols<cr>", opts)
         vim.keymap.set('n', '<leader>ws', '<cmd>Telescope lsp_workspace_symbols<cr>', opts)
         vim.keymap.set('n', '<leader>wd', "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", opts)
     end,
 })
+
+-- ruff = function()
+--     require('lspconfig').ruff.setup({
+--         capabilities = defaults.capabilities,
+--         filetypes = { 'python' },
+--         root_dir = function(fname)
+--             local util = require('lspconfig.util')
+--             return util.root_pattern('pyproject.toml', 'ruff.toml', '.ruff.toml')(fname)
+--                 or vim.fs.dirname(vim.fs.find('.git', { path = fname, upward = true })[1])
+--         end,
+--         single_file_support = true,
+--         settings = {
+--             enable = true,
+--             fixAll = true,
+--             lineLength = 79,
+--             organizeImports = false,
+--             showSyntaxErrors = true,
+--             configurationPreference = "filesystemFirst",
+--             codeAction = {
+--                 fixViolation = { enable = true },
+--                 disableRuleComment = { enable = true },
+--             },
+--             lint = {
+--                 select = {
+--                     "A",
+--                     "B",
+--                     "C4",
+--                     "D",
+--                     "E",
+--                     "F",
+--                     "N",
+--                     "W",
+--                     "DJ",
+--                     "PT",
+--                     "EM",
+--                     "UP",
+--                     "NPY",
+--                     "ISC",
+--                     "ICN",
+--                     "SIM",
+--                     "RUF",
+--                     "PERF",
+--                     "ASYNC",
+--                 },
+--                 ignore = {
+--                     "C408",
+--                     "D100",
+--                     "D101",
+--                     "D102",
+--                     "D103",
+--                     "D104",
+--                     "D105",
+--                     "D205",
+--                     "UP031",
+--                     "RUF022",
+--                     "ASYNC110",
+--                 },
+--             },
+--         }
+--     })
+-- end,
+
+-- veridian = function()
+--     local util = require('lspconfig.util')
+--     require('lspconfig').veridian.setup({
+--         cmd = { 'veridian' },
+--         root_dir = function(fname)
+--             local filename = (
+--                 (util.path.is_absolute(fname) and fname)
+--                 or util.path.join(vim.loop.cwd(), fname)
+--             )
+--             return (
+--                 util.root_pattern(filename)
+--                 or util.path.dirname(filename)
+--             )
+--         end
+--     })
+-- end,

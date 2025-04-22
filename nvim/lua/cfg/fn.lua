@@ -1,18 +1,5 @@
 function get_clipboard()
-    if os.getenv("TMUX") ~= nil then
-        return {
-            name = 'tmux-clipboard',
-            copy = {
-                ['+'] = 'tmux load-buffer -',
-                ['*'] = 'tmux load-buffer -',
-            },
-            paste = {
-                ['+'] = 'tmux save-buffer -',
-                ['*'] = 'tmux save-buffer -',
-            },
-            cache_enabled = true
-        }
-    elseif vim.fn.has("wsl") == 1 then
+    if vim.fn.has("wsl") == 1 then
         if vim.fn.executable("wl-copy") == 0 then
             print("wl-clipboard not found, clipboard integration won't work")
             return nil
@@ -34,6 +21,19 @@ function get_clipboard()
                 cache_enabled = true
             }
         end
+    elseif os.getenv("TMUX") ~= nil then
+        return {
+            name = 'tmux-clipboard',
+            copy = {
+                ['+'] = 'tmux load-buffer -',
+                ['*'] = 'tmux load-buffer -',
+            },
+            paste = {
+                ['+'] = 'tmux save-buffer -',
+                ['*'] = 'tmux save-buffer -',
+            },
+            cache_enabled = true
+        }
     else
         return nil
     end

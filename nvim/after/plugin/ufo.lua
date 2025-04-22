@@ -73,6 +73,6 @@ vim.keymap.set('n', '[[', function() goPreviousClosedFold() end)
 vim.keymap.set('n', 'z[', function() goPreviousClosedAndPeek() end)
 vim.keymap.set('n', '<C-[>', function() goPreviousClosedAndPeek() end)
 
-vim.keymap.set('n', 'zk', function() peekOrHover() end)
+vim.keymap.set('n', 'zK', function() peekOrHover() end)
 vim.keymap.set('n', 'zR', function() openAllFolds() end)
 vim.keymap.set('n', 'zM', function() closeAllFolds() end)

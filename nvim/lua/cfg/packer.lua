@@ -12,7 +12,9 @@ return require('packer').startup(function(use)
         'rose-pine/neovim',
         as = 'rose-pine',
         config = function()
-            vim.cmd('colorscheme rose-pine')
+            vim.cmd.colorscheme('rose-pine-main')
+            vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
+            vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
         end
     })
 
@@ -21,23 +23,32 @@ return require('packer').startup(function(use)
     use('mbbill/undotree')
     use('tpope/vim-dadbod')
     use('tpope/vim-abolish')
-    use('cachebag/nvim-tcss')
     use('preservim/nerdtree')
     use('justinmk/vim-sneak')
     use('tpope/vim-fugitive')
     use('tpope/vim-surround')
     use('javiorfo/nvim-soil')
+    use('dense-analysis/ale')
     use('folke/zen-mode.nvim')
     use('notomo/promise.nvim')
     use('tpope/vim-commentary')
     use('ThePrimeagen/harpoon')
     use('aklt/plantuml-syntax')
+    use('wakatime/vim-wakatime')
     use('mfussenegger/nvim-lint')
     use('ThePrimeagen/vim-be-good')
     use('mhartington/formatter.nvim')
     use('nvim-tree/nvim-web-devicons')
     use('christoomey/vim-tmux-navigator')
     use('eandrju/cellular-automaton.nvim')
+
+    -- Python - Textual CSS Syntax Highlighting
+    use({'cachebag/nvim-tcss',
+        config = function()
+            require('tcss').setup()
+        end
+    })
+
     -- Telescope
     use({
         'nvim-telescope/telescope.nvim',
@@ -92,7 +103,7 @@ return require('packer').startup(function(use)
         'kevinhwang91/nvim-ufo',
         requires = { 'kevinhwang91/promise-async' }
     })
-    use({ 'VonHeikemen/lsp-zero.nvim', branch = 'v4.x' })
+    use({ 'VonHeikemen/lsp-zero.nvim'})
 
     -- CamelCase and snake_case motion
     use({
