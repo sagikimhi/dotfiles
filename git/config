@@ -25,11 +25,12 @@
 
 [diff]
     renames = true
-    whitespace = false
+    algorithm = histogram
     submodule = diff
     srcPrefix = src/
     dstPrefix = dst/
-    algorithm = histogram
+    colorWords= true
+    wordDiffRegex = .
     mnemonicPrefix = true
 
 [commit]
