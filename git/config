@@ -26,19 +26,17 @@
 [push]
     followTags = true
 
-[branch]
-    autoSetupRebase = always
-
 [rebase]
     stat = true
 
 [diff]
     renames = true
-    wordRegex = .
     algorithm = histogram
     submodule = diff
     srcPrefix = src/
     dstPrefix = dst/
+    colorWords= true
+    wordDiffRegex = .
     mnemonicPrefix = true
 
 [color]
@@ -57,12 +55,6 @@
 [rerere]
     enabled = true
     autoUpdate = true
-
-[man]
-    viewer = nvim
-
-[man.nvim]
-    cmd = nvim
 
 [log]
     decorate = full
