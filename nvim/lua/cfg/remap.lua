@@ -33,37 +33,48 @@ vim.keymap.set({ "n", "v" }, "<leader>D", [["_D]])
 
 -- Allows Ctrl + C in addition to Esc
 vim.keymap.set("i", "<C-c>", "<Esc>")
-vim.keymap.set("n", "<C-e>", "<cmd>Ex<cr>")
+vim.keymap.set("n", "<C-e>", "<cmd>Oil<cr>")
 
 -- Remove trailing whitespace and comment headers past column 80
-vim.keymap.set(
-    "n",
-    "Q",
+vim.keymap.set("n", "Q",
     [[<cmd>silent! %g/-\{3,80\}/s/\%80c.*//<cr>]]
     .. [[<cmd>silent! %s/\s\+$//<cr>]]
 )
+
+-- Functions
+vim.keymap.set('n', '<leader>q', function()
+        for _, ui in pairs(vim.api.nvim_list_uis()) do
+            if ui.chan and not ui.stdout_tty then
+                vim.fn.chanclose(ui.chan)
+            end
+        end
+    end,
+    { noremap = true }
+)
+
 -- Search and replace word under cursor
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- Jump between left/right window with h and l
-vim.keymap.set('n', '<leader>h', ':wincmd h<CR>')
-vim.keymap.set('n', '<leader>l', ':wincmd l<CR>')
-vim.keymap.set('n', '<leader>j', ':wincmd j<CR>')
-vim.keymap.set('n', '<leader>k', ':wincmd k<CR>')
+vim.keymap.set('n', '<leader>h', '<cmd>wincmd h<CR>')
+vim.keymap.set('n', '<leader>l', '<cmd>wincmd l<CR>')
+vim.keymap.set('n', '<leader>j', '<cmd>wincmd j<CR>')
+vim.keymap.set('n', '<leader>k', '<cmd>wincmd k<CR>')
+vim.keymap.set('n', '<M->>', '<cmd>resize -5<cr>')
+vim.keymap.set('n', '<M-<>', '<cmd>resize +5<cr>')
+vim.keymap.set('n', '<M-.>', '<cmd>vertical-resize -5<cr>')
+vim.keymap.set('n', '<M-,>', '<cmd>vertical-resize +5<cr>')
 
 -- This is simply awesome
 vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>");
 
 -- Coding Headers Generation Shortcuts
-vim.keymap.set({ 'n', 'x' }, '<leader>-', 'mzyyp^<cmd>Commentary<cr>v$r-<cmd>Commentary<cr>`z', { remap = true })
+vim.keymap.set({ 'n', 'x' }, '<leader>-', [[mzyyp^<cmd>.,.Commentary<cr>v$r-<cmd>.,.Commentary<cr>`z]], { remap = true })
 vim.keymap.set({ 'n', 'x' }, '<leader>_', '<leader>-<leader>-ddp', { remap = true })
-vim.keymap.set({ 'n', 'x' }, '<leader>i', '^f(ByiwO<Esc>^"_Dp<Plug>Commentary<leader>-jo<esc><cmd>s/.*//<cr>',
-    { remap = true })
-
+vim.keymap.set({ 'n', 'x' }, '<leader>i', '^f(ByiwO<Esc>^"_Dp<Plug>Commentary<leader>-jo<esc><cmd>s/.*//<cr>', { remap = true })
 vim.keymap.set({ 'n', 'x' }, '<leader>=j', [[mzo<esc>80i-<esc><cmd>.,.Commentary<cr><cmd>.,.s/\%80c.*//<cr>`z]], { remap = true })
 vim.keymap.set({ 'n', 'x' }, '<leader>=k', [[mzO<esc>80i-<esc><cmd>.,.Commentary<cr><cmd>.,.s/\%80c.*//<cr>`z]], { remap = true })
 vim.keymap.set({ 'n', 'x' }, '<leader>==', '<leader>=j<leader>=k', { remap = true })
-
 vim.keymap.set({ 'n', 'x' }, '<leader>gl', [[mzggO
 ==============================================================================
 
@@ -95,15 +106,4 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 
 ==============================================================================
 <Esc><cmd>1,29Commentary<cr>gg^<C-v>28jlxggdd<cmd>1,29s/\%80c.*//<cr>'z]]
-)
-
--- Functions
-vim.keymap.set('n', '<leader>q', function()
-        for _, ui in pairs(vim.api.nvim_list_uis()) do
-            if ui.chan and not ui.stdout_tty then
-                vim.fn.chanclose(ui.chan)
-            end
-        end
-    end,
-    { noremap = true }
 )

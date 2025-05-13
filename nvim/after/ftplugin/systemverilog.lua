@@ -1,0 +1,15 @@
+-- local util = require('lspconfig.util')
+
+-- require('lspconfig').veridian.setup({
+--     cmd = { 'veridian' },
+--     root_dir = function(fname)
+--         local filename = (
+--             (util.path.is_absolute(fname) and fname)
+--             or util.path.join(vim.loop.cwd(), fname)
+--         )
+--         return (
+--             util.root_pattern(filename)
+--             or util.path.dirname(filename)
+--         )
+--     end
+-- })
