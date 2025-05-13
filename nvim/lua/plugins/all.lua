@@ -10,35 +10,35 @@ return {
     },
 
     -- Plugins
-    {'sharkdp/fd'},
-    {'mbbill/undotree'},
-    {'tpope/vim-abolish'},
-    {'preservim/nerdtree'},
-    {'justinmk/vim-sneak'},
-    {'tpope/vim-fugitive'},
-    {'tpope/vim-surround'},
-    {'javiorfo/nvim-soil'},
-    {'dense-analysis/ale'},
-    {'folke/zen-mode.nvim'},
-    {'notomo/promise.nvim'},
-    {'tpope/vim-commentary'},
-    {'ThePrimeagen/harpoon'},
-    {'aklt/plantuml-syntax'},
-    {'edluffy/hologram.nvim'},
-    {'mfussenegger/nvim-lint'},
-    {'ThePrimeagen/vim-be-good'},
-    {'mhartington/formatter.nvim'},
-    {'nvim-tree/nvim-web-devicons'},
-    {'christoomey/vim-tmux-navigator'},
-    {'eandrju/cellular-automaton.nvim'},
+    { 'sharkdp/fd' },
+    { 'mbbill/undotree' },
+    { 'tpope/vim-abolish' },
+    { 'preservim/nerdtree' },
+    { 'justinmk/vim-sneak' },
+    { 'tpope/vim-fugitive' },
+    { 'tpope/vim-surround' },
+    { 'javiorfo/nvim-soil' },
+    { 'dense-analysis/ale' },
+    { 'folke/zen-mode.nvim' },
+    { 'notomo/promise.nvim' },
+    { 'tpope/vim-commentary' },
+    { 'ThePrimeagen/harpoon' },
+    { 'aklt/plantuml-syntax' },
+    { 'edluffy/hologram.nvim' },
+    { 'mfussenegger/nvim-lint' },
+    { 'ThePrimeagen/vim-be-good' },
+    { 'mhartington/formatter.nvim' },
+    { 'nvim-tree/nvim-web-devicons' },
+    { 'christoomey/vim-tmux-navigator' },
+    { 'eandrju/cellular-automaton.nvim' },
 
     -- File Explorer
-    {'stevearc/oil.nvim'},
+    { 'stevearc/oil.nvim' },
 
     -- Sql Workbench
-    {'tpope/vim-dadbod'},
-    {'kristijanhusak/vim-dadbod-ui'},
-    {'kristijanhusak/vim-dadbod-completion'},
+    { 'tpope/vim-dadbod' },
+    { 'kristijanhusak/vim-dadbod-ui' },
+    { 'kristijanhusak/vim-dadbod-completion' },
 
     -- Python - Textual CSS Syntax Highlighting
     {
@@ -63,9 +63,11 @@ return {
     },
 
     -- Tree-Sitter
-    {'nvim-treesitter/playground'},
-    {'nvim-treesitter/nvim-treesitter-context'},
-    { 'nvim-treesitter/nvim-treesitter', run = function()
+    { 'nvim-treesitter/playground' },
+    { 'nvim-treesitter/nvim-treesitter-context' },
+    {
+        'nvim-treesitter/nvim-treesitter',
+        run = function()
             local ts_update = ({
                 require('nvim-treesitter.install')
                     .update({ with_sync = true })
@@ -83,8 +85,17 @@ return {
     },
 
     -- LSP
-    { 'L3MON4D3/LuaSnip'},
-    { 'hrsh7th/nvim-cmp' },
+    { 'L3MON4D3/LuaSnip' },
+    {
+        'hrsh7th/nvim-cmp',
+        opts = function(_, opts)
+            opts.sources = opts.sources or {}
+            table.insert(opts.sources, {
+                name = "lazydev",
+                group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+            })
+        end,
+    },
     { 'hrsh7th/cmp-path' },
     { 'hrsh7th/cmp-buffer' },
     { 'hrsh7th/cmp-cmdline' },
@@ -96,16 +107,24 @@ return {
     { 'VonHeikemen/lsp-zero.nvim' },
     { 'rafamadriz/friendly-snippets' },
     { 'williamboman/mason-lspconfig.nvim' },
-    { 'kevinhwang91/nvim-ufo', requires = { 'kevinhwang91/promise-async' } },
+    { 'kevinhwang91/promise-async' },
+    { 'kevinhwang91/nvim-ufo' },
 
     -- CamelCase and snake_case motion
     {
         'chrisgrieser/nvim-spider',
         config = function()
             require("spider").setup({
+                lazy = true,
+                dependencies = {
+                    "theHamsta/nvim_rocks",
+                    build = "uv tool install hererocks && hererocks . -j2.1.0-beta3 -r3.0.0 && cp nvim_rocks.lua lua",
+                    config = function() require("nvim_rocks").ensure_installed("luautf8") end,
+                },
+                customPatterns = {},
                 subwordMovement = true,
                 consistentOperatorPending = true, -- see "Consistent Operator-pending Mode" in the README
-                skipInsignificantPunctuation = true,
+                skipInsignificantPunctuation = true
             })
         end
     },

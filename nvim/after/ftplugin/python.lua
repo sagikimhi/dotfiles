@@ -1,73 +1,66 @@
-local util = require('lspconfig.util')
--- require('lspconfig').ruff.setup({
---     capabilities = defaults.capabilities,
---     filetypes = { 'python' },
---     root_dir = function(fname)
---         local util = require('lspconfig.util')
---         return util.root_pattern('pyproject.toml', 'ruff.toml', '.ruff.toml')(fname)
---             or vim.fs.dirname(vim.fs.find('.git', { path = fname, upward = true })[1])
---     end,
---     single_file_support = true,
---     settings = {
---         enable = true,
---         fixAll = true,
---         lineLength = 79,
---         organizeImports = false,
---         showSyntaxErrors = true,
---         configurationPreference = "filesystemFirst",
---         codeAction = {
---             fixViolation = { enable = true },
---             disableRuleComment = { enable = true },
---         },
---         lint = {
---             select = {
---                 "A",
---                 "B",
---                 "C4",
---                 "D",
---                 "E",
---                 "F",
---                 "N",
---                 "W",
---                 "DJ",
---                 "PT",
---                 "EM",
---                 "UP",
---                 "NPY",
---                 "ISC",
---                 "ICN",
---                 "SIM",
---                 "RUF",
---                 "PERF",
---                 "ASYNC",
---             },
---             ignore = {
---                 "C408",
---                 "D100",
---                 "D101",
---                 "D102",
---                 "D103",
---                 "D104",
---                 "D105",
---                 "D205",
---                 "UP031",
---                 "RUF022",
---                 "ASYNC110",
---             },
---         },
---     }
--- })
+require('lspconfig').pyright.setup({
+    settings = {
+        python = {
+            analysis = {
+                autoSearchPaths = true,
+                diagnosticMode = "workspace",
+                typeCheckingMode = "off",
+                useLibraryCodeForTypes = true,
+                disableOrganizeImports = true,
+            },
+        },
+    }
+})
 
--- require('lspconfig').veridian.setup({
---     cmd = { 'veridian' },
---     root_dir = function(fname)
---         local filename = (
---             (util.path.is_absolute(fname) and fname)
---             or util.path.join(vim.loop.cwd(), fname)
---         )
---         return (
---             util.root_pattern(filename)
---             or util.path.dirname(filename)
---         )
---     end
--- })
+require('lspconfig').ruff.setup({
+    init_options = {
+        settings = {
+            enable = true,
+            fixAll = true,
+            lineLength = 79,
+            organizeImports = false,
+            showSyntaxErrors = true,
+            configurationPreference = "filesystemFirst",
+            codeAction = {
+                fixViolation = { enable = true },
+                disableRuleComment = { enable = true },
+            },
+            lint = {
+                select = {
+                    "A",
+                    "B",
+                    "C4",
+                    "D",
+                    "E",
+                    "F",
+                    "N",
+                    "W",
+                    "DJ",
+                    "PT",
+                    "EM",
+                    "UP",
+                    "NPY",
+                    "ISC",
+                    "ICN",
+                    "SIM",
+                    "RUF",
+                    "PERF",
+                    "ASYNC",
+                },
+                ignore = {
+                    "C408",
+                    "D100",
+                    "D101",
+                    "D102",
+                    "D103",
+                    "D104",
+                    "D105",
+                    "D205",
+                    "UP031",
+                    "RUF022",
+                    "ASYNC110",
+                },
+            },
+        }
+    }
+})
