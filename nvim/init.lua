@@ -1,2 +1,2 @@
-require("cfg")
-require("cmd")
+require("funcs")
+require("config.lazy")

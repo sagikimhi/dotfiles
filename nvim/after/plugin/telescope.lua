@@ -1,8 +1,0 @@
-require('telescope').setup()
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '?', builtin.live_grep, {})
-vim.keymap.set('n', '\\', builtin.current_buffer_fuzzy_find, {})
-vim.keymap.set('n', '<C-p>', builtin.git_files, {})
-vim.keymap.set('n', '<C-f>', builtin.find_files, {})
---     builtin.grep_string({ search = vim.fn.input('Grep >') })
--- end, {})
