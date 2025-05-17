@@ -1,9 +1,2 @@
-require('lspconfig').lua_ls.setup({
-    settings = {
-        Lua = {
-            runtime = { version = 'LuaJIT', },
-            diagnostics = { globals = { 'vim' }, },
-            workspace = { library = { vim.env.VIMRUNTIME }, },
-        },
-    },
-})
+local capabilities = require("blink.cmp").get_lsp_capabilities()
+require("lspconfig").lua_ls.setup({ capabilities = capabilities })

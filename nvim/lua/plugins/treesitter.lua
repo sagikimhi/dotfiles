@@ -1,0 +1,35 @@
+return {
+	{
+		"nvim-treesitter/nvim-treesitter",
+		opts = {
+			ensure_installed = {
+				"c",
+				"go",
+				"rust",
+				"vimdoc",
+				"vim",
+				"bash",
+				"html",
+				"json",
+				"lua",
+				"markdown",
+				"markdown_inline",
+				"python",
+				"query",
+				"regex",
+				"tsx",
+				"typescript",
+				"yaml",
+				"css",
+				"latex",
+			},
+			auto_install = true,
+			highlight = {
+				enable = true,
+				additional_vim_regex_highlighting = true,
+			},
+		},
+	},
+	{ "nvim-treesitter/playground" },
+	{ "nvim-treesitter/nvim-treesitter-context" },
+}
