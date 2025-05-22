@@ -1,5 +1,7 @@
+local funcs = require("config.funcs")
+
 vim.g.name = "value"
--- vim.g.clipboard = get_clipboard()
+vim.g.clipboard = funcs.get_clipboard()
 vim.g.ruby_host_prog = "~/.local/share/gem/ruby/3.3.0/bin/neovim-ruby-host"
 vim.g.loaded_perl_provider = 0
 vim.g.python3_host_prog = "/usr/bin/python3"
@@ -9,6 +11,7 @@ vim.opt.rnu = true
 vim.opt.wrap = false
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
+vim.opt.winborder = "rounded"
 vim.opt.signcolumn = "yes:1"
 vim.opt.cursorline = true
 vim.opt.termguicolors = true
@@ -26,7 +29,7 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 
 vim.opt.foldlevel = 99
-vim.opt.foldcolumn = "1"
+vim.opt.foldcolumn = "0"
 vim.opt.foldenable = true
 vim.opt.foldlevelstart = 99
 

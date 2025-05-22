@@ -1,13 +1,13 @@
+-- ----------------------------------------------------------------------------
 -- Terminal Keymaps
-vim.cmd.tnoremap("<Esc> <C-\\><C-n>")
-vim.keymap.set({ "n" }, "<C-t>", "<cmd>Fterm<cr>")
+-- ----------------------------------------------------------------------------
 
--- Tmux Keymaps
-vim.keymap.set("n", "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>")
-vim.keymap.set("n", "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>")
-vim.keymap.set("n", "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>")
-vim.keymap.set("n", "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>")
-vim.keymap.set("n", "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>")
+vim.keymap.set({ "t" }, "<Esc>", "<C-\\><C-n>")
+vim.keymap.set({ "n", "v", "t" }, "<C-t>", vim.cmd.Fterm)
+
+-- ----------------------------------------------------------------------------
+-- Editor Keymaps
+-- ----------------------------------------------------------------------------
 
 -- Move lines up/down and align
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -37,9 +37,6 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 -- Toggle Oil file browser
 vim.keymap.set("n", "<C-e>", "<cmd>Oil<cr>")
 
--- Remove trailing whitespace and comment headers past column 80
-vim.keymap.set("n", "Q", [[<cmd>silent! %g/-\{3,80\}/s/\%80c.*//<cr>]] .. [[<cmd>silent! %s/\s\+$//<cr>]])
-
 -- Functions
 vim.keymap.set("n", "<leader>q", function()
 	for _, ui in pairs(vim.api.nvim_list_uis()) do
@@ -51,6 +48,12 @@ end, { noremap = true })
 
 -- Search and replace word under cursor
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+-- Remove trailing whitespace and comment headers past column 80
+vim.keymap.set("n", "Q", [[<cmd>silent! %g/-\{3,80\}/s/\%80c.*//<cr>]] .. [[<cmd>silent! %s/\s\+$//<cr>]])
+-- Incremental rename
+vim.keymap.set("n", "<leader>rn", function()
+	return ":IncRename " .. vim.fn.expand("<cword>")
+end, { expr = true })
 
 -- Window navigation and resize
 vim.keymap.set("n", "<M-Up>", "<cmd>resize -5<cr>")

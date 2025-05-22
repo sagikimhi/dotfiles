@@ -1,10 +1,11 @@
 return {
 	{
 		"tpope/vim-fugitive",
-		keys = function()
-			return {
-				{ "<leader>gg", vim.cmd.Git, mode = { "n" }, desc = "toggle fugitive" },
-			}
+		keys = {
+			{ "<leader>gg", vim.cmd.Git, mode = { "n" } },
+		},
+		config = function()
+			require("fugitive").setup()
 		end,
 	},
 }

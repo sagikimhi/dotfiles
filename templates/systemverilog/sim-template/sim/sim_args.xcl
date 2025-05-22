@@ -1,7 +1,0 @@
-//-sv
-//-sysv
-//-newsv 
-//-plussv
-//-enable_dbits
-//-enable_new_let
-//-enable_no_default_value_param

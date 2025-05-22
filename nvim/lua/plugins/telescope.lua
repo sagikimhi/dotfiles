@@ -1,10 +1,31 @@
 return {
 	{
 		"nvim-telescope/telescope.nvim",
+
+		lazy = false,
+
 		dependencies = {
 			{ "nvim-lua/plenary.nvim" },
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+			{
+				"stevearc/oil.nvim",
+				config = function()
+					require("oil").setup()
+				end,
+			},
 		},
+
+		opts = {
+			pickers = {
+				find_files = {
+					theme = "ivy",
+				},
+			},
+			extensions = {
+				fzf = {},
+			},
+		},
+
 		config = function()
 			require("telescope").setup({
 				pickers = {
@@ -17,27 +38,39 @@ return {
 				},
 			})
 			require("telescope").load_extension("fzf")
-			vim.keymap.set({ "n" }, "?", function()
-				require("telescope.builtin").live_grep()
-			end, {})
-			vim.keymap.set({ "n" }, "<C-p>", function()
-				require("telescope.builtin").git_files()
-			end, {})
-			vim.keymap.set({ "n" }, "<C-f>", function()
-				require("telescope.builtin").find_files()
-			end, {})
-			vim.keymap.set({ "n" }, "\\", function()
-				require("telescope.builtin").current_buffer_fuzzy_find()
-			end, {})
 		end,
-		keys = function()
-			local builtin = require("telescope.builtin")
-			return {
-				{ "?", builtin.live_grep, mode = { "n" } },
-				{ "<C-p>", builtin.git_files, mode = { "n" } },
-				{ "<C-f>", builtin.find_files, mode = { "n" } },
-				{ "\\", builtin.current_buffer_fuzzy_find, mode = { "n" } },
-			}
-		end,
+
+		keys = {
+			{
+				"?",
+				function()
+					require("telescope.builtin").live_grep()
+				end,
+				mode = { "n" },
+			},
+			{
+				"<C-p>",
+				function()
+					require("telescope.builtin").git_files()
+				end,
+				mode = { "n" },
+			},
+			{
+				"<C-f>",
+				function()
+					require("telescope.builtin").find_files({
+						cwd = require("oil").get_current_dir(),
+					})
+				end,
+				mode = { "n" },
+			},
+			{
+				"\\",
+				function()
+					require("telescope.builtin").current_buffer_fuzzy_find()
+				end,
+				mode = { "n" },
+			},
+		},
 	},
 }
