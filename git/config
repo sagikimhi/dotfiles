@@ -129,10 +129,10 @@
     # git log aliases
     # -------------------------------------------------------------------------
 
-    l = log --graph --pretty='format: %C(red)%h%C(reset) %C(cyan)%cd%C(reset) %s %C(blue)[%cn]%C(reset)%C(yellow)%d%C(reset)' --abbrev-commit --branches --date=iso --decorate
-    ll = log --graph --pretty='format: %C(red)%h%C(reset) %C(cyan)%cd%C(reset) %s %C(bold blue)[%cn]%C(reset)%C(yellow)%d%C(reset) %n' --abbrev-commit --branches --date=iso --decorate
-    ls = log --graph --pretty='format: %C(red)%h%C(reset) %C(cyan)%cd%C(reset) %s %C(blue)[%cn]%C(reset)%C(yellow)%d%C(reset) %n' --abbrev-commit --branches --date=iso --numstat --decorate
-    la = log --graph --pretty='format: %C(red)%h%C(reset) %C(cyan)%cd%C(reset) %s %C(bold blue)[%an]%C(reset)%C(yellow)%d%C(reset) %n' --abbrev-commit --branches --date=iso --numstat --decorate
+    l = log --graph --pretty='format: %C(red)%h%C(reset) %C(cyan)%ad%C(reset) %s %C(blue)[%an]%C(reset)%C(yellow)%d%C(reset)' --abbrev-commit --branches --date=iso --decorate
+    ll = log --graph --pretty='format: %C(red)%h%C(reset) %C(cyan)%ad%C(reset) %s %C(bold blue)[%an]%C(reset)%C(yellow)%d%C(reset) %n' --abbrev-commit --branches --date=iso --decorate
+    ls = log --graph --pretty='format: %C(red)%h%C(reset) %C(cyan)%ad%C(reset) %s %C(blue)[%an]%C(reset)%C(yellow)%d%C(reset) %n' --abbrev-commit --branches --date=iso --numstat --decorate
+    la = log --graph --pretty='format: %C(red)%h%C(reset) %C(cyan)%ad%C(reset) %s %C(bold blue)[%an]%C(reset)%C(yellow)%d%C(reset) %n' --abbrev-commit --branches --date=iso --numstat --decorate
 
     # -------------------------------------------------------------------------
     # Branch deletion aliases - optional

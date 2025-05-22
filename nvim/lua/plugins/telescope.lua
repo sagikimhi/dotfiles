@@ -7,12 +7,6 @@ return {
 		dependencies = {
 			{ "nvim-lua/plenary.nvim" },
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-			{
-				"stevearc/oil.nvim",
-				config = function()
-					require("oil").setup()
-				end,
-			},
 		},
 
 		opts = {
@@ -52,15 +46,6 @@ return {
 				"<C-p>",
 				function()
 					require("telescope.builtin").git_files()
-				end,
-				mode = { "n" },
-			},
-			{
-				"<C-f>",
-				function()
-					require("telescope.builtin").find_files({
-						cwd = require("oil").get_current_dir(),
-					})
 				end,
 				mode = { "n" },
 			},
