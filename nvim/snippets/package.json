@@ -1,67 +1,63 @@
 {
-    "name": "friendly-snippets",
-    "engines": {
-        "vscode": "^1.11.0"
-    },
+    "name": "custom-snips",
     "contributes": {
         "snippets": [
             {
                 "language": "python",
-                "path": "~/.config/nvim/snippets/python/python.json"
+                "path": "./python/python.json"
             },
             {
                 "language": "python",
-                "path": "~/.config/nvim/snippets/python/comprehension.json"
+                "path": "./python/comprehension.json"
             },
             {
                 "language": "python",
-                "path": "~/.config/nvim/snippets/python/unittest.json"
+                "path": "./python/unittest.json"
             },
             {
                 "language": "python",
-                "path": "~/.config/nvim/snippets/python/debug.json"
+                "path": "./python/debug.json"
             },
             {
                 "language": "python",
-                "path": "~/.config/nvim/snippets/python/pydoc.json"
+                "path": "./python/pydoc.json"
             },
             {
                 "language": "pydoc",
-                "path": "~/.config/nvim/snippets/python/pydoc.json"
+                "path": "./python/pydoc.json"
             },
             {
                 "language": "systemverilog",
-                "path": "~/.config/nvim/snippets/systemverilog/systemverilog.json"
+                "path": "./systemverilog/systemverilog.json"
             },
             {
                 "language": "systemverilog",
-                "path": "~/.config/nvim/snippets/systemverilog/systemverilogdoc.json"
+                "path": "./systemverilog/systemverilogdoc.json"
             },
             {
                 "language": "systemverilog",
-                "path": "~/.config/nvim/snippets/systemverilog/systemveriloghdr.json"
+                "path": "./systemverilog/systemveriloghdr.json"
             },
             {
                 "language": "systemverilog",
-                "path": "~/.config/nvim/snippets/systemverilog/systemveriloguvm.json"
+                "path": "./systemverilog/systemveriloguvm.json"
             },
             {
-                "language": "verilog",
-                "path": "~/.config/nvim/snippets/systemverilog/systemverilog.json"
+                "language": "systemverilog",
+                "path": "./systemverilog/systemverilog.json"
             },
             {
-                "language": "verilog",
-                "path": "~/.config/nvim/snippets/systemverilog/systemverilogdoc.json"
+                "language": "systemverilog",
+                "path": "./systemverilog/systemverilogdoc.json"
             },
             {
-                "language": "verilog",
-                "path": "~/.config/nvim/snippets/systemverilog/systemveriloghdr.json"
+                "language": "systemverilog",
+                "path": "./systemverilog/systemveriloghdr.json"
             },
             {
-                "language": "verilog",
-                "path": "~/.config/nvim/snippets/systemverilog/systemveriloguvm.json"
+                "language": "systemverilog",
+                "path": "./systemverilog/systemveriloguvm.json"
             }
         ]
     }
 }
-

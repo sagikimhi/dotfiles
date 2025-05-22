@@ -56,10 +56,6 @@ vim.keymap.set("n", "<leader>rn", function()
 end, { expr = true })
 
 -- Window navigation and resize
-vim.keymap.set("n", "<M-Up>", "<cmd>resize -5<cr>")
-vim.keymap.set("n", "<M-Down>", "<cmd>resize +5<cr>")
-vim.keymap.set("n", "<M-Left>", "<cmd>vertical-resize +5<cr>")
-vim.keymap.set("n", "<M-Right>", "<cmd>vertical-resize -5<cr>")
 vim.keymap.set("n", "<leader>h", "<cmd>wincmd h<CR>")
 vim.keymap.set("n", "<leader>l", "<cmd>wincmd l<CR>")
 vim.keymap.set("n", "<leader>j", "<cmd>wincmd j<CR>")
