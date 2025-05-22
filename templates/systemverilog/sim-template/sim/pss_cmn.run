@@ -1,7 +1,0 @@
-#!/bin/tcsh -f
-if (-e "run_me_first.sh") then
-    # added to allow automation for creating any required folder links etc.
-    source run_me_first.sh
-endif
-/project/common/vlsi/bin/speedata_run_simulator.pl $*
-

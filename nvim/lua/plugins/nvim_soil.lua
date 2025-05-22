@@ -1,0 +1,3 @@
+return {
+	{ "javiorfo/nvim-soil" },
+}
