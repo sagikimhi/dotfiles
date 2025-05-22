@@ -76,7 +76,7 @@ return {
 				},
 				list = {
 					selection = {
-						preselect = true,
+						preselect = false,
 						auto_insert = true,
 					},
 					cycle = {
@@ -121,7 +121,6 @@ return {
 					end,
 					window = {
 						border = "rounded",
-						winblend = 0,
 						scrollbar = true,
 						min_width = 30,
 						max_width = 80,
@@ -135,7 +134,6 @@ return {
 				menu = {
 					enabled = true,
 					border = "rounded",
-					winblend = 0,
 					scrolloff = 4,
 					min_width = 15,
 					max_height = 10,
@@ -163,16 +161,18 @@ return {
 							"snippets",
 						},
 						columns = {
+							{ "item_idx" },
 							{ "label" },
-							{ "kind_icon", "kind" },
+							{ "kind_icon" },
+							{ "kind" },
 							{ "source_name" },
 						},
 						components = {
 							item_idx = {
 								text = function(ctx)
-									return ctx.idx == 10 and "0" or ctx.idx >= 10 and " " or tostring(ctx.idx)
+									return tostring(ctx.idx)
 								end,
-								highlight = "BlinkCmpItemIdx", -- optional, only if you want to change its color
+								-- highlight = "BlinkCmpItemIdx", -- optional, only if you want to change its color
 							},
 						},
 					},
@@ -197,8 +197,25 @@ return {
 					python = { "lsp", "snippets", "path", "buffer" },
 				},
 				providers = {
-					lsp = { fallbacks = { "path", "mysnippets", "snippets", "buffer" } },
-					dadbod = { module = "vim_dadbod_completion.blink" },
+					lsp = {
+						name = "LSP",
+						module = "blink.cmp.sources.lsp",
+						opts = {},
+						-- NOTE: All of these options may be functions to get dynamic behavior
+						--- See the type definitions for more information
+						async = false, -- Whether we should show the completions before this provider returns, without waiting for it
+						enabled = true, -- Whether or not to enable the provider
+						max_items = nil, -- Maximum number of items to display in the menu
+						timeout_ms = 2000, -- How long to wait for the provider to return before showing completions and treating it as asynchronous
+						transform_items = nil, -- Function to transform the items before they're returned
+						should_show_items = true, -- Whether or not to show the items
+						min_keyword_length = 0, -- Minimum number of characters in the keyword to trigger the provider
+						-- If this provider returns 0 items, it will fallback to these providers.
+						-- If multiple providers fallback to the same provider, all of the providers must return 0 items for it to fallback
+						fallbacks = { "snippets", "path", "buffer" },
+						score_offset = 0, -- Boost/penalize the score of the items
+						override = nil, -- Override the source's functions
+					},
 					snippets = {
 						opts = {
 							use_show_condition = true,
@@ -215,6 +232,7 @@ return {
 						},
 					},
 					lazydev = { ... },
+					dadbod = { module = "vim_dadbod_completion.blink" },
 				},
 			},
 
@@ -243,7 +261,6 @@ return {
 				},
 				window = {
 					border = "rounded",
-					winblend = 0,
 					scrollbar = false,
 					min_width = 10,
 					max_width = 80,
