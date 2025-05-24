@@ -13,12 +13,12 @@ vim.diagnostic.config({
 		border = "rounded",
 		severity_sort = true,
 	},
-	signs = {
-		text = {
-			[vim.diagnostic.severity.INFO] = "»",
-			[vim.diagnostic.severity.HINT] = "⚑",
-			[vim.diagnostic.severity.WARN] = "▲",
-			[vim.diagnostic.severity.ERROR] = "✘",
-		},
-	},
+	-- signs = {
+	-- 	text = {
+	-- 		[vim.diagnostic.severity.INFO] = "»",
+	-- 		[vim.diagnostic.severity.HINT] = "⚑",
+	-- 		[vim.diagnostic.severity.WARN] = "▲",
+	-- 		[vim.diagnostic.severity.ERROR] = "✘",
+	-- 	},
+	-- },
 })

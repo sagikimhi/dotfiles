@@ -75,8 +75,7 @@
             "#function"
         ],
         "body": [
-            "\"\"\"",
-            "${1:A one-line summary.}",
+            "\"\"\"${1:A one-line summary.}",
             "",
             "${2:Detailed description.}$0",
             "",
