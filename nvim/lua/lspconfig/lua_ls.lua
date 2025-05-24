@@ -19,7 +19,7 @@ return {
 									version = "LuaJIT",
 								},
 								diagnostics = {
-									globals = { "vim" },
+									globals = { "vim", "Snacks", "LazyVim" },
 								},
 								workspace = {
 									library = { vim.env.VIMRUNTIME },

@@ -1,10 +1,20 @@
+-- ----------------------------------------------------------------------------
+-- Lazy Options
+-- ----------------------------------------------------------------------------
+
+vim.g.lazyvim_picker = "snacks"
+
+-- ----------------------------------------------------------------------------
+-- Vim Options
+-- ----------------------------------------------------------------------------
+
 local funcs = require("config.funcs")
 
 vim.g.name = "value"
 vim.g.clipboard = funcs.get_clipboard()
 vim.g.ruby_host_prog = "~/.local/share/gem/ruby/3.3.0/bin/neovim-ruby-host"
 vim.g.loaded_perl_provider = 0
-vim.g.python3_host_prog = "/usr/bin/python3"
+vim.g.python3_host_prog = os.execute("~/.local/bin/uv python find")
 
 vim.opt.nu = true
 vim.opt.rnu = true
