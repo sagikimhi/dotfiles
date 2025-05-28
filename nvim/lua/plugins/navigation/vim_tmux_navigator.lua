@@ -1,7 +1,6 @@
 return {
 	{
 		"christoomey/vim-tmux-navigator",
-
 		keys = {
 			{ "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>", mode = { "n" } },
 			{ "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>", mode = { "n" } },

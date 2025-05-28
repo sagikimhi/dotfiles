@@ -1,9 +1,9 @@
-local M = {
-	state = {
-		floating = {
-			buf = -1,
-			win = -1,
-		},
+local M = {}
+
+M.state = {
+	floating = {
+		buf = -1,
+		win = -1,
 	},
 }
 

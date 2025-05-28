@@ -1,4 +1,7 @@
+-- ----------------------------------------------------------------------------
 -- Bootstrap lazy.nvim
+-- ----------------------------------------------------------------------------
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -17,13 +20,14 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+-- ----------------------------------------------------------------------------
 -- Setup lazy.nvim
-require("lazy").setup({
+-- ----------------------------------------------------------------------------
 
+require("lazy").setup({
 	spec = {
 		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
 		{ import = "plugins" },
-		{ import = "lspconfig" },
 	},
 
 	defaults = {

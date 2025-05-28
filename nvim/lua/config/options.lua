@@ -1,36 +1,41 @@
 -- ----------------------------------------------------------------------------
--- Lazy Options
+-- LazyVim Globals
 -- ----------------------------------------------------------------------------
 
 vim.g.lazyvim_picker = "snacks"
+vim.g.lazyvim_python_lsp = "basedpyright"
+vim.g.lazyvim_python_ruff = "ruff"
 
 -- ----------------------------------------------------------------------------
--- Vim Options
+-- Neovim Globals
 -- ----------------------------------------------------------------------------
 
-local funcs = require("config.funcs")
-
-vim.g.name = "value"
-vim.g.clipboard = funcs.get_clipboard()
+-- vim.g.clipboard = fn.get_clipboard()
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 vim.g.ruby_host_prog = "~/.local/share/gem/ruby/3.3.0/bin/neovim-ruby-host"
 vim.g.loaded_perl_provider = 0
 vim.g.python3_host_prog = os.execute("~/.local/bin/uv python find")
+
+-- ----------------------------------------------------------------------------
+-- Neovim Options
+-- ----------------------------------------------------------------------------
+
+-- vim.o.shell = "/bin/zsh"
+vim.opt.backup = true
+vim.opt.undofile = true
+vim.opt.swapfile = false
+vim.opt.undodir = vim.fn.stdpath("state") .. "/.nvim/undodir"
+vim.opt.backupdir = vim.fn.stdpath("state") .. "/.nvim/backup"
 
 vim.opt.nu = true
 vim.opt.rnu = true
 vim.opt.wrap = false
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
-vim.opt.winborder = "none"
 vim.opt.signcolumn = "yes:1"
 vim.opt.cursorline = true
 vim.opt.termguicolors = true
-
-vim.opt.backup = true
-vim.opt.undofile = true
-vim.opt.swapfile = false
-vim.opt.undodir = os.getenv("HOME") .. "/.nvim/undodir"
-vim.opt.backupdir = os.getenv("HOME") .. "/.nvim/backup"
 
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
@@ -44,7 +49,7 @@ vim.opt.foldenable = true
 vim.opt.foldlevelstart = 99
 
 vim.opt.fo = "croqwjp"
-vim.opt.tw = 72
+vim.opt.tw = 78
 vim.opt.sel = "old"
 vim.opt.splitright = true
 
