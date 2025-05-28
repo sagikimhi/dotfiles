@@ -5,19 +5,21 @@ return {
 		version = "1.*",
 
 		dependencies = {
-			{ "rafamadriz/friendly-snippets" },
+			"rafamadriz/friendly-snippets",
 			{
 				"L3MON4D3/LuaSnip",
 				version = "v2.*",
-				config = function()
+				opts = function(opts)
 					require("luasnip.loaders.from_vscode").load({
 						paths = {
 							-- vim.fn.stdpath("config"),
 							vim.fn.stdpath("config") .. "/snippets",
 						},
 					})
+					return opts
 				end,
 			},
+			{ import = "plugins.lsp.providers" },
 		},
 
 		opts_extend = {
@@ -27,20 +29,13 @@ return {
 		-- @module blink.cmp
 		-- @type blink.cmp.Config
 		opts = {
-
 			keymap = {
 				preset = "default",
 				["<Tab>"] = { "snippet_forward", "fallback" },
 				["<S-Tab>"] = { "snippet_backward", "fallback" },
 				["<C-h>"] = { "show_signature", "hide_signature" },
-				["<C-u>"] = {
-					"scroll_documentation_up",
-					"fallback",
-				},
-				["<C-d>"] = {
-					"scroll_documentation_down",
-					"fallback",
-				},
+				["<C-u>"] = { "scroll_documentation_up", "fallback" },
+				["<C-d>"] = { "scroll_documentation_down", "fallback" },
 				["<Up>"] = { "insert_prev", "fallback" },
 				["<Down>"] = { "insert_next", "fallback" },
 				["<Left>"] = { "cancel", "fallback" },
@@ -60,9 +55,7 @@ return {
 				},
 			},
 
-			snippets = {
-				preset = "luasnip",
-			},
+			snippets = { preset = "luasnip" },
 
 			completion = {
 				keyword = { range = "full" },
@@ -121,7 +114,7 @@ return {
 					end,
 					window = {
 						border = "rounded",
-						scrollbar = true,
+						scrollbar = false,
 						min_width = 30,
 						max_width = 80,
 						max_height = 20,
@@ -142,7 +135,7 @@ return {
 						local pos
 						local height
 
-						if vim.g.ui_cmdline_pos ~= "rounded" then
+						if vim.g.ui_cmdline_pos ~= nil then
 							pos = vim.g.ui_cmdline_pos
 							return { pos[1] - 1, pos[2] }
 						end
@@ -190,7 +183,7 @@ return {
 			},
 
 			sources = {
-				default = { "lsp", "path", "snippets", "buffer" },
+				default = { "snippets", "lsp", "path", "buffer" },
 				per_filetype = {
 					sql = { "dadbod", inherit_defaults = true },
 					lua = { "lazydev", inherit_defaults = true },
@@ -260,7 +253,7 @@ return {
 					show_on_insert_on_trigger_character = false,
 				},
 				window = {
-					border = "rounded",
+					border = nil,
 					scrollbar = false,
 					min_width = 10,
 					max_width = 80,
