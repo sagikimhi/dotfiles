@@ -14,7 +14,7 @@ return {
 		"saghen/blink.cmp",
 		opts = {
 			sources = {
-				default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+				default = { "lazydev", "snippets", "lsp", "path", "buffer" },
 				providers = {
 					lazydev = {
 						name = "LazyDev",

@@ -5,4 +5,5 @@ return {
 	{ import = "plugins.ui" },
 	{ import = "plugins.misc" },
 	{ import = "plugins.lsp" },
+    { import = "plugins.lsp.providers" }
 }
