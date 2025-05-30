@@ -1,35 +1,49 @@
 return {
 	{
-		"mason-org/mason-lspconfig.nvim",
-		dependencies = { "mason-org/mason.nvim", opts = {} },
+        "neovim/nvim-lspconfig",
+        dependencies = {
+            "mason.nvim",
+            { "mason-org/mason-lspconfig.nvim", opts = {} },
+        },
 		ft = "lua",
-		opts = {
-			handlers = {
-				lua_ls = function(_)
-					local capabilities = require("blink.cmp").get_lsp_capabilities()
-
-					vim.tbl_deep_extend("force", capabilities, {
-						general = { positionEncodings = { "utf-16" } },
-					})
-
-					require("lspconfig").lua_ls.setup({
-						capabilities = capabilities,
-						settings = {
-							Lua = {
-								runtime = {
-									version = "LuaJIT",
-								},
-								diagnostics = {
-									globals = { "vim", "Snacks", "LazyVim" },
-								},
-								workspace = {
-									library = { vim.env.VIMRUNTIME },
-								},
-							},
-						},
-					})
-				end,
-			},
-		},
+        opts = {
+            servers = {
+                lua_ls = {
+                    settings = {
+                        Lua = {
+                            workspace = {
+                                checkThirdParty = false,
+                            },
+                            codeLens = {
+                                enable = true,
+                            },
+                            completion = {
+                                callSnippet = "Replace",
+                            },
+                            doc = {
+                                privateName = { "^_" },
+                            },
+                            runtime = {
+                                version = "LuaJIT",
+                            },
+                            diagnostics = {
+                                globals = { "vim", "Snacks", "LazyVim" },
+                            },
+                            workspace = {
+                                library = { vim.env.VIMRUNTIME },
+                            },
+                            hint = {
+                                enable = true,
+                                setType = false,
+                                paramType = true,
+                                paramName = "Disable",
+                                semicolon = "Disable",
+                                arrayIndex = "Disable",
+                            },
+                        },
+                    },
+                },
+            },
+        }
 	},
 }
