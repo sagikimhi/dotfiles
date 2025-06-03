@@ -1,34 +1,38 @@
-local util = require('lspconfig.util')
-
-local default_capabilities = require("blink.cmp").get_lsp_capabilities()
-table.insert(default_capabilities, {
-    general = { positionEncodings = { "utf-16" } },
-})
+local default_capabilities = vim.lsp.protocol.make_client_capabilities()
+default_capabilities = require("blink.cmp").get_lsp_capabilities({}, true)
+default_capabilities.general.positionEncodings = { "utf-16" }
 
 return {
-    {
-        "neovim/nvim-lspconfig",
-        dependencies = {
-            "mason.nvim",
-            { "mason-org/mason-lspconfig.nvim", opts = {} },
-        },
-        opts = {
-            inlay_hints = { 
-                enabled = true,
-                exclude = { "python" },
-            },
-            diagnostics = {
-                underline = true,
-                update_in_insert = false,
-                virtual_text = {
-                    enabled = false,
-                    spacing = 4,
-                    source = "if_many",
-                    prefix = "icons",
-                },
-                severity_sort = true,
-            },
-            capabilities = default_capabilities,
-        },
-    }
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = {
+			"mason.nvim",
+			{ "mason-org/mason-lspconfig.nvim", opts = {} },
+		},
+		opts = {
+			inlay_hints = {
+				enabled = true,
+				exclude = { "python" },
+			},
+			diagnostics = {
+				underline = true,
+				update_in_insert = true,
+				float = {
+					source = true,
+					style = "minimal",
+					border = "rounded",
+					severity_sort = true,
+				},
+				virtual_text = {
+					enabled = true,
+					spacing = 4,
+					style = "minimal",
+					source = true,
+					severity = vim.diagnostic.severity.ERROR,
+				},
+				severity_sort = true,
+			},
+			capabilities = default_capabilities,
+		},
+	},
 }

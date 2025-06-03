@@ -16,6 +16,6 @@ return {
 		dependencies = {
 			{ "mason-org/mason.nvim", opts = {} },
 		},
-		opts = { },
+		opts = {},
 	},
 }
