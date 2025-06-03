@@ -1,21 +1,25 @@
 -- ----------------------------------------------------------------------------
--- LazyVim Globals
--- ----------------------------------------------------------------------------
-
-vim.g.lazyvim_picker = "snacks"
-vim.g.lazyvim_python_lsp = "basedpyright"
-vim.g.lazyvim_python_ruff = "ruff"
-
--- ----------------------------------------------------------------------------
 -- Neovim Globals
 -- ----------------------------------------------------------------------------
 
--- vim.g.clipboard = fn.get_clipboard()
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+
 vim.g.ruby_host_prog = "~/.local/share/gem/ruby/3.3.0/bin/neovim-ruby-host"
+vim.g.python3_host_prog = os.execute("uv python find")
+
 vim.g.loaded_perl_provider = 0
-vim.g.python3_host_prog = os.execute("~/.local/bin/uv python find")
+
+vim.g.lazyvim_picker = "snacks"
+vim.g.lazyvim_python_ruff = "ruff"
+vim.g.lazyvim_python_lsp = "basedpyright"
+
+-- ----------------------------------------------------------------------------
+-- UI Options
+-- ----------------------------------------------------------------------------
+
+-- vim.ui.input = Snacks.input
+-- vim.ui.select = Snacks.picker.select
 
 -- ----------------------------------------------------------------------------
 -- Neovim Options

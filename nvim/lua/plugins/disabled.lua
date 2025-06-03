@@ -1,3 +1,3 @@
 return {
-	{ "notomo/promise.nvim", enabled = false },
+	{ "kiyoon/jupynium.nvim", enabled = false },
 }
