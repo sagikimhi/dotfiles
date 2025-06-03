@@ -32,7 +32,7 @@
     srcPrefix = src/
     dstPrefix = dst/
     submodule = diff
-    algorithm = histogram
+    algorithm = minimal
 
 [log]
     decorate = full
@@ -64,6 +64,12 @@
 
     # List all aliases
     la = "!git config -l | grep alias | cut -c 7-"
+
+    # -------------------------------------------------------------------------
+    # push aliases
+    # -------------------------------------------------------------------------
+
+    fpush = push --force-with-lease
 
     # -------------------------------------------------------------------------
     # git add aliases
@@ -129,12 +135,11 @@
     # git log aliases
     # -------------------------------------------------------------------------
 
-    l = log --graph --pretty='format: %C(red)%h%C(reset) %C(cyan)%ad%C(reset) %s %C(blue)[%an]%C(reset)%C(yellow)%d%C(reset)' --abbrev-commit --branches --date=iso --decorate
-    ll = log --graph --pretty='format: %C(red)%h%C(reset) %C(cyan)%ad%C(reset) %s %C(bold blue)[%an]%C(reset)%C(yellow)%d%C(reset) %n' --abbrev-commit --branches --date=iso --decorate
-    ls = log --graph --pretty='format: %C(red)%h%C(reset) %C(cyan)%ad%C(reset) %s %C(blue)[%an]%C(reset)%C(yellow)%d%C(reset) %n' --abbrev-commit --branches --date=iso --numstat --decorate
-    la = log --graph --pretty='format: %C(red)%h%C(reset) %C(cyan)%ad%C(reset) %s %C(bold blue)[%an]%C(reset)%C(yellow)%d%C(reset) %n' --abbrev-commit --branches --date=iso --numstat --decorate
+    l = log --abbrev-commit --branches --graph --pretty='format: %C(red)%h%C(reset) %C(cyan)%ad%C(reset) %s %C(blue)[%an]%C(reset)%C(yellow)%d%C(reset)' --date=iso --decorate=full
+    ll = log --abbrev-commit --branches --graph --pretty='format: %C(red)%h%C(reset) %C(cyan)%ad%C(reset) %s %C(bold blue)[%an]%C(reset)%C(yellow)%d%C(reset) %n' --date=iso --decorate=full
+    ls = log --abbrev-commit --branches --graph --pretty='format: %C(red)%h%C(reset) %C(cyan)%ad%C(reset) %s %C(blue)[%an]%C(reset)%C(yellow)%d%C(reset) %n' --date=iso --numstat --decorate=full
+    la = log --abbrev-commit --branches --graph --pretty='format: %C(red)%h%C(reset) %C(cyan)%ad%C(reset) %s %C(bold blue)[%an]%C(reset)%C(yellow)%d%C(reset) %n' --date=iso --numstat --decorate=full
 
-    # -------------------------------------------------------------------------
     # Branch deletion aliases - optional
     # -------------------------------------------------------------------------
 
