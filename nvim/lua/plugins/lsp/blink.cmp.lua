@@ -71,18 +71,17 @@ return {
 					max_items = 500,
 					selection = {
 						preselect = false,
-						auto_insert = true,
+						auto_insert = false,
 					},
 					cycle = {
-						from_top = true,
 						from_bottom = true,
+						from_top = true,
 					},
 				},
 				accept = {
 					dot_repeat = true,
 					create_undo_point = true,
 					resolve_timeout_ms = 200,
-					-- timeout_ms = 600,
 					auto_brackets = {
 						enabled = true,
 						default_brackets = { "(", ")" },

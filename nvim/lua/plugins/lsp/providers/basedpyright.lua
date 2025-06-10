@@ -33,29 +33,13 @@ return {
 					root_dir = function(fname)
 						return util.root_pattern(unpack(root_files))(fname)
 					end,
-					single_file_support = true,
 					settings = {
 						basedpyright = {
 							analysis = {
-								exclude = {
-									".git",
-									"dist",
-									"**/.ruff_cache",
-									"**/.pytest_cache",
-									"**/.gitignore",
-									"**/__pycache__",
-									"**/*.eggs",
-									"**/*.pyc",
-									"**/*.pyd",
-								},
-								pythonVersion = ">=3.12",
-								pythonPlatform = "All",
-								autoSearchPaths = true,
-								diagnosticMode = "workspace",
-								useTypingExtensions = true,
+								diagnosticMode = "openFilesOnly",
 								typeCheckingMode = "standard",
 								reportMissingImports = "error",
-								autoImportCompletions = true,
+								reportMissingTypeStubs = true,
 								useLibraryCodeForTypes = true,
 							},
 						},
