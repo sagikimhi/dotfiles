@@ -1,0 +1,70 @@
+# -----------------------------------------------------------------------------
+# Python Functions
+# -----------------------------------------------------------------------------
+
+# csh compatability
+#
+function setenv {
+    typeset -x "${1}${1:+=}${(@)argv[2,$#]}"
+}
+
+function freload {
+    while (( $# )); do;
+        unfunction $1;
+        autoload -U $1;
+        shift;
+    done
+}
+
+function setup_uv {
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+}
+
+function zact {
+    if [[ $# -lt 1 ]]; then
+        return
+    fi
+
+    z "$1" && source "./.venv/bin/activate" && cd -
+}
+
+function pyact {
+    if [[ $# -lt 1 ]]; then
+        return
+    fi
+
+    cd "$(realpath "$1")" && source "./.venv/bin/activate" && cd -
+}
+
+function zreact {
+    if [[ $# -lt 1 ]]; then
+        return
+    fi
+
+    deactivate && zact "$1"
+}
+
+function preyact {
+    if [[ $# -lt 1 ]]; then
+        return
+    fi
+
+    deactivate && pyact "$1"
+}
+
+function pyhere {
+    source "./.venv/bin/activate"
+}
+
+function repyhere {
+    deactivate && source "./.venv/bin/activate"
+}
+
+if [[ -e $HOME/.local/bin/uv ]]; then
+    alias py="/usr/bin/env uv run --active python"
+    alias py3="/usr/bin/env uv run python3"
+else
+    alias py="/usr/bin/env python"
+    alias py3="/usr/bin/env python3"
+fi
+
