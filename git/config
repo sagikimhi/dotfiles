@@ -1,11 +1,5 @@
-[includeIf "gitdir:/home/skimhi/.project/git/"]
-    path = "/home/skimhi/.config/git/default.gitconfig"
-
-[includeIf "gitdir:/home/skimhi/.project/git/users/ketyvagenfeld/"]
-    path = "/home/skimhi/.config/git/kety.gitconfig"
-
-[includeIf "gitdir:/home/skimhi/.project/git/users/sagikimhi/organizations/wiliot/"]
-    path = "/home/skimhi/.config/git/wiliot.gitconfig"
+# [includeIf "gitdir:/path/to/git/dir/"]
+#     path = "/path/to/git/config/file"
 
 [gpg]
     format = ssh
@@ -19,6 +13,8 @@
 [core]
     editor = nvim
     autocrlf = false
+    fsmonitor = true
+    untrackedCache = true
 
 [pull]
     rebase = true
@@ -176,9 +172,3 @@
 
 [mergetool.nvim]
     cmd = "nvim -c 'Git mergetool'"
-
-[maintenance]
-    repo = /home/skimhi/.project/git/users/sagikimhi/common/dotfiles
-    repo = /home/skimhi/.project/git/users/sagikimhi/organizations/wiliot/pixie
-	repo = /home/skimhi/.project/git/users/sagikimhi/organizations/wiliot/socx-cli
-    repo = /home/skimhi/.project/git/users/sagikimhi/organizations/wiliot/pixie_verif
