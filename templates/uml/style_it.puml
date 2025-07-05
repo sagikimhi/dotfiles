@@ -1,4 +1,4 @@
-@startuml styleit
+@startuml style_it
 
 !include global_styles.puml
 

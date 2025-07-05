@@ -1,4 +1,4 @@
-@startuml order
+@startuml simulation
 
 !include styles.puml
 $styles_begin()
