@@ -1,0 +1,62 @@
+image: python:3.13-slim
+
+definitions:
+  steps:
+    - step: &build_package
+        name: Build Python Package
+        script:
+          - python3 -m pip install uv
+          - uv --version
+          - uv build --sdist --wheel
+          - ls -al dist/
+        artifacts:
+          - dist/**
+
+    - step: &lint_code
+        name: Lint code
+        script:
+          - python3 -m pip install uv
+          - uv --version
+          - uv tool install ruff
+          - ruff clean
+          - ruff check .
+
+    - step: &format_code
+        name: check code formatting
+        script:
+          - python3 -m pip install uv
+          - uv --version
+          - uv tool install ruff
+          - ruff clean
+          - ruff format --check --verbose .
+
+    - step: &improve_code_quality
+        name: improve code quality
+        script:
+          - python3 -m pip install uv
+          - uv --version
+          - uv tool install refurb
+          - refurb . --enable-all --verbose
+
+pipelines:
+  custom:
+    Run All Checks: &run_all_checks
+      - parallel:
+          - step: *lint_code
+          - step: *improve_code_quality
+          - step: *format_code
+
+    Publish lib: &publish_lib
+      - parallel:
+          - step: *lint_code
+          - step: *improve_code_quality
+          - step: *format_code
+      - step: *build_package
+      # - parallel:
+      # - step: *publish_into_pypi
+
+  pull-requests:
+    "**": *run_all_checks
+
+  # branches:
+  #   main: *publish_lib
