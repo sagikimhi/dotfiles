@@ -9,7 +9,7 @@
 !/src/**/*.py
 !/tests/**/*.py
 !/assets/**/*
-!.github/workflows/**/*.yml
+!/.github/workflows/**/*.yml
 
 # Unexclude common files
 
@@ -19,3 +19,5 @@
 !Dockerfile
 !ruff.toml
 !pyproject.toml
+!bitbucket-pipelines.yaml
+!pyrightconfig.json
