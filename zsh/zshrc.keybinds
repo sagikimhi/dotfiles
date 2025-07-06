@@ -1,0 +1,26 @@
+bindkey -v # vi key bindings
+# bindkey -e # emacs key bindings
+
+bindkey '^Z' accept-and-hold
+bindkey '^Xa' _expand_alias
+bindkey '^X^Z' universal-argument ' ' magic-space
+bindkey '^X^A' vi-find-prev-char-skip
+
+bindkey -s '\M-/' \\\\
+bindkey -s '\M-=' \|
+
+bindkey ' ' magic-space                         # do history expansion on space
+bindkey '^I' complete-word                      # complete on tab, leave expansion to _expand
+bindkey '^U' backward-kill-line                 # ctrl + U
+bindkey '^[[Z' undo                             # shift + tab undo last action
+
+bindkey '^[[1;5C' forward-word                  # ctrl + ->
+bindkey '^[[1;5D' backward-word                 # ctrl + <-
+
+bindkey '^[[3~' delete-char                     # delete
+bindkey '^[[3;5~' kill-word                     # ctrl + Supr
+
+bindkey '^[[F' end-of-line                      # end
+bindkey '^[[H' beginning-of-line                # home
+bindkey '^[[6~' end-of-buffer-or-history        # page down
+bindkey '^[[5~' beginning-of-buffer-or-history  # page up

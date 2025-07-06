@@ -1,0 +1,54 @@
+@startuml order
+
+!include styles.puml
+$styles_begin()
+$style_it(arrow)
+$style_it(note)
+$style_it(partition)
+$style_it(diamond)
+$style_it(class)
+$styles_end()
+allowmixing
+left to right direction
+skinparam {
+    linetype polyline
+    groupInheritance 2
+}
+
+class Item {
+    + id
+    + name
+    + price
+}
+
+class Client {
+    + id
+    + name
+    + address
+}
+
+enum OrderState {
+    Received = 1
+    Assigned = 2
+    Prepared = 3
+    Delivered = 4
+    Completed = 5
+}
+
+class Order {
+--==="" Order Info ""--
+    + price(discount=0): //int//
+    + state: //OrderState//
+    + items: //list[Item]//
+    + client: //Client//
+--==="" Time Info ""--
+    + submission_time: //Time//
+    + preparation_time: //Time//
+    + delivery_time: //Time//
+    + arrival_time: //Time//
+    + end_time: //Time//
+}
+Item --> Order::items
+Client --> Order::client
+OrderState --> Order::state
+@enduml

@@ -1,0 +1,71 @@
+# -----------------------------------------------------------------------------
+# Aliases
+# -----------------------------------------------------------------------------
+
+# core/basic
+alias v="${EDITOR}"
+alias j=jobs
+alias d='dirs -v'
+alias h='history 0'
+alias so="source"
+alias ls="ls --color=auto --sort=version --group-directories-first"
+alias edit="${EDITOR}"
+alias docker="sudo docker"
+alias which-command='whence'
+
+# ls
+alias l="ls -lh"
+alias la="ls -lAh"
+alias ll="ls -lah"
+
+# apt
+alias aptupdate="sudo apt-get update"
+alias aptupgrade="sudo apt-get update && sudo apt upgrade"
+alias aptinstall="sudo apt-get update && sudo apt-get install"
+alias aptfull="sudo apt-get update && sudo apt full-upgrade"
+
+# cd
+alias uni="cd ${uni}"
+alias dot="cd ${dot}"
+alias orgs="cd ${orgs}"
+alias mygit="cd ${mygit}"
+alias c_playground="mkdir -p ${playground}/c && cd ${c_playground}"
+alias go_playground="mkdir -p ${playground}/go && cd ${playground}/go"
+alias py_playground="mkdir -p ${playground}/python && cd ${playground}/python"
+alias sv_playground="mkdir -p ${playground}/systemverilog && cd ${playground}/systemverilog"
+alias uml_playground="mkdir -p ${playground}/uml && cd ${playground}/uml"
+alias cpp_playground="mkdir -p ${playground}/cpp && cd ${playground}/cpp"
+alias zig_playground="mkdir -p ${playground}/zig && cd ${playground}/zig"
+alias sql_playground="mkdir -p ${playground}/sql  && cd ${playground}/sql"
+alias rust_playground="mkdir -p ${playground}/rust && cd ${playground}/rust"
+alias java_playground="mkdir -p ${playground}/java && cd ${playground}/java"
+
+# edit: configurations
+alias zshrc="v ${zshrc}"
+alias ushrc="v ${ushrc}"
+alias sshrc="v ${sshrc}"
+alias gitrc="v ${gitrc}"
+alias vimrc="v ${vimrc}"
+alias nvimrc="v ${nvimrc}"
+alias tmuxrc="v ${tmuxrc}"
+alias socxrc="v ${socxrc}"
+alias kittyrc="v ${kittyrc}"
+alias aliasrc="v ${aliasrc}"
+alias weztermrc="v ${weztermrc}"
+
+# docker: run
+alias run-plantuml="docker run -d -p 8080:8080 --name umlserver plantuml/plantuml-server:jetty"
+alias run-redis-stack="docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest"
+alias run-redis-stack-server="docker run -d --name redis-stack-server -p 6379:6379 redis/redis-stack-server:latest"
+# docker: exec
+alias connect-redis-stack="docker exec -it redis-stack redis-cli"
+# docker: stop
+alias stop-plantuml="docker stop umlserver && docker rm umlserver"
+
+#npm: run
+alias mmdc="npx -p @mermaid-js/mermaid-cli mmdc"
+alias neovim="npx neovim"
+alias prettier="npx prettier"
+alias markdown-toc="npx markdown-toc"
+alias markdown-cli2="npx markdown-cli2"
+

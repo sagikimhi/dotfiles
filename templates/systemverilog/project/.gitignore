@@ -1,0 +1,19 @@
+# Exclude All
+*
+
+!*/
+
+!.dvt/*
+!bin/**/*
+!ref/**/*
+!sim/**/*
+!top/**/*
+!src/**/*
+!test/**/*
+
+!.gitignore
+!.svls.toml
+!.svlint.toml
+!LICENSE
+!Makefile
+!README.md
