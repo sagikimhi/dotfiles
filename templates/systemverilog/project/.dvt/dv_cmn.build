@@ -1,0 +1,58 @@
+// ---------------------------------------------------------------------------
+// Simulator
+// ---------------------------------------------------------------------------
+
++dvt_init+vcs.vlogan
+
+// ---------------------------------------------------------------------------
+// Env varibles
+// ---------------------------------------------------------------------------
+
++dvt_setenv+USER=sagikimhi
+
++dvt_setenv+VENDORS=/project/pixie/users/$USER/github
++dvt_setenv+SOCTOOLS=/project/pixie/soc/tools
+
++dvt_setenv+RAREA=/local/users/$USER/vw_pixie_e0
++dvt_setenv+SAREA=/space/users/$USER/vw_pixie_e0
++dvt_setenv+WAREA=/project/pixie/users/$USER/vw_pixie_e0
++dvt_setenv+TOP_VERIF=$WAREA/pixie_verif/pixie_top
+
++dvt_setenv+UVM_HOME=$VENDORS/uvm-1.2
++dvt_setenv+VCS_HOME=/tools/snps/vcs/T-2023.12-SP2
++dvt_setenv+VERDI_HOME=/tools/snps/verdi/V-2023.12-SP2
+
+// ---------------------------------------------------------------------------
+// Simulator Flags
+// ---------------------------------------------------------------------------
+
+-lca
+-kdb
+-full64
+-sverilog
+-timescale=1ns/1fs
+-debug_region=cell+lib
++no_tchk_msg
++lint=TFIPC-L
++warn=noTCL-NTCL
++libext+.v+.sv+.svh+.vlib+.vh
+
+// ---------------------------------------------------------------------------
+// Compile UVM
+// ---------------------------------------------------------------------------
+
++define+MAIN_UVM_INCLUDE_ALL_FILES
++incdir+$UVM_HOME
+-uvm
+
+// ---------------------------------------------------------------------------
+// Compile Testbench
+// ---------------------------------------------------------------------------
+
+-f top.f
+
+// ---------------------------------------------------------------------------
+// Select Top Module
+// ---------------------------------------------------------------------------
+
++nctop+top
