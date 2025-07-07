@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for file in $@; do
+for file in "$@"; do
     cmd="verible-verilog-format \\
         --column_limit 79 \\
         --wrap_spaces 3 \\
