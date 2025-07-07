@@ -1,9 +1,17 @@
 #!/usr/bin/env python3
 
-import sys
+from __future__ import annotations
+
 from pathlib import Path
-from itertools import chain
 from collections.abc import Iterable
+
+
+# -----------------------------------------------------------------------------
+# Types
+# -----------------------------------------------------------------------------
+
+
+PathType = str | Path
 
 
 # -----------------------------------------------------------------------------
@@ -17,17 +25,9 @@ ROOT_DIRECTORY: Path = MODULE_PATH.parents[1]
 TOP_FLIST_PATH: Path = ROOT_DIRECTORY / "top.f"
 PKG_FLIST_PATH: Path = ROOT_DIRECTORY / "pkg.f"
 
-TOP_SEARCH_PATH: Path = ROOT_DIRECTORY / "top"
-PKG_SEARCH_PATH: Path = ROOT_DIRECTORY / "pkg"
-TEST_SEARCH_PATH: Path = ROOT_DIRECTORY / "test"
-
-
-# -----------------------------------------------------------------------------
-# Types
-# -----------------------------------------------------------------------------
-
-
-PathType: type = str | Path
+TOP_SEARCH_PATH: Path = (ROOT_DIRECTORY / "top").resolve()
+PKG_SEARCH_PATH: Path = (ROOT_DIRECTORY / "src").resolve()
+TEST_SEARCH_PATH: Path = (ROOT_DIRECTORY / "test").resolve()
 
 
 # -----------------------------------------------------------------------------
@@ -35,53 +35,41 @@ PathType: type = str | Path
 # -----------------------------------------------------------------------------
 
 
-def _check_path(search_path: Path) -> None:
-    if not search_path.exists():
-        err = f"Path '{search_path}' does not exist."
-        raise ValueError(err)
-    if not search_path.is_dir():
-        err = f"Path '{search_path}' is not a directory."
-        raise ValueError(err)
+def _v_flist(search_path: Path) -> list[str]:
+    files = [f"-v {fp}" for fp in search_path.glob("*.v")]
+    return files and [f"-y {search_path}", *files]
 
 
-def _systemverilog_flist(search_path: PathType) -> Iterable[Path]:
+def _sv_flist(search_path: Path) -> list[str]:
+    files = [str(fp) for fp in search_path.glob("*.sv")]
+    return files and [f"+incdir+{search_path}", *files]
+
+
+def _flist(search_path: PathType) -> list[str]:
     if isinstance(search_path, str):
         search_path = Path(search_path).resolve()
-    _check_path(search_path)
-    files = tuple(search_path.glob("*"))
-    return tuple(filter(lambda f: f.suffix in (".v", ".sv"), files))
+    return [*_sv_flist(search_path), *_v_flist(search_path)]
 
 
-def systemverilog_flist(
-    *search_paths: PathType | Iterable[PathType],
-) -> Iterable[Path]:
+def flist(*search_paths: PathType | Iterable[PathType]) -> list[str]:
     if isinstance(search_paths, PathType):
-        search_paths = [search_paths]
-    return chain(
-        *(_systemverilog_flist(search_path) for search_path in search_paths)
-    )
-
-
-# -----------------------------------------------------------------------------
-# Main
-# -----------------------------------------------------------------------------
+        search_paths = (search_paths,)
+    return [
+        file
+        for path in search_paths
+        if isinstance(path, PathType)
+        for file in _flist(path)
+    ]
 
 
 def main() -> int:
-    pkg_files = systemverilog_flist(PKG_SEARCH_PATH)
-    top_files = systemverilog_flist(
-        PKG_SEARCH_PATH, TEST_SEARCH_PATH, TOP_SEARCH_PATH
-    )
-    pkg_flist = "".join(
-        f"+incdir+{file.parent}\n{file}\n" for file in pkg_files
-    )
-    top_flist = "".join(
-        f"+incdir+{file.parent}\n{file}\n" for file in top_files
-    )
-    PKG_FLIST_PATH.write_text(pkg_flist, encoding="utf-8")
-    TOP_FLIST_PATH.write_text(top_flist, encoding="utf-8")
-    return 0
+    rv = 0
+    pkg_files = flist(PKG_SEARCH_PATH)
+    top_files = flist(PKG_SEARCH_PATH, TEST_SEARCH_PATH, TOP_SEARCH_PATH)
+    rv |= PKG_FLIST_PATH.write_text("\n".join(pkg_files), encoding="utf-8")
+    rv |= TOP_FLIST_PATH.write_text("\n".join(top_files), encoding="utf-8")
+    return rv
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    exit(main())
