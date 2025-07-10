@@ -4,9 +4,9 @@
 
 # core/basic
 alias v="${EDITOR}"
-alias j=jobs
-alias d='dirs -v'
-alias h='history 0'
+alias j="jobs"
+alias d="dirs -v"
+alias h="history 0"
 alias so="source"
 alias ls="ls --color=auto --sort=version --group-directories-first"
 alias edit="${EDITOR}"
@@ -14,15 +14,14 @@ alias docker="sudo docker"
 alias which-command='whence'
 
 # ls
-alias l="ls -lh"
-alias la="ls -lAh"
-alias ll="ls -lah"
+alias l="ls --color=auto --sort=version --group-directories-first -lh"
+alias la="ls --color=auto --sort=version --group-directories-first -lAh"
+alias ll="ls --color=auto --sort=version --group-directories-first -lah"
 
 # apt
-alias aptupdate="sudo apt-get update"
-alias aptupgrade="sudo apt-get update && sudo apt upgrade"
-alias aptinstall="sudo apt-get update && sudo apt-get install"
-alias aptfull="sudo apt-get update && sudo apt full-upgrade"
+alias aptupdate="brew update"
+alias aptupgrade="brew update && brew upgrade && brew cleanup"
+alias aptfull="brew update && brew upgrade && brew doctor && brew cleanup"
 
 # cd
 alias uni="cd ${uni}"

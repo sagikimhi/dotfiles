@@ -1,0 +1,45 @@
+# -----------------------------------------------------------------------------
+# Variables
+# -----------------------------------------------------------------------------
+
+# directories: $HOME
+loc=${HOME}/.local
+bin=${HOME}/.local/bin
+lib=${HOME}/.local/lib
+opt=${HOME}/.local/opt
+jar=${HOME}/.local/lib/jar
+inc=${HOME}/.local/include
+state=${HOME}/.local/state
+share=${HOME}/.local/share
+config=${HOME}/.config
+project=${HOME}/.project
+
+# directories: $project
+git="${project}/git"
+work="${project}/work"
+templates="${project}/templates"
+playground="${project}/playground"
+
+# directories: $project/git
+gitusers="${git}/users"
+gitlangs="${git}/languages"
+mygit="${gitusers}/sagikimhi"
+uni="${mygit}/university"
+orgs="${mygit}/organizations"
+dot="${mygit}/common/dotfiles"
+wiliot="${orgs}/wiliot"
+
+# config files: $HOME
+sshrc=${HOME}/.ssh
+vimrc=${HOME}/.vimrc
+zshrc=${HOME}/.zshrc
+ushrc=${HOME}/.zshrc.${USER}
+wezrc=${HOME}/.wezterm.lua
+aliasrc=${HOME}/.zshrc.aliases
+
+# config files: $HOME/.config
+gitrc=${config}/git/config
+nvimrc=${config}/nvim
+socxrc=${config}/socx
+tmuxrc=${config}/tmux/tmux.conf
+kittyrc=${config}/kitty
