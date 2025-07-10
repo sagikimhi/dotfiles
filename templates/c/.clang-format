@@ -3,8 +3,8 @@
 # -----------------------------------------------------------------------------
 
 Language: Cpp
-Standard: Latest
-Cpp11BracedListStyle: true
+Standard: Auto
+Cpp11BracedListStyle: false
 
 # -----------------------------------------------------------------------------
 # Common
@@ -25,16 +25,16 @@ UseTab: Never
 LineEnding: DeriveLF
 BinPackArguments: false
 BinPackParameters: false
+AlwaysBreakAfterReturnType: All
 AlwaysBreakBeforeMultilineStrings: false
-AlwaysBreakAfterDefinitionReturnType: All
 
 # -----------------------------------------------------------------------------
 # Not so common
 # -----------------------------------------------------------------------------
 
-SortIncludes: false
+SortIncludes: Never
 InsertBraces: false
-ReflowComments:  false
+ReflowComments: false
 RemoveSemicolon: false
 RemoveBracesLLVM: false
 PointerAlignment: Right
@@ -55,9 +55,9 @@ AlignEscapedNewlines: Left
 AlignAfterOpenBracket: AlwaysBreak
 AlignArrayOfStructures: None
 AlignTrailingComments: false
-AlignConsecutiveBitFields: false
-AlignConsecutiveAssignments: false
-AlignConsecutiveDeclarations: false
+AlignConsecutiveBitFields: None
+AlignConsecutiveAssignments: None
+AlignConsecutiveDeclarations: None
 
 # -----------------------------------------------------------------------------
 # Indent X
@@ -98,7 +98,7 @@ SpaceBeforeCpp11BracedList: false
 SpaceBeforeAssignmentOperators: true
 SpaceBeforeRangeBasedForLoopColon: false
 # In
-SpacesInAngles:  Never
+SpacesInAngles: Never
 SpaceInEmptyBlock: false
 SpacesInParentheses: false
 SpacesInSquareBrackets: false
@@ -134,24 +134,24 @@ AllowAllParametersOfDeclarationOnNextLine: true
 # -----------------------------------------------------------------------------
 
 IfMacros:
-  - 'if_test'
+  - "if_test"
 ForEachMacros:
- - 'for_each_builtin'
- - 'for_each_string_list_item'
- - 'for_each_ut'
- - 'for_each_wanted_builtin'
- - 'hashmap_for_each_entry'
- - 'hashmap_for_each_entry_from'
- - 'kh_foreach'
- - 'kh_foreach_value'
- - 'list_for_each'
- - 'list_for_each_dir'
- - 'list_for_each_prev'
- - 'list_for_each_prev_safe'
- - 'list_for_each_safe'
- - 'strintmap_for_each_entry'
- - 'strmap_for_each_entry'
- - 'strset_for_each_entry'
+  - "for_each_builtin"
+  - "for_each_string_list_item"
+  - "for_each_ut"
+  - "for_each_wanted_builtin"
+  - "hashmap_for_each_entry"
+  - "hashmap_for_each_entry_from"
+  - "kh_foreach"
+  - "kh_foreach_value"
+  - "list_for_each"
+  - "list_for_each_dir"
+  - "list_for_each_prev"
+  - "list_for_each_prev_safe"
+  - "list_for_each_safe"
+  - "strintmap_for_each_entry"
+  - "strmap_for_each_entry"
+  - "strset_for_each_entry"
 
 # -----------------------------------------------------------------------------
 # Penalties
@@ -164,7 +164,6 @@ PenaltyExcessCharacter: 100
 PenaltyBreakFirstLessLess: 0
 PenaltyReturnTypeOnItsOwnLine: 0
 PenaltyBreakBeforeFirstCallParameter: 30
-
 # -----------------------------------------------------------------------------
 # May be useful
 # -----------------------------------------------------------------------------
@@ -194,9 +193,9 @@ PenaltyBreakBeforeFirstCallParameter: 30
 # EmptyLineBeforeAccessModifier: LogicalBlock
 # RequiresExpressionIndentation: OuterScope
 
- # -----------------------------------------------------------------------------
- # Original clang-format of git/git.git 
- # -----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
+# Original clang-format of git/git.git
+# -----------------------------------------------------------------------------
 
 ## This file is an example configuration for clang-format 5.0.
 ##
@@ -419,5 +418,4 @@ PenaltyBreakBeforeFirstCallParameter: 30
 
 ## Don't sort #include's
 #SortIncludes: false
-
 

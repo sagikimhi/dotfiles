@@ -33,48 +33,58 @@
 # Compiler
 # --------
 
-CC = gcc
+CC ?= gcc
+
+CXX ?= g++
 
 # Binary
 # ------
 
-BINARY=a.out
+BINARY ?= a.out
+
+SRC_EXT ?= cpp
 
 # Directories
 # -----------
 
-SOURCE_DIR=./src
+SOURCE_DIR ?= ./src
 
-TARGET_DIR=./build
+TARGET_DIR ?= ./build
 
 # Files
 # -----
 
-TARGET:=$(TARGET_DIR)/$(BINARY)
+TARGET ?= $(TARGET_DIR)/$(BINARY)
 
-SOURCES:=$(filter-out %main.c,$(wildcard $(SOURCE_DIR)/*.c))
+SOURCES ?= $(filter-out %main.$(SRC_EXT),$(wildcard $(SOURCE_DIR)/*.$(SRC_EXT)))
 
-OBJECTS:=$(subst $(SOURCE_DIR),$(TARGET_DIR),$(SOURCES:.c=.o))
+OBJECTS ?= $(subst $(SOURCE_DIR),$(TARGET_DIR),$(SOURCES:.$(SRC_EXT)=.o))
 
 # Flags
 # -----
 
-CFLAGS:=-ansi -Wall -Wextra -Werror -I$(SOURCE_DIR)
+ifeq ($(SRC_EXT),cpp)
+STD ?= -std=c++26
+else ifeq ($(SRC_EXT),c)
+STD ?= -ansi
+endif
+
+CFLAGS ?= -Wall -Wextra -Werror -I$(SOURCE_DIR) -O3
 
 # Colors
 # ------
 
-SET_WHITE_TEXT:=@echo -n "\033[0m"
+SET_WHITE_TEXT ?= @echo -n "\033[0m"
 
-SET_RED_TEXT:=@echo -n "\033[31m"
+SET_RED_TEXT ?= @echo -n "\033[31m"
 
-SET_GREEN_TEXT:=@echo -n "\033[32m"
+SET_GREEN_TEXT ?= @echo -n "\033[32m"
 
-SET_YELLOW_TEXT:=@echo -n "\033[33m"
+SET_YELLOW_TEXT ?= @echo -n "\033[33m"
 
-SET_BLUE_TEXT:=@echo -n "\033[34m"
+SET_BLUE_TEXT ?= @echo -n "\033[34m"
 
-SET_MAGNETA_TEXT:=@echo -n "\033[35m"
+SET_MAGENTA_TEXT ?= @echo -n "\033[35m"
 
 # -----------------------------------------------------------------------------
 # Compilation Verbosity
@@ -113,7 +123,8 @@ endif
 
 all: \
 	check \
-	compile
+	compile \
+	run
 
 # Check
 # -----
@@ -129,6 +140,10 @@ compile: \
 	build_and_link \
 	post_compilation_cleanup \
 	compilation_done
+
+.PHONY: run
+run: \
+	run_target
 
 # Clean
 # -----
@@ -176,27 +191,35 @@ build_and_link: \
 # Build Target
 # ------------
 
-$(TARGET): $(OBJECTS) src/main.c
-	$(SET_YELLOW_TEXT)
-	@echo "$(BINARY): Linking $@..."
+$(TARGET): $(OBJECTS) src/main.$(SRC_EXT)
+	$(SET_MAGENTA_TEXT)
+	@echo "Linking $@..."
 	$(SET_WHITE_TEXT)
-	$(HIDE)$(CC) $(CFLAGS) -o $@ $^ -lm
+ifeq ($(SRC_EXT),c)
+	$(HIDE)$(CC) $(STD) $(CFLAGS) -o $@ $^
+else ifeq ($(SRC_EXT),cpp)
+	$(HIDE)$(CXX) $(STD) $(CFLAGS) -o $@ $^
+endif
 
 # Build Objects
 # -------------
 
-$(TARGET_DIR)/%.o: $(SOURCE_DIR)/%.c
+$(TARGET_DIR)/%.o: $(SOURCE_DIR)/%.$(SRC_EXT)
 	$(SET_YELLOW_TEXT)
-	@echo "$(BINARY): Building $@..."
+	@echo "Building object $@..."
 	$(SET_WHITE_TEXT)
-	$(HIDE)$(CC) $(CFLAGS) -c -o $@ $^
+ifeq ($(SRC_EXT),c)
+	$(HIDE)$(CC) $(STD) $(CFLAGS) -c -o $@ $^
+else ifeq ($(SRC_EXT),cpp)
+	$(HIDE)$(CXX) $(STD) $(CFLAGS) -c -o $@ $^
+endif
 
 # Post Compilation Cleanup
 # ------------------------
 
 post_compilation_cleanup:
-	$(SET_YELLOW_TEXT)
-	@echo "$(BINARY): Cleaning up leftovers..."
+	$(SET_MAGENTA_TEXT)
+	@echo "Cleaning up leftovers..."
 	$(SET_WHITE_TEXT)
 ifneq ($(OBJECTS),)
 	@rm $(OBJECTS)
@@ -207,8 +230,18 @@ endif
 
 compilation_done:
 	$(SET_GREEN_TEXT)
-	@echo "$(BINARY): Build Done. (built to '$(TARGET)')"
+	@echo "Binary successfuly written to '$(TARGET)'.\n"
 	$(SET_WHITE_TEXT)
+
+# Run Target
+# ----------
+
+.PHONY: run_target
+run_target:
+	$(SET_YELLOW_TEXT)
+	@echo "Running binary... ($(TARGET))"
+	$(SET_WHITE_TEXT)
+	@$(TARGET)
 
 # -----------------------------------------------------------------------------
 # Clean Rules
@@ -217,12 +250,12 @@ compilation_done:
 # Clean Objects
 # -------------
 
-clean_objects: $(eval LEFTOVER_OBJECTS:=$(shell find $(TARGET_DIR) -maxdepth 1 -name *.o 2> /dev/null))
-clean_objects: $(eval CLEAN_OBJECTS_CMD:=rm $(LEFTOVER_OBJECTS))
-clean_objects:
+clean_objects: \
+	$(eval LEFTOVER_OBJECTS:=$(shell find $(TARGET_DIR) -maxdepth 1 -name *.o 2> /dev/null)) \
+	$(eval CLEAN_OBJECTS_CMD:=rm $(LEFTOVER_OBJECTS))
 ifneq ($(LEFTOVER_OBJECTS),)
 	$(SET_YELLOW_TEXT)
-	@echo "clean: Cleaning Objects... ($(CLEAN_OBJECTS_CMD))"
+	@echo "Cleaning Objects... ($(CLEAN_OBJECTS_CMD))"
 	@$(CLEAN_OBJECTS_CMD)
 	$(SET_WHITE_TEXT)
 endif
@@ -230,25 +263,25 @@ endif
 # Clean Binaries
 # --------------
 
-clean_binaries: $(eval LEFTOVER_BINARIES:=$(strip $(shell find $(TARGET_DIR) -maxdepth 1 -type f -executable 2> /dev/null)))
-clean_binaries: $(eval CLEAN_BINARIES_CMD:=rm $(LEFTOVER_BINARIES))
-clean_binaries:
+clean_binaries: \
+	$(eval LEFTOVER_BINARIES:=$(strip $(shell find $(TARGET_DIR) -maxdepth 1 -type f -executable 2> /dev/null))) \
+	$(eval CLEAN_BINARIES_CMD:=rm $(LEFTOVER_BINARIES))
 ifneq ($(LEFTOVER_BINARIES),)
 	$(SET_YELLOW_TEXT)
-	@echo "clean: Cleaning Binaries... ($(CLEAN_BINARIES_CMD))"
-	@$(CLEAN_BINARIES_CMD)
+	@echo "Cleaning Binaries... ($(CLEAN_BINARIES_CMD))"
+	$(HIDE)$(CLEAN_BINARIES_CMD)
 	$(SET_WHITE_TEXT)
 endif
 
 # Clean Target Dir
 # ----------------
 
-clean_target_dir: $(eval FIND_TARGET_DIR:=$(strip $(shell find . -type d -wholename $(TARGET_DIR) 2> /dev/null)))
-clean_target_dir: $(eval CLEAN_TARGET_DIR_CMD:=rmdir $(TARGET_DIR))
-clean_target_dir:
+clean_target_dir: \
+	$(eval FIND_TARGET_DIR:=$(strip $(shell find . -type d -wholename $(TARGET_DIR) 2> /dev/null))) \
+	$(eval CLEAN_TARGET_DIR_CMD:=rmdir $(TARGET_DIR))
 ifneq ($(FIND_TARGET_DIR),)
 	$(SET_YELLOW_TEXT)
-	@echo "clean: Cleaning Build Directory... ($(CLEAN_TARGET_DIR_CMD))"
+	@echo "Cleaning Build Directory... ($(CLEAN_TARGET_DIR_CMD))"
 	@$(CLEAN_TARGET_DIR_CMD)
 	$(SET_WHITE_TEXT)
 endif
@@ -258,6 +291,6 @@ endif
 
 clean_done:
 	$(SET_GREEN_TEXT)
-	@echo "clean: Clean Done."
+	@echo "Clean Done.\n"
 	$(SET_WHITE_TEXT)
 
