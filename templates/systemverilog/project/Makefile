@@ -12,6 +12,8 @@ GHDL_ARGS ?= --ieee=synopsys
 
 DOCS_TITLE ?= $(shell basename $(shell pwd))
 
+DOCS_ARCHIVE := $(DOCS_TITLE)-docs.tar.gz
+
 DOCS_SUBTITLE ?= SUBTITLE
 
 TOPLEVEL_LANG ?= verilog
@@ -52,8 +54,10 @@ help:
 	@exit 0
 
 .PHONY: docs
-docs:
+docs: clean
 	@./bin/build-docs-docker "$(DOCS_TITLE)" "$(DOCS_SUBTITLE)"
+	@tar -czf $(DOCS_ARCHIVE) ./docs/*
+	@mv $(DOCS_ARCHIVE) docs
 
 .PHONY: format
 format:
@@ -61,5 +65,5 @@ format:
 
 .PHONY: clean
 clean:
-	@rm -rf ./sim_build
+	@rm -rf ./sim_build ./docs
 

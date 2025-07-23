@@ -7,7 +7,7 @@ COPY . /
 CMD [ \
     "mono", \
     "/nd/NaturalDocs.exe", \
-    "--tab-width", "4", \
+    "--tab-width", "3", \
     "--source", \
     "/src", \
     "--project-config", \
