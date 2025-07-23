@@ -200,7 +200,7 @@ Tab Width: 3
 
 Auto Group: yes
 
-Documented Only: yes
+Documented Only: no
 
 # Other settings that apply to your entire project.  Settings specified on the
 # command line override the settings here.
