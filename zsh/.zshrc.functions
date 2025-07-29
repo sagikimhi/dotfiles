@@ -63,6 +63,8 @@ function repyhere {
 if [[ -e $HOME/.local/bin/uv ]]; then
     alias py="/usr/bin/env uv run --active python"
     alias py3="/usr/bin/env uv run python3"
+    alias pip="/usr/bin/env uv pip"
+    alias pip3="/usr/bin/env uv pip"
 else
     alias py="/usr/bin/env python"
     alias py3="/usr/bin/env python3"
