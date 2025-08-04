@@ -1,9 +1,17 @@
 #!/usr/bin/env python3
+# /// script
+# requires-python = ">=3.13"
+# dependencies = [rich_click]
+# ///
 
 from __future__ import annotations
 
+import os
+from inspect import getfile
 from pathlib import Path
 from collections.abc import Iterable
+
+import rich_click as click
 
 
 # -----------------------------------------------------------------------------
@@ -19,7 +27,7 @@ PathType = str | Path
 # -----------------------------------------------------------------------------
 
 
-MODULE_PATH: Path = Path(__file__).resolve()
+MODULE_PATH: Path = Path(getfile(lambda: None)).resolve()
 ROOT_DIRECTORY: Path = MODULE_PATH.parents[1]
 
 TOP_FLIST_PATH: Path = ROOT_DIRECTORY / "top.f"
@@ -62,14 +70,36 @@ def flist(*search_paths: PathType | Iterable[PathType]) -> list[str]:
     ]
 
 
-def main() -> int:
+@click.command(context_settings=dict(help_option_names=["--help", "-h"]))
+@click.option(
+    "--uvm/--no-uvm",
+    "uvm",
+    default=False,
+    type=click.BOOL,
+    help="Prepend uvm incdir and pkg path to top of file list",
+)
+def cli(uvm: bool) -> int:
+    """Generate pkg and top simulation compilation file lists."""
     rv = 0
     pkg_files = flist(PKG_SEARCH_PATH)
     top_files = flist(PKG_SEARCH_PATH, TEST_SEARCH_PATH, TOP_SEARCH_PATH)
+
+    if uvm and (uvm_path := os.environ.get("UVM_HOME")):
+        try:
+            uvm_path = Path(uvm_path).resolve()
+        except OSError:
+            pass
+        else:
+            uvm_files = flist(uvm_path)
+            pkg_files = [*uvm_files, *pkg_files]
+            top_files = [*uvm_files, *top_files]
+
     rv |= PKG_FLIST_PATH.write_text("\n".join(pkg_files), encoding="utf-8")
     rv |= TOP_FLIST_PATH.write_text("\n".join(top_files), encoding="utf-8")
     return rv
 
 
 if __name__ == "__main__":
-    exit(main())
+    import sys
+
+    sys.exit(cli(obj={}))

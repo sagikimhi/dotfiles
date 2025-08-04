@@ -1,15 +1,16 @@
-# Exclude All
+# Exclude everything
 *
 
+# Allow un-excluding files within directories
 !*/
 
-!.dvt/*
+# Explicitly un-exclude what is relevant
 !bin/**/*
 !ref/**/*
-!sim/**/*
 !top/**/*
 !src/**/*
 !test/**/*
+!docs/**/*.tar.gz
 
 !.gitignore
 !.svls.toml
@@ -17,3 +18,4 @@
 !LICENSE
 !Makefile
 !README.md
+!Bender.yml

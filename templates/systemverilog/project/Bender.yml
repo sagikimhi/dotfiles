@@ -1,0 +1,28 @@
+---
+package:
+  name: packagename
+  authors: ["Sagi Kimhi <sagi.kim5@gmail.com>"]
+
+sources:
+  - files:
+      - src/*.sv
+    include_dirs:
+      - src
+    targets:
+      - any(vcs, simulation)
+
+# dependencies:
+#   base-agent:
+#     git: git@github.com:sagikimhi/base-agent
+#     rev: main
+
+export_include_dirs:
+  - src
+
+vendor_package:
+  - name: uvm_pkg
+    upstream:
+      git: git@github.com:accellera-official/uvm-core
+      rev: 78c06547a2a0a29b3dc9dcafae62b75b2ff61544
+    target_dir: deps/uvm_pkg
+    include_from_upstream: [src, docs]
