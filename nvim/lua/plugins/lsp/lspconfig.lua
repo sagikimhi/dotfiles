@@ -12,7 +12,7 @@ return {
 		opts = {
 			inlay_hints = {
 				enabled = true,
-				exclude = { "python" },
+				exclude = {},
 			},
 			diagnostics = {
 				underline = true,

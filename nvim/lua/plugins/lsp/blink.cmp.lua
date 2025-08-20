@@ -194,8 +194,9 @@ return {
 					return items
 				end,
 				min_keyword_length = 0,
+				default = { "snippets", "lsp", "path", "buffer" },
 				per_filetype = {
-					sql = { "dadbod" },
+					sql = { "snippets", "dadbod", "lsp", "path", "buffer" },
 					lua = { inherit_defaults = true, "lazydev" },
 				},
 				providers = {
@@ -223,7 +224,10 @@ return {
 						override = nil, -- Override the source's functions
 					},
 
-					dadbod = { module = "vim_dadbod_completion.blink" },
+					dadbod = {
+						name = "Dadbod",
+						module = "vim_dadbod_completion.blink",
+					},
 
 					lazydev = { ... },
 

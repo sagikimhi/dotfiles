@@ -6,12 +6,6 @@ return {
 		},
 		opts = function(opts)
 			local keys = require("lazyvim.plugins.lsp.keymaps").get()
-			local telescope = {
-				cmd = function(command)
-					command = "Telescope " .. command
-					vim.api.nvim_command(command)
-				end,
-			}
 			vim.list_extend(keys, {
 				{ -- K: Hover
 					"K",
@@ -57,6 +51,24 @@ return {
 					has = "definition",
 				},
 				{
+					"gD",
+					function()
+						Snacks.picker.lsp_declarations()
+					end,
+					mode = { "n" },
+					desc = "Go to declarations",
+					has = "declaration",
+				},
+				{
+					"gi",
+					function()
+						Snacks.picker.lsp_implementations()
+					end,
+					mode = { "n" },
+					desc = "Go to implementations",
+					has = "implementation",
+				},
+				{
 					"gr",
 					function()
 						Snacks.picker.lsp_references()
@@ -67,7 +79,7 @@ return {
 				{
 					"<leader>wd",
 					function()
-						telescope.cmd("lsp_dynamic_workspace_symbols")
+						Snacks.picker.lsp_workspace_symbols()
 					end,
 					mode = { "n" },
 					desc = "Dynamic workspace symbols",

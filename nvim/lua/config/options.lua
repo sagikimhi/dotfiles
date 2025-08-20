@@ -52,7 +52,7 @@ vim.opt.foldcolumn = "0"
 vim.opt.foldenable = true
 vim.opt.foldlevelstart = 99
 
-vim.opt.fo = "croqwjp"
+vim.opt.fo = "croqnlM1j"
 vim.opt.tw = 78
 vim.opt.sel = "old"
 vim.opt.splitright = true
