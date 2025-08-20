@@ -10,14 +10,14 @@ build-backend = "hatchling.build"
 packages = ["src"]
 
 # -----------------------------------------------------------------------------
-# Build System
+# Entry Points
 # -----------------------------------------------------------------------------
 
 [project.scripts]
-mypackage='mypackage.__main__:main'
+mypackage = 'mypackage.__main__:main'
 
 [project.gui_scripts]
-mypackage='mypackage.__main__:main'
+mypackage = 'mypackage.__main__:main'
 
 [project.entry-points."uvx.run"]
 mypackage = "mypackage.__main__:main"
@@ -34,8 +34,8 @@ name = "mypackage"
 version = "0.1.0"
 readme = "README.md"
 license = "Apache-2.0 OR MIT"
-authors = [ { name = "Sagi Kimhi", email = "sagi.kim5@gmail.com" } ]
-maintainers = [ { name = "Sagi Kimhi", email = "sagi.kim5@gmail.com" } ]
+authors = [{ name = "Sagi Kimhi", email = "sagi.kim5@gmail.com" }]
+maintainers = [{ name = "Sagi Kimhi", email = "sagi.kim5@gmail.com" }]
 description = ""
 dependencies = []
 license-files = ["LICENSE"]
