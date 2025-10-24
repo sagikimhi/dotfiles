@@ -10,6 +10,7 @@ return {
 
 		opts = {
 			ensure_installed = {
+				"query",
 				"c",
 				"go",
 				"rust",
@@ -37,6 +38,5 @@ return {
 			},
 		},
 	},
-	{ "nvim-treesitter/playground" },
 	{ "nvim-treesitter/nvim-treesitter-context" },
 }
