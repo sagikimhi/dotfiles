@@ -1,5 +1,5 @@
-local default_capabilities = vim.lsp.protocol.make_client_capabilities()
-default_capabilities = require("blink.cmp").get_lsp_capabilities({}, true)
+-- local default_capabilities = vim.lsp.protocol.make_client_capabilities()
+local default_capabilities = require("blink.cmp").get_lsp_capabilities({}, true)
 default_capabilities.general.positionEncodings = { "utf-16" }
 
 return {
@@ -32,7 +32,11 @@ return {
 				},
 				severity_sort = true,
 			},
-			capabilities = default_capabilities,
+			servers = {
+				["*"] = {
+					capabilities = default_capabilities,
+				},
+			},
 		},
 	},
 }
