@@ -1,5 +1,5 @@
-# [includeIf "gitdir:/path/to/git/dir/"]
-#     path = "/path/to/git/config/file"
+; [includeIf "gitdir:~/.project/git/"]
+;     path = "~/.config/git/default.gitconfig"
 
 [gpg]
     format = ssh
@@ -58,6 +58,12 @@
     branch = true
     status = always
     showBranch = true
+
+[difftool.nvim]
+    cmd = "nvim -c 'Git difftool -y'"
+
+[mergetool.nvim]
+    cmd = "nvim -c 'Git mergetool'"
 
 [alias]
     la = "!git config -l | grep alias | cut -c 7-"  # List all aliases
@@ -167,8 +173,3 @@
     #
     # brdhere = "!sh -c \"git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d\""
 
-[difftool.nvim]
-    cmd = "nvim -c 'Git difftool -y'"
-
-[mergetool.nvim]
-    cmd = "nvim -c 'Git mergetool'"
