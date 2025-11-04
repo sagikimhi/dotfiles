@@ -1,4 +1,3 @@
--- local default_capabilities = vim.lsp.protocol.make_client_capabilities()
 local default_capabilities = require("blink.cmp").get_lsp_capabilities({}, true)
 default_capabilities.general.positionEncodings = { "utf-16" }
 

@@ -59,7 +59,6 @@ vim.opt.splitright = true
 
 vim.opt.mouse = "a"
 vim.opt.scrolloff = 10
-vim.opt.updatetime = 50
 vim.opt.sidescrolloff = 25
 vim.opt.colorcolumn = "80"
 vim.opt.isfname:append("@-@")
