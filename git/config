@@ -1,20 +1,31 @@
-; [includeIf "gitdir:~/.project/git/"]
-;     path = "~/.config/git/default.gitconfig"
 
-[gpg]
-    format = ssh
+# uncomment the below and follow comment instructions to include
+# an additional personal configuration file for all your user-specific
+# configurations whenever you invoke 'git' from a specific path or a directory
+# nested within that path.
+#
+; [includeIf "gitdir:~/.project/git/"]  # set this to your git "workspace" path
+                                        # where you usually keep all your
+                                        # personal repos
+;     path = "~/.config/git/default.gitconfig"  # set this to a path where you
+                                                # keep your user specific
+                                                # configurations, e.g. name,
+                                                # email, ssh sign key, etc.
+
+[core]
+    safecrlf = true
+    autocrlf = false
+    fsmonitor = true
+    untrackedCache = true
 
 [log]
     decorate = full
 
+[user]
+    useConfigOnly = true
+
 [init]
     defaultBranch = main
-
-[core]
-    editor = nvim
-    autocrlf = false
-    fsmonitor = true
-    untrackedCache = true
 
 [pull]
     rebase = true
@@ -22,19 +33,19 @@
 
 [push]
     followTags = true
+    recurseSubmodules = on-demand
 
 [diff]
     renames = true
     wordRegex = .
-    srcPrefix = src/
-    dstPrefix = dst/
-    submodule = diff
+    submodule = log
     algorithm = minimal
 
 [fetch]
     all = true
     prune = true
-    pruneTags = true
+    parallel = 0
+    recurseSubmodules = true
 
 [rerere]
     enabled = true
@@ -43,13 +54,20 @@
 [rebase]
     stat = true
 
-[commit]
-    gpgsign = true
-
 [status]
     branch = true
     renames = true
     aheadBehind = true
+    submoduleSummary = true
+
+[checkout]
+    workers = 0
+    thresholdForParallelism = 20
+
+[submodule]
+    recurse = true
+    fetchJobs = 0
+    propagateBranches = true
 
 [color]
     ui = always
@@ -59,12 +77,6 @@
     status = always
     showBranch = true
 
-[difftool.nvim]
-    cmd = "nvim -c 'Git difftool -y'"
-
-[mergetool.nvim]
-    cmd = "nvim -c 'Git mergetool'"
-
 [alias]
     la = "!git config -l | grep alias | cut -c 7-"  # List all aliases
 
@@ -72,7 +84,6 @@
     # git push aliases
     # -------------------------------------------------------------------------
 
-    push = push --signed
     fpush = push --force-with-lease
 
     # -------------------------------------------------------------------------
@@ -93,8 +104,8 @@
     # git checkout aliases
     # -------------------------------------------------------------------------
 
-    co = checkout
-    cob = checkout origin/main -b
+    co = checkout --progress
+    cob = checkout --progress -b # <new_branch> [<start_point>]
 
     # -------------------------------------------------------------------------
     # git commit aliases
@@ -111,11 +122,9 @@
     # -------------------------------------------------------------------------
 
     d = diff
-    dw = diff
+    dw = diff --color-moved-ws=allow-indentation-change
     ds = diff --stat
     dc = diff --cached
-    dt = difftool --tool=nvim --no-symlinks --dir-diff --ignore-submodules
-    mt = mergetool --tool=nvim
 
     # -------------------------------------------------------------------------
     # git stash aliases
@@ -146,16 +155,25 @@
     # git log aliases
     # -------------------------------------------------------------------------
 
-    l = log --abbrev-commit --branches --graph --pretty='format: %C(red)%h%C(reset) %C(cyan)%ad%C(reset) %s %C(blue)[%an]%C(reset)%C(yellow)%d%C(reset)' --date=iso --decorate=full
-    ll = log --abbrev-commit --branches --graph --pretty='format: %C(red)%h%C(reset) %C(cyan)%ad%C(reset) %s %C(bold blue)[%an]%C(reset)%C(yellow)%d%C(reset) %n' --date=iso --decorate=full
-    ls = log --abbrev-commit --branches --graph --pretty='format: %C(red)%h%C(reset) %C(cyan)%ad%C(reset) %s %C(blue)[%an]%C(reset)%C(yellow)%d%C(reset) %n' --date=iso --numstat --decorate=full
+    l = log --abbrev-commit --branches --graph --date=iso --decorate=full\
+        --pretty='format: %C(red)%h%C(reset) %C(cyan)%ad%C(reset) %s %C(bold blue)[%an]%C(reset)%C(yellow)%d%C(reset)'
+
+    ll = log --abbrev-commit --branches --graph --date=iso --decorate=full \
+        --pretty='format: %C(red)%h%C(reset) %C(cyan)%ad%C(reset) %s %C(bold blue)[%an]%C(reset)%C(yellow)%d%C(reset) %n'
+
+    ls = log --abbrev-commit --branches --graph --date=iso --numstat --decorate=full \
+        --pretty='format: %C(red)%h%C(reset) %C(cyan)%ad%C(reset) %s %C(bold blue)[%an]%C(reset)%C(yellow)%d%C(reset)'
+
+    lm = log --abbrev-commit --no-merges --branches --graph --date=iso --decorate=full \
+        --pretty='format: %C(red)%h%C(reset) %C(cyan)%ad%C(reset) %s %C(bold blue)[%an]%C(reset)%C(yellow)%d%C(reset)'
+
+    lp = log --abbrev-commit --first-parent --branches --graph --date=iso --decorate=full \
+        --pretty='format: %C(red)%h%C(reset) %C(cyan)%ad%C(reset) %s %C(bold blue)[%an]%C(reset)%C(yellow)%d%C(reset)'
 
     # -------------------------------------------------------------------------
-    # Branch deletion aliases - optional
+    # branch deletion aliases
     # -------------------------------------------------------------------------
 
-    # Alias: brd
-    #
     # Branch Delete.
     #
     # This checks out your local master branch and deletes all
@@ -163,13 +181,16 @@
     #
     # brd = "!sh -c \"git checkout main && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d\""
 
-    # Alias: brdhere
-    #
-    # branch Delete Here.
+    # Branch-Delete-Here.
     #
     # Deletes all local branches that have already been merged to the branch
     # that you're currently on.
     #
-    #
     # brdhere = "!sh -c \"git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d\""
 
+    # -------------------------------------------------------------------------
+    # git submodule aliases
+    # -------------------------------------------------------------------------
+
+    sub = submodule
+    subs = submodule foreach
