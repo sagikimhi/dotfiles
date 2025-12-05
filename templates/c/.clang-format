@@ -23,8 +23,8 @@ SpacesBeforeTrailingComments: 1
 # Enable/Disable/Option
 UseTab: Never
 LineEnding: DeriveLF
-BinPackArguments: false
-BinPackParameters: false
+BinPackArguments: true
+BinPackParameters: BinPack
 AlwaysBreakAfterReturnType: All
 AlwaysBreakBeforeMultilineStrings: false
 
@@ -32,9 +32,10 @@ AlwaysBreakBeforeMultilineStrings: false
 # Not so common
 # -----------------------------------------------------------------------------
 
-SortIncludes: Never
+SortIncludes:
+  Enabled: false
 InsertBraces: false
-ReflowComments: false
+ReflowComments: IndentOnly
 RemoveSemicolon: false
 RemoveBracesLLVM: false
 PointerAlignment: Right
@@ -52,9 +53,9 @@ ExperimentalAutoDetectBinPacking: false
 
 AlignOperands: Align
 AlignEscapedNewlines: Left
-AlignAfterOpenBracket: AlwaysBreak
+AlignAfterOpenBracket: BlockIndent
 AlignArrayOfStructures: None
-AlignTrailingComments: false
+AlignTrailingComments: true
 AlignConsecutiveBitFields: None
 AlignConsecutiveAssignments: None
 AlignConsecutiveDeclarations: None
@@ -163,7 +164,7 @@ PenaltyBreakAssignment: 10
 PenaltyExcessCharacter: 100
 PenaltyBreakFirstLessLess: 0
 PenaltyReturnTypeOnItsOwnLine: 0
-PenaltyBreakBeforeFirstCallParameter: 30
+PenaltyBreakBeforeFirstCallParameter: 10
 # -----------------------------------------------------------------------------
 # May be useful
 # -----------------------------------------------------------------------------
@@ -418,4 +419,5 @@ PenaltyBreakBeforeFirstCallParameter: 30
 
 ## Don't sort #include's
 #SortIncludes: false
+
 
