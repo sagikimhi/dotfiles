@@ -7,6 +7,16 @@ FILES_IN ?= $(wildcard *.md)
 ## FILES_OUT: Output PDF files
 FILES_OUT ?= $(FILES_IN:%.md=%.pdf)
 
+## PANDOC_FLAGS: Flags to pass to pandoc command
+PANDOC_FLAGS ?= \
+	--to pdf \
+	--from markdown \
+	--template eisvogel \
+	--top-level-division="chapter" \
+	--filter pandoc-latex-environment \
+	--listings
+
+
 ## DEFAULT_GOAL: The default goal to run
 .DEFAULT_GOAL ?= help
 
@@ -32,4 +42,4 @@ ifneq ($(FILES_OUT),)
 endif
 
 %.pdf: %.md
-	pandoc $< -o $@ --from markdown --template eisvogel --filter pandoc-latex-environment --listings
+	pandoc $< -o $@ $(PANDOC_FLAGS)

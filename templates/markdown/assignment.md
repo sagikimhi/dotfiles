@@ -1,13 +1,20 @@
 ---
 toc: true
 lang: "en"
-date: 12-07-2025
-title: "Maman 01"
-author: ["Foo Bar"]
-subject: "Bazz"
+date: 01-01-2026
+book: true
+title: "Foo"
+author: ["Bar"]
+subject: "Bazz it Around"
 titlepage: true
 colorlinks: false
 toc-own-page: true
+header-left: "\\hspace{1cm}"
+header-center: "\\leftmark"
+header-right: "Page \\thepage"
+footer-left: "\\thetitle"
+footer-center: "Bazz it Around"
+footer-right: "\\theauthor"
 classoption:
   - oneside
 header-includes:
@@ -15,21 +22,25 @@ header-includes:
     ```{=latex}
     \usepackage{tcolorbox}
     \usepackage{awesomebox}
+    \newtcolorbox{answer-box}{colback=green!5!white,arc=0pt,outer arc=0pt,colframe=green!80!black}
+    \newtcolorbox{question-box}{colback=cyan!5!white,arc=0pt,outer arc=0pt,colframe=cyan!60!black}
+    \newtcolorbox{error-box}{colback=red!5!white,arc=0pt,outer arc=0pt,colframe=red!75!black}
+    \newtcolorbox{warning-box}{colback=orange!5!white,arc=0pt,outer arc=0pt,colframe=orange!80!black}
     ```
 pandoc-latex-environment:
-  tipbox: [tip]
-  notebox: [note]
-  warningbox: [warning]
-  cautionbox: [caution]
-  importantbox: [important]
-  tcolorbox: [box]
-header-left: "\\hspace{1cm}"
-header-center: "\\leftmark"
-header-right: "Page \\thepage"
-footer-left: "\\thetitle"
-footer-center: "Foo Bar - Bazz it Around"
-footer-right: "\\theauthor"
-...
+  # awesomebox
+  tipblock: [tip]
+  noteblock: [note]
+  warningblock: [warning]
+  cautionblock: [caution]
+  importantblock: [important]
+  # tcolorbox
+  tcolorblock: [box]
+  question-box: [qbox]
+  warning-box: [wbox]
+  answer-box: [abox]
+  error-box: [ebox]
+---
 
 # Foo
 
