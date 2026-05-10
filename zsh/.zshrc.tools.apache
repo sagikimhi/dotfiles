@@ -1,0 +1,8 @@
+export APACHE_HOME=$HOME/.local/opt/apache
+export ANT_HOME=$APACHE_HOME/ant
+export THRIFT_HOME=$APACHE_HOME/thrift
+
+export PATH=$ANT_HOME/bin:$PATH
+export PATH=$THRIFT_HOME/bin:$PATH
+
+export LD_LIBRARY_PATH=$THRIFT_HOME/lib:$LD_LIBRARY_PATH

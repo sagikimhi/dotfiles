@@ -1,0 +1,4 @@
+export DVTLMD_HOME=$HOME/.local/opt/dvtlmd
+
+export PATH=$DVTLMD_HOME/current:$PATH
+

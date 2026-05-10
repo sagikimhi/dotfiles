@@ -1,0 +1,7 @@
+# Correct DISPLAY environment variable in WSL to fix DISPLAY issue of some WSL
+# distros
+if [[ ! $(cat  /proc/1/cgroup | grep docker) ]]; then
+	echo initiating DISPLAY
+    export DISPLAY=$(/bin/ip route | awk '/default/ { print $3 }'):0
+    echo DISPLAY set to ${DISPLAY}
+fi

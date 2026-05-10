@@ -1,0 +1,3 @@
+export VERIBLE_HOME=$HOME/.local/opt/verible/current
+
+export PATH=$VERIBLE_HOME/bin:$PATH

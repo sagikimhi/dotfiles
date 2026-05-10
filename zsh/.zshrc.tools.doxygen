@@ -1,0 +1,4 @@
+export DOXYGEN_HOME=$HOME/.local/opt/doxygen
+
+export PATH=$DOXYGEN_HOME/bin:$PATH
+

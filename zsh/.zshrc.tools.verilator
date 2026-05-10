@@ -1,0 +1,5 @@
+export VERILATOR_HOME=$HOME/.local/opt/verilator
+
+export PATH=$VERILATOR_HOME/bin:$PATH
+
+export LD_LIBRARY_PATH=$VERILATOR_HOME/lib:$LD_LIBRARY_PATH

@@ -1,0 +1,4 @@
+export TOOLCHAIN_PATH=~/.local/opt/riscv
+export OPENTITAN_TOOLCHAIN_HOME=$HOME/.local/opt/opentitan
+
+export PATH=$OPENTITAN_TOOLCHAIN_HOME/bin:$PATH

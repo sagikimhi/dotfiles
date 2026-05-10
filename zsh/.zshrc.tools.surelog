@@ -1,0 +1,5 @@
+export SURELOG_HOME=$HOME/.local/opt/surelog
+
+export PATH=$SURELOG_HOME/bin:$PATH
+
+export LD_LIBRARY_PATH=$SURELOG_HOME/lib:$LD_LIBRARY_PATH

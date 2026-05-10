@@ -1,0 +1,5 @@
+export JULIA_HOME=$HOME/.local/opt/julia
+export JULIAUP_HOME=$HOME/.local/opt/juliaup
+
+export PATH=$JULIA_HOME/usr/bin:$PATH
+export PATH=$JULIAUP_HOME/bin:$PATH

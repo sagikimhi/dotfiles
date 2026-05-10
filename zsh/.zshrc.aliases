@@ -2,32 +2,65 @@
 # Aliases
 # -----------------------------------------------------------------------------
 
-# core/basic
+# base commands
 alias v="${EDITOR}"
-alias j="jobs"
-alias d="dirs -v"
-alias h="history 0"
 alias so="source"
-alias ls="ls --color=auto --sort=version --group-directories-first"
 alias edit="${EDITOR}"
+alias ip='ip --color=auto'
+alias ls="ls --color=auto --sort=name --group-directories-first"
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+alias diff='diff --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 alias docker="sudo docker"
+alias history="history 0" # force zsh to show the complete history
+alias emoji="display_emoji"
 alias which-command='whence'
 
 # ls
-alias l="ls --color=auto --sort=version --group-directories-first -lh"
-alias la="ls --color=auto --sort=version --group-directories-first -lAh"
-alias ll="ls --color=auto --sort=version --group-directories-first -lah"
+alias l="ls -lh"
+alias la="ls -lAh"
+alias ll="ls -lah"
+alias ls-ports="netstat -ltupa"
 
 # apt
-alias aptupdate="brew update"
-alias aptupgrade="brew update && brew upgrade && brew cleanup"
-alias aptfull="brew update && brew upgrade && brew doctor && brew cleanup"
+alias aptupdate="sudo apt-get update"
+alias aptfull="sudo apt-get update && sudo apt full-upgrade"
+alias aptupgrade="sudo apt-get update && sudo apt upgrade"
+alias aptinstall="sudo apt-get update && sudo apt-get install"
 
-# cd
-alias uni="cd ${uni}"
-alias dot="cd ${dot}"
-alias orgs="cd ${orgs}"
+# configs
+alias zshrc="v ${zshrc}"
+alias ushrc="v ${ushrc}"
+alias sshrc="v ${sshrc}"
+alias gitrc="v ${gitrc}"
+alias vimrc="v ${vimrc}"
+alias nvimrc="v ${nvimrc}"
+alias tmuxrc="v ${tmuxrc}"
+alias aliasrc="v ${aliasrc}"
+alias kittyrc="v ${kittyrc}"
+
+# cd - git
+alias kety="cd ${kety}"
 alias mygit="cd ${mygit}"
+
+# cd - (my) common
+alias dot="cd ${dot}"
+
+# cd - (my) university
+alias uni="cd ${uni}"
+alias unios="cd ${unios}"
+alias unidb="cd ${unidb}"
+alias unico="cd ${unico}"
+
+# cd - (my) organizations
+alias orgs="cd ${orgs}"
+alias myorg="cd ${myorg}"
+alias wiliot="cd ${wiliot}"
+alias speedata="cd ${speedata}"
+
 alias c_playground="mkdir -p ${playground}/c && cd ${c_playground}"
 alias go_playground="mkdir -p ${playground}/go && cd ${playground}/go"
 alias py_playground="mkdir -p ${playground}/python && cd ${playground}/python"
@@ -39,32 +72,80 @@ alias sql_playground="mkdir -p ${playground}/sql  && cd ${playground}/sql"
 alias rust_playground="mkdir -p ${playground}/rust && cd ${playground}/rust"
 alias java_playground="mkdir -p ${playground}/java && cd ${playground}/java"
 
-# edit: configurations
-alias zshrc="v ${zshrc}"
-alias ushrc="v ${ushrc}"
-alias sshrc="v ${sshrc}"
-alias gitrc="v ${gitrc}"
-alias vimrc="v ${vimrc}"
-alias nvimrc="v ${nvimrc}"
-alias tmuxrc="v ${tmuxrc}"
-alias socxrc="v ${socxrc}"
-alias kittyrc="v ${kittyrc}"
-alias aliasrc="v ${aliasrc}"
-alias weztermrc="v ${weztermrc}"
+# Configs
+# -------
 
-# docker: run
-alias run-plantuml="docker run -d -p 8080:8080 --name umlserver plantuml/plantuml-server:jetty"
-alias run-redis-stack="docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest"
-alias run-redis-stack-server="docker run -d --name redis-stack-server -p 6379:6379 redis/redis-stack-server:latest"
-# docker: exec
-alias connect-redis-stack="docker exec -it redis-stack redis-cli"
-# docker: stop
+alias uvrc="v $HOME/.config/uv/uv.toml"
+alias socxrc="v $HOME/.config/socx/socx.yaml"
+alias socxlog="v $HOME/.local/state/socx/log/socx.log"
+alias weztermrc="v $HOME/.config/wezterm"
+
+# Docker
+# ------
+
+alias run-xv6="docker run --rm -it --name xv6 cs450/xv6:latest"
+alias stop-xv6="docker stop xv6 && docker rm xv6"
+
+alias run-xv6-cs="docker run -it --name xv6-cs"
+alias stop-xv6-cs="docker stop xv6-cs"
+
+alias run-plantuml="docker run -d -p 3147:8080 --name umlserver plantuml/plantuml-server:jetty"
 alias stop-plantuml="docker stop umlserver && docker rm umlserver"
 
-#npm: run
+alias run-rabbitmq="docker run -d -p 5672:5672 -p 15672:15672 --name rabbitmq-server --hostname rabbitmq-host rabbitmq:4-management"
+alias stop-rabbitmq="docker stop rabbitmq-server && docker rm rabbitmq-server"
+
+alias run-redis-stack="docker run -d -p 6379:6379 -p 8001:8001 --name redis-stack redis/redis-stack:latest"
+alias stop-redis-stack="docker stop redis-stack && docker rm redis-stack"
+alias connect-redis-stack="docker exec -it redis-stack redis-cli"
+
+alias run-redis-stack-server="docker run -d -p 6379:6379 --name redis-stack-server redis/redis-stack-server:latest"
+alias stop-redis-stack-server="docker stop redis-stack-server && docker rm redis-stack-server"
+
+# UV Tools
+# --------
+
+alias tt="uvx --from git+ssh://git@github.com/sagikimhi/terminal-tree.git --python 3.12 -q terminal-tree"
+
+# NPM Tools
+# ---------
+
 alias mmdc="npx -p @mermaid-js/mermaid-cli mmdc"
+alias codex="npx @openai/codex@latest"
 alias neovim="npx neovim"
 alias prettier="npx prettier"
 alias markdown-toc="npx markdown-toc"
 alias markdown-cli2="npx markdown-cli2"
 
+if command -v clang-format >&/dev/null; then
+    alias clangf-init="cp ${dot}/${templates}/c/c-project/.clang-format"
+fi
+
+if [ -e ${jars}/bfg.jar ]; then
+    alias bfg="java -jar ${jars}/bfg.jar"
+fi
+
+if [ -e ${git}/gf/gf2 ];
+then
+    alias gf2="${git}/gf/gf2"
+fi
+
+if command -v uv >&/dev/null; then
+    alias py="/usr/bin/env -S uv run python"
+    alias py3="/usr/bin/env uv run python3"
+    alias uv-update="uv self update && uv tool update --all"
+else
+    alias py="/usr/bin/env python"
+    alias py3="/usr/bin/env python3"
+fi
+
+alias pyhere="source ./.venv/bin/activate"
+alias repyhere="deactivate && source ./.venv/bin/activate"
+
+# -----------------------------------------------------------------------------
+# Unaliases
+# -----------------------------------------------------------------------------
+
+if whence -w md | grep "alias" &> /dev/null; then
+    unalias md
+fi

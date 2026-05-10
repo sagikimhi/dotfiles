@@ -1,0 +1,2 @@
+export SVLINT_CONFIG=$XDG_CONFIG_HOME/svls/.svlint.toml
+export SVLINT_INCDIRS=$git/languages/systemverilog/uvm-1.2/distrib/src:$SVLINT_INCDIRS

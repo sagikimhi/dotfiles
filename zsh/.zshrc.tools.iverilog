@@ -1,0 +1,5 @@
+export IVERILOG_HOME=$HOME/.local/opt/iverilog
+
+export PATH=$IVERILOG_HOME/bin:$PATH
+
+export LD_LIBRARY_PATH=$IVERILOG_HOME/lib:$LD_LIBRARY_PATH
