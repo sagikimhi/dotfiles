@@ -4,6 +4,8 @@ return {
 	{ import = "plugins.editor" },
 	{ import = "plugins.ui" },
 	{ import = "plugins.misc" },
+    { import = "plugins.syntax" },
+    { import = "plugins.lang" },
 	{ import = "plugins.lsp" },
     { import = "plugins.lsp.providers" }
 }

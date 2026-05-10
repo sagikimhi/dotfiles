@@ -11,9 +11,6 @@ return {
                 lua_ls = {
                     settings = {
                         Lua = {
-                            workspace = {
-                                checkThirdParty = false,
-                            },
                             codeLens = {
                                 enable = true,
                             },
@@ -30,6 +27,7 @@ return {
                                 globals = { "vim", "Snacks", "LazyVim" },
                             },
                             workspace = {
+                                checkThirdParty = false,
                                 library = { vim.env.VIMRUNTIME },
                             },
                             hint = {

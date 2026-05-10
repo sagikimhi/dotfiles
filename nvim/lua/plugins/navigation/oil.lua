@@ -24,6 +24,18 @@ return {
 				cursorcolumn = true,
 				concealcursor = "nvic",
 			},
+			-- Configuration for the file preview window
+			preview_win = {
+				-- Whether the preview window is automatically updated when the cursor is moved
+				update_on_cursor_moved = true,
+				-- How to open the preview window "load"|"scratch"|"fast_scratch"
+				preview_method = "fast_scratch",
+				-- A function that returns true to disable preview on a file e.g. to avoid lag
+				disable_preview = false,
+				-- Window-local options to use for preview window buffers
+				win_options = {},
+			},
+			-- Configuration for the floating action confirmation window
 			extra_scp_args = {},
 			delete_to_trash = true,
 			constrain_cursor = "editable",
@@ -72,7 +84,7 @@ return {
 					local m = name:match("^%.")
 					return m ~= nil
 				end,
-				is_always_hidden = function(...)
+				is_always_hidden = function()
 					return false
 				end,
 				natural_order = "fast",
@@ -94,17 +106,6 @@ return {
 				},
 				get_win_title = nil,
 				preview_split = "auto",
-				override = function(conf)
-					return conf
-				end,
-			},
-			preview_win = {
-				update_on_cursor_moved = true,
-				preview_method = "fast_scratch",
-				disable_preview = function(...)
-					return false
-				end,
-				win_options = {},
 			},
 			-- Configuration for the floating action confirmation window
 			confirmation = {
@@ -131,13 +132,13 @@ return {
 					winblend = 0,
 				},
 			},
-			lazy = false,
-			keys = function()
-				return {
-					{ "<C-e>", "<cmd>Oil<cr>", mode = { "n" } },
-				}
-			end,
-			dependencies = { { "echasnovski/mini.icons", opts = {} } },
+			lazy = true,
+			keys = {
+				{ "<C-e>", "<cmd>Oil<cr>", mode = { "n" } },
+			},
+			dependencies = {
+				{ "nvim-mini/mini.icons", opts = {} },
+			},
 		},
 	},
 }

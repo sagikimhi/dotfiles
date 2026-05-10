@@ -1,42 +1,67 @@
 return {
 	"folke/snacks.nvim",
+	keys = {
+		-- --------------------------------------------------------------------
+		-- lazygit
+		-- --------------------------------------------------------------------
+
+		{
+			"<leader>gu",
+			function()
+				Snacks.lazygit.open()
+			end,
+			desc = "Lazygit",
+		},
+		{
+			"<leader>gl",
+			function()
+				Snacks.lazygit.log_file()
+			end,
+			desc = "Lazygit log view (current file)",
+		},
+		{
+			"<leader>gL",
+			function()
+				Snacks.lazygit.log()
+			end,
+			desc = "Lazygit log view",
+		},
+	},
 	opts = {
 
 		-- --------------------------------------------------------------------
 		-- Disabled Snacks
 		-- --------------------------------------------------------------------
 
-		scroll = {
-			enabled = false,
-		},
+		scroll = { enabled = false },
 
 		-- --------------------------------------------------------------------
 		-- Enabled Snacks
 		-- --------------------------------------------------------------------
 
-		zen = {
-			enabled = true,
-		},
+		gh = { enabled = true },
+
+		zen = { enabled = true },
 
 		git = {
 			enabled = true,
 			ft = "git",
-			width = 0.6,
-			height = 0.6,
+			width = 0.8,
+			height = 0.8,
 			border = "rounded",
-			title = " Git Blame ",
+			title = " Git",
 			title_pos = "center",
 		},
 
-		words = {
-			enabled = true,
-		},
+		words = { enabled = true },
 
+		---@class snacks.picker.Config
 		picker = {
 			enabled = true,
 			prompt = " ",
 			sources = {},
 			focus = "input",
+			---@class snacks.picker.layout.config
 			layout = {
 				cycle = true,
 				--- Use the default layout or vertical if the window is too narrow
@@ -49,14 +74,14 @@ return {
 				fuzzy = true, -- use fuzzy matching
 				smartcase = true, -- use smartcase
 				ignorecase = true, -- use ignorecase
-				sort_empty = false, -- sort results when the search string is empty
+				sort_empty = true, -- sort results when the search string is empty
 				filename_bonus = true, -- give bonus for matching file names (last part of the path)
 				file_pos = true, -- support patterns like `file:line:col` and `file:line`
 				-- the bonusses below, possibly require string concatenation and path normalization,
 				-- so this can have a performance impact for large lists and increase memory usage
-				cwd_bonus = false, -- give bonus for matching files in the cwd
-				frecency = false, -- frecency bonus
-				history_bonus = false, -- give more weight to chronological order
+				cwd_bonus = true, -- give bonus for matching files in the cwd
+				frecency = true, -- frecency bonus
+				history_bonus = true, -- give more weight to chronological order
 			},
 			sort = {
 				-- default sort is by score, text length and index
@@ -107,7 +132,7 @@ return {
 			jump = {
 				jumplist = true, -- save the current position in the jumplist
 				tagstack = false, -- save the current position in the tagstack
-				reuse_win = false, -- reuse an existing window if the buffer is already open
+				reuse_win = true, -- reuse an existing window if the buffer is already open
 				close = true, -- close the picker when jumping/editing to a location (defaults to true)
 				match = false, -- jump to the first match position. (useful for `lines`)
 			},
@@ -133,7 +158,7 @@ return {
 						["<CR>"] = { "confirm", mode = { "n", "i" } },
 						["<Down>"] = { "list_down", mode = { "i", "n" } },
 						["<Esc>"] = "cancel",
-						["<S-CR>"] = { { "pick_win", "jump" }, mode = { "n", "i" } },
+						["<S-CR>"] = { "pick_win", "jump", mode = { "n", "i" } },
 						["<S-Tab>"] = { "select_and_prev", mode = { "i", "n" } },
 						["<Tab>"] = { "select_and_next", mode = { "i", "n" } },
 						["<Up>"] = { "list_up", mode = { "i", "n" } },
@@ -188,7 +213,7 @@ return {
 						["<CR>"] = "confirm",
 						["<Down>"] = "list_down",
 						["<Esc>"] = "cancel",
-						["<S-CR>"] = { { "pick_win", "jump" } },
+						["<S-CR>"] = { "pick_win", "jump" },
 						["<S-Tab>"] = { "select_and_prev", mode = { "n", "x" } },
 						["<Tab>"] = { "select_and_next", mode = { "n", "x" } },
 						["<Up>"] = "list_up",
@@ -354,15 +379,12 @@ return {
 			},
 		},
 
-		input = {
-			enabled = true,
-		},
+		input = { enabled = true },
 
-		rename = {
-			enabled = true,
-		},
+		rename = { enabled = true },
 
 		lazygit = {
+			enabled = true,
 			-- automatically configure lazygit to use the current colorscheme
 			-- and integrate edit with the current neovim instance
 			configure = true,
@@ -395,21 +417,16 @@ return {
 			},
 		},
 
-		bigfile = {
-			enabled = true,
-		},
+		scope = { enabled = true },
 
-		dashboard = {
-			enabled = true,
-			example = "compact_files",
-		},
+		bigfile = { enabled = true },
 
-		gitbrowse = {
-			enabled = true,
-		},
+		dashboard = { enabled = true, example = "compact_files" },
 
-		quickfile = {
-			enabled = true,
-		},
+		gitbrowse = { enabled = true },
+
+		quickfile = { enabled = true },
+
+		profiler = { enabled = true },
 	},
 }

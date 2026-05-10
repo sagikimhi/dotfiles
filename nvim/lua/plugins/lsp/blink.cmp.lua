@@ -43,15 +43,17 @@ return {
 				["<S-Enter>"] = { "accept_and_enter", "fallback_to_mappings" },
 				["<C-Space>"] = {
 					function(cmp)
-						cmp.show({ providers = { "snippets", "lsp" } })
+						cmp.show({ providers = { "lsp", "snippets" } })
 					end,
 					"show_documentation",
 					"hide_documentation",
 				},
 				["<S-Space>"] = {
 					function(cmp)
-						cmp.show({ providers = { "snippets", "lsp", "path", "buffer" } })
+						cmp.show({ providers = { "lsp", "path", "buffer", "snippets" } })
 					end,
+					"show_documentation",
+					"hide_documentation",
 				},
 			},
 
@@ -81,7 +83,7 @@ return {
 				accept = {
 					dot_repeat = true,
 					create_undo_point = true,
-					resolve_timeout_ms = 200,
+					resolve_timeout_ms = 300,
 					auto_brackets = {
 						enabled = true,
 						default_brackets = { "(", ")" },
@@ -106,7 +108,7 @@ return {
 				},
 				documentation = {
 					auto_show = true,
-					update_delay_ms = 50,
+					update_delay_ms = 500,
 					auto_show_delay_ms = 150,
 					treesitter_highlighting = true,
 					draw = function(opts)
@@ -114,14 +116,15 @@ return {
 					end,
 					window = {
 						border = "rounded",
-						scrollbar = false,
 						min_width = 30,
 						max_width = 80,
+						scrollbar = true,
 						max_height = 20,
 						direction_priority = {
 							menu_north = { "e", "w", "n", "s" },
 							menu_south = { "e", "w", "s", "n" },
 						},
+						winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,EndOfBuffer:BlinkCmpDoc",
 					},
 				},
 				menu = {
@@ -176,13 +179,14 @@ return {
 			},
 
 			cmdline = {
-				keymap = {
-					["<Tab>"] = { "show", "accept" },
-					["<Enter>"] = { "accept", "fallback" },
+				sources = {
+					default = { "cmdline", "path" },
+					search = { "buffer" },
 				},
+				keymap = { preset = "inherit" },
 				completion = {
 					menu = {
-						auto_show = function(ctx)
+						auto_show = function(_)
 							return vim.fn.getcmdtype() == ":" or vim.fn.getcmdtype() == "@"
 						end,
 					},
@@ -194,7 +198,7 @@ return {
 					return items
 				end,
 				min_keyword_length = 0,
-				default = { "snippets", "lsp", "path", "buffer" },
+				default = { "lsp", "snippets", "path", "buffer" },
 				per_filetype = {
 					sql = { "snippets", "dadbod", "lsp", "path", "buffer" },
 					lua = { inherit_defaults = true, "lazydev" },
@@ -203,7 +207,7 @@ return {
 					lsp = {
 						name = "LSP",
 						module = "blink.cmp.sources.lsp",
-						fallbacks = { "buffer" },
+						fallbacks = {},
 						transform_items = function(_, items)
 							return vim.tbl_filter(function(item)
 								return item.kind ~= require("blink.cmp.types").CompletionItemKind.Text
@@ -215,12 +219,12 @@ return {
 						async = false, -- Whether we should show the completions before this provider returns, without waiting for it
 						enabled = true, -- Whether or not to enable the provider
 						max_items = nil, -- Maximum number of items to display in the menu
-						timeout_ms = 1000, -- How long to wait for the provider to return before showing completions and treating it as asynchronous
+						timeout_ms = 2000, -- How long to wait for the provider to return before showing completions and treating it as asynchronous
+						score_offset = 90,
 						should_show_items = true, -- Whether or not to show the items
 						min_keyword_length = 0, -- Minimum number of characters in the keyword to trigger the provider
 						-- If this provider returns 0 items, it will fallback to these providers.
 						-- If multiple providers fallback to the same provider, all of the providers must return 0 items for it to fallback
-						score_offset = 3, -- Boost/penalize the score of the items
 						override = nil, -- Override the source's functions
 					},
 
@@ -235,10 +239,11 @@ return {
 						module = "blink.cmp.sources.snippets",
 						score_offset = -1,
 						opts = {
-							use_show_condition = true,
+							global_snippets = { "all" },
 							show_autosnippets = true,
+							use_show_condition = true,
+							use_label_description = true,
 							-- friendly_snippets = true,
-							-- global_snippets = { "all" },
 							-- extended_filetypes = {},
 							-- ignored_filetypes = {},
 							-- get_filetype = function(_)
@@ -296,6 +301,7 @@ return {
 								or not vim.fn.getcmdline():match("^[%%0-9,'<>%-]*!")
 						end,
 					},
+
 					omni = {
 						module = "blink.cmp.sources.complete_func",
 						enabled = function()
@@ -347,40 +353,41 @@ return {
 
 			appearance = {
 				highlight_ns = vim.api.nvim_create_namespace("blink_cmp"),
+				use_nvim_cmp_as_default = false,
 				-- Sets the fallback highlight groups to nvim-cmp's highlight groups
 				-- Useful for when your theme doesn't support blink.cmp
 				-- Will be removed in a future release
 				-- use_nvim_cmp_as_default = false,
 				-- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
 				-- Adjusts spacing to ensure icons are aligned
-				nerd_font_variant = "normal",
-				kind_icons = {
-					Text = "󰉿",
-					Method = "󰊕",
-					Function = "󰊕",
-					Constructor = "󰒓",
-					Field = "󰜢",
-					Variable = "󰆦",
-					Property = "󰖷",
-					Class = "󱡠",
-					Interface = "󱡠",
-					Struct = "󱡠",
-					Module = "󰅩",
-					Unit = "󰪚",
-					Value = "󰦨",
-					Enum = "󰦨",
-					EnumMember = "󰦨",
-					Keyword = "󰻾",
-					Constant = "󰏿",
-					Snippet = "󱄽",
-					Color = "󰏘",
-					File = "󰈔",
-					Reference = "󰬲",
-					Folder = "󰉋",
-					Event = "󱐋",
-					Operator = "󰪚",
-					TypeParameter = "󰬛",
-				},
+				nerd_font_variant = "mono",
+				-- kind_icons = {
+				-- 	Text = "󰉿",
+				-- 	Method = "󰊕",
+				-- 	Function = "󰊕",
+				-- 	Constructor = "󰒓",
+				-- 	Field = "󰜢",
+				-- 	Variable = "󰆦",
+				-- 	Property = "󰖷",
+				-- 	Class = "󱡠",
+				-- 	Interface = "󱡠",
+				-- 	Struct = "󱡠",
+				-- 	Module = "󰅩",
+				-- 	Unit = "󰪚",
+				-- 	Value = "󰦨",
+				-- 	Enum = "󰦨",
+				-- 	EnumMember = "󰦨",
+				-- 	Keyword = "󰻾",
+				-- 	Constant = "󰏿",
+				-- 	Snippet = "󱄽",
+				-- 	Color = "󰏘",
+				-- 	File = "󰈔",
+				-- 	Reference = "󰬲",
+				-- 	Folder = "󰉋",
+				-- 	Event = "󱐋",
+				-- 	Operator = "󰪚",
+				-- 	TypeParameter = "󰬛",
+				-- },
 			},
 		},
 	},

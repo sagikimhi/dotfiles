@@ -1,37 +1,31 @@
-return {
-	{
-		"nvim-telescope/telescope.nvim",
-
-		lazy = false,
-
-		dependencies = {
-			{ "nvim-lua/plenary.nvim" },
-			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-		},
-
-		opts = {
-			pickers = {
-				find_files = {
-					theme = "ivy",
-				},
-			},
-			extensions = {
-				fzf = {},
-			},
-		},
-
-		config = function()
-			require("telescope").setup({
-				pickers = {
-					find_files = {
-						theme = "ivy",
-					},
-				},
-				extensions = {
-					fzf = {},
-				},
-			})
-			require("telescope").load_extension("fzf")
-		end,
-	},
-}
+return {}
+-- return {
+-- 	{
+-- 		"nvim-telescope/telescope.nvim",
+-- 		lazy = false,
+-- 		opts = {
+-- 			pickers = { find_files = { theme = "ivy" } },
+-- 			extensions = { fzf = {}, refactoring = {} },
+-- 		},
+-- 		dependencies = {
+-- 			{ "nvim-lua/plenary.nvim" },
+-- 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = false },
+-- 			{ "ThePrimeagen/refactoring.nvim", dependencies = { "lewis6991/async.nvim" }, lazy = false },
+-- 		},
+--
+-- 		config = function()
+-- 			require("telescope").setup({
+-- 				pickers = {
+-- 					find_files = {
+-- 						theme = "ivy",
+-- 					},
+-- 				},
+-- 				extensions = {
+-- 					fzf = {},
+-- 				},
+-- 			})
+-- 			require("telescope").load_extension("fzf")
+-- 			require("telescope").load_extension("refactoring")
+-- 		end,
+-- 	},
+-- }

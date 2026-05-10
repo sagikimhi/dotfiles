@@ -9,9 +9,13 @@ return {
 			{ "mason-org/mason-lspconfig.nvim", opts = {} },
 		},
 		opts = {
+			autoformat = {
+				enabled = true,
+				exclude = { "c", "verilog", "systemverilog" },
+			},
 			inlay_hints = {
 				enabled = true,
-				exclude = { "python" },
+				exclude = { "python", "c" },
 			},
 			diagnostics = {
 				underline = true,
