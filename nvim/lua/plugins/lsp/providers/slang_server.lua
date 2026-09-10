@@ -1,10 +1,17 @@
+vim.filetype.add({
+    extension = {
+        v = "verilog",
+        vh = "verilog",
+        sv = "systemverilog",
+        svh = "systemverilog",
+        svi = "systemverilog",
+        svt = "systemverilog",
+        def = "systemverilog"
+    }
+})
+
 return {
-    enabled = false,
     "hudson-trading/slang-server",
-    dependencies = {
-        "mason.nvim",
-        { "mason-org/mason-lspconfig.nvim", opts = {}},
-    },
     ft = {"systemverilog", "verilog"},
     opts = {
         servers = {
@@ -26,5 +33,10 @@ return {
                 end
             end,
         }
-    }
+    },
+    enabled = false,
+    dependencies = {
+        "mason.nvim",
+        { "mason-org/mason-lspconfig.nvim", opts = {}},
+    },
 }
