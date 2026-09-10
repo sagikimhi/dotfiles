@@ -1,0 +1,46 @@
+# yaml-language-server: $schema=schema.json
+git:
+  fetchAll: false
+  autoFetch: false
+  overrideGpg: true
+  ignoreWhitespaceInDiffView: true
+
+  commit:
+    signOff: true
+    autoWrapWidth: 72
+    autoWrapCommitMessage: true
+
+  log:
+    order: default
+    showGraph: always
+    showWholeGraph: false
+gui:
+  filterMode: substring
+  commandLogSize: 16
+  statusPanelView: allBranchesLog
+  mainPanelSplitMode: vertical
+  showDivergenceFromBaseBranch: arrowAndNumber
+  showIcons: false
+  showFileTree: true
+  showFileIcons: true
+  showRandomTip: true
+  showCommandLog: true
+  showBottomLine: true
+  showPanelJumps: true
+  showListFooter: true
+  showBranchCommitHash: true
+  showRootItemInFileTree: true
+  showNumstatInFilesView: true
+  switchToFilesAfterStashPop: true
+  switchToFilesAfterStashApply: true
+  switchTabsWithPanelJumpKeys: false
+
+keybinding:
+  commits:
+    openLogMenu: M
+    moveUpCommit: K
+    moveDownCommit: J
+
+services:
+  github.com: github:api.github.com
+  bitbucket.org: bitbucket:api.bitbucket.org
