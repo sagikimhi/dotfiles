@@ -387,7 +387,7 @@
         {
           "command": "vim.remap",
           "args": {
-            "after": ["<Esc>", "2", "k", "^"]
+            "after": ["<Esc>", "2", "k", "^", "Q"]
           }
         }
       ]
@@ -699,29 +699,31 @@
       ]
     },
     {
+      "before": ["Q"],
+      "after": [
+        "<Esc>", "m", "z", ":", "%", "s", "/", "[", " ", "\t", "]", "+", "$", "/", "/",
+        "<CR>", "`", "z"
+      ]
+    },
+    {
       "before": ["<leader>", "s"],
       "after": [
         ":", "%", "s", "/", "\\", "<", "<C-r>", "<C-w>", "\\", ">", "/",
         "<C-r>", "<C-w>", "/", "g", "I", "<Left>", "<Left>", "<Left>" ]
     },
     {
+    // <leader>ud - toggle inline diagnostics
+      "before": ["<leader>", "u", "d"],
+      "commands": ["errorLens.toggleInlineMessage"]
+    },
+    {
       // <leader>] - go to next problem in file
-      "before": ["d", "]"],
+      "before": ["]", "d"],
       "commands": ["editor.action.marker.next"]
     },
     {
       // <leader>[ - go to previous problem in file
-      "before": ["d", "["],
-      "commands": ["editor.action.marker.prev"]
-    },
-    {
-      // <leader>] - go to next problem in file
-      "before": ["<leader>", "]"],
-      "commands": ["editor.action.marker.next"]
-    },
-    {
-      // <leader>[ - go to previous problem in file
-      "before": ["<leader>", "["],
+      "before": ["[", "d"],
       "commands": ["editor.action.marker.prev"]
     },
     {
@@ -751,6 +753,16 @@
       // <leader>h - Jump to window on the right
       "before": ["<leader>", "h"],
       "after": ["ctrl+w", "h"]
+    },
+    {
+      // gt - go to first tag
+      "before": ["g", "t"],
+      "after": ["ctrl+]"]
+    },
+    {
+      // gT - go to all tags
+      "before": ["g", "T"],
+      "after": ["g", "ctrl+]"]
     },
     {
       // <leader>k - Jump to window on the right
@@ -1035,33 +1047,12 @@
     },
     "editor.formatOnType": false
   },
-  "explorer.fileNesting.enabled": true,
-  "explorer.fileNesting.expand": false,
-  "DVT.automaticallyOpenConnectionWebview.enable": false,
-  "gitlens.graph.minimap.additionalTypes": [
-    "localBranches",
-    "remoteBranches",
-    "pullRequests",
-    "stashes",
-    "tags"
-  ],
-  "gitlens.graph.scrollMarkers.additionalTypes": [
-    "localBranches",
-    "stashes",
-    "remoteBranches"
-  ],
-  "gitlens.views.commitDetails.files.layout": "tree",
-  "vscode-neovim.useWSL": true,
-  "vscode-neovim.wslDistribution": "kali-linux",
-  "gitlens.codeLens.authors.command": false,
-  "remote.SSH.enableX11Forwarding": false,
-  "remote.SSH.useFlock": false,
-  "remote.SSH.useLocalServer": false,
-  "remote.SSH.showLoginTerminal": true,
-  "remote.SSH.enableDynamicForwarding": false,
-  "remote.autoForwardPorts": false,
-  "remote.localPortHost": "allInterfaces",
-  "remote.restoreForwardedPorts": false,
+  "editor.experimental.asyncTokenization": true,
+  "editor.experimental.asyncTokenizationVerification": false,
+  "editor.experimental.preferTreeSitter.regex": true,
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
   "remote.SSH.remotePlatform": {
   },
   "vim.cursorStylePerMode.insert": "line",
